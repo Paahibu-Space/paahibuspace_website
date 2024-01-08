@@ -88,6 +88,7 @@ section {
   overflow: hidden;
 }
 
+
 .section-header {
   text-align: center;
   padding-bottom: 40px;
@@ -1107,11 +1108,15 @@ section {
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
+
 .about .about-img {
   position: relative;
   margin: 60px 0 0 60px;
 }
-
+.about-section-header {
+  text-align: left;
+  padding-bottom: 40px;
+}
 .about .about-img:before {
   position: absolute;
   inset: -60px 0 0 -60px;
@@ -1119,6 +1124,24 @@ section {
   content: "";
   background: url("../img/about-bg.png") top left;
   background-repeat: no-repeat;
+}
+.about-section-header h2 {
+  font-size: 48px;
+  font-weight: 300;
+  margin-bottom: 20px;
+  color: var(--color-secondary);
+}
+
+.about-section-header p {
+  text-align: left;
+  margin: 0 auto;
+  color: var(--color-secondary-light);
+}
+
+@media (min-width: 1280px) {
+  .section-header p {
+    max-width: 80%;
+  }
 }
 
 @media (max-width: 575px) {
