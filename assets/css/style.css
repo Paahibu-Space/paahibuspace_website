@@ -19,7 +19,7 @@ body {
   inset: 0;
   z-index: 9999;
   overflow: hidden;
-  background: var(--color-white);
+  background: #FFF;
   transition: all 0.6s ease-out;
   width: 100%;
   height: 100vh;
@@ -67,7 +67,7 @@ body {
 }
 
 .header.sticked {
-  background: var(--color-white);
+  background: #FFF;
   box-shadow: 0px 2px 20px rgba(var(--color-secondary-rgb), 0.1);
 }
 
@@ -192,7 +192,7 @@ body {
   .navbar-nav .dropdown .active,
   .navbar-nav .dropdown .active:focus,
   .navbar-nav .dropdown:hover > a {
-    color: var(--color-white);
+    color: #FFF;
     background: var(--color-secondary);
   }
 
@@ -240,7 +240,7 @@ body {
   .navbar-nav .dropdown ul .active,
   .navbar-nav .dropdown ul .active:hover,
   .navbar-nav .dropdown ul li:hover > a {
-    color: var(--color-white);
+    color: #FFF;
     background: var(--color-primary);
   }
 
@@ -318,7 +318,7 @@ body {
   .navbar-nav .megamenu ul li a:hover,
   .navbar-nav .megamenu ul li .active,
   .navbar-nav .megamenu ul li .active:hover {
-    color: var(--color-white);
+    color: #FFF;
     background: var(--color-primary);
   }
 
@@ -395,7 +395,7 @@ body {
   .navbar-nav .active,
   .navbar-nav .active:focus,
   .navbar-nav li:hover > a {
-    color: var(--color-white);
+    color: #FFF;
   }
 
   .navbar-nav .dropdown ul,
@@ -607,7 +607,7 @@ a.slider-boxed-btn:hover::after {
 
 .img-bg .img-bg-inner h2,
 .img-bg .img-bg-inner p {
-  color: var(--color-white);
+  color: #FFF;
 }
 
 @media (max-width: 500px) {
@@ -752,4 +752,170 @@ h6.service_summary-about::before {
   position: relative;
   bottom: 5px;
   margin-right: 10px;
+}
+
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+.footer {
+  color: #FFF;
+  font-size: 14px;
+}
+
+.footer .footer-content {
+  background: url("../images/footer-bg.jpeg");
+  background-position: center left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 60px 0 30px 0;
+}
+
+.footer .footer-content .footer-logo img {
+  width: 40%;
+}
+
+.footer .footer-content .footer-info {
+  margin-bottom: 30px;
+}
+
+.footer .footer-content .footer-info h3 {
+  font-size: 24px;
+  margin: 0 0 20px 0;
+  padding: 2px 0 2px 0;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.footer .footer-content .footer-info h3 span {
+  color: var(--color-primary);
+}
+
+.footer .footer-content .footer-info p {
+  margin-bottom: 0;
+  color: #FFF;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.5em;
+  letter-spacing: 0.4px;
+}
+
+.footer .footer-content h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFF;
+  position: relative;
+  padding-bottom: 12px;
+  margin-bottom: 15px;
+}
+
+.footer .footer-content h4::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--color-primary);
+  bottom: 0;
+  left: 0;
+}
+
+.footer .footer-content .footer-links {
+  margin-bottom: 30px;
+}
+
+.footer .footer-content .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .footer-content .footer-links ul i {
+  padding-right: 2px;
+  color: #FFF;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.footer .footer-content .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer .footer-content .footer-links ul li:first-child {
+  padding-top: 0;
+}
+
+.footer .footer-content .footer-links ul a {
+  color: rgba(var(--color-white-rgb), 0.7);
+  transition: 0.3s;
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer .footer-content .footer-links ul a:hover {
+  color: #FFF;
+}
+
+.footer .footer-content .footer-newsletter form {
+  margin-top: 30px;
+  background: #FFF;
+  padding: 6px 10px;
+  position: relative;
+  border-radius: 4px;
+}
+
+.footer .footer-content .footer-newsletter form input[type=email] {
+  border: 0;
+  padding: 4px;
+  width: calc(100% - 110px);
+}
+
+.footer .footer-content .footer-newsletter form input[type=email]:focus-visible {
+  outline: none;
+}
+
+.footer .footer-content .footer-newsletter form input[type=submit] {
+  position: absolute;
+  top: 0;
+  right: -2px;
+  bottom: 0;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 0 20px;
+  background: var(--color-primary);
+  color: #FFF;
+  transition: 0.3s;
+  border-radius: 0 4px 4px 0;
+}
+
+.footer .footer-content .footer-newsletter form input[type=submit]:hover {
+  background: rgba(var(--color-primary-rgb), 0.85);
+}
+
+.footer .footer-legal {
+  padding: 20px 0;
+  background: #f6871f;
+}
+
+.footer .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: rgba(var(--color-white-rgb), 0.1);
+  color: #FFF;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 30px;
+  border-radius: 4px;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+.footer .social-links a:hover {
+  background: var(--color-primary);
+  text-decoration: none;
 }
