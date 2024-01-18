@@ -12,6 +12,53 @@ body {
 }
 
 /*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.section-bg {
+  background-color: #f0f4f8;
+}
+
+.section-title {
+  padding-bottom: 40px;
+}
+
+.section-title h2 {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0;
+  line-height: 1px;
+  margin: 0 0 5px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #5c8eb0;
+  font-family: "Poppins", sans-serif;
+}
+
+.section-title h2::after {
+  content: "";
+  width: 120px;
+  height: 1px;
+  display: inline-block;
+  background: #f6871f;
+  margin: 4px 10px;
+}
+
+/* .section-title p {
+  margin: 0;
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  color: #263d4d;
+} */
+
+/*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
 #preloader {
@@ -1052,7 +1099,7 @@ h6.service_summary-about::before {
   display: block;
   width: 50px;
   height: 1px;
-  background: #7fa5c0;
+  background: #f6871f;
   bottom: 0;
   left: 0;
 }
@@ -1075,7 +1122,8 @@ h6.service_summary-about::before {
 }
 
 .team .member .social a:hover {
-  color: #ff4a17;
+  color: #f6871f;
+  cursor: pointer;
 }
 
 .team .member .social i {
@@ -1088,3 +1136,4 @@ h6.service_summary-about::before {
     margin-bottom: 110px;
   }
 }
+
