@@ -54,6 +54,60 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }));
 
+  /**
+   * Init swiper slider with 1 slide at once in desktop view
+   */
+  new Swiper('.slides-1', {
+    speed: 600,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    slidesPerView: 'auto',
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    }
+  });
+
+
+  /**
+   * partners Slider
+   */
+  new Swiper('.partners-slider', {
+    speed: 400,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    slidesPerView: 'auto',
+    breakpoints: {
+      320: {
+        slidesPerView: 2,
+        spaceBetween: 40
+      },
+      480: {
+        slidesPerView: 3,
+        spaceBetween: 60
+      },
+      640: {
+        slidesPerView: 4,
+        spaceBetween: 80
+      },
+      992: {
+        slidesPerView: 6,
+        spaceBetween: 120
+      }
+    }
+  });
+
    /**
    * Testimonials slider
    */
