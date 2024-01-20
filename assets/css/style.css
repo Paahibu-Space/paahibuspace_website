@@ -113,22 +113,11 @@ section {
   background-color: #272974;
 }
 
-.header.sticked {
-  background: #FFF;
-  box-shadow: 0px 2px 20px rgba(var(--color-secondary-rgb), 0.1);
-}
-
 .header .logo img {
   max-height: 40px;
   margin-right: 6px;
 }
 
-.header .logo h1 {
-  font-size: 32px;
-  font-weight: 300;
-  color: var(--color-secondary);
-  font-family: var(--font-secondary);
-}
 
 .header .logo h1 span {
   color: #f6871f;
@@ -1415,4 +1404,78 @@ h6.service_summary-about::before {
   .services-hero .btn-watch-video {
     font-size: 13px;
   }
+}
+
+
+/*--------------------------------------------------------------
+# Services Section
+--------------------------------------------------------------*/
+.services .img {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.services .img img {
+  transition: 0.6s;
+}
+
+.services .details {
+  padding: 50px 30px;
+  margin: -100px 30px 0 30px;
+  transition: all ease-in-out 0.3s;
+  background: #FFF;
+  position: relative;
+  background: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0px 0 25px rgba(0, 0, 0, 0.1);
+}
+
+.services .details .icon {
+  margin: 0;
+  width: 72px;
+  height: 72px;
+  background: #f6871f;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: #FFF;
+  font-size: 28px;
+  transition: ease-in-out 0.3s;
+  position: absolute;
+  top: -36px;
+  left: calc(50% - 36px);
+  border: 6px solid #FFF;
+}
+
+.services .details h3 {
+  font-weight: 700;
+  margin: 10px 0 15px 0;
+  font-size: 22px;
+  transition: ease-in-out 0.3s;
+}
+
+.services .details p {
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.services .service-item:hover .details h3 {
+  color: #f6871f;
+}
+
+.services .service-item:hover .details .icon {
+  background: #FFF;
+  border: 2px solid #f6871f;
+}
+
+.services .service-item:hover .details .icon i {
+  color: #f6871f;
+}
+
+.services .service-item:hover .img img {
+  transform: scale(1.2);
 }
