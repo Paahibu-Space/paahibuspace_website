@@ -132,7 +132,7 @@ section {
 #preloader:after {
   content: "";
   position: absolute;
-  border: 4px solid #f6871f;
+  border: 4px solid #272974;
   border-radius: 50%;
   animation: animate-preloader 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
@@ -1824,4 +1824,112 @@ h6.service_summary-about::before {
 
 .blog .posts-list .read-more a:hover {
   color: #f6871f9f;
+}
+
+/*--------------------------------------------------------------
+# about-page Section
+--------------------------------------------------------------*/
+
+.about-page .about-page-img {
+  position: relative;
+  margin: 60px 0 0 60px;
+}
+.about-page-section-header {
+  text-align: left;
+  padding-bottom: 40px;
+}
+.about-page .about-page-img:before {
+  position: absolute;
+  inset: -60px 0 0 -60px;
+  z-index: -1;
+  content: "";
+  background: url("../images/about-bg.png") top left;
+  background-repeat: no-repeat;
+}
+.about-page-section-header h2 {
+  font-size: 48px;
+  font-weight: 300;
+  margin-bottom: 20px;
+  color: var(--color-secondary);
+}
+
+.about-page-section-header p {
+  text-align: left;
+  margin: 0 auto;
+  color: var(--color-secondary-light);
+}
+
+@media (min-width: 1280px) {
+  .section-header p {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 575px) {
+  .about-page .about-page-img {
+    margin: 30px 0 0 30px;
+  }
+
+  .about-page .about-page-img:before {
+    inset: -30px 0 0 -30px;
+  }
+}
+
+.about-page h3 {
+  color: var(--color-secondary);
+  font-family: var(--font-secondary);
+  font-weight: 300;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .about-page h3 {
+    font-size: 28px;
+  }
+}
+
+.about-page .nav-pills {
+  border-bottom: 1px solid rgba(var(--color-secondary-rgb), 0.2);
+}
+
+.about-page .nav-pills li+li {
+  margin-left: 40px;
+}
+
+.about-page .nav-link {
+  background: none;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-secondary);
+  padding: 12px 0;
+  margin-bottom: -2px;
+  border-radius: 0;
+  font-family: var(--font-secondary);
+}
+
+.about-page .nav-link.active {
+  color: var(--color-primary);
+  background: none;
+  border-bottom: 3px solid var(--color-primary);
+}
+
+@media (max-width: 575px) {
+  .about-page .nav-link {
+    font-size: 16px;
+  }
+}
+
+.about-page .tab-content h4 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.about-page .tab-content i {
+  font-size: 22px;
+  line-height: 0;
+  margin-right: 8px;
+  color: var(--color-primary);
 }
