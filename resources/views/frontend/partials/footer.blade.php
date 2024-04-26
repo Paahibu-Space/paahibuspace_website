@@ -1,0 +1,102 @@
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="footer-content">
+            <div
+                class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+
+                <div class="footer-logo col-lg-8">
+                    <img src="./assets/images/logo-bgr.png" alt="">
+                </div>
+
+                <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
+                    <a href="https://twitter.com/paahibuspace" target="_blank" class="twitter"><i
+                            class="bi bi-twitter-x"></i></a>
+                    <a target="_blank" href="https://web.facebook.com/paahibuspace" class="facebook"><i
+                            class="bi bi-facebook"></i></a>
+                    <a target="_blank" href="https://www.instagram.com/paahibuspace?igsh=MWZpbWkyaDliajdrNw=="
+                        class="instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/questtechnovation/" target="_blank" class="linkedin"><i
+                            class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="container" style="padding-bottom: 30px;">
+                <hr>
+            </div>
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-info">
+                            <h3>About Paahibu Space</h3>
+                            <p>
+                                Paahibu Space is a non-profit tech and entrepreneurship development organization
+                                focusing providing digital solutions to small businesses and nonprofits led by women,
+                                while educating, inspiring, empowering, and shaping the personal and professional
+                                development of the next generation of African female leaders in technology, innovation,
+                                entrepreneurship, and business by equipping them with knowledge and skills they will
+                                need to turn their communities’ problems and challenges into solutions and opportunities
+                                in an evolving digital world. <br>
+                                Insurance Road <br><br>
+                                Wa-UWR Ghana<br><br>
+                                <strong>Phone:</strong> <a href="tel:+233 24 725 4326">+233 24 725 4326</a><br>
+                                <strong>Email:</strong> <a
+                                    href="mailto: info@paahibuspace.org">info@paahibuspace.org</a><br>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Stay in the know</h4>
+                        <ul>
+                            <li><i class="bi bi-chevron-right"></i> <a href="index.html">Home</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="about.html">About us</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="services.html">Services</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="about.html">Become a mentor</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="about.html">Become a volunteer</a></li>
+
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Our Services</h4>
+                        <ul>
+                            <li><i class="bi bi-chevron-right"></i> <a href="services.html">Web Design</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="services.html">Web Development</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="services.html">Marketing</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="services.html">Graphic Design</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 footer-newsletter subscription-form">
+                        <h4>Our Newsletter</h4>
+                        <p>Join us, not as a client, but as an esteemed member of our close-knit family.</p>
+                        <form action="./forms/subscribe.php" method="post" class="form-subscribe">
+                            <input type="email" name="form_subscribe_email"><input type="submit" value="Subscribe">
+
+                        </form>
+                        <div class="my-3">
+                            <div class="subscribing">Subscribing</div>
+                            <div class="error-subscription"></div>
+                            <div class="subscription-success">You have successfuly subscribed to our news letter. Thank
+                                you!</div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-legal text-center">
+            <div
+                class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+
+                <div class="d-flex flex-column align-items-center align-items-lg-start">
+                    <div class="copyright">
+                        &copy; Copyright <strong><span>Paahibu Space</span></strong>. All Rights Reserved
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer><!-- End Footer -->
