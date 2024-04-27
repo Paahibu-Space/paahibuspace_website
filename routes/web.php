@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('frontend.pages.index');
-});
+/*--------------------------------------
+    Frontend Routes
+------------------------------------- */
+
+Route::get('/', 'App\Http\Controllers\Frontend\FrontendController@index')->name('homepage');
+Route::get('/about', 'App\Http\Controllers\Frontend\FrontendController@showAboutPage')->name('about');

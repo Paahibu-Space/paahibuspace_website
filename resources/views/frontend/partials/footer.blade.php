@@ -1,11 +1,11 @@
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
-        <div class="footer-content">
+        <div class="footer-content" style="background: url('{{ asset('assets/frontend/images/footer-bg.jpeg') }}');">
             <div
                 class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
 
                 <div class="footer-logo col-lg-8">
-                    <img src="./assets/images/logo-bgr.png" alt="">
+                    <img src="{{ asset('assets/frontend/images/logo-bgr.png') }}" alt="">
                 </div>
 
                 <div class="social-links order-first order-lg-last mb-3 mb-lg-0">

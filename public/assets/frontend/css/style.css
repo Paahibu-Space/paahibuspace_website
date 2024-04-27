@@ -1130,7 +1130,6 @@ h6.service_summary-about::before {
 }
 
 .footer .footer-content {
-  background: url("../images/footer-bg.jpeg");
   background-position: center left;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1443,7 +1442,6 @@ h6.service_summary-about::before {
 .services-hero {
   width: 100%;
   min-height: 100vh;
-  background: url("../images/girlcode2.webp") top center;
   background-size: cover;
   position: relative;
   padding: 120px 0;

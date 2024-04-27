@@ -1,6 +1,6 @@
 
     <!-- ======= Breadcrumbs ======= -->
-    <section class="breadcrumbs d-flex align-items-center" style="background-image: url('./assets/images/img1.jpeg');">
+    <section class="breadcrumbs d-flex align-items-center" style="background-image: url('{{ asset('assets/frontend/images/img1.jpeg') }}');">
         <div class="container position-relative d-flex flex-column align-items-center">
   
           <h2>Programs</h2>

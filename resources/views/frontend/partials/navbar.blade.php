@@ -16,7 +16,7 @@
                         <div class="justify-content-between d-flex dropdown-content">
                             <div class="nav-list-container">
                                 <li>
-                                    <a href="about.html">Who we are</a>
+                                    <a href="{{ route('about') }}">Who we are</a>
                                     <a href="stories.html">Stories</a>
                                     <a href="team.html">Team</a>
                                     <a href="#">Volunteers</a>
@@ -25,7 +25,7 @@
 
                             <div class="right-content">
                                 <div class="right-img">
-                                    <img src="./assets/images/img2.jpeg" alt="" width="400">
+                                    <img src="{{ asset('assets/frontend/images/img2.jpeg') }}" alt="" width="400">
                                 </div>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
 
                             <div class="right-content">
                                 <div class="right-img">
-                                    <img src="./assets/images/shot2.png" alt="" width="400">
+                                    <img src="{{ asset('assets/frontend/images/shot2.png') }}" alt="" width="400">
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
 
                             <div class="right-content">
                                 <div class="right-img">
-                                    <img src="./assets/images/img3.jpeg" alt="" width="400">
+                                    <img src="{{ asset('assets/frontend/images/img3.jpeg') }}" alt="" width="400">
                                 </div>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
 
                             <div class="right-content">
                                 <div class="right-img">
-                                    <img src="./assets/images/customers-love.jpeg" alt="" width="400">
+                                    <img src="{{ asset('assets/frontend/images/customers-love.jpeg') }}" alt="" width="400">
                                 </div>
                             </div>
                         </div>

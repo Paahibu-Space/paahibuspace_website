@@ -2,7 +2,7 @@
 
 @section('content')
       <!-- ======= Hero Section ======= -->
-  <section id="services-hero" class="services-hero d-flex align-items-center">
+  <section id="services-hero" class="services-hero d-flex align-items-center" style="  background: url('{{ asset('frontend/images/girlcode2.webp') }}') top center;">
     <div class="container">
       <div class="row">
         <div class="col-xl-4">
