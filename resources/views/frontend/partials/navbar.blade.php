@@ -4,7 +4,7 @@
 
         <a href="index.html" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
             <!-- Uncomment the line below if you also wish to use an image logo -->
-            <img src="./assets/images/white-logo.png" alt="">
+            <img src="{{ asset('assets/frontend/images/white-logo.png') }}" alt="">
         </a>
 
         <nav id="navbar" class="navbar-nav">

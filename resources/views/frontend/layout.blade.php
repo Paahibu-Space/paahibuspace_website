@@ -7,20 +7,19 @@
     <title>Paahibu Space | Home</title>
     <link href="./assets/images/logo.jpeg" rel="icon">
     <!-- vendor files -->
-    <link rel="stylesheet" href="./assets/vendor/fontawesome.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/vendor/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}">
 
     <!-- Vendor CSS Files -->
-    <link href="./assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="./assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="./assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="./assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/frontend/vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/frontend/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/frontend/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="./assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/vendor/bootstrap-icons/bootstrap-icons.css') }}">
 
 
     <!-- Google Fonts -->
@@ -34,8 +33,14 @@
 
 <body>
 
+    {{-- Header --}}
+    @includeIf('frontend.partials.navbar')
+
     {{-- page main content --}}
     @yield('content')
+
+    {{-- FOOTER --}}
+    @includeIf('frontend.partials.footer')
 
     <!-- back to top -->
     <div class="progress-wrap">
@@ -46,16 +51,16 @@
 
     <div id="preloader"></div>
 
-    <script src="./assets/js/main.js"></script>
-    <script src="./assets/js/simpleParallax.min.js"></script>
-    <script src="./assets/js/subscribe.js"></script>
+    <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/simpleParallax.min.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/subscribe.js') }}"></script>
 
     <!-- Vendor JS Files -->
-    <script src="./assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="./assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="./assets/vendor/aos/aos.js"></script>
-    <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="./assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ asset('assets/frontend/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/frontend/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('assets/frontend/vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('assets/frontend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/frontend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 </body>
 
 </html>

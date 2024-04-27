@@ -23,7 +23,7 @@
                         <div class="swiper-slide">
                             <div class="video-bg">
                                 <iframe width="100%" height="100%"
-                                    src="./assets/images/pexels-edmond-dantès-8643891 (2160p).mp4" frameborder="0"
+                                    src="{{ asset('assets/frontend/images/pexels-edmond-dantès-8643891 (2160p).mp4') }}" frameborder="0"
                                     allowfullscreen loop></iframe>
                             </div>
 
@@ -70,7 +70,7 @@
                             <div class="item-about">
                                 <div class="imgone big-paral">
                                     <div class="simpleParallax" data-aos="fade-up" data-aos-delay="200"><img
-                                            src="./assets/images/about-img1.jpeg" width="500" height="666"
+                                            src="{{ asset('assets/frontend/images/about-img1.jpeg') }}" width="500" height="666"
                                             class="lazy thumparallax-down img-fluid" alt="two-images-1.jpg"></div>
                                 </div>
                                 <div class="exp-about">
@@ -83,7 +83,7 @@
                             <div class="item-about">
                                 <div class="imgtwo big-paral">
                                     <div class="simpleParallax" data-aos="fade-down" data-aos-delay="100"><img
-                                            src="./assets/images/about-img2.jpeg" width="500" height="820"
+                                            src="{{ asset('assets/frontend/images/about-img2.jpeg') }}" width="500" height="820"
                                             class="lazy thumparallax img-fluid" alt="two-images-1.jpg"></div>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@
 
         <div class="row g-0" data-aos="fade-up" data-aos-delay="200">
 
-            <div class="col-xl-5 img-bgg" style="background-image: url('./assets/images/customers-love.jpeg')">
+            <div class="col-xl-5 img-bgg" style="background-image: url('{{ asset('assets/frontend/images/customers-love.jpeg') }}')">
             </div>
             <div class="col-xl-7 slides  position-relative">
 
@@ -212,24 +212,24 @@
         <div class="partners-slider swiper">
 
             <div class="swiper-wrapper align-items-center">
-                <div class="swiper-slide"><img src="./assets/images/partners/AMN-Transp.png" class="img-fluid"
+                <div class="swiper-slide"><img src="{{ asset('assets/frontend/images/partners/AMN-Transp.png') }}" class="img-fluid"
                         alt=""></div>
-                <div class="swiper-slide"><img src="./assets/images/partners/giz (1).png" class="img-fluid"
+                <div class="swiper-slide"><img src="{{ asset('assets/frontend/images/partners/giz (1).png') }}" class="img-fluid"
                         alt="">
                 </div>
-                <div class="swiper-slide"><img src="./assets/images/partners/mcf-logo.jpg" class="img-fluid"
+                <div class="swiper-slide"><img src="{{ asset('assets/frontend/images/partners/mcf-logo.jpg') }}" class="img-fluid"
                         alt="">
                 </div>
-                <div class="swiper-slide"><img src="./assets/images/partners/afrilabs-logo-1.png" class="img-fluid"
+                <div class="swiper-slide"><img src="{{ asset('assets/frontend/images/partners/afrilabs-logo-1.png') }}" class="img-fluid"
                         alt=""></div>
-                <div class="swiper-slide"><img src="./assets/images/partners/AMN-Transp.png" class="img-fluid"
+                <div class="swiper-slide"><img src="{{ asset('assets/frontend/images/partners/AMN-Transp.png') }}" class="img-fluid"
                         alt=""></div>
-                <div class="swiper-slide"><img src="./assets/images/partners/giz (1).png" class="img-fluid"
+                <div class="swiper-slide"><img src="{{ asset('assets/frontend/images/partners/giz (1).png') }}" class="img-fluid"
                         alt="">
                 </div>
-                <div class="swiper-slide"><img src="./assets/images/partners/afrilabs-logo-1.png" class="img-fluid"
+                <div class="swiper-slide"><img src="{{ asset('assets/frontend/images/partners/afrilabs-logo-1.png') }}" class="img-fluid"
                         alt=""></div>
-                <div class="swiper-slide"><img src="./assets/images/partners/AMN-Transp.png" class="img-fluid"
+                <div class="swiper-slide"><img src="{{ asset('assets/frontend/images/partners/AMN-Transp.png') }}" class="img-fluid"
                         alt=""></div>
             </div>
         </div>
@@ -253,7 +253,7 @@
                 <div class="swiper-slide">
                     <div class="testimonial-wrap">
                         <div class="testimonial-item">
-                            <img src="./assets/images/no-image.webp" class="testimonial-img" alt="">
+                            <img src="{{ asset('assets/frontend/images/no-image.webp') }}" class="testimonial-img" alt="">
                             <h3>Gifty</h3>
                             <h4>Women in Digital Business (WiDiB) Participant</h4>
                             <p>
@@ -271,7 +271,7 @@
                 <div class="swiper-slide">
                     <div class="testimonial-wrap">
                         <div class="testimonial-item">
-                            <img src="./assets/images/no-image.webp" class="testimonial-img" alt="">
+                            <img src="{{ asset('assets/frontend/images/no-image.webp') }}" class="testimonial-img" alt="">
                             <h3>Rose</h3>
                             <h4>Women in Digital Business (WiDiB) Participant</h4>
                             <p>
@@ -288,7 +288,7 @@
                 <div class="swiper-slide">
                     <div class="testimonial-wrap">
                         <div class="testimonial-item">
-                            <img src="./assets/images/no-image.webp" class="testimonial-img" alt="">
+                            <img src="{{ asset('assets/frontend/images/no-image.webp') }}" class="testimonial-img" alt="">
                             <h3>Mckeown</h3>
                             <h4>Digital Skills for MSMEs Participant</h4>
                             <p>
@@ -305,7 +305,7 @@
                 <div class="swiper-slide">
                     <div class="testimonial-wrap">
                         <div class="testimonial-item">
-                            <img src="./assets/images/no-image.webp" class="testimonial-img" alt="">
+                            <img src="{{ asset('assets/frontend/images/no-image.webp') }}" class="testimonial-img" alt="">
                             <h3>Anifa</h3>
                             <h4>Digital Skills for MSMEs Participant</h4>
                             <p>
