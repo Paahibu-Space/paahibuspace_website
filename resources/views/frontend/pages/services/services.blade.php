@@ -1,5 +1,7 @@
 @extends('frontend.layout')
 
+@includeIf('frontend.partials.breadcrumps')
+
 @section('content')
       <!-- ======= Hero Section ======= -->
   <section id="services-hero" class="services-hero d-flex align-items-center" style="  background: url('{{ asset('frontend/images/girlcode2.webp') }}') top center;">
@@ -33,7 +35,7 @@
         <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
           <div class="service-item">
             <div class="img">
-              <img src="./assets/images/web.jpeg" class="img-fluid" alt="">
+              <img src="{{ asset('assets/frontend/images/web.jpeg') }}" class="img-fluid" alt="">
             </div>
             <div class="details position-relative">
               <div class="icon">
@@ -48,7 +50,7 @@
         <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
           <div class="service-item">
             <div class="img">
-              <img src="./assets/images/ecommerce.png" class="img-fluid" alt="">
+              <img src="{{ asset('assets/frontend/images/ecommerce.png') }}" class="img-fluid" alt="">
             </div>
             <div class="details position-relative">
               <div class="icon">
@@ -64,7 +66,7 @@
         <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
           <div class="service-item">
             <div class="img">
-              <img src="./assets/images/content-marketing.jpeg" class="img-fluid" alt="">
+              <img src="{{ asset('assets/images/content-marketing.jpeg') }}" class="img-fluid" alt="">
             </div>
             <div class="details position-relative">
               <div class="icon">
@@ -79,7 +81,7 @@
         <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="500">
           <div class="service-item">
             <div class="img">
-              <img src="./assets/images/graphic-de.jpeg" class="img-fluid" alt="">
+              <img src="{{ asset('assets/images/graphic-de.jpeg') }}" class="img-fluid" alt="">
             </div>
             <div class="details position-relative">
               <div class="icon">

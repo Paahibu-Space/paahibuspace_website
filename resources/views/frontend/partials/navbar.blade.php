@@ -10,16 +10,16 @@
         <nav id="navbar" class="navbar-nav">
 
             <ul>
-                <li class="dropdown megamenu"><a href="#"><span>Contact Us</span> <i
+                <li class="dropdown megamenu"><a href="{{ route('frontend.about') }}"><span>About Us</span> <i
                             class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul class="mega-dropdown-content">
                         <div class="justify-content-between d-flex dropdown-content">
                             <div class="nav-list-container">
                                 <li>
-                                    <a href="{{ route('about') }}">Who we are</a>
+                                    <a href="{{ route('frontend.about') }}">Who we are</a>
                                     <a href="stories.html">Stories</a>
-                                    <a href="team.html">Team</a>
-                                    <a href="#">Volunteers</a>
+                                    <a href="{{ route('frontend.team') }}">Team</a>
+                                    <a href="{{ route('frontend.volunteers') }}">Volunteers</a>
                                 </li>
                             </div>
 
@@ -38,7 +38,7 @@
 
                     </ul>
                 </li>
-                <li class="dropdown megamenu"><a href="programs.html"><span>Programs</span> <i
+                <li class="dropdown megamenu"><a href="{{ route('frontend.programs') }}"><span>Programs</span> <i
                             class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul class="mega-dropdown-content">
                         <div class="justify-content-between d-flex">
@@ -89,7 +89,7 @@
 
                     </ul>
                 </li>
-                <li class="dropdown megamenu"><a href="services.html"><span>Services</span> <i
+                <li class="dropdown megamenu"><a href="{{ route('frontend.services') }}"><span>Services</span> <i
                             class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul class="mega-dropdown-content">
                         <div class="justify-content-between d-flex">
@@ -116,7 +116,7 @@
 
                     </ul>
                 </li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="{{ route('frontend.blogs') }}">Blog</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

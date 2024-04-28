@@ -1,5 +1,7 @@
 @extends('frontend.layout')
 
+@includeIf('frontend.partials.breadcrumps')
+
 @section('content')
         <!-- ======= Team Section ======= -->
         <section id="team" class="team section-bg">
