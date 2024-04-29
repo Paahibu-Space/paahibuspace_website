@@ -7,19 +7,19 @@
     <title>Paahibu Space | Home</title>
     <link href="./assets/images/logo.jpeg" rel="icon">
     <!-- vendor files -->
-    <link rel="stylesheet" href="{{ asset('assets/frontend/vendor/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/common/vendor/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}">
 
     <!-- Vendor CSS Files -->
-    <link href="{{ asset('assets/frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/frontend/vendor/aos/aos.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/frontend/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/frontend/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/common/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/common/vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/common/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/common/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="{{ asset('assets/frontend/vendor/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/vendor/bootstrap-icons/bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/common/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/common/vendor/bootstrap-icons/bootstrap-icons.css') }}">
 
 
     <!-- Google Fonts -->
@@ -56,11 +56,11 @@
     <script src="{{ asset('assets/frontend/js/subscribe.js') }}"></script>
 
     <!-- Vendor JS Files -->
-    <script src="{{ asset('assets/frontend/vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/vendor/glightbox/js/glightbox.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/vendor/aos/aos.js') }}"></script>
-    <script src="{{ asset('assets/frontend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/common/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/common/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('assets/common/vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('assets/common/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/common/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 </body>
 
 </html>
