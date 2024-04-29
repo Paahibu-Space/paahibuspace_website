@@ -21,3 +21,4 @@ Route::get('/volunteers', 'App\Http\Controllers\Frontend\FrontendController@show
 
 Route::get('/login/admin', 'App\Http\Controllers\Auth\LoginController@showAdminLoginForm')->name('admin.login');
 Route::get('/login/admin/forget-password', 'App\Http\Controllers\Auth\LoginController@showAdminForgetPasswordForm')->name('admin.forget.password');
+Route::post('/login/admin', 'Auth\LoginController@adminLogin')->name('admin.login');
