@@ -11,10 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('upcoming_programs_category', function (Blueprint $table) {
+        Schema::create('knowledgebases', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
+            $table->text('title');
+            $table->longText('content')->nullable();
+            $table->string('topic_id')->nullable();
             $table->string('status')->nullable();
+            $table->string('slug')->nullable();
+            $table->string('views')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->text('meta_tags')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('upcoming_programs_category');
+        Schema::dropIfExists('knowledgebases');
     }
 };

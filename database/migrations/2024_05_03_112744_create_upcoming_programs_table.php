@@ -12,7 +12,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('upcoming_programs', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->text('title');
             $table->longText('content')->nullable();
             $table->string('category_id')->nullable();

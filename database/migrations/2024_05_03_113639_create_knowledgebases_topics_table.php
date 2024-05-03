@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('upcoming_programs_category', function (Blueprint $table) {
+        Schema::create('knowledgebases_topics', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
+            $table->text('title');
             $table->string('status')->nullable();
             $table->timestamps();
         });
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('upcoming_programs_category');
+        Schema::dropIfExists('knowledgebases_topics');
     }
 };

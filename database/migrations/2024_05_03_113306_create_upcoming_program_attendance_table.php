@@ -12,14 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('upcoming_program_attendance', function (Blueprint $table) {
-            $table->id();
-            $table->string('status')->default('pending');
-            $table->string('program_name')->nullable();
-            $table->string('checkout_type')->nullable();
-            $table->integer('user_id',false,true)->nullable();
-            $table->string('program_id')->nullable();
-            $table->longText('custom_fields')->nullable();
-            $table->longText('attachment')->nullable();
+            $table->bigIncrements('id');
+            $table->text('title');
+            $table->longText('content')->nullable();
+            $table->string('topic_id')->nullable();
+            $table->string('status')->nullable();
+            $table->string('slug')->nullable();
+            $table->string('views')->nullable();
+            $table->string('lang')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->text('meta_tags')->nullable();
             $table->timestamps();
         });
     }
