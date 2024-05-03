@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('login/admin', [AuthenticatedSessionController::class, 'create'])
                 ->name('admin.login');
 
-    Route::post('login/admin', [AuthenticatedSessionController::class, 'store']);
+    Route::post('login/admin', [AuthenticatedSessionController::class, 'create']);
 
     Route::get('login/admin/forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->name('admin.password.request');
