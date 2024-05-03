@@ -11,7 +11,6 @@ class Works extends Model
         'title',
         'gallery',
         'status',
-        'lang',
         'categories_id',
         'slug',
         'excerpt',
