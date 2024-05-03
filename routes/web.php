@@ -31,7 +31,28 @@ Route::middleware('auth')->group(function () {
 /*--------------------------------------
     ADMIN LOGIN ROUTES
 ------------------------------------- */
-Route::prefix('admin-home')->group(function () {
-    Route::get('/', [AdminDashboardController::class, 'adminIndex'])->name('admin.home');
-});
-require __DIR__.'/auth.php';
+    Route::prefix('admin-home')->group(function () {
+        Route::get('/', [AdminDashboardController::class, 'adminIndex'])->name('admin.home');
+    });
+
+    Route::get('/', 'AdminDashboardController@adminIndex')->name('admin.home');
+
+    /* --------------------------
+        MAINTAINS PAGE
+    -------------------------- */
+    Route::get('/maintains-page/settings', 'MaintainsPageController@maintains_page_settings')->name('admin.maintains.page.settings');
+    Route::post('/maintains-page/settings', 'MaintainsPageController@update_maintains_page_settings');
+
+
+    /*---------------------------
+        ADMIN SETTINGS
+    ----------------------------*/
+    Route::get('/settings', 'AdminDashboardController@admin_settings')->name('admin.profile.settings');
+    Route::get('/profile-update', 'AdminDashboardController@admin_profile')->name('admin.profile.update');
+    Route::post('/profile-update', 'AdminDashboardController@admin_profile_update');
+    Route::get('/password-change', 'AdminDashboardController@admin_password')->name('admin.password.change');
+    Route::post('/password-change', 'AdminDashboardController@admin_password_chagne');
+    Route::post('/set-static-option', 'AdminDashboardController@admin_set_static_option');
+    Route::post('/get-static-option', 'AdminDashboardController@admin_get_static_option');
+    Route::post('/update-static-option', 'AdminDashboardController@admin_update_static_option');
+    require __DIR__.'/auth.php';
