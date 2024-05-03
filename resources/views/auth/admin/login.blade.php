@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="col-6 text-right">
-                                <a href="{{route('admin.forget.password')}}">{{__('Forgot Password?')}}</a>
+                                <a href="{{route('admin.password.request')}}">{{__('Forgot Password?')}}</a>
                             </div>
                         </div>
                         <div class="submit-btn-area">
