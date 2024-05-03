@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('upcoming_program_attendance', function (Blueprint $table) {
+        Schema::create('upcoming_program_attendances', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('title');
             $table->longText('content')->nullable();

@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class EventsCategory extends Model
 {
-    protected $table = 'events_categories';
+    protected $table = 'upcoming_programs_categories';
     protected $fillable = ['title','status'];
 }
