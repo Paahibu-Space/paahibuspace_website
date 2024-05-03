@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*--------------------------------------
@@ -15,10 +16,14 @@ Route::get('/team', 'App\Http\Controllers\Frontend\FrontendController@showTeamPa
 Route::get('/volunteers', 'App\Http\Controllers\Frontend\FrontendController@showVolunteersPage')->name('frontend.volunteers');
 
 
-/*--------------------------------------
-    ADMIN LOGIN ROUTES
--------------------------------------- */
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/login/admin', 'App\Http\Controllers\Auth\LoginController@showAdminLoginForm')->name('admin.login');
-Route::get('/login/admin/forget-password', 'App\Http\Controllers\Auth\LoginController@showAdminForgetPasswordForm')->name('admin.forget.password');
-Route::post('/login/admin', 'Auth\LoginController@adminLogin')->name('admin.login');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
