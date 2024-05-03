@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-
-use App\Admin;
-use App\EventAttendance;
-use App\Events;
-use App\Services;
-use App\Blog;
-use App\TeamMember;
-use App\Testimonial;
-use App\Works;
+use App\Http\Controllers\Controller;
+use App\Models\Admin;
+use App\Models\UpcomingProgramAttendance;
+use App\Models\UpcomingPrograms;
+use App\Models\Services;
+use App\Models\Blog;
+use App\Models\TeamMember;
+use App\Models\Testimonial;
+use App\Models\Works;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,33 +19,31 @@ class AdminDashboardController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin');
+        // $this->middleware('auth:admin');
     }
 
     public function adminIndex()
     {
 
 
-        $all_blogs = Blog::where('lang', $default_lang)->count();
+        $all_blogs = Blog::count();
         $total_admin = Admin::count();
-        $total_testimonial = Testimonial::where('lang', $default_lang)->count();
-        $total_team_member = TeamMember::where('lang', $default_lang)->count();
-        $total_services = Services::where('lang', $default_lang)->count();
-        $total_works = Works::where('lang', $default_lang)->count();
-        $total_events = Events::where('lang', $default_lang)->count();
-        $total_event_attendance = EventAttendance::where('status','complete')->count();
-        $event_attendance_recent_registration = EventAttendance::orderBy('id','desc')->take(5)->get();
+        $total_testimonial = Testimonial::count();
+        $total_team_member = TeamMember::count();
+        $total_services = Services::count();
+        $total_works = Works::count();
+        $total_upcoming_programs = UpcomingPrograms::count();
+        $total_program_attendance = UpcomingProgramAttendance::where('status','complete')->count();
+        $program_attendance_recent_registration = UpcomingProgramAttendance::orderBy('id','desc')->take(5)->get();
 
-
-        $this->update_script_info();
 
         return view('backend.admin-home')->with([
             'blog_count' => $all_blogs,
             'total_admin' => $total_admin,
             'total_works' => $total_works,
             'total_services' => $total_services,
-            'total_event_attendance' => $total_event_attendance,
-            'event_attendance_recent_registration' => $event_attendance_recent_registration,
+            'total_program_attendance' => $total_program_attendance,
+            'Program_attendance_recent_registration' => $program_attendance_recent_registration,
         ]);
     }
 
@@ -105,34 +103,34 @@ class AdminDashboardController extends Controller
     }
 
 
-    public function admin_set_static_option(Request $request)
-    {
-        $this->validate($request,[
-           'static_option' => 'required|string',
-           'static_option_value' => 'required|string',
-        ]);
-        set_static_option($request->static_option,$request->static_option_value);
-        return 'ok';
-    }
+    // public function admin_set_static_option(Request $request)
+    // {
+    //     $this->validate($request,[
+    //        'static_option' => 'required|string',
+    //        'static_option_value' => 'required|string',
+    //     ]);
+    //     set_static_option($request->static_option,$request->static_option_value);
+    //     return 'ok';
+    // }
 
-    public function admin_get_static_option(Request $request)
-    {
-        $this->validate($request,[
-            'static_option' => 'required|string'
-        ]);
-        $data = get_static_option($request->static_option);
-        return response()->json($data);
-    }
+    // public function admin_get_static_option(Request $request)
+    // {
+    //     $this->validate($request,[
+    //         'static_option' => 'required|string'
+    //     ]);
+    //     $data = get_static_option($request->static_option);
+    //     return response()->json($data);
+    // }
 
-    public function admin_update_static_option(Request $request)
-    {
-        $this->validate($request,[
-            'static_option' => 'required|string',
-            'static_option_value' => 'required|string',
-        ]);
-        update_static_option($request->static_option,$request->static_option_value);
-        return 'ok';
-    }
+    // public function admin_update_static_option(Request $request)
+    // {
+    //     $this->validate($request,[
+    //         'static_option' => 'required|string',
+    //         'static_option_value' => 'required|string',
+    //     ]);
+    //     update_static_option($request->static_option,$request->static_option_value);
+    //     return 'ok';
+    // }
 
 }
 

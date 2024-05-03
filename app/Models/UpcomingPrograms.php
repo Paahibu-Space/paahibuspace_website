@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Events extends Model
+class UpcomingPrograms extends Model
 {
     protected $table = 'upcoming_programs';
     protected $fillable = ['title','status','date','image','time','available_slots','slug','venue','venue_location','venue_phone','content','category_id','meta_description','meta_tags'];

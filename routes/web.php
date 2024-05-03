@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Backend\AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*--------------------------------------
@@ -26,4 +27,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+/*--------------------------------------
+    ADMIN LOGIN ROUTES
+------------------------------------- */
+Route::prefix('admin-home')->group(function () {
+    Route::get('/', [AdminDashboardController::class, 'adminIndex'])->name('admin.home');
+});
 require __DIR__.'/auth.php';
