@@ -1,21 +1,16 @@
 <!doctype html>
-<html class="no-js" lang="{{get_default_language()}}"  dir="{{get_default_language_direction()}}">
+<html class="no-js" lang=""  dir="">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>
-        {{get_static_option('site_'.get_user_lang().'_title')}} -
-        @if(request()->path() == 'admin-home')
-            {{get_static_option('site_'.get_user_lang().'_tag_line')}}
-        @else
             @yield('site-title')
-        @endif
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @php
+    {{-- TODO @php
         $site_favicon = get_attachment_image_by_id(get_static_option('site_favicon'),"full",false);
-    @endphp
+    @endphp --}}
     @if (!empty($site_favicon))
         <link rel="icon" href="{{$site_favicon['img_url']}}" type="image/png">
     @endif
@@ -36,12 +31,7 @@
     <link rel="stylesheet" href="{{asset('assets/backend/css/custom-style.css')}}">
     <link rel="stylesheet" href="{{asset('assets/backend/css/bootstrap-datepicker.min.css')}}">
     @yield('style')
-    @if(!empty(get_static_option('site_admin_dark_mode')))
     <link rel="stylesheet" href="{{asset('assets/backend/css/dark-mode.css')}}">
-    @endif
-    @if( get_default_language_direction() === 'rtl')
-        <link rel="stylesheet" href="{{asset('assets/backend/css/rtl.css')}}">
-    @endif
     <script>var siteurl = "{{url('/')}}"</script>
     <!-- modernizr css -->
     <script src="{{asset('assets/common/vendor/modernizr-2.8.3.min.js')}}"></script>
@@ -52,11 +42,9 @@
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-@if(!empty(get_static_option('disable_backend_preloader')))
 <div id="preloader">
     <div class="loader"></div>
 </div>
-@endif
 <div class="page-container">
     @include('backend/partials/sidebar')
     <div class="main-content">
@@ -96,7 +84,7 @@
                 <div class="col-sm-6 clearfix">
                     <div class="user-profile pull-right">
                         @php
-                        $profile_img = get_attachment_image_by_id(auth()->user()->image,null,true);
+                        // TODO $profile_img = get_attachment_image_by_id(auth()->user()->image,null,true);
                         @endphp
                         @if (!empty($profile_img))
                             <img class="avatar user-thumb" src="{{$profile_img['img_url']}}" alt="{{auth()->user()->name}}">
@@ -125,9 +113,8 @@
     <footer>
         <div class="footer-area">
             <p>
-                {!! get_footer_copyright_text() !!}
+                &copy; 2024 All right reserved by <a href="paahibuspace.org">Paahibu Space</a>
             </p>
-            <p>v-{{get_static_option('site_script_version','3.5.0')}}</p>
         </div>
     </footer>
 

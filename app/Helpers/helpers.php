@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\StaticOption;
+use Illuminate\Support\Facades\Auth;
+
 function set_static_option($key, $value)
 {
     if (!StaticOption::where('option_name', $key)->first()) {
@@ -22,4 +25,38 @@ function get_static_option($key,$default = null)
     });
 
     return $value->option_value ?? $default;
+}
+
+function check_page_permission($page)
+{
+    if (Auth::check()) {
+        $id = auth()->user()->id;
+        $role_id = \App\Admin::where('id', $id)->first();
+        $user_role = \App\AdminRole::where('id', $role_id->role)->first();
+        if ($user_role){
+            $all_permission = json_decode($user_role->permission);
+            if (in_array($page, $all_permission)) {
+                return true;
+            }
+        }
+
+    }
+    return false;
+}
+
+function check_page_permission_by_string($page)
+{
+    $page = strtolower(str_replace(' ','_',$page));
+    if (Auth::check()) {
+        $id = auth()->user()->id;
+        $role_id = \App\Admin::where('id', $id)->first();
+        $user_role = \App\AdminRole::where('id', $role_id->role)->first();
+        if ($user_role){
+            $all_permission = json_decode($user_role->permission);
+            if (in_array($page, $all_permission)) {
+                return true;
+            }
+        }
+    }
+    return false;
 }

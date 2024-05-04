@@ -11,6 +11,7 @@ use App\Models\Blog;
 use App\Models\TeamMember;
 use App\Models\Testimonial;
 use App\Models\Works;
+use App\Helpers\helpers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -33,7 +34,7 @@ class AdminDashboardController extends Controller
         $total_services = Services::count();
         $total_works = Works::count();
         $total_upcoming_programs = UpcomingPrograms::count();
-        $total_program_attendance = UpcomingProgramAttendance::where('status','complete')->count();
+        $total_upcoming_program_attendance = UpcomingProgramAttendance::where('status','complete')->count();
         $program_attendance_recent_registration = UpcomingProgramAttendance::orderBy('id','desc')->take(5)->get();
 
 
@@ -42,8 +43,9 @@ class AdminDashboardController extends Controller
             'total_admin' => $total_admin,
             'total_works' => $total_works,
             'total_services' => $total_services,
-            'total_program_attendance' => $total_program_attendance,
-            'Program_attendance_recent_registration' => $program_attendance_recent_registration,
+            'total_upcoming_program_attendance' => $total_upcoming_program_attendance,
+            'program_attendance_recent_registration' => $program_attendance_recent_registration,
+            'total_upcoming_programs' => $total_upcoming_programs,
         ]);
     }
 
