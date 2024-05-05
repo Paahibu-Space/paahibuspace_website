@@ -90,7 +90,7 @@
                             <img class="avatar user-thumb" src="{{$profile_img['img_url']}}" alt="{{auth()->user()->name}}">
                         @endif
 
-                        <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }} <i class="fa fa-angle-down"></i></h4>
+                        <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Abdul<i class="fa fa-angle-down"></i></h4>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{{route('admin.profile.update')}}">{{__('Edit Profile')}}</a>
                             <a class="dropdown-item" href="{{route('admin.password.change')}}">{{__('Password Change')}}</a>

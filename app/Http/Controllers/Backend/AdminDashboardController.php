@@ -11,7 +11,6 @@ use App\Models\Blog;
 use App\Models\TeamMember;
 use App\Models\Testimonial;
 use App\Models\Works;
-use App\Helpers\helpers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;

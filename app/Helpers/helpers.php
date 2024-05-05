@@ -23,7 +23,6 @@ function get_static_option($key,$default = null)
         global $option_name;
         return StaticOption::where('option_name', $option_name)->first();
     });
-
     return $value->option_value ?? $default;
 }
 
@@ -59,4 +58,9 @@ function check_page_permission_by_string($page)
         }
     }
     return false;
+}
+
+function active_menu($url)
+{
+    return $url == request()->path() ? 'active' : '';
 }
