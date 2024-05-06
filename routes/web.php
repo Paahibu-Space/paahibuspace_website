@@ -16,16 +16,15 @@ Route::get('/blogs', 'App\Http\Controllers\Frontend\FrontendController@showBlogs
 Route::get('/team', 'App\Http\Controllers\Frontend\FrontendController@showTeamPage')->name('frontend.team');
 Route::get('/volunteers', 'App\Http\Controllers\Frontend\FrontendController@showVolunteersPage')->name('frontend.volunteers');
 
+/*=======================================================
+******************** ADMIN LOGIN ROUTES **********************
+=======================================================*/
 
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-
-require __DIR__ . '/auth.php';
+Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin'], function () {
+    Route::get('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('admin.login');
+    Route::post('/login', 'App\Http\Controllers\Auth\LoginController@authenticate')->name('admin.auth');
+  
+  });
 
 /*--------------------------------------
     ALL ADMIN PANEL ROUTES

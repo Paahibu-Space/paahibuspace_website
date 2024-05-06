@@ -45,9 +45,9 @@
                                     <label class="custom-control-label" for="remember">{{__('Remember Me')}}</label>
                                 </div>
                             </div>
-                            <div class="col-6 text-right">
+                            {{-- <div class="col-6 text-right">
                                 <a href="{{route('admin.password.request')}}">{{__('Forgot Password?')}}</a>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="submit-btn-area">
                             <button id="form_submit" type="submit">{{__('Login')}} <i class="ti-arrow-right"></i></button>
