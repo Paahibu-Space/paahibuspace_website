@@ -1,5 +1,5 @@
-@if (session()->has('msg'))
-    <div class="alert alert-{{session('type')}}">
-        {{ !! session('msg') }}
-    </div>
+@if (session()->has('error'))
+  <div class="alert alert-{{ session('error')['type'] }}">  // Use type for styling
+    {{ session('error')['msg'] }}
+  </div>
 @endif

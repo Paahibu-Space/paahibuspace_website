@@ -9,15 +9,14 @@
                     @csrf
                     <div class="login-form-head">
                         <div class="logo-wrapper" style="margin-bottom: 40px;">
-                            {{-- TODO --}}
-                            {{-- {!! render_image_markup_by_attachment_id(get_static_option('site_white_logo')) !!} --}}
+                            {!! render_image_markup_by_attachment_id(get_static_option('site_white_logo')) !!}
                         </div>
                         <h4>{{__('Admin Login')}}</h4>
                         <p>{{__('Hello there, Sign in and start managing your website')}}</p>
                     </div>
                     @include('backend.partials.message')
                      <div class="error-message"></div>
-                    @if($errors->any())
+                    @if($errors->any()) 
                         <div class="alert alert-danger">
                             <ul>
                                 @foreach($errors->all() as $error)
@@ -26,6 +25,7 @@
                             </ul>
                         </div>
                     @endif
+                    <div>@php  @endphp</div>
                     <div class="login-form-body">
                         <div class="form-gp">
                             <label for="username">{{__('Username')}}</label>
@@ -45,12 +45,12 @@
                                     <label class="custom-control-label" for="remember">{{__('Remember Me')}}</label>
                                 </div>
                             </div>
-                            <div class="col-6 text-right">
+                            {{-- <div class="col-6 text-right">
                                 <a href="{{route('admin.password.request')}}">{{__('Forgot Password?')}}</a>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="submit-btn-area">
-                            <button id="form_submit">{{__('Login')}} <i class="ti-arrow-right"></i></button>
+                            <button id="form_submit" type="submit">{{__('Login')}} <i class="ti-arrow-right"></i></button>
                         </div>
                     </div>
                 </form>
@@ -65,6 +65,7 @@
 @section('scripts')
     <script>
         $(document).ready(function ($){
+            
                 
             $(document).on('click','#form_submit',function (e){
                 e.preventDefault();

@@ -3,8 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
 class AdminSettingsPermission
@@ -12,9 +10,11 @@ class AdminSettingsPermission
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
      */
-    public function handle(Request $request, Closure $next, $param): Response
+    public function handle($request, Closure $next,$param)
     {
         if (Auth::guard('admin')->check()) {
             $user_role = \App\Models\AdminRole::where('id', auth()->guard('admin')->user()->role)->first();
