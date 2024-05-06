@@ -20,11 +20,9 @@ Route::get('/volunteers', 'App\Http\Controllers\Frontend\FrontendController@show
 ******************** ADMIN LOGIN ROUTES **********************
 =======================================================*/
 
-Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin'], function () {
-    Route::get('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('admin.login');
-    Route::post('/login', 'App\Http\Controllers\Auth\LoginController@authenticate')->name('admin.auth');
+    Route::get('login/admin', 'App\Http\Controllers\Auth\LoginController@showAdminLoginForm')->name('admin.login');
+    Route::post('login/admin', 'App\Http\Controllers\Auth\LoginController@adminLogin');
   
-  });
 
 /*--------------------------------------
     ALL ADMIN PANEL ROUTES

@@ -2,46 +2,98 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function login()
+    /*
+    |--------------------------------------------------------------------------
+    | Login Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles authenticating users for the application and
+    | redirecting them to your home screen. The controller uses a trait
+    | to conveniently provide its functionality to your applications.
+    |
+    */
+
+    use AuthenticatesUsers;
+
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/';
+
+    public function redirectTo(){
+        return route('user.home');
+    }
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        return view('auth.admin.login');
+        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:admin')->except('logout');
+    }
+    /**
+     * Override username functions
+     * @since 1.0.0
+     * */
+    public function username() {
+        return 'username';
     }
 
-    public function authenticate(Request $request)
+    /**
+     * show admin login page
+     * @since 1.0.0
+     * */
+    public function showAdminLoginForm(){
+        return view('auth.admin.login');
+    }
+    /**
+     * admin login system
+     * */
+    public function adminLogin(Request $request)
     {
         $this->validate($request, [
             'username'   => 'required|string',
             'password' => 'required|min:6'
-        ], [
+        ],[
             'username.required'   => __('username required'),
             'password.required' => __('password required')
         ]);
 
         if (Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password], $request->get('remember'))) {
 
-            return redirect()->route('admin.home')->with('error', [
-                'msg' => __('Login Success Redirecting'),
-                'type' => 'success',
-                'status' => 'ok'
+            return response()->json([
+               'msg' => __('Login Success Redirecting'),
+               'type' => 'success',
+               'status' => 'ok'
             ]);
         }
-        return redirect()->back()
-        ->with('error', [ // Flash message with JSON data
-          'msg' => __('Your Username or Password Is Wrong !!'),
-          'type' => 'danger',
-          'status' => 'not_ok'
+        return response()->json([
+            'msg' => __('Your Username or Password Is Wrong !!'),
+            'type' => 'danger',
+            'status' => 'not_ok'
         ]);
     }
-
-    public function logout()
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showLoginForm()
     {
-        Auth::guard('admin')->logout();
-        return redirect()->route('admin.login');
+        return view('frontend.user.login');
     }
+
+
 }
