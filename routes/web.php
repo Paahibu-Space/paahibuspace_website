@@ -16,23 +16,22 @@ Route::get('/blogs', 'App\Http\Controllers\Frontend\FrontendController@showBlogs
 Route::get('/team', 'App\Http\Controllers\Frontend\FrontendController@showTeamPage')->name('frontend.team');
 Route::get('/volunteers', 'App\Http\Controllers\Frontend\FrontendController@showVolunteersPage')->name('frontend.volunteers');
 
+/*=======================================================
+******************** ADMIN LOGIN ROUTES **********************
+=======================================================*/
 
+    Route::get('login/admin', 'App\Http\Controllers\Auth\LoginController@showAdminLoginForm')->name('admin.login');
+    Route::post('login/admin', 'App\Http\Controllers\Auth\LoginController@adminLogin');
+    Route::post('/logout/admin', 'App\Http\Controllers\Backend\AdminDashboardController@adminLogout')->name('admin.logout');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-
-require __DIR__ . '/auth.php';
+  
 
 /*--------------------------------------
     ALL ADMIN PANEL ROUTES
 ------------------------------------- */
 Route::prefix('admin-home')->group(function () {
 
-    Route::get('/', [AdminDashboardController::class, 'adminIndex'])->middleware(['auth'])->name('admin.home');
+    Route::get('/', [AdminDashboardController::class, 'adminIndex'])->name('admin.home');
 
 
     /* --------------------------
@@ -401,20 +400,20 @@ Route::prefix('admin-home')->group(function () {
         /*----------------------------------------------------
             ADMIN MANAGE
          ----------------------------------------------------*/
-        Route::get('/new', 'App\Http\Controller\Backend\UserRoleManageController@new_user')->name('admin.new.user');
-        Route::post('/new', 'App\Http\Controller\Backend\UserRoleManageController@new_user_add');
-        Route::post('/update', 'App\Http\Controller\Backend\UserRoleManageController@user_update')->name('admin.user.update');
-        Route::post('/password-change', 'App\Http\Controller\Backend\UserRoleManageController@user_password_change')->name('admin.user.password.change');
-        Route::post('/delete/{id}', 'App\Http\Controller\Backend\UserRoleManageController@new_user_delete')->name('admin.delete.user');
-        Route::get('/all', 'App\Http\Controller\Backend\UserRoleManageController@all_user')->name('admin.all.user');
+        Route::get('/new', 'App\Http\Controllers\Backend\UserRoleManageController@new_user')->name('admin.new.user');
+        Route::post('/new', 'App\Http\Controllers\Backend\UserRoleManageController@new_user_add');
+        Route::post('/update', 'App\Http\Controllers\Backend\UserRoleManageController@user_update')->name('admin.user.update');
+        Route::post('/password-change', 'App\Http\Controllers\Backend\UserRoleManageController@user_password_change')->name('admin.user.password.change');
+        Route::post('/delete/{id}', 'App\Http\Controllers\Backend\UserRoleManageController@new_user_delete')->name('admin.delete.user');
+        Route::get('/all', 'App\Http\Controllers\Backend\UserRoleManageController@all_user')->name('admin.all.user');
         /*----------------------------------------------------
           ADMIN ROLE MANAGE
         ----------------------------------------------------*/
         Route::group(['prefix' => 'all/role'], function () {
-            Route::get('/', 'App\Http\Controller\Backend\UserRoleManageController@all_user_role')->name('admin.all.user.role');
-            Route::post('/', 'App\Http\Controller\Backend\UserRoleManageController@add_new_user_role');
-            Route::post('/update', 'App\Http\Controller\Backend\UserRoleManageController@udpate_user_role')->name('admin.user.role.edit');
-            Route::post('/delete/{id}', 'App\Http\Controller\Backend\UserRoleManageController@delete_user_role')->name('admin.user.role.delete');
+            Route::get('/', 'App\Http\Controllers\Backend\UserRoleManageController@all_user_role')->name('admin.all.user.role');
+            Route::post('/', 'App\Http\Controllers\Backend\UserRoleManageController@add_new_user_role');
+            Route::post('/update', 'App\Http\Controllers\Backend\UserRoleManageController@udpate_user_role')->name('admin.user.role.edit');
+            Route::post('/delete/{id}', 'App\Http\Controllers\Backend\UserRoleManageController@delete_user_role')->name('admin.user.role.delete');
         });
     });
 
