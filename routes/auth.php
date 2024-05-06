@@ -16,22 +16,24 @@ use Illuminate\Support\Facades\Route;
     ADMIN LOGIN ROUTES
 ---------------------------------------*/
 
-    Route::get('login/admin', [AuthenticatedSessionController::class, 'create'])
+Route::prefix('admin')->group( function () {
+    Route::get('/login', [AuthenticatedSessionController::class, 'create'])
                 ->name('admin.login');
 
-    Route::post('login/admin', [AuthenticatedSessionController::class, 'store']);
+    Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
-    Route::get('login/admin/forgot-password', [PasswordResetLinkController::class, 'create'])
+    Route::get('/login/forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->name('admin.password.request');
 
-    Route::post('login/admin/forgot-password', [PasswordResetLinkController::class, 'store'])
+    Route::post('/login/forgot-password', [PasswordResetLinkController::class, 'store'])
                 ->name('admin.password.email');
 
-    Route::get('login/admin/reset-password/{token}', [NewPasswordController::class, 'create'])
+    Route::get('/login/reset-password/{token}', [NewPasswordController::class, 'create'])
                 ->name('admin.password.reset');
 
-    Route::post('login/admin/reset-password', [NewPasswordController::class, 'store'])
+    Route::post('/login/reset-password', [NewPasswordController::class, 'store'])
                 ->name('admin.password.store');
+});
 
 
 Route::middleware('auth')->group(function () {
