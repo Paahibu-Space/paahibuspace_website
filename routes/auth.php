@@ -15,10 +15,11 @@ use Illuminate\Support\Facades\Route;
 /*---------------------------------------
     ADMIN LOGIN ROUTES
 ---------------------------------------*/
+
     Route::get('login/admin', [AuthenticatedSessionController::class, 'create'])
                 ->name('admin.login');
 
-    Route::post('login/admin', [AuthenticatedSessionController::class, 'create']);
+    Route::post('login/admin', [AuthenticatedSessionController::class, 'store']);
 
     Route::get('login/admin/forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->name('admin.password.request');
