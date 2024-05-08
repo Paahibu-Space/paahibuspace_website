@@ -214,9 +214,6 @@ Route::prefix('admin-home')->group(function () {
         /* event order mail user */
         Route::get('/event-attendance-mail-user', 'EventApp\Http\Controllers\Backend\EmailTemplateController@event_attendance_mail_user')->name('admin.email.template.event.attendance.mail.user');
         Route::post('/event-attendance-mail-user', 'EventApp\Http\Controllers\Backend\EmailTemplateController@update_event_attendance_mail_user');
-        /* event order payment accept */
-        Route::get('/event-attendance-mail-payment-accept', 'EventApp\Http\Controllers\Backend\EmailTemplateController@event_attendance_mail_payment_accept')->name('admin.email.template.event.attendance.mail.payment.accept');
-        Route::post('/event-attendance-mail-payment-accept', 'EventApp\Http\Controllers\Backend\EmailTemplateController@update_event_attendance_mail_payment_accept');
 
         /* event order reminder mail */
         Route::get('/event-attendance-mail-reminder-mail', 'EventApp\Http\Controllers\Backend\EmailTemplateController@event_attendance_mail_reminder_mail')->name('admin.email.template.event.attendance.mail.reminder.mail');
@@ -241,9 +238,9 @@ Route::prefix('admin-home')->group(function () {
             MEDIA UPLOAD ROUTES
      ==============================================*/
     Route::prefix('media-upload')->group(function () {
-        Route::post('/delete', 'MediaUploadController@delete_upload_media_file')->name('admin.upload.media.file.delete');
-        Route::get('/page', 'MediaUploadController@all_upload_media_images_for_page')->name('admin.upload.media.images.page');
-        Route::post('/alt', 'MediaUploadController@alt_change_upload_media_file')->name('admin.upload.media.file.alt.change');
+        Route::post('/delete', 'App\Http\Controllers\Backend\MediaUploadController@delete_upload_media_file')->name('admin.upload.media.file.delete');
+        Route::get('/page', 'App\Http\Controllers\Backend\MediaUploadController@all_upload_media_images_for_page')->name('admin.upload.media.images.page');
+        Route::post('/alt', 'App\Http\Controllers\Backend\MediaUploadController@alt_change_upload_media_file')->name('admin.upload.media.file.alt.change');
     });
 
     /*==============================================
@@ -461,7 +458,7 @@ Route::prefix('admin-home')->group(function () {
     ALL ADMIN PANEL ROUTES : OPEN FOR DEMO
 ============================================= */
 Route::prefix('admin-home')->group(function () {
-    Route::post('/media-upload/all', 'MediaUploadController@all_upload_media_file')->name('admin.upload.media.file.all');
-    Route::post('/media-upload', 'MediaUploadController@upload_media_file')->name('admin.upload.media.file');
-    Route::post('/media-upload/loadmore', 'MediaUploadController@get_image_for_loadmore')->name('admin.upload.media.file.loadmore');
+    Route::post('/media-upload/all', 'App\Http\Controllers\Backend\MediaUploadController@all_upload_media_file')->name('admin.upload.media.file.all');
+    Route::post('/media-upload', 'App\Http\Controllers\Backend\MediaUploadController@upload_media_file')->name('admin.upload.media.file');
+    Route::post('/media-upload/loadmore', 'App\Http\Controllers\Backend\MediaUploadController@get_image_for_loadmore')->name('admin.upload.media.file.loadmore');
 });

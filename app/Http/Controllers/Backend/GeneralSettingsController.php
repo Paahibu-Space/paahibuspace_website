@@ -62,26 +62,26 @@ class GeneralSettingsController extends Controller
     {
 
             $this->validate($request, [
-                'service_query_'  . '_success_message' => 'nullable|string',
-                'case_study_query_'  . '_success_message' => 'nullable|string',
-                'contact_mail_'  . '_success_message' => 'nullable|string',
-                'get_in_touch_mail_'  . '_success_message' => 'nullable|string',
-                'event_attendance_mail_'  . '_success_message' => 'nullable|string',
+                'service_query_success_message' => 'nullable|string',
+                'case_study_query_success_message' => 'nullable|string',
+                'contact_mail_success_message' => 'nullable|string',
+                'get_in_touch_mail_success_message' => 'nullable|string',
+                'event_attendance_mail_success_message' => 'nullable|string',
             ]);
 
             $fields = [
-                'service_query_'  . '_success_message',
-                'case_study_query_'  . '_success_message',
-                'quote_mail_'  . '_success_message',
-                'contact_mail_'  . '_success_message',
-                'get_in_touch_mail_'  . '_success_message',
-                'apply_job_'  . '_success_message',
-                'order_mail_'  . '_success_message',
-                'event_attendance_mail_'  . '_success_message',
-                'feedback_form_mail_'  . '_success_message',
-                'appointment_form_mail_'  . '_success_message',
-                'estimate_form_mail_'  . '_success_message',
-                'enroll_form_mail_'  . '_success_message',
+                'service_query_success_message',
+                'case_study_query_success_message',
+                'quote_mail_success_message',
+                'contact_mail_success_message',
+                'get_in_touch_mail_success_message',
+                'apply_job_success_message',
+                'order_mail_success_message',
+                'event_attendance_mail_success_message',
+                'feedback_form_mail_success_message',
+                'appointment_form_mail_success_message',
+                'estimate_form_mail_success_message',
+                'enroll_form_mail_success_message',
             ];
             foreach ($fields as $field) {
                 update_static_option($field, $request->$field);
@@ -104,13 +104,13 @@ class GeneralSettingsController extends Controller
 
 
             $this->validate($request, [
-                'site_'  . '_title' => 'nullable|string',
-                'site_'  . '_tag_line' => 'nullable|string',
-                'site_'  . '_footer_copyright' => 'nullable|string',
+                'site_title' => 'nullable|string',
+                'site_tag_line' => 'nullable|string',
+                'site_footer_copyright' => 'nullable|string',
             ]);
-            $_title = 'site_'  . '_title';
-            $_tag_line = 'site_'  . '_tag_line';
-            $_footer_copyright = 'site_'  . '_footer_copyright';
+            $_title = 'site_title';
+            $_tag_line = 'site_tag_line';
+            $_footer_copyright = 'site_footer_copyright';
 
             update_static_option($_title, $request->$_title);
             update_static_option($_tag_line, $request->$_tag_line);

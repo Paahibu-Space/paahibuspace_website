@@ -5,7 +5,12 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>
+        {{get_static_option('site_title')}} -
+        @if(request()->path() == 'admin-home')
+            {{get_static_option('site_tag_line')}}
+        @else
             @yield('site-title')
+        @endif
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{-- TODO @php
@@ -145,7 +150,6 @@
 @yield('script')
 <script src="{{asset('assets/backend/js/plugins.js')}}"></script>
 <script src="{{asset('assets/backend/js/scripts.js')}}"></script>
-@if(!empty(get_static_option('site_admin_panel_nav_sticky')))
 <script>
     (function($){
         "use strict";
@@ -162,7 +166,6 @@
 
     })(jQuery);
 </script>
-@endif
 <script>
     (function($){
         "use strict";
@@ -201,23 +204,6 @@
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
                     confirmButtonText: "{{__('Yes, Change it!')}}",
-                  cancelButtonText: "{{__('cancel')}}",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $(this).next().find('.swal_form_submit_btn').trigger('click');
-                    }
-                });
-            });
-    
-            $(document).on('click','.swal_change_approve_payment_button',function(e){
-                e.preventDefault();
-                Swal.fire({
-                    title: '{{__("Are you sure to approve this payment?")}}',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: "{{__('Yes, Accept it!')}}",
                   cancelButtonText: "{{__('cancel')}}",
                 }).then((result) => {
                     if (result.isConfirmed) {
