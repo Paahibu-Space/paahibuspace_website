@@ -3,6 +3,7 @@
 use App\Models\StaticOption;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MediaUpload;
+use Illuminate\Support\Str;
 
 function set_static_option($key, $value)
 {
@@ -178,4 +179,21 @@ function get_user_role_name_by_id($id)
 {
     $name = \App\Models\AdminRole::where('id', $id)->first();
     return $name->name;
+}
+
+function get_blog_category_by_id($id,$type = '',$class = ''){
+    $return_val = __('uncategorized');
+    $blog_cat = \App\Models\BlogCategory::find($id);
+    if (!empty($blog_cat)){
+        $return_val = $blog_cat->name;
+        if ($type == 'link' ){
+            $return_val = '<a class="'.$class.'" href="'.route('frontend.blog.category',['id' => $blog_cat->id,'any' => Str::slug($blog_cat->name,'-',null) ]).'">'.$blog_cat->name.'</a>';
+        }
+    }
+
+    return $return_val;
+}
+
+function iFrameFilterInSummernoteAndRender($content){
+    return str_replace(['{iframe}','{vsrc}','{/iframe}'],['<iframe','src',' frameborder="0" height="360" width="640"></iframe>'],$content);
 }

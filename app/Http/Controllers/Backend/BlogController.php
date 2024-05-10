@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Actions\SlugChecker;
 use App\Models\Blog;
 use App\Models\BlogCategory;
@@ -23,14 +24,14 @@ class BlogController extends Controller
         $this->middleware('auth:admin');
     }
     public function index(){
-        $all_blog = Blog::all()->groupBy('lang');
-        return view('backend.pages.blog.index')->with([
+        $all_blog = Blog::all();
+        return view('backend.blog.index')->with([
             'all_blog' => $all_blog
         ]);
     }
     public function new_blog(){
         $all_category = BlogCategory::get();
-        return view('backend.pages.blog.new')->with([
+        return view('backend.blog.new')->with([
             'all_category' => $all_category,
         ]);
     }
@@ -101,8 +102,8 @@ class BlogController extends Controller
 
     public function edit_blog($id){
         $blog_post = Blog::find($id);
-        $all_category = BlogCategory::where('lang',$blog_post->lang)->get();
-        return view('backend.pages.blog.edit')->with([
+        $all_category = BlogCategory::get();
+        return view('backend.blog.edit')->with([
             'all_category' => $all_category,
             'blog_post' => $blog_post,
         ]);
@@ -122,7 +123,7 @@ class BlogController extends Controller
             'image' => 'nullable|string|max:191',
 
         ]);
-        $slug = !empty($request->slug) ? $request->slug : Str::slug($request->title,$request->lang);
+        $slug = !empty($request->slug) ? $request->slug : Str::slug($request->title);
         Blog::where('id',$id)->update([
             'blog_categories_id' => $request->category,
             'slug' => $slug,
@@ -155,15 +156,14 @@ class BlogController extends Controller
     }
 
     public function category(){
-        $all_category = BlogCategory::all()->groupBy('lang');
-        return view('backend.pages.blog.category')->with([
+        $all_category = BlogCategory::all();
+        return view('backend.blog.category')->with([
             'all_category' => $all_category,
         ]);
     }
     public function new_category(Request $request){
         $this->validate($request,[
             'name' => 'required|string|max:191|unique:blog_categories',
-            'lang' => 'required|string|max:191',
             'status' => 'required|string|max:191',
             'image' => 'nullable|string|max:191'
         ]);
