@@ -11,19 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('service_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
-            $table->string('icon')->nullable();
-            $table->string('categories_id');
-            $table->string('icon_type')->nullable();
-            $table->string('img_icon')->nullable();
-            $table->string('image')->nullable();
+            $table->string('name');
             $table->string('status')->nullable();
-            $table->text('meta_tag')->nullable();
-            $table->text('meta_description')->nullable();
-            $table->text('excerpt')->nullable();
-            $table->text('description');
+            $table->string('icon_type')->nullable();
+            $table->string('icon')->nullable();
+            $table->string('img_icon')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('service_categories');
     }
 };

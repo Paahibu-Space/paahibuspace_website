@@ -8,9 +8,9 @@ class Services extends Model
 {
     protected $table = 'services';
 
-    protected $fillable = ['title','meta_tag','icon_type','img_icon','sr_order','meta_description','status','slug','icon','image','description','categories_id','excerpt'];
+    protected $fillable = ['title','meta_tag','icon_type','img_icon','meta_description','status','slug','icon','image','description','categories_id','excerpt'];
 
     public function category(){
-        return $this->belongsTo('App\ServiceCategory','categories_id');
+        return $this->belongsTo('App\Models\ServiceCategory','categories_id');
     }
 }

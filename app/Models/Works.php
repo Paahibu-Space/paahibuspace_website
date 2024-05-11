@@ -16,9 +16,7 @@ class Works extends Model
         'excerpt',
         'meta_tag',
         'meta_description',
-        'duration',
         'clients',
-        'budget',
         'description',
         'gallery',
         'image'

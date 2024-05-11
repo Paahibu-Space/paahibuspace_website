@@ -107,18 +107,18 @@
                         </ul>
                     </li>
                     {{-- @endif
-                    @if (check_page_permission_by_string('Case Study')) --}}
+                    @if (check_page_permission_by_string('Portfolio')) --}}
                     <li class="main_dropdown
                     @if (request()->is(['admin-home/works/*', 'admin-home/works'])) active @endif ">
                         <a href="javascript:void(0)" aria-expanded="true">
                             <i class="ti-layout"></i>
-                            <span>{{ __('Case Study') }}</span>
+                            <span>{{ __('Portfolio') }}</span>
                         </a>
                         <ul class="collapse">
                             <li class="{{ active_menu('admin-home/works') }}"><a
-                                    href="{{ route('admin.work') }}">{{ __('All Case Study') }}</a></li>
+                                    href="{{ route('admin.work') }}">{{ __('All Portfolios') }}</a></li>
                             <li class="{{ active_menu('admin-home/works/new') }}"><a
-                                    href="{{ route('admin.work.new') }}">{{ __('New Case Study') }}</a></li>
+                                    href="{{ route('admin.work.new') }}">{{ __('New Portfolio') }}</a></li>
                             <li class="{{ active_menu('admin-home/works/category') }}"><a
                                     href="{{ route('admin.work.category') }}">{{ __('Category') }}</a></li>
                         </ul>

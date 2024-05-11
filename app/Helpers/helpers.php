@@ -4,6 +4,8 @@ use App\Models\StaticOption;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MediaUpload;
 use Illuminate\Support\Str;
+use App\Models\Works;
+use App\Models\WorksCategory;
 
 function set_static_option($key, $value)
 {
@@ -196,4 +198,44 @@ function get_blog_category_by_id($id,$type = '',$class = ''){
 
 function iFrameFilterInSummernoteAndRender($content){
     return str_replace(['{iframe}','{vsrc}','{/iframe}'],['<iframe','src',' frameborder="0" height="360" width="640"></iframe>'],$content);
+}
+
+function get_service_category_by_id($id,$type = ''){
+    $return_val = __('uncategorized');
+    $blog_cat = \App\Models\ServiceCategory::find($id);
+    if (!empty($blog_cat)){
+        $return_val = $blog_cat->name;
+        if ($type == 'link' ){
+            $return_val = '<a href="'.route('frontend.services.category',['id' => $blog_cat->id,'any' => Str::slug($blog_cat->name,'-',null) ]).'">'.$blog_cat->name.'</a>';
+        }
+    }
+
+    return $return_val;
+}
+
+function get_work_category_by_id($id, $output = 'array')
+{
+    $category_id = Works::find($id)->categories_id;
+    $cat_list = [];
+    $cat_list_string = '';
+    $cat_list_slug = '';
+
+    foreach ($category_id as $key => $data) {
+        $separator = $key != 0 ? ', ' : '';
+        $cat_item = WorksCategory::find($data);
+        if (!empty($cat_item)){
+            $cat_list[$cat_item->id] = $cat_item->name;
+            $cat_list_string .= $separator . $cat_item->name;
+            $cat_list_slug .= Str::slug($cat_item->name,'-',null) . ' ';
+        }
+
+    }
+    switch ($output) {
+        case ("string"):
+            return $cat_list_string;
+        case ("slug"):
+            return $cat_list_slug;
+        default:
+            return $cat_list;
+    }
 }
