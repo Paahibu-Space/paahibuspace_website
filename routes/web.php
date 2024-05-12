@@ -279,7 +279,7 @@ Route::prefix('admin-home')->group(function () {
         /*-------------------------
           STORIES ROUTES
         --------------------------*/
-        Route::get('/', 'App\Http\Controllers\Backend\StoriesController@index')->name('admin.blog');
+        Route::get('/', 'App\Http\Controllers\Backend\StoriesController@index')->name('admin.story');
         Route::get('/new', 'App\Http\Controllers\Backend\StoriesController@new_story')->name('admin.story.new');
         Route::post('/new', 'App\Http\Controllers\Backend\StoriesController@store_new_story');
         Route::post('/clone', 'App\Http\Controllers\Backend\StoriesController@clone_story')->name('admin.story.clone');

@@ -88,6 +88,22 @@
                     </li>
                     {{-- @endif
 
+                    @if (check_page_permission_by_string('Blogs Manage')) --}}
+                    <li
+                        class="main_dropdown
+                        @if (request()->is(['admin-home/stories/*', 'admin-home/stories'])) active @endif
+                        ">
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-write"></i>
+                            <span>{{ __('Stories') }}</span></a>
+                        <ul class="collapse">
+                            <li class="{{ active_menu('admin-home/stories') }}"><a
+                                    href="{{ route('admin.story') }}">{{ __('All Stories') }}</a></li>
+                            <li class="{{ active_menu('admin-home/stories/new') }}"><a
+                                    href="{{ route('admin.story.new') }}">{{ __('Add New Story') }}</a></li>
+                        </ul>
+                    </li>
+                    {{-- @endif
+
                     @if (check_page_permission_by_string('Services')) --}}
                     <li
                         class="main_dropdown

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('assets/backend/css/media-uploader.css') }}">
 @endsection
 @section('site-title')
-    {{ __('New Blog Post') }}
+    {{ __('New Story Post') }}
 @endsection
 @section('content')
     <div class="col-lg-12 col-ml-12 padding-bottom-30">
@@ -20,11 +20,11 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="header-wrap d-flex justify-content-between">
-                            <h4 class="header-title">{{ __('Add New Blog Post') }}</h4>
-                            <a href="{{ route('admin.blog') }}" class="btn btn-primary">{{ __('All Blog') }}</a>
+                            <h4 class="header-title">{{ __('Add New Story Post') }}</h4>
+                            <a href="{{ route('admin.story') }}" class="btn btn-primary">{{ __('All Stories') }}</a>
                         </div>
 
-                        <form action="{{ route('admin.blog.new') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.story.new') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
                             <div class="row">
@@ -36,7 +36,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>{{ __('Content') }}</label>
-                                        <input type="hidden" name="blog_content">
+                                        <input type="hidden" name="story_content">
                                         <div class="summernote"></div>
                                     </div>
                                     <div class="form-group">
@@ -58,16 +58,6 @@
                                     <div class="form-group">
                                         <label for="title">{{ __('Excerpt') }}</label>
                                         <textarea name="excerpt" id="excerpt" class="form-control max-height-150" cols="30" rows="10"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="category">{{ __('Category') }}</label>
-                                        <select name="category" class="form-control" id="category">
-
-                                            <option value="">{{ __('Select Category') }}</option>
-                                            @foreach ($all_category as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                            @endforeach
-                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="title">{{ __('Tags') }}</label>
@@ -116,7 +106,7 @@
 @section('script')
     <script src="{{ asset('assets/backend/js/summernote-bs4.js') }}"></script>
     <script src="{{ asset('assets/backend/js/bootstrap-tagsinput.js') }}"></script>
-    <x-backend.auto-slug-js :url="route('admin.blog.slug.check')" :type="'new'" />
+    <x-backend.auto-slug-js :url="route('admin.story.slug.check')" :type="'new'" />
     <script>
         $(document).ready(function() {
 

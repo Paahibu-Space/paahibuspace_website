@@ -16,7 +16,7 @@
     </style>
 @endsection
 @section('site-title')
-    {{__('Blog Page')}}
+    {{__('Stories Page')}}
 @endsection
 @section('content')
     <div class="col-lg-12 col-ml-12 padding-bottom-30">
@@ -31,7 +31,7 @@
                     <div class="card-body">
                        <div class="header-wrap d-flex align-content-center justify-content-between">
                            <div class="left-wrap">
-                               <h4 class="header-title">{{__('All Blog Items')}}</h4>
+                               <h4 class="header-title">{{__('All Story Items')}}</h4>
                                <div class="bulk-delete-wrapper">
                                    <div class="select-box-wrap">
                                        <select name="bulk_option" id="bulk_option">
@@ -43,12 +43,12 @@
                                </div>
                            </div>
                            <div class="right-wrap">
-                               <a href="{{route('admin.blog.new')}}" class="btn btn-primary">{{__('Create New Blog')}}</a>
+                               <a href="{{route('admin.story.new')}}" class="btn btn-primary">{{__('Create New Story')}}</a>
                            </div>
                        </div>
                         <div class="tab-content margin-top-40" id="myTabContent">
                             @php $b=0; @endphp
-                            @foreach($all_blog as $key => $blog)
+                            @foreach($all_stories as $key => $story)
                                 <div class="tab-pane fade @if($b == 0) show active @endif" id="slider_tab_{{$key}}" role="tabpanel" >
                                     <div class="table-wrap table-responsive">
                                     <table class="table table-default" id="all_blog_table">
@@ -62,13 +62,12 @@
                                         <th>{{__('Title')}}</th>
                                         <th>{{__('Image')}}</th>
                                         <th>{{__('Author')}}</th>
-                                        <th>{{__('Category')}}</th>
                                         <th>{{__('Status')}}</th>
                                         <th>{{__('Date')}}</th>
                                         <th>{{__('Action')}}</th>
                                         </thead>
                                         <tbody>
-                                        @foreach($all_blog as $data)
+                                        @foreach($all_stories as $data)
                                             <tr>
                                                 <td>
                                                     <div class="bulk-checkbox-wrapper">
@@ -106,15 +105,15 @@
                                                 </td>
                                                 <td>{{date_format($data->created_at,'d M Y')}}</td>
                                                 <td>
-                                                    <x-delete-popover :url="route('admin.blog.delete',$data->id)"/>
+                                                    <x-delete-popover :url="route('admin.story.delete',$data->id)"/>
                                                    
-                                                    <a class="btn btn-xs btn-primary btn-xs mb-3 mr-1" href="{{route('admin.blog.edit',$data->id)}}">
+                                                    <a class="btn btn-xs btn-primary btn-xs mb-3 mr-1" href="{{route('admin.story.edit',$data->id)}}">
                                                         <i class="ti-pencil"></i>
                                                     </a>
                                                     {{-- TODO <a class="btn btn-xs btn-primary btn-xs mb-3 mr-1" target="_blank" href="{{route('frontend.blog.single', $data->slug)}}">
                                                         <i class="ti-eye"></i>
                                                     </a> --}}
-                                                    <form action="{{route('admin.blog.clone')}}" method="post" style="display: inline-block">
+                                                    <form action="{{route('admin.story.clone')}}" method="post" style="display: inline-block">
                                                         @csrf
                                                         <input type="hidden" name="item_id" value="{{$data->id}}">
                                                         <button type="submit" title="clone this to new draft" class="btn btn-xs btn-secondary btn-sm mb-3 mr-1"><i class="far fa-copy"></i></button>
@@ -159,7 +158,7 @@
                     $(this).text('{{__('Deleting...')}}');
                     $.ajax({
                         'type' : "POST",
-                        'url' : "{{route('admin.blog.bulk.action')}}",
+                        'url' : "{{route('admin.story.bulk.action')}}",
                         'data' : {
                             _token: "{{csrf_token()}}",
                             ids: allIds

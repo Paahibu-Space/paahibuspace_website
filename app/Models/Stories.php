@@ -10,5 +10,5 @@ class Stories extends Model
     use HasFactory;
 
     protected $table = 'stories';
-    protected $fillable = ['title', 'content', 'author', 'slug', 'image', 'status', 'user_id'];
+    protected $fillable = ['title', 'content', 'author', 'slug', 'image', 'status', 'user_id', 'video_url'];
 }

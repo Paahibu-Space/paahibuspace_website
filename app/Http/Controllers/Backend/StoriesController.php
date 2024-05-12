@@ -28,6 +28,11 @@ class StoriesController extends Controller
             'all_stories' => $all_stories
         ]);
     }
+
+    public function new_story(){
+        return view('backend.stories.new');
+    }
+
     public function store_new_story(Request $request){
         $this->validate($request,[
            'stories_content' => 'required',
