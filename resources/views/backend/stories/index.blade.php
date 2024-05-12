@@ -92,11 +92,6 @@
                                                 </td>
                                                 <td>{{$data->author}}</td>
                                                 <td>
-                                                @if(!empty($data->blog_categories_id))
-                                                        {{get_blog_category_by_id($data->blog_categories_id)}}
-                                                @endif
-                                                </td>
-                                                <td>
                                                     @if($data->status == 'draft')
                                                         <span class="alert alert-warning" style="margin-top: 20px;display: inline-block;">{{__('Draft')}}</span>
                                                     @else

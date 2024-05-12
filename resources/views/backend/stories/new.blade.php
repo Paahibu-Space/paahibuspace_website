@@ -36,7 +36,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>{{ __('Content') }}</label>
-                                        <input type="hidden" name="story_content">
+                                        <input type="hidden" name="stories_content">
                                         <div class="summernote"></div>
                                     </div>
                                     <div class="form-group">

@@ -37,21 +37,25 @@ class StoriesController extends Controller
         $this->validate($request,[
            'stories_content' => 'required',
            'title' => 'required',
+           'excerpt' => 'required',
            'status' => 'required',
            'author' => 'required',
            'slug' => 'nullable',
            'image' => 'nullable|string|max:191',
+           'video_url' => 'nullable|string',
         ]);
         $slug = !empty($request->slug) ? $request->slug : Str::slug($request->title);
 
         Stories::create([
             'slug' => $slug ,
-            'content' => $request->story_content,
+            'content' => $request->stories_content,
             'title' => $request->title,
+            'excerpt' => $request->excerpt,
             'status' => $request->status,
             'image' => $request->image,
             'user_id' => Auth::user()->id,
             'author' => $request->author,
+            'video_url' => $request->video_url,
         ]);
         return redirect()->back()->with([
             'msg' => __('New Story Post Added...'),
@@ -65,10 +69,12 @@ class StoriesController extends Controller
             'slug' => $story_details->slug.'33',
             'content' => $story_details->content,
             'title' => $story_details->title,
+            'excerpt' => $story_details->excerpt,
             'status' => 'draft',
             'image' => $story_details->image,
             'user_id' => null,
             'author' => $story_details->author,
+            'video_url' => $story_details->video_url,
         ]);
 
         return redirect()->back()->with([
@@ -85,23 +91,27 @@ class StoriesController extends Controller
     }
     public function update_story(Request $request,$id){
         $this->validate($request,[
-            'story_content' => 'required',
+            'stories_content' => 'required',
             'title' => 'required',
+            'excerpt' => 'required',
             'status' => 'required',
             'author' => 'required',
             'slug' => 'nullable',
             'image' => 'nullable|string|max:191',
+            'video_url' => 'nullable|string',
 
         ]);
         $slug = !empty($request->slug) ? $request->slug : Str::slug($request->title);
         Stories::where('id',$id)->update([
             'slug' => $slug,
-            'content' => $request->blog_content,
+            'content' => $request->stories_content,
             'title' => $request->title,
+            'excerpt' => $request->excerpt,
             'status' => $request->status,
             'image' => $request->image,
             'user_id' => Auth::user()->id,
             'author' => $request->author,
+            'video_url' => $request->video_url,
         ]);
 
         return redirect()->back()->with([

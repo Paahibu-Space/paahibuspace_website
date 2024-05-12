@@ -288,17 +288,6 @@ Route::prefix('admin-home')->group(function () {
         Route::post('/delete/{id}', 'App\Http\Controllers\Backend\StoriesController@delete_story')->name('admin.story.delete');
         Route::post('/bulk-action', 'App\Http\Controllers\Backend\StoriesController@bulk_action')->name('admin.story.bulk.action');
         Route::post('/slug-check', 'App\Http\Controllers\Backend\StoriesController@slug_check')->name('admin.story.slug.check');
-
-        /*-------------------------
-          BLOG CATEGORIES ROUTES
-        --------------------------*/
-        Route::group(['prefix' => 'category'], function () {
-            Route::get('/', 'App\Http\Controllers\Backend\BlogController@category')->name('admin.blog.category');
-            Route::post('/', 'App\Http\Controllers\Backend\BlogController@new_category');
-            Route::post('/delete/{id}', 'App\Http\Controllers\Backend\BlogController@delete_category')->name('admin.blog.category.delete');
-            Route::post('/update', 'App\Http\Controllers\Backend\BlogController@update_category')->name('admin.blog.category.update');
-            Route::post('/bulk-action', 'App\Http\Controllers\Backend\BlogController@category_bulk_action')->name('admin.blog.category.bulk.action');
-        });
     });
 
     /*==============================================
