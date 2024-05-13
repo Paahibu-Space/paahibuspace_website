@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="content">
                                     <span class="total">{{$total_upcoming_programs}}</span>
-                                    <h4 class="title">{{__('Total Events')}}</h4>
+                                    <h4 class="title">{{__('Total Programs')}}</h4>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="content">
                                         <span class="total">{{$total_upcoming_program_attendance}}</span>
-                                        <h4 class="title">{{__('Total Events Attendance')}}</h4>
+                                        <h4 class="title">{{__('Total Programs Registration')}}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
                                 </div>
                                 <div class="content">
                                     <span class="total">{{$total_works}}</span>
-                                    <h4 class="title">{{__('Total Case Study')}}</h4>
+                                    <h4 class="title">{{__('Portfolios')}}</h4>
                                 </div>
                             </div>
                         </div>

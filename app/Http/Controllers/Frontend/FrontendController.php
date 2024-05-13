@@ -11,6 +11,10 @@ class FrontendController extends Controller
         return view('frontend.pages.index');
     }
 
+    public function showAboutPage() {
+        return view('frontend.pages.about');
+    }
+
     public function showProgramsPage() {
         return view('frontend.pages.programs.programs');
     }
@@ -20,7 +24,7 @@ class FrontendController extends Controller
     }
     
     public function showBlogsPage() {
-        return view('frontend.pages.blogs');
+        return view('frontend.pages.blog.blogs');
     }
     
     public function showTeamPage() {

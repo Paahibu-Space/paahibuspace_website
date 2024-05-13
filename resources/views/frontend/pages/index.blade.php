@@ -10,14 +10,14 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="img-bg d-flex align-items-end"
-                                style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.402) 0%, rgba(0, 0, 0, 0.343) 50%), url('./assets/images/img3.jpeg');">
-                                <div class="img-bg-inner" data-aos="fade-left" data-aos-delay="100">
+                                style="background-image: url('{{ asset('assets/frontend/images/hero-img.jpeg') }}');">
+                                {{-- <div class="img-bg-inner" data-aos="fade-left" data-aos-delay="100">
                                     <h1>Paahibu Space</h1>
                                     <h2>Access | Innovate | Transfrom</h2>
                                     <p>Paahibu Space aims at creating an amazing community of African women who are
                                         passionate about using tech to revolutionize Africa and beyond.</p>
                                     <a href="#about-section" class="slider-boxed-btn">Learn More</a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="swiper-slide">
@@ -70,7 +70,7 @@
                             <div class="item-about">
                                 <div class="imgone big-paral">
                                     <div class="simpleParallax" data-aos="fade-up" data-aos-delay="200"><img
-                                            src="{{ asset('assets/frontend/images/about-img1.jpeg') }}" width="500" height="666"
+                                            src="{{ asset('assets/frontend/images/about-left-img.jpeg') }}" width="500" height="666"
                                             class="lazy thumparallax-down img-fluid" alt="two-images-1.jpg"></div>
                                 </div>
                                 <div class="exp-about">
@@ -83,7 +83,7 @@
                             <div class="item-about">
                                 <div class="imgtwo big-paral">
                                     <div class="simpleParallax" data-aos="fade-down" data-aos-delay="100"><img
-                                            src="{{ asset('assets/frontend/images/about-img2.jpeg') }}" width="500" height="820"
+                                            src="{{ asset('assets/frontend/images/about-right-img.jpeg') }}" width="500" height="820"
                                             class="lazy thumparallax img-fluid" alt="two-images-1.jpg"></div>
                                 </div>
                             </div>
