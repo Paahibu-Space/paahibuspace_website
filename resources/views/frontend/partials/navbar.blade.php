@@ -116,7 +116,7 @@
 
                     </ul>
                 </li>
-                <li><a href="{{ route('frontend.blogs') }}">Blog</a></li>
+                <li><a href="{{ route('frontend.blog') }}">Blog</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

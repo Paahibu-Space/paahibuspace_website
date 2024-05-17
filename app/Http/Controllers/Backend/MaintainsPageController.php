@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Language;
 use Illuminate\Http\Request;
 
@@ -23,8 +24,6 @@ class MaintainsPageController extends Controller
            'maintain_page_background_image' => 'nullable|string|max:191',
         ]);
 
-
-        $all_languages = Language::all();
 
         foreach ($all_languages as $lang){
 

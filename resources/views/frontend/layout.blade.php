@@ -5,7 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paahibu Space | Home</title>
-    <link href="./assets/images/logo.jpeg" rel="icon">
+    @php
+        $site_favicon = get_attachment_image_by_id(get_static_option('site_favicon'), 'full', false);
+    @endphp
+    @if (!empty($site_favicon))
+        <link rel="icon" href="{{ $site_favicon['img_url'] }}" type="image/png">
+    @endif
     <!-- vendor files -->
     <link rel="stylesheet" href="{{ asset('assets/common/vendor/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
@@ -20,7 +25,6 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ asset('assets/common/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/common/vendor/bootstrap-icons/bootstrap-icons.css') }}">
-
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

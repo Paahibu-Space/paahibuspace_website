@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\Works;
 use App\Models\WorksCategory;
 
+
 function set_static_option($key, $value)
 {
     if (!StaticOption::where('option_name', $key)->first()) {
@@ -238,4 +239,8 @@ function get_work_category_by_id($id, $output = 'array')
         default:
             return $cat_list;
     }
+}
+
+function purify_html($html){
+    return strip_tags(\Mews\Purifier\Facades\Purifier::clean($html));
 }

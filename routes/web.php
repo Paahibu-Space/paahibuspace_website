@@ -4,17 +4,29 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 
-/*--------------------------------------
-    Frontend Routes
-------------------------------------- */
+/*=======================================================
+******************** FRONTEND ROUTES **********************
+=======================================================*/
 
 Route::get('/', 'App\Http\Controllers\Frontend\FrontendController@index')->name('homepage');
 Route::get('/about', 'App\Http\Controllers\Frontend\FrontendController@showAboutPage')->name('frontend.about');
 Route::get('/programs', 'App\Http\Controllers\Frontend\FrontendController@showProgramsPage')->name('frontend.programs');
 Route::get('/services', 'App\Http\Controllers\Frontend\FrontendController@showServicesPage')->name('frontend.services');
-Route::get('/blogs', 'App\Http\Controllers\Frontend\FrontendController@showBlogsPage')->name('frontend.blogs');
 Route::get('/team', 'App\Http\Controllers\Frontend\FrontendController@showTeamPage')->name('frontend.team');
 Route::get('/volunteers', 'App\Http\Controllers\Frontend\FrontendController@showVolunteersPage')->name('frontend.volunteers');
+
+// Static Pages
+$blog_page_slug = 'blog';
+
+
+    /*--------------------------------------
+        FRONTEND: BLOGS ROUTES
+    ---------------------------------------*/
+    Route::get($blog_page_slug, 'App\Http\Controllers\Frontend\FrontendController@blog_page')->name('frontend.blog');
+    Route::get( $blog_page_slug.'/{slug}', 'App\Http\Controllers\Frontend\FrontendController@blog_single_page')->name('frontend.blog.single');
+    Route::get( $blog_page_slug.'-search', 'App\Http\Controllers\Frontend\FrontendController@blog_search_page')->name('frontend.blog.search');
+    Route::get( $blog_page_slug.'-category/{id}/{any}', 'App\Http\Controllers\Frontend\FrontendController@category_wise_blog_page')->name('frontend.blog.category');
+    Route::get( $blog_page_slug.'-tags/{name}', 'App\Http\Controllers\Frontend\FrontendController@tags_wise_blog_page')->name('frontend.blog.tags.page');
 
 /*=======================================================
 ******************** ADMIN LOGIN ROUTES **********************

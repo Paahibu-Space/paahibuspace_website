@@ -2,13 +2,13 @@
     <div class="sidebar-header">
         <div class="logo" style="max-height: 50px;">
             <a href="{{ route('admin.home') }}">
-                {{-- TODO @php
+                @php
                     $logo_type = 'site_logo';
                     if (!empty(get_static_option('site_admin_dark_mode'))) {
                         $logo_type = 'site_white_logo';
                     }
                 @endphp
-                {!! render_image_markup_by_attachment_id(get_static_option($logo_type)) !!} --}}
+                {!! render_image_markup_by_attachment_id(get_static_option($logo_type)) !!}
             </a>
         </div>
     </div>
