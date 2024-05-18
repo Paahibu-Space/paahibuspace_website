@@ -38,13 +38,13 @@
 <body>
 
     {{-- Header --}}
-    @includeIf('frontend.partials.navbar')
+    @include('frontend.partials.navbar')
 
     {{-- page main content --}}
     @yield('content')
 
     {{-- FOOTER --}}
-    @includeIf('frontend.partials.footer')
+    @include('frontend.partials.footer')
 
     <!-- back to top -->
     <div class="progress-wrap">

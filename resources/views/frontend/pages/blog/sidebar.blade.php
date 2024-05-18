@@ -14,16 +14,16 @@
             <h3 class="widget-title style-01">Blog Categories</h3>
             <ul>
 
-                @foreach ($blog_posts as $post)
-                    <li><a href="{{ route('frontend.blog.category', ['id' => $post->id,'any' => Str::slug(purify_html($post->name))]) }}"> <i class="fas fa-chevron-right"></i>{{purify_html($post->name)}}</a></li>
+                @foreach ($all_categories as $category)
+                    <li><a href="{{ route('frontend.blog.category', ['id' => $category->id,'any' => Str::slug(purify_html($category->name))]) }}"> <i class="fas fa-chevron-right"></i>{{purify_html($category->name)}}</a></li>
                 @endforeach
             </ul>
         </div>
     </div>
     <div class=" blog-widget widget">
-        <h4 class="widget-title style-01">Related Posts</h4>
+        <h4 class="widget-title style-01">Recent Posts</h4>
         <ul class="recent_post_item">
-            @foreach ($all_blogs as $blog)
+            @foreach ($all_recent_blogs as $blog)
             <li class="single-recent-post-item">
                 <div class="thumb">
                     {!! render_image_markup_by_attachment_id($blog->image, '', 'thumb') !!}

@@ -1,9 +1,9 @@
 @extends('frontend.layout')
 
-{{-- Breadcrumps --}}
-@includeIf('frontend.partials.breadcrumps')
-
 @section('content')
+{{-- Breadcrumps --}}
+@include('frontend.partials.breadcrumps')
+
 <section class="blog-content-area padding-120">
     <div class="container">
         <div class="row">

@@ -2416,6 +2416,14 @@ h6.service_summary-about::before {
   transition: all .3s ease-in
 }
 
+.blog-details-footer .right .social-share li a, .blog-details-footer .left .social-share li a {
+  color: var(--paragraph-color);
+}
+
+.blog-details-footer .right .social-share li a:hover, .blog-details-footer .left .social-share li a:hover {
+  color: var(--main-color-two);
+}
+
 .blog-details-footer .right .social-share li+li {
   margin-left: 10px
 }
@@ -2515,6 +2523,20 @@ h6.service_summary-about::before {
   transition: all .5s;
   color: #fff;
   max-width: 280px
+}
+
+.single-blog-grid-02 .content {
+  padding: 20px
+}
+
+.single-blog-grid-02 .content .title {
+  font-size: 18px;
+  line-height: 30px;
+  max-width: 320px
+}
+
+.single-blog-grid-02 .content .title a {
+  color: var(--heading-color);
 }
 
 .widget {

@@ -37,13 +37,14 @@ class FrontendController extends Controller
     public function blog_page()
     {
         $all_blogs = Blog::where(['status' => 'publish'])->orderBy('id', 'desc')->paginate(get_static_option('blog_page_item'));
-        $blog_posts = BlogCategory::where(['status' => 'publish'])->orderBy('id','desc')->get();
+        $all_categories = BlogCategory::where(['status' => 'publish'])->orderBy('id','desc')->get();
         if (!empty($post_items)){
-            $blog_posts = $blog_posts->take($post_items);
+            $all_categories = $all_categories->take($post_items);
         }
         return view('frontend.pages.blog.blog')->with([
             'all_blogs' => $all_blogs,
-            'blog_posts' => $blog_posts,
+            'all_categories' => $all_categories,
+            'all_recent_blogs' => $all_blogs
         ]);
     }
 
@@ -62,6 +63,7 @@ class FrontendController extends Controller
             'all_categories' => $all_category,
             'category_name' => $category_name,
             'all_recent_blogs' => $all_recent_blogs,
+            'all_related_blog' => $all_recent_blogs,
         ]);
     }
 
@@ -79,6 +81,7 @@ class FrontendController extends Controller
             'all_categories' => $all_category,
             'tag_name' => $tag,
             'all_recent_blogs' => $all_recent_blogs,
+            'all_related_blog' => $all_recent_blogs,
         ]);
     }
 
@@ -95,6 +98,7 @@ class FrontendController extends Controller
             'all_categories' => $all_category,
             'search_term' => $request->search,
             'all_recent_blogs' => $all_recent_blogs,
+            'all_related_blogs' => $all_recent_blogs,
         ]);
     }
 

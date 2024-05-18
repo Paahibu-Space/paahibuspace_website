@@ -244,3 +244,25 @@ function get_work_category_by_id($id, $output = 'array')
 function purify_html($html){
     return strip_tags(\Mews\Purifier\Facades\Purifier::clean($html));
 }
+
+function single_post_share($url, $title, $img_url)
+{
+    $output = '';
+    //get current page url
+    $encoded_url = urlencode($url);
+    //get current page title
+    $post_title = str_replace(' ', '%20', $title);
+
+    //all social share link generate
+    $facebook_share_link = 'https://www.facebook.com/sharer/sharer.php?u=' . $encoded_url;
+    $twitter_share_link = 'https://twitter.com/intent/tweet?text=' . $post_title . '&amp;url=' . $encoded_url . '&amp;via=' . get_static_option('site_title');
+    $linkedin_share_link = 'https://www.linkedin.com/shareArticle?mini=true&url=' . $encoded_url . '&amp;title=' . $post_title;
+    $pinterest_share_link = 'https://pinterest.com/pin/create/button/?url=' . $encoded_url . '&amp;media=' . $img_url . '&amp;description=' . $post_title;
+
+    $output .= '<li><a class="facebook" href="' . $facebook_share_link . '"><i class="fab fa-facebook-f"></i></a></li>';
+    $output .= '<li><a class="twitter" href="' . $twitter_share_link . '"><i class="fab fa-twitter"></i></a></li>';
+    $output .= '<li><a class="linkedin" href="' . $linkedin_share_link . '"><i class="fab fa-linkedin-in"></i></a></li>';
+    $output .= '<li><a class="pinterest" href="' . $pinterest_share_link . '"><i class="fab fa-pinterest-p"></i></a></li>';
+
+    return $output;
+}
