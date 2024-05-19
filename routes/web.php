@@ -17,6 +17,7 @@ Route::get('/volunteers', 'App\Http\Controllers\Frontend\FrontendController@show
 
 // Static Pages
 $blog_page_slug = 'blog';
+$stories_page_slug = 'stories';
 
 
     /*--------------------------------------
@@ -28,6 +29,13 @@ $blog_page_slug = 'blog';
     Route::get( $blog_page_slug.'-category/{id}/{any}', 'App\Http\Controllers\Frontend\FrontendController@category_wise_blog_page')->name('frontend.blog.category');
     Route::get( $blog_page_slug.'-tags/{name}', 'App\Http\Controllers\Frontend\FrontendController@tags_wise_blog_page')->name('frontend.blog.tags.page');
 
+    /*--------------------------------------
+        FRONTEND: STORIES ROUTES
+    ---------------------------------------*/
+    Route::get($stories_page_slug, 'App\Http\Controllers\Frontend\FrontendController@story_page')->name('frontend.stories');
+    Route::get( $stories_page_slug.'/{slug}', 'App\Http\Controllers\Frontend\FrontendController@story_single_page')->name('frontend.story.single');
+
+    
 /*=======================================================
 ******************** ADMIN LOGIN ROUTES **********************
 =======================================================*/
@@ -461,6 +469,12 @@ Route::prefix('admin-home')->group(function () {
         ----------------------------------------------------*/
         Route::get('/basic-settings', 'App\Http\Controllers\Backend\GeneralSettingsController@basic_settings')->name('admin.general.basic.settings');
         Route::post('/basic-settings', 'App\Http\Controllers\Backend\GeneralSettingsController@update_basic_settings');
+
+        /*----------------------------------------------------
+         PAGE SETTINGS
+        ----------------------------------------------------*/
+        Route::get('/page-settings', 'App\Http\Controllers\Backend\GeneralSettingsController@page_settings')->name('admin.general.page.settings');
+        Route::post('/page-settings', 'App\Http\Controllers\Backend\GeneralSettingsController@update_page_settings');
 
         /*----------------------------------------------------
           EMAIL TEMPLATE SETTINGS

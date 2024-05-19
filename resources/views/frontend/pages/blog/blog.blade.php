@@ -1,8 +1,18 @@
 @extends('frontend.layout')
 
+@section('site-title')
+    {{get_static_option('blog_page_name')}}
+@endsection
+@section('page-title')
+    {{get_static_option('blog_page_name')}}
+@endsection
+@section('page-meta-data')
+    <meta name="description" content="{{get_static_option('blog_page_meta_description')}}">
+    <meta name="tags" content="{{get_static_option('blog_page_meta_tags')}}">
+    {!! render_og_meta_image_by_attachment_id(get_static_option('blog_page_meta_image')) !!}
+@endsection
+
 @section('content')
-{{-- Breadcrumps --}}
-@include('frontend.partials.breadcrumps')
 
 <section class="blog-content-area padding-120">
     <div class="container">

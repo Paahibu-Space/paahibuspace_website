@@ -17,6 +17,9 @@ return new class extends Migration
             $table->longText('content');
             $table->string('author')->nullable();
             $table->string('image')->nullable();
+            $table->string('slug')->nullable();
+            $table->text('video_url')->nullable();
+            $table->longText('excerpt')->nullable();
             $table->string('status')->nullable();
             $table->string('user_id')->nullable();
             $table->timestamps();

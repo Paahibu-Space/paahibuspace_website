@@ -40,6 +40,8 @@
     {{-- Header --}}
     @include('frontend.partials.navbar')
 
+    @include('frontend.partials.breadcrumps')
+
     {{-- page main content --}}
     @yield('content')
 

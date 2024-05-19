@@ -7,6 +7,7 @@ use App\Helpers\ProjectHelpers;
 use App\Mail\BasicMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class GeneralSettingsController extends Controller
 {
@@ -44,7 +45,7 @@ class GeneralSettingsController extends Controller
         $env_val['MAIL_HOST'] = $request->site_smtp_mail_host ?? 'YOUR_SMTP_MAIL_HOST';
         $env_val['MAIL_PORT'] =  $request->site_smtp_mail_port ?? 'YOUR_SMTP_MAIL_POST';
         $env_val['MAIL_USERNAME'] = $request->site_smtp_mail_username ?? 'YOUR_SMTP_MAIL_USERNAME';
-        $env_val['MAIL_PASSWORD'] =  $request->site_smtp_mail_password ? '"'.$request->site_smtp_mail_password.'"' : 'YOUR_SMTP_MAIL_USERNAME_PASSWORD';
+        $env_val['MAIL_PASSWORD'] =  $request->site_smtp_mail_password ? '"' . $request->site_smtp_mail_password . '"' : 'YOUR_SMTP_MAIL_USERNAME_PASSWORD';
         $env_val['MAIL_ENCRYPTION'] =  $request->site_smtp_mail_encryption ?? 'YOUR_SMTP_MAIL_ENCRYPTION';
         $env_val['MAIL_FROM_ADDRESS'] =  get_static_option('site_global_email') ?? 'null';
 
@@ -61,32 +62,75 @@ class GeneralSettingsController extends Controller
     public function update_email_settings(Request $request)
     {
 
-            $this->validate($request, [
-                'service_query_success_message' => 'nullable|string',
-                'case_study_query_success_message' => 'nullable|string',
-                'contact_mail_success_message' => 'nullable|string',
-                'get_in_touch_mail_success_message' => 'nullable|string',
-                'event_attendance_mail_success_message' => 'nullable|string',
-            ]);
+        $this->validate($request, [
+            'service_query_success_message' => 'nullable|string',
+            'case_study_query_success_message' => 'nullable|string',
+            'contact_mail_success_message' => 'nullable|string',
+            'get_in_touch_mail_success_message' => 'nullable|string',
+            'event_attendance_mail_success_message' => 'nullable|string',
+        ]);
 
-            $fields = [
-                'service_query_success_message',
-                'case_study_query_success_message',
-                'quote_mail_success_message',
-                'contact_mail_success_message',
-                'get_in_touch_mail_success_message',
-                'apply_job_success_message',
-                'order_mail_success_message',
-                'event_attendance_mail_success_message',
-                'feedback_form_mail_success_message',
-                'appointment_form_mail_success_message',
-                'estimate_form_mail_success_message',
-                'enroll_form_mail_success_message',
-            ];
-            foreach ($fields as $field) {
-                update_static_option($field, $request->$field);
-            }
+        $fields = [
+            'service_query_success_message',
+            'case_study_query_success_message',
+            'quote_mail_success_message',
+            'contact_mail_success_message',
+            'get_in_touch_mail_success_message',
+            'apply_job_success_message',
+            'order_mail_success_message',
+            'event_attendance_mail_success_message',
+            'feedback_form_mail_success_message',
+            'appointment_form_mail_success_message',
+            'estimate_form_mail_success_message',
+            'enroll_form_mail_success_message',
+        ];
+        foreach ($fields as $field) {
+            update_static_option($field, $request->$field);
+        }
         return redirect()->back()->with(['msg' => __('Email Settings Updated..'), 'type' => 'success']);
+    }
+
+    public function page_settings()
+    {
+        return view('backend.general-settings.page-settings');
+    }
+
+    public function update_page_settings(Request $request)
+    {
+        $this->validate($request, [
+            'about_page_slug' => 'required|string|max:191',
+            'stories_page_slug' => 'required|string|max:191',
+            'team_page_slug' => 'required|string|max:191',
+            'volunteers_page_slug' => 'required|string|max:191',
+            'programs_page_slug' => 'required|string|max:191',
+            'services_page_slug' => 'required|string|max:191',
+            'blog_page_slug' => 'required|string|max:191',
+            'work_page_slug' => 'required|string|max:191',
+        ]);
+        $slug_list = [
+            'about', 'stories',
+            'team', 'volunteers',
+            'programs', 'services',
+            'blog', 'work',
+        ];
+
+        foreach ($slug_list as $slug_field) {
+            $field = $slug_field . '_page_slug';
+            update_static_option($field, Str::slug($request->$field));
+        }
+
+        foreach ($slug_list as $field) {
+            $meta_tags =  $field . '_page_meta_tags';
+            $meta_description = $field . '_page_meta_description';
+            $meta_image = $field . '_page_meta_image';
+            $page_title = $field . '_page_name';
+            update_static_option($meta_tags, $request->$meta_tags);
+            update_static_option($meta_description, $request->$meta_description);
+            update_static_option($page_title, $request->$page_title);
+            update_static_option($meta_image, $request->$meta_image);
+        }
+
+        return redirect()->back()->with(['msg' => __('Page Settings Updated..'), 'type' => 'success']);
     }
 
     public function basic_settings()
@@ -103,26 +147,26 @@ class GeneralSettingsController extends Controller
         ]);
 
 
-            $this->validate($request, [
-                'site_title' => 'nullable|string',
-                'site_tag_line' => 'nullable|string',
-                'site_footer_copyright' => 'nullable|string',
-            ]);
-            $_title = 'site_title';
-            $_tag_line = 'site_tag_line';
-            $_footer_copyright = 'site_footer_copyright';
+        $this->validate($request, [
+            'site_title' => 'nullable|string',
+            'site_tag_line' => 'nullable|string',
+            'site_footer_copyright' => 'nullable|string',
+        ]);
+        $_title = 'site_title';
+        $_tag_line = 'site_tag_line';
+        $_footer_copyright = 'site_footer_copyright';
 
-            update_static_option($_title, $request->$_title);
-            update_static_option($_tag_line, $request->$_tag_line);
-            update_static_option($_footer_copyright, $request->$_footer_copyright);
+        update_static_option($_title, $request->$_title);
+        update_static_option($_tag_line, $request->$_tag_line);
+        update_static_option($_footer_copyright, $request->$_footer_copyright);
 
         $all_fields = [
             'site_admin_dark_mode',
             'site_maintenance_mode',
         ];
 
-        foreach ($all_fields as $field){
-            update_static_option($field,$request->$field);
+        foreach ($all_fields as $field) {
+            update_static_option($field, $request->$field);
         }
 
         return redirect()->back()->with(['msg' => __('Basic Settings Update Success'), 'type' => 'success']);
@@ -171,8 +215,9 @@ class GeneralSettingsController extends Controller
     }
 
 
-    public function test_smtp_settings(Request $request){
-        $this->validate($request,[
+    public function test_smtp_settings(Request $request)
+    {
+        $this->validate($request, [
             'subject' => 'required|string|max:191',
             'email' => 'required|email|max:191',
             'message' => 'required|string',
@@ -183,16 +228,15 @@ class GeneralSettingsController extends Controller
             'type' => 'success'
         ];
 
-        try{
+        try {
             Mail::to($request->email)->send(new BasicMail([
                 'subject' => $request->subject,
                 'message' => $request->message
             ]));
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             return redirect()->back()->with(ProjectHelpers::item_delete($e->getMessage()));
         }
 
         return redirect()->back()->with($res_data);
     }
-
 }

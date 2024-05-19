@@ -266,3 +266,15 @@ function single_post_share($url, $title, $img_url)
 
     return $output;
 }
+
+function render_og_meta_image_by_attachment_id($id, $size = 'full')
+{
+    if (empty($id)) return '';
+    $output = '';
+
+    $image_details = get_attachment_image_by_id($id, $size);
+    if (!empty($image_details)) {
+        $output = ' <meta property="og:image" content="' . $image_details['img_url'] . '" />';
+    }
+    return $output;
+}

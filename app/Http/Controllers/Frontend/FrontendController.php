@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\Stories;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -119,6 +120,21 @@ class FrontendController extends Controller
             'all_categories' => $all_category,
             'all_recent_blogs' => $all_recent_blogs,
             'all_related_blog' => $all_related_blog,
+        ]);
+    }
+
+    public function story_page()
+    {
+        $all_stories = Stories::where(['status' => 'publish'])->orderBy('id', 'desc')->get();
+        return view('frontend.pages.stories.stories')->with([
+            'all_stories' => $all_stories,
+        ]);
+    }
+
+    public function story_single_page($slug) {
+        $story = Stories::where('slug', $slug)->first();
+        return view('frontend.pages.stories.single-story')->with([
+            'story' => $story,
         ]);
     }
     

@@ -83,12 +83,14 @@ section {
 # Breadcrumbs
 --------------------------------------------------------------*/
 .breadcrumbs {
-  padding: 140px 0 60px 0;
+  padding: 140px 0 90px 0;
   min-height: 30vh;
   position: relative;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  top: 60px;
+  margin-bottom: 60px;
 }
 
 .breadcrumbs:before {
@@ -102,6 +104,7 @@ section {
   font-size: 56px;
   font-weight: 500;
   color: #fff;
+  padding-bottom: 10px;
 }
 
 .breadcrumbs ol {
@@ -1389,8 +1392,8 @@ h6.service_summary-about::before {
   transition: 0.3s;
 }
 
-.footer .social-links a:hover {
-  background: #f6871f;
+.social-links a:hover {
+  color: #f6871f;
   text-decoration: none;
 }
 
@@ -2682,4 +2685,117 @@ h6.service_summary-about::before {
 .widget_search .search-form .submit-btn:hover {
   background-color: #272974;
   color: #fff
+}
+
+
+/* STORIES */
+/*--------------------------------------------------------------
+# stories
+--------------------------------------------------------------*/
+
+.our-story-area {
+  padding: 50px 0;
+}
+.story-teller {
+  background: rgba(0, 0, 0, 0.65) none repeat scroll 0 0;
+  display: block;
+  margin-right: -15px;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.story-wrapper {
+  padding-top: 50px;
+}
+
+.single-story-teller {
+  border: 1px solid #ddd;
+}
+
+.story-img {
+  position: relative;
+}
+
+.story-img>a {
+  display: block;
+}
+
+.story-img>a::after {
+  background: rgba(0, 0, 0, 0.7);
+  bottom: 0;
+  content: "";
+  height: 70%;
+  left: 0;
+  position: absolute;
+  transition: all 0.5s ease 0s;
+  width: 100%;
+  opacity: 0;
+}
+
+.story-content {
+  padding: 20px 10px;
+}
+
+.story-content a {
+  color: var(--heading-color);
+  font-size: 24px;
+}
+.story-content a:hover {
+  color: var(--main-color-two);
+  transition: 0.5s;
+}
+
+.story-content .story-date {
+  font-size: 18px;
+}
+
+/* Story single page */
+
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.story-page-heading {
+  background-color: var(--main-color-one);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+.card-img-top {
+  border-bottom: 1px solid #ddd;
+}
+
+.entry-meta i {
+  margin-right: 5px;
+}
+
+.entry-content p{
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 576px) {
+  .card-title {
+      font-size: 1.25rem;
+  }
+
+  .entry-meta {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .entry-meta span {
+      margin-bottom: 0.5rem;
+      color: var(--paragraph-color);
+  }
 }

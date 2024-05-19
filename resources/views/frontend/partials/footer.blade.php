@@ -48,9 +48,9 @@
                     <div class="col-lg-2 col-md-6 footer-links">
                         <h4>Stay in the know</h4>
                         <ul>
-                            <li><i class="bi bi-chevron-right"></i> <a href="index.html">Home</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="about.html">About us</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="services.html">Services</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('homepage') }}">Home</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.about') }}">About us</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.services') }}">Services</a></li>
                             <li><i class="bi bi-chevron-right"></i> <a href="about.html">Become a mentor</a></li>
                             <li><i class="bi bi-chevron-right"></i> <a href="about.html">Become a volunteer</a></li>
 
@@ -60,10 +60,10 @@
                     <div class="col-lg-2 col-md-6 footer-links">
                         <h4>Our Services</h4>
                         <ul>
-                            <li><i class="bi bi-chevron-right"></i> <a href="services.html">Web Design</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="services.html">Web Development</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="services.html">Marketing</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="services.html">Graphic Design</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.services') }}">Web Design</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.services') }}">Web Development</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.services') }}">Marketing</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.services') }}">Graphic Design</a></li>
                         </ul>
                     </div>
 

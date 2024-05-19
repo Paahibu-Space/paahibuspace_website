@@ -1,8 +1,5 @@
 @extends('frontend.layout')
 
-{{-- Breadcrumps --}}
-@includeIf('frontend.partials.breadcrumps')
-
 @section('content')
 <main id="main">
     <!-- ======= about-page Section ======= -->

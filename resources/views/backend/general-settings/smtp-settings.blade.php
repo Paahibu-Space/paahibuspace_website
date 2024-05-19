@@ -5,10 +5,10 @@
 @section('content')
     <div class="col-lg-12 col-ml-12 padding-bottom-30">
         <div class="row">
-           <div class="col-lg-12">
-               @include('backend.partials.message')
-               <x-error-msg/>
-           </div>
+            <div class="col-lg-12">
+                <x-flash-msg />
+                <x-error-msg />
+            </div>
             <div class="col-6 mt-5">
                 <div class="card">
                     <div class="card-body">

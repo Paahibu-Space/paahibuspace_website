@@ -2,7 +2,7 @@
 <header id="header" class="header fixed-top" data-scrollto-offset="0">
     <div class="container-fluid d-flex align-items-center justify-content-between p-0">
 
-        <a href="index.html" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+        <a href="{{ route('homepage') }}" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <img src="{{ asset('assets/frontend/images/white-logo.png') }}" alt="">
         </a>
@@ -17,7 +17,7 @@
                             <div class="nav-list-container">
                                 <li>
                                     <a href="{{ route('frontend.about') }}">Who we are</a>
-                                    <a href="stories.html">Stories</a>
+                                    <a href="{{ route('frontend.stories') }}">Stories</a>
                                     <a href="{{ route('frontend.team') }}">Team</a>
                                     <a href="{{ route('frontend.volunteers') }}">Volunteers</a>
                                 </li>
