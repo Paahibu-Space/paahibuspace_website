@@ -25,7 +25,7 @@
             <!-- basic form start -->
             <div class="col-lg-12">
                 <div class="margin-top-40"></div>
-                @include('backend/partials/message')
+                <x-flash-msg/>
                 @if($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -110,9 +110,11 @@
                                                        data-iconOne="{{$data->icon_one}}"
                                                        data-iconTwo="{{$data->icon_two}}"
                                                        data-iconThree="{{$data->icon_three}}"
+                                                       data-iconFour="{{$data->icon_four}}"
                                                        data-iconOneUrl="{{$data->icon_one_url}}"
                                                        data-iconTwoUrl="{{$data->icon_two_url}}"
                                                        data-iconThreeUrl="{{$data->icon_three_url}}"
+                                                       data-iconFourUrl="{{$data->icon_four_url}}"
                                                     >
                                                         <i class="ti-pencil"></i>
                                                     </a>
@@ -167,16 +169,16 @@
                                 <label for="icon_two" class="d-block">{{__('Social Profile Two')}}</label>
                                 <div class="btn-group ">
                                     <button type="button" class="btn btn-primary iconpicker-component">
-                                        <i class="fab fa-twitter"></i>
+                                        <i class="bi bi-twitter-x"></i>
                                     </button>
                                     <button type="button" class="icp icp-dd btn btn-primary dropdown-toggle"
-                                            data-selected="fab fa-twitter" data-toggle="dropdown">
+                                            data-selected="bi bi-twitter-x" data-toggle="dropdown">
                                         <span class="caret"></span>
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu"></div>
                                 </div>
-                                <input type="hidden" class="form-control"  id="icon_two" value="fab fa-twitter" name="icon_two">
+                                <input type="hidden" class="form-control"  id="icon_two" value="bi bi-twitter-x" name="icon_two">
                             </div>
                             <div class="form-group">
                                 <label for="icon_two_url">{{__('Social Profile Two URL')}}</label>
@@ -200,6 +202,25 @@
                             <div class="form-group">
                                 <label for="icon_three_url">{{__('Social Profile Three URL')}}</label>
                                 <input type="text" class="form-control"  id="icon_three_url"  name="icon_three_url" placeholder="{{__('Social Profile Three URL')}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="icon_four" class="d-block">{{__('Social Profile Four')}}</label>
+                                <div class="btn-group ">
+                                    <button type="button" class="btn btn-primary iconpicker-component">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </button>
+                                    <button type="button" class="icp icp-dd btn btn-primary dropdown-toggle"
+                                            data-selected="fab fa-facebook-f" data-toggle="dropdown">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu"></div>
+                                </div>
+                                <input type="hidden" class="form-control"  id="icon_four" value="fab fa-facebook-f" name="icon_four">
+                            </div>
+                            <div class="form-group">
+                                <label for="icon_four_url">{{__('Social Profile Four URL')}}</label>
+                                <input type="text" class="form-control"  id="icon_four_url"  name="icon_four_url" placeholder="{{__('Social Profile Four URL')}}">
                             </div>
                             <div class="form-group">
                                 <label for="image">{{__('Image')}}</label>
@@ -296,6 +317,28 @@
                             <label for="edit_icon_three_url">{{__('Social Profile Three URL')}}</label>
                             <input type="text" class="form-control"  id="edit_icon_three_url"  name="icon_three_url" placeholder="{{__('Social Profile Three URL')}}">
                         </div>
+
+
+
+                        <div class="form-group">
+                            <label for="edit_icon_four" class="d-block">{{__('Social Profile Four')}}</label>
+                            <div class="btn-group edit_icon_four">
+                                <button type="button" class="btn btn-primary iconpicker-component">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </button>
+                                <button type="button" class="icp icp-dd btn btn-primary dropdown-toggle"
+                                        data-selected="fas fa-exclamation-triangle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <div class="dropdown-menu"></div>
+                            </div>
+                            <input type="hidden" class="form-control"  id="edit_icon_four" value="fas fa-exclamation-triangle" name="icon_four">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_icon_four_url">{{__('Social Profile Four URL')}}</label>
+                            <input type="text" class="form-control"  id="edit_icon_four_url"  name="icon_four_url" placeholder="{{__('Social Profile Four URL')}}">
+                        </div>
                         <div class="form-group">
                             <label for="image">{{__('Image')}}</label>
                             <div class="media-upload-btn-wrapper">
@@ -379,11 +422,15 @@
                 form.find('#edit_icon_one').val(el.data('iconone'));
                 form.find('#edit_icon_two').val(el.data('icontwo'));
                 form.find('#edit_icon_three').val(el.data('iconthree'));
+                form.find('#edit_icon_four').val(el.data('iconfour'));
                 form.find('#edit_icon_one_url').val(el.data('icononeurl'));
                 form.find('#edit_icon_two_url').val(el.data('icontwourl'));
                 form.find('#edit_icon_three_url').val(el.data('iconthreeurl'));
+                form.find('#edit_icon_four_url').val(el.data('iconfoururl'));
                 form.find('#preview_image').attr('src',image);
 
+                form.find('.edit_icon_four .icp-dd').attr('data-selected',el.data('iconfour'));
+                form.find('.edit_icon_four .iconpicker-component i').attr('class',el.data('iconfour'));
                 form.find('.edit_icon_three .icp-dd').attr('data-selected',el.data('iconthree'));
                 form.find('.edit_icon_three .iconpicker-component i').attr('class',el.data('iconthree'));
                 form.find('.edit_icon_two .icp-dd').attr('data-selected',el.data('icontwo'));

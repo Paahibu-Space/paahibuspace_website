@@ -19,7 +19,7 @@
                                     <a href="{{ route('frontend.about') }}">Who we are</a>
                                     <a href="{{ route('frontend.stories') }}">Stories</a>
                                     <a href="{{ route('frontend.team') }}">Team</a>
-                                    <a href="{{ route('frontend.volunteers') }}">Volunteers</a>
+                                    {{-- <a href="{{ route('frontend.volunteers') }}">Volunteers</a> --}}
                                 </li>
                             </div>
 

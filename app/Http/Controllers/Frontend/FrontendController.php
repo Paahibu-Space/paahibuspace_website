@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\Stories;
+use App\Models\TeamMember;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -27,7 +28,9 @@ class FrontendController extends Controller
     }
     
     public function showTeamPage() {
-        return view('frontend.pages.team');
+        $all_team_members = TeamMember::orderBy('id', 'desc')->paginate(12);
+
+        return view('frontend.pages.team')->with(['all_team_members' => $all_team_members]);
     }
     
     public function showVolunteersPage() {
