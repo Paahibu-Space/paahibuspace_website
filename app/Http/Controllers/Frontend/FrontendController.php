@@ -7,6 +7,8 @@ use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\Stories;
 use App\Models\TeamMember;
+use App\Models\Services;
+use App\Models\ServiceCategory;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -23,8 +25,30 @@ class FrontendController extends Controller
         return view('frontend.pages.programs.programs');
     }
     
-    public function showServicesPage() {
-        return view('frontend.pages.services.services');
+    public function service_page()
+    {
+        $all_services = Services::orderBy('sr_order', 'asc')->paginate(get_static_option('service_page_service_items'));
+        return view('frontend.pages.service.services')->with(['all_services' => $all_services]);
+    }
+
+    public function services_single_page($slug)
+    {
+        $service_item = Services::where('slug', $slug)->first();
+        if (empty($service_item)){
+            abort(404);
+        }
+        $service_category = ServiceCategory::where(['status' => 'publish'])->get();
+        return view('frontend.pages.service.service-single')->with(['service_item' => $service_item, 'service_category' => $service_category]);
+    }
+
+    public function category_wise_services_page($id, $any)
+    {
+        $category_name = ServiceCategory::find($id)->name;
+        if(empty($category_name)){
+            abort('404');
+        }
+        $service_item = Services::where(['categories_id' => $id])->paginate(6);
+        return view('frontend.pages.service.service-category')->with(['service_items' => $service_item, 'category_name' => $category_name]);
     }
     
     public function showTeamPage() {

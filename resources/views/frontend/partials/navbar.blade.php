@@ -89,7 +89,7 @@
 
                     </ul>
                 </li>
-                <li class="dropdown megamenu"><a href="{{ route('frontend.services') }}"><span>Services</span> <i
+                <li class="dropdown megamenu"><a href="{{ route('frontend.service') }}"><span>Services</span> <i
                             class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul class="mega-dropdown-content">
                         <div class="justify-content-between d-flex">

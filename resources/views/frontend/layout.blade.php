@@ -11,6 +11,13 @@
     @if (!empty($site_favicon))
         <link rel="icon" href="{{ $site_favicon['img_url'] }}" type="image/png">
     @endif
+    <link rel=preload href="{{asset('assets/frontend/css/fontawesome.min.css')}}" as="style">
+    <link rel=preload href="{{asset('assets/frontend/css/flaticon.css')}}" as="style">
+    <link rel=preload href="{{asset('assets/frontend/css/nexicon.css')}}" as="style">
+
+    <link rel="stylesheet" href="{{asset('assets/frontend/css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/frontend/css/nexicon.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/frontend/css/fontawesome.min.css')}}">
     <!-- vendor files -->
     <link rel="stylesheet" href="{{ asset('assets/common/vendor/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">

@@ -11,13 +11,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\Frontend\FrontendController@index')->name('homepage');
 Route::get('/about', 'App\Http\Controllers\Frontend\FrontendController@showAboutPage')->name('frontend.about');
 Route::get('/programs', 'App\Http\Controllers\Frontend\FrontendController@showProgramsPage')->name('frontend.programs');
-Route::get('/services', 'App\Http\Controllers\Frontend\FrontendController@showServicesPage')->name('frontend.services');
 Route::get('/team', 'App\Http\Controllers\Frontend\FrontendController@showTeamPage')->name('frontend.team');
 Route::get('/volunteers', 'App\Http\Controllers\Frontend\FrontendController@showVolunteersPage')->name('frontend.volunteers');
 
 // Static Pages
 $blog_page_slug = 'blog';
 $stories_page_slug = 'stories';
+$service_page_slug = 'service';
 
 
     /*--------------------------------------
@@ -34,6 +34,18 @@ $stories_page_slug = 'stories';
     ---------------------------------------*/
     Route::get($stories_page_slug, 'App\Http\Controllers\Frontend\FrontendController@story_page')->name('frontend.stories');
     Route::get( $stories_page_slug.'/{slug}', 'App\Http\Controllers\Frontend\FrontendController@story_single_page')->name('frontend.story.single');
+
+    /*--------------------------------------
+        FRONTEND: SERVICES ROUTES
+    ---------------------------------------*/
+    Route::get($service_page_slug, 'App\Http\Controllers\Frontend\FrontendController@service_page')->name('frontend.service');
+    Route::get($service_page_slug.'/category/{id}/{any?}', 'App\Http\Controllers\Frontend\FrontendController@category_wise_services_page')->name('frontend.services.category');
+    Route::get( $service_page_slug.'/{slug}', 'App\Http\Controllers\Frontend\FrontendController@services_single_page')->name('frontend.services.single');
+
+    /*----------------------------------------
+      FRONTEND: CUSTOM FORM BUILDER ROUTES
+    -----------------------------------------*/
+    Route::post('submit-custom-form', 'FrontendFormController@custom_form_builder_message')->name('frontend.form.builder.custom.submit');
 
     
 /*=======================================================

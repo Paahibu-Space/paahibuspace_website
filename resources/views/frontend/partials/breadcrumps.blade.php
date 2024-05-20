@@ -1,6 +1,6 @@
 <!-- ======= Breadcrumbs ======= -->
 <section class="breadcrumbs d-flex align-items-center  @if(
-    (in_array(request()->route()->getName(),['homepage'])
+    (in_array(request()->route()->getName(),['homepage', 'frontend.service'])
     && empty($page_post->breadcrumb_status) )
     )
         d-none

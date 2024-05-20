@@ -50,7 +50,7 @@
                         <ul>
                             <li><i class="bi bi-chevron-right"></i> <a href="{{ route('homepage') }}">Home</a></li>
                             <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.about') }}">About us</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.services') }}">Services</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.service') }}">Services</a></li>
                             <li><i class="bi bi-chevron-right"></i> <a href="about.html">Become a mentor</a></li>
                             <li><i class="bi bi-chevron-right"></i> <a href="about.html">Become a volunteer</a></li>
 
@@ -60,10 +60,10 @@
                     <div class="col-lg-2 col-md-6 footer-links">
                         <h4>Our Services</h4>
                         <ul>
-                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.services') }}">Web Design</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.services') }}">Web Development</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.services') }}">Marketing</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.services') }}">Graphic Design</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.service') }}">Web Design</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.service') }}">Web Development</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.service') }}">Marketing</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.service') }}">Graphic Design</a></li>
                         </ul>
                     </div>
 
