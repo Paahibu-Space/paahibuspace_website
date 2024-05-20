@@ -14,7 +14,10 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
     public function index() {
-        return view('frontend.pages.index');
+        $all_services = Services::where(['status' => 'publish'])->orderBy('sr_order', 'asc')->get();
+        return view('frontend.pages.index')->with([
+            'all_services' => $all_services
+        ]);
     }
 
     public function showAboutPage() {

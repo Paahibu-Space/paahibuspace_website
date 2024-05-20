@@ -278,3 +278,8 @@ function render_og_meta_image_by_attachment_id($id, $size = 'full')
     }
     return $output;
 }
+
+function render_frontend_menu(){
+    $instance = new \App\MenuBuilder\MenuBuilderFrontendRender();
+    return $instance->render_frontend_nav_menu();
+}
