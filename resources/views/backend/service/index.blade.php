@@ -116,9 +116,9 @@
                                                         <i class="ti-pencil"></i>
                                                     </a>
                                                     <br>
-                                                    {{--TODO <a target="_blank" href="{{route('frontend.services.single',$data->slug)}}" class="btn btn-xs btn-info btn-sm mb-3 mr-1">
+                                                    <a target="_blank" href="{{route('frontend.services.single',$data->slug)}}" class="btn btn-xs btn-info btn-sm mb-3 mr-1">
                                                         <i class="ti-eye"></i>
-                                                    </a> --}}
+                                                    </a>
                                                     <form action="{{route('admin.services.clone')}}" method="post" style="display: inline-block">
                                                         @csrf
                                                         <input type="hidden" name="item_id" value="{{$data->id}}">

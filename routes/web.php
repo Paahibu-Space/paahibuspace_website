@@ -47,6 +47,27 @@ $service_page_slug = 'service';
     -----------------------------------------*/
     Route::post('submit-custom-form', 'FrontendFormController@custom_form_builder_message')->name('frontend.form.builder.custom.submit');
 
+    /*==============================================
+    FRONTEND ROUTES: PROGRAM MODULE
+==============================================*/
+Route::group(['middleware' => ['maintains_mode']], function () {
+
+    $programs_page_slug = 'programs';
+    //programs
+    Route::get($programs_page_slug , 'App\Http\Controllers\Frontend\FrontendController@programs')->name('frontend.programs');
+    Route::get($programs_page_slug.'/{slug}', 'App\Http\Controllers\Frontend\FrontendController@programs_single')->name('frontend.programs.single');
+    Route::get($programs_page_slug.'-category/{id}/{any?}', 'App\Http\Controllers\FrontendController@programs_category')->name('frontend.programs.category');
+    Route::get($programs_page_slug.'-search', 'App\Http\Controllers\Frontend\FrontendController@programs_search')->name('frontend.programs.search');
+    Route::get($programs_page_slug.'-registration/{id}', 'App\Http\Controllers\Frontend\FrontendController@program_registration')->name('frontend.program.registration');
+    Route::post($programs_page_slug.'-registration', 'App\Http\Controllers\Frontend\FrontendFormController@store_program_registration_data')->name('frontend.program.registration.store');
+
+    //program registration
+    Route::get('/registration-confirm/{id}', 'App\Http\Controllers\Frontend\FrontendController@registration_confirm')->name('frontend.program.registration.confirm');
+    Route::post('/registration-confirm', 'ProgramPaymentLogsController@registration_payment_form')->name('frontend.program.payment.confirm');
+    Route::get('/registration-success/{id}', 'App\Http\Controllers\Frontend\FrontendController@program_payment_success')->name('frontend.program.payment.success');
+    Route::get('/registration-cancel/{id}', 'App\Http\Controllers\Frontend\FrontendController@program_payment_cancel')->name('frontend.program.payment.cancel');
+});
+
     
 /*=======================================================
 ******************** ADMIN LOGIN ROUTES **********************
@@ -125,7 +146,6 @@ Route::prefix('admin-home')->group(function () {
         Route::get('/new', 'App\Http\Controllers\Backend\ServiceController@new_service')->name('admin.services.new');
         Route::get('/edit/{id}', 'App\Http\Controllers\Backend\ServiceController@edit_service')->name('admin.services.edit');
         Route::post('/cat-by-slug', 'App\Http\Controllers\Backend\ServiceController@category_by_slug')->name('admin.service.category.by.slug');
-        Route::post('/price-plan-by-slug', 'App\Http\Controllers\Backend\ServiceController@price_plan_by_slug')->name('admin.service.price.plan.by.slug');
         Route::post('/update', 'App\Http\Controllers\Backend\ServiceController@update')->name('admin.services.update');
         Route::post('/clone', 'App\Http\Controllers\Backend\ServiceController@clone_service_as_draft')->name('admin.services.clone');
         Route::post('/bulk-action', 'App\Http\Controllers\Backend\ServiceController@bulk_action')->name('admin.services.bulk.action');

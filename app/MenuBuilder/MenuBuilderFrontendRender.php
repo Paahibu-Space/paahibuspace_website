@@ -1,7 +1,9 @@
 <?php
 
 namespace App\MenuBuilder;
+
 use App\Models\Services;
+use App\Models\Programs;
 
 class MenuBuilderFrontendRender
 {
@@ -43,12 +45,12 @@ class MenuBuilderFrontendRender
             <ul class="mega-dropdown-content">
                 <div class="justify-content-between d-flex">
                     <div class="nav-list-container">
-                        <li>
-                            <a href="programs.html">Women in Digital Business (WiDiB)</a>
-                            <a href="programs.html">Women in Digital Economy Initiative (WiDEI)</a>
-                            <a href="programs.html">Ndiara</a>
-                            <a href="programs.html">Skills2Work Initiative</a>
-                            <a href="programs.html">CybersiStars Initiative</a>
+                        <li>';
+                        $all_programs = Programs::all();
+                        foreach ($all_programs as $program) {
+                            $output .= '<a href="' . route('frontend.programs.single', $program->slug) . '">' . $program->title . '</a>';
+                        }
+                        $output .= '
                         </li>
                     </div>
 
@@ -96,9 +98,9 @@ class MenuBuilderFrontendRender
                     <div class="nav-list-container">
                         <li>
                         ';
-                        $all_services = Services::where(['status' => 'publish'])->orderBy('sr_order', 'asc')->get();
-                        foreach ($all_services as $service) {
-            $output .= '<a href="' . route('frontend.services.single', $service->slug) . '">'. $service->title . '</a>';
+        $all_services = Services::where(['status' => 'publish'])->orderBy('sr_order', 'asc')->get();
+        foreach ($all_services as $service) {
+            $output .= '<a href="' . route('frontend.services.single', $service->slug) . '">' . $service->title . '</a>';
         }
 
         $output .= '</li>

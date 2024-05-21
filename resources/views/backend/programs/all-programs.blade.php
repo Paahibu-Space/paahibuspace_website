@@ -67,7 +67,7 @@
                                             <th>{{__('Action')}}</th>
                                             </thead>
                                             <tbody>
-                                            @foreach($program as $data)
+                                            @foreach($all_programs as $data)
                                                 <tr>
                                                     <td>
                                                         <div class="bulk-checkbox-wrapper">
@@ -106,9 +106,9 @@
                                                         <a class="btn btn-primary btn-xs mb-3 mr-1" href="{{route('admin.programs.edit',$data->id)}}">
                                                             <i class="ti-pencil"></i>
                                                         </a>
-                                                        {{--TODO <a class="btn btn-info btn-xs mb-3 mr-1" target="_blank" href="{{route('frontend.programs.single',$data->slug)}}">
+                                                        <a class="btn btn-info btn-xs mb-3 mr-1" target="_blank" href="{{route('frontend.programs.single',$data->slug)}}">
                                                             <i class="ti-eye"></i>
-                                                        </a> --}}
+                                                        </a>
                                                         <form action="{{route('admin.programs.clone')}}" method="post" style="display: inline-block">
                                                             @csrf
                                                             <input type="hidden" name="item_id" value="{{$data->id}}">

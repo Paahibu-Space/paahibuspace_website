@@ -111,9 +111,9 @@
                                                     <a class="btn btn-xs btn-primary btn-xs mb-3 mr-1" href="{{route('admin.blog.edit',$data->id)}}">
                                                         <i class="ti-pencil"></i>
                                                     </a>
-                                                    {{-- TODO <a class="btn btn-xs btn-primary btn-xs mb-3 mr-1" target="_blank" href="{{route('frontend.blog.single', $data->slug)}}">
+                                                    <a class="btn btn-xs btn-primary btn-xs mb-3 mr-1" target="_blank" href="{{route('frontend.blog.single', $data->slug)}}">
                                                         <i class="ti-eye"></i>
-                                                    </a> --}}
+                                                    </a>
                                                     <form action="{{route('admin.blog.clone')}}" method="post" style="display: inline-block">
                                                         @csrf
                                                         <input type="hidden" name="item_id" value="{{$data->id}}">

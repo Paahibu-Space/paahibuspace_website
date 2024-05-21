@@ -9,6 +9,7 @@ use App\Models\Stories;
 use App\Models\TeamMember;
 use App\Models\Services;
 use App\Models\ServiceCategory;
+use App\Models\Programs;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -165,6 +166,35 @@ class FrontendController extends Controller
         $story = Stories::where('slug', $slug)->first();
         return view('frontend.pages.stories.single-story')->with([
             'story' => $story,
+        ]);
+    }
+
+    public function programs()
+    {
+
+        $all_programs = Programs::where(['status' => 'publish'])->orderBy('id', 'desc')->paginate(get_static_option('site_programs_post_items'));
+        return view('frontend.pages.programs.program')->with([
+            'all_programs' => $all_programs,
+        ]);
+    }
+
+    public function programs_single($slug)
+    {
+
+        $program = Programs::where('slug', $slug)->first();
+        if (empty($program)) {
+            return redirect_404_page();
+        }
+        return view('frontend.pages.programs.program-single')->with([
+            'program' => $program,
+        ]);
+    }
+
+    public function program_registration($id)
+    {
+        $program = Programs::find($id);
+        return view('frontend.pages.programs.program-registration')->with([
+            'program' => $program
         ]);
     }
     

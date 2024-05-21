@@ -61,7 +61,7 @@ class ProgramsController extends Controller
     }
 
     public function all_programs(){
-        $all_programs = Programs::all()->groupBy('lang');
+        $all_programs = Programs::all();
         return view('backend.programs.all-programs')->with(['all_programs' => $all_programs]);
     }
 

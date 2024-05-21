@@ -3,7 +3,6 @@
     <div class="container-fluid d-flex align-items-center justify-content-between p-0">
 
         <a href="{{ route('homepage') }}" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
-            <!-- Uncomment the line below if you also wish to use an image logo -->
             <img src="{{ asset('assets/frontend/images/white-logo.png') }}" alt="">
         </a>
 

@@ -283,3 +283,21 @@ function render_frontend_menu(){
     $instance = new \App\MenuBuilder\MenuBuilderFrontendRender();
     return $instance->render_frontend_nav_menu();
 }
+
+function redirect_404_page()
+{
+    return view('frontend.pages.404');
+}
+
+function render_embed_google_map($address, $zoom = 10)
+{
+    if (empty($address)) {
+        return;
+    }
+    printf(
+        '<div class="elementor-custom-embed"><iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=%s&amp;t=m&amp;z=%d&amp;output=embed&amp;iwloc=near" aria-label="%s"></iframe></div>',
+        rawurlencode($address),
+        $zoom,
+        $address
+    );
+}

@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    {{-- TODO <title>Admin Login - {{get_static_option('site_'.get_user_lang().'_title')}}</title> --}}
+    <title>Admin Login - {{get_static_option('site_title')}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{-- TODO <link rel="icon" href="{{asset('assets/uploads/site-favicon.'.get_static_option('site_favicon'))}}" type="image/png"> --}}
+    <link rel="icon" href="{{asset('assets/uploads/site-favicon.'.get_static_option('site_favicon'))}}" type="image/png">
     <link rel="stylesheet" href="{{asset('assets/common/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/common/css/themify-icons.css')}}">
     <!-- others css -->

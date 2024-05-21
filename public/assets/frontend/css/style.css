@@ -3300,3 +3300,318 @@ h6.service_summary-about::before {
       opacity: 1
   }
 }
+
+/* Frontend Programs */
+.single-programs-list-item+.single-programs-list-item {
+  margin-top: 30px
+}
+
+.single-programs-list-item {
+  display: flex;
+  align-self: flex-start
+}
+
+.single-programs-list-item .content-area {
+  flex: 1
+}
+
+.single-programs-list-item .thumb {
+  margin-right: 30px
+}
+
+.single-programs-list-item .content-area .top-part {
+  display: flex;
+  align-self: flex-start;
+  margin-bottom: 15px
+}
+
+.single-programs-list-item .content-area .top-part .time-wrap {
+  margin-right: 20px;
+  width: 80px;
+  height: 80px;
+  background-color: var(--main-color-one);
+  color: #fff;
+  text-align: center;
+  padding-top: 10px
+}
+
+.single-programs-list-item .content-area .top-part .title-wrap {
+  flex: 1
+}
+
+.single-programs-list-item .content-area .top-part .time-wrap span {
+  display: block
+}
+
+.single-programs-list-item .content-area .top-part .time-wrap .date {
+  font-size: 30px;
+  line-height: 35px;
+  font-weight: 700
+}
+
+.single-programs-list-item .content-area .top-part .time-wrap .month {
+  font-weight: 600;
+  text-transform: uppercase
+}
+
+.single-programs-list-item .content-area .top-part .title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px
+}
+
+.single-programs-list-item .content-area .top-part .location {
+  font-size: 14px;
+  font-weight: 500
+}
+
+.single-programs-list-item .content-area .top-part .location i {
+  color: var(--main-color-two)
+}
+
+@media only screen and (max-width: 767px) {
+  .single-programs-list-item {
+      display: block
+  }
+  .single-programs-list-item .thumb {
+      margin-bottom: 30px
+  }
+  .single-programs-list-item .thumb img {
+      width: 100%
+  }
+}
+
+.single-program-details .thumb {
+  margin-bottom: 30px
+}
+
+.single-program-details .content .top-part {
+  display: flex;
+  align-self: flex-start;
+  margin-bottom: 25px
+}
+
+.single-program-details .content .top-part .time-wrap {
+  margin-right: 20px;
+  width: 80px;
+  height: 80px;
+  background-color: var(--main-color-one);
+  color: #fff;
+  text-align: center;
+  padding-top: 10px
+}
+
+.single-program-details .content .top-part .title-wrap {
+  flex: 1
+}
+
+.single-program-details .content .top-part .time-wrap span {
+  display: block
+}
+
+.single-program-details .content .top-part .time-wrap .date {
+  font-size: 30px;
+  line-height: 35px;
+  font-weight: 700
+}
+
+.single-program-details .content .top-part .time-wrap .month {
+  font-weight: 600;
+  text-transform: uppercase
+}
+
+.single-program-details .content .top-part .title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px
+}
+
+.single-program-details .content .top-part .location {
+  font-size: 14px;
+  font-weight: 500
+}
+
+.single-program-details .content .top-part .location i {
+  color: var(--main-color-one)
+}
+
+.single-program-details .content .top-part .title-wrap .category .i {
+  margin-right: 5px
+}
+
+.single-program-details .content .top-part .title-wrap .category {
+  background-color: #e0f5d7;
+  padding: 5px 15px;
+  color: #449626;
+  text-transform: capitalize;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 10px
+}
+
+.single-program-details .content .top-part .title-wrap span {
+  display: block
+}
+
+.single-program-details .content .top-part .title-wrap {
+  flex: 1;
+  margin-top: 10px
+}
+
+.base-color {
+  color: var(--main-color-one)
+}
+
+.program-info .icon-with-title-description {
+  margin: 0;
+  padding: 0
+}
+
+.program-info .icon-with-title-description li {
+  list-style: none;
+  display: flex
+}
+
+.program-info .icon-with-title-description li .icon {
+  margin-right: 15px;
+  font-size: 14px;
+  line-height: 24px;
+  width: 10px;
+  color: var(--main-color-one)
+}
+
+.program-info .icon-with-title-description li h4 {
+  font-size: 14px;
+  line-height: 26px;
+  font-family: var(--body-font);
+  font-weight: 600;
+  margin-bottom: 0
+}
+
+.program-info .icon-with-title-description li span {
+  margin-bottom: 0
+}
+
+.program-info .icon-with-title-description li+li {
+  margin-top: 10px
+}
+
+.program-info .icon-with-title-description li a {
+  transition: .3s all
+}
+
+.program-info .icon-with-title-description li a:hover {
+  color: var(--main-color-one)
+}
+
+.program-venue-details-information {
+  background-color: #f5f5f5;
+  padding: 30px
+}
+
+.program-venue-details-information .venue-title {
+  font-size: 26px;
+  line-height: 36px;
+  font-weight: 700;
+  margin-bottom: 20px
+}
+
+.program-venue-details-information .bottom-content {
+  display: flex;
+  justify-content: space-between
+}
+
+.venue-details-block .title {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 600;
+  margin-bottom: 0
+}
+
+.venue-details-block+.venue-details-block {
+  margin-top: 20px
+}
+
+.venue-details-block {
+  padding-right: 40px
+}
+
+.program-registration-form h4 {
+  font-size: 36px;
+  line-height: 46px;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 50px
+}
+
+.program-registration-form .form-group .form-control {
+  height: 50px;
+  padding: 0 20px
+}
+
+.program-registration-form .form-group.checkbox .form-control {
+  padding: 0;
+  height: auto
+}
+
+.program-registration-form .form-group.checkbox label {
+  position: relative;
+  top: -2px
+}
+
+.program-registration-form .form-group.file .form-control {
+  padding: 0
+}
+
+.program-registration-form .form-group.textarea .form-control {
+  height: 150px;
+  resize: none;
+  padding: 20px
+}
+
+.program-registration-form .form-group.select .form-control:focus,
+.program-registration-form .form-group.textarea .form-control:focus {
+  outline: 0;
+  box-shadow: none
+}
+
+.program-registration-form .btn-wrapper {
+  text-align: center
+}
+
+.order-confirm-area .title {
+  text-align: center;
+  font-size: 36px;
+  line-height: 46px;
+  font-weight: 700;
+  margin-bottom: 40px
+}
+
+.counterdown-wrap.program-page #program_countdown {
+  display: flex;
+  margin-bottom: 30px
+}
+
+.counterdown-wrap.program-page #program_countdown>div {
+  width: calc(100% / 4);
+  background-color: var(--main-color-one);
+  margin: 5px;
+  text-align: center;
+  padding: 10px 10px
+}
+
+.counterdown-wrap.program-page #program_countdown>div .label {
+  display: block;
+  text-transform: capitalize;
+  font-size: 14px;
+  color: rgba(255, 255, 255, .8);
+  font-weight: 500;
+  line-height: 20px
+}
+
+.counterdown-wrap.program-page #program_countdown>div .time {
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff
+}
