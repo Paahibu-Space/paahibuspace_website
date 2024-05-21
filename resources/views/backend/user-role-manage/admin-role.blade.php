@@ -14,7 +14,7 @@
         "Users Manage",
         "Newsletter Manage",
         "Blogs Manage",
-        "Events Manage",
+        "Programs Manage",
         "Knowledgebase",
         "Services",
         "Case Study",

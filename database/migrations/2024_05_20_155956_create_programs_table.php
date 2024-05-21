@@ -11,17 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('upcoming_program_attendances', function (Blueprint $table) {
+        Schema::create('programs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('title');
             $table->longText('content')->nullable();
-            $table->string('topic_id')->nullable();
             $table->string('status')->nullable();
-            $table->string('slug')->nullable();
-            $table->string('views')->nullable();
-            $table->string('lang')->nullable();
-            $table->text('meta_description')->nullable();
+            $table->string('date');
+            $table->string('time');
+            $table->string('available_registrations');
+            $table->string('image')->nullable();
+            $table->text('venue')->nullable();
+            $table->text('slug')->nullable();
+            $table->text('venue_location')->nullable();
             $table->text('meta_tags')->nullable();
+            $table->text('meta_description')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('upcoming_program_attendance');
+        Schema::dropIfExists('programs');
     }
 };

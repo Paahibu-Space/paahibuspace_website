@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
-use App\Models\UpcomingProgramAttendance;
-use App\Models\UpcomingPrograms;
+use App\Models\ProgramRegistration;
+use App\Models\Programs;
 use App\Models\Services;
 use App\Models\Blog;
 use App\Models\TeamMember;
@@ -32,9 +32,9 @@ class AdminDashboardController extends Controller
         $total_team_member = TeamMember::count();
         $total_services = Services::count();
         $total_works = Works::count();
-        $total_upcoming_programs = UpcomingPrograms::count();
-        $total_upcoming_program_attendance = UpcomingProgramAttendance::where('status','complete')->count();
-        $program_attendance_recent_registration = UpcomingProgramAttendance::orderBy('id','desc')->take(5)->get();
+        $total_programs = Programs::count();
+        $total_program_registration = ProgramRegistration::where('status','complete')->count();
+        $program_registration_recent_registration = ProgramRegistration::orderBy('id','desc')->take(5)->get();
 
 
         return view('backend.admin-home')->with([
@@ -42,9 +42,9 @@ class AdminDashboardController extends Controller
             'total_admin' => $total_admin,
             'total_works' => $total_works,
             'total_services' => $total_services,
-            'total_upcoming_program_attendance' => $total_upcoming_program_attendance,
-            'program_attendance_recent_registration' => $program_attendance_recent_registration,
-            'total_upcoming_programs' => $total_upcoming_programs,
+            'total_program_registration' => $total_program_registration,
+            'program_registration_recent_registration' => $program_registration_recent_registration,
+            'total_programs' => $total_programs,
         ]);
     }
 

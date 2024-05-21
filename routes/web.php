@@ -88,7 +88,7 @@ Route::prefix('admin-home')->group(function () {
     /*-----------------------------------
           KNOWLEDGEBASE ROUTES
     ------------------------------------*/
-    Route::prefix('knowledge')->middleware(['adminPermissionCheck:Knowledgebase', 'moduleCheck:knowledgebase_module_status'])->group(function () {
+    Route::prefix('knowledge')->middleware(['adminPermissionCheck:Knowledgebase'])->group(function () {
 
         Route::get('/', 'App\Http\Controllers\Backend\KnowledgebaseController@all_knowledgebases')->name('admin.knowledge.all');
         Route::get('/new', 'App\Http\Controllers\Backend\KnowledgebaseController@new_knowledgebase')->name('admin.knowledge.new');
@@ -236,20 +236,20 @@ Route::prefix('admin-home')->group(function () {
         Route::post('/newsletter-verify', 'App\Http\Controllers\Backend\EmailTemplateController@update_newsletter_verify');
 
         /*==========================================
-            EVENT EMAIL TEMPLATE ROUTE
+            PROGRAM EMAIL TEMPLATE ROUTE
         ==========================================*/
 
-        /* event order mail admin */
-        Route::get('/event-attendance-mail-admin', 'EventApp\Http\Controllers\Backend\EmailTemplateController@event_attendance_mail_admin')->name('admin.email.template.event.attendance.mail.admin');
-        Route::post('/event-attendance-mail-admin', 'EventApp\Http\Controllers\Backend\EmailTemplateController@update_event_attendance_mail_admin');
+        /* program order mail admin */
+        Route::get('/program-registration-mail-admin', 'App\Http\Controllers\Backend\EmailTemplateController@program_registration_mail_admin')->name('admin.email.template.program.registration.mail.admin');
+        Route::post('/program-registration-mail-admin', 'App\Http\Controllers\Backend\EmailTemplateController@update_program_registration_mail_admin');
 
-        /* event order mail user */
-        Route::get('/event-attendance-mail-user', 'EventApp\Http\Controllers\Backend\EmailTemplateController@event_attendance_mail_user')->name('admin.email.template.event.attendance.mail.user');
-        Route::post('/event-attendance-mail-user', 'EventApp\Http\Controllers\Backend\EmailTemplateController@update_event_attendance_mail_user');
+        /* program registration mail user */
+        Route::get('/program-registration-mail-user', 'App\Http\Controllers\Backend\EmailTemplateController@program_registration_mail_user')->name('admin.email.template.program.registration.mail.user');
+        Route::post('/program-registration-mail-user', 'App\Http\Controllers\Backend\EmailTemplateController@update_program_registration_mail_user');
 
-        /* event order reminder mail */
-        Route::get('/event-attendance-mail-reminder-mail', 'EventApp\Http\Controllers\Backend\EmailTemplateController@event_attendance_mail_reminder_mail')->name('admin.email.template.event.attendance.mail.reminder.mail');
-        Route::post('/event-attendance-mail-reminder-mail', 'EventApp\Http\Controllers\Backend\EmailTemplateController@update_event_attendance_mail_reminder_mail');
+        /* program registration reminder mail */
+        Route::get('/program-registration-mail-reminder-mail', 'App\Http\Controllers\Backend\EmailTemplateController@program_registration_mail_reminder_mail')->name('admin.email.template.program.registration.mail.reminder.mail');
+        Route::post('/program-registration-mail-reminder-mail', 'App\Http\Controllers\Backend\EmailTemplateController@update_program_registration_mail_reminder_mail');
     });
 
     /*==============================================
@@ -343,59 +343,40 @@ Route::prefix('admin-home')->group(function () {
     });
 
     /*==============================================
-           EVENTS MODULE ROUTES
+           PROGRAMS MODULE ROUTES
      ==============================================*/
-    Route::prefix('events')->middleware(['adminPermissionCheck:Events Manage', 'moduleCheck:events_module_status'])->group(function () {
+    Route::prefix('programs')->middleware(['adminPermissionCheck:Programs Manage'])->group(function () {
 
         /*----------------------------------------
-            EVENTS MODULE: ROUTEs
+            PROGRAMS MODULE: ROUTEs
         ----------------------------------------*/
-        Route::get('/all', 'App\Http\Controllers\Backend\EventsController@all_events')->name('admin.events.all');
-        Route::get('/new', 'App\Http\Controllers\Backend\EventsController@new_event')->name('admin.events.new');
-        Route::post('/new', 'App\Http\Controllers\Backend\EventsController@store_event');
-        Route::get('/edit/{id}', 'App\Http\Controllers\Backend\EventsController@edit_event')->name('admin.events.edit');
-        Route::post('/update', 'App\Http\Controllers\Backend\EventsController@update_event')->name('admin.events.update');
-        Route::post('/delete/{id}', 'App\Http\Controllers\Backend\EventsController@delete_event')->name('admin.events.delete');
-        Route::post('/clone', 'App\Http\Controllers\Backend\EventsController@clone_event')->name('admin.events.clone');
-        Route::post('/bulk-action', 'App\Http\Controllers\Backend\EventsController@bulk_action')->name('admin.events.bulk.action');
-        Route::post('/slug-check', 'App\Http\Controllers\Backend\EventsController@slug_check')->name('admin.events.slug.check');
-        /*----------------------------------------
-            EVENTS MODULE: SUCCESS PAGE SETTINGS
-        ----------------------------------------*/
-
-        Route::get('/payment-success-page-settings', 'App\Http\Controllers\Backend\EventsController@payment_success_page_settings')->name('admin.events.payment.success.page.settings');
-        Route::post('/payment-success-page-settings', 'App\Http\Controllers\Backend\EventsController@update_payment_success_page_settings');
+        Route::get('/all', 'App\Http\Controllers\Backend\ProgramsController@all_programs')->name('admin.programs.all');
+        Route::get('/new', 'App\Http\Controllers\Backend\ProgramsController@new_program')->name('admin.programs.new');
+        Route::post('/new', 'App\Http\Controllers\Backend\ProgramsController@store_program');
+        Route::get('/edit/{id}', 'App\Http\Controllers\Backend\ProgramsController@edit_program')->name('admin.programs.edit');
+        Route::post('/update', 'App\Http\Controllers\Backend\ProgramsController@update_program')->name('admin.programs.update');
+        Route::post('/delete/{id}', 'App\Http\Controllers\Backend\ProgramsController@delete_program')->name('admin.programs.delete');
+        Route::post('/clone', 'App\Http\Controllers\Backend\ProgramsController@clone_program')->name('admin.programs.clone');
+        Route::post('/bulk-action', 'App\Http\Controllers\Backend\ProgramsController@bulk_action')->name('admin.programs.bulk.action');
+        Route::post('/slug-check', 'App\Http\Controllers\Backend\ProgramsController@slug_check')->name('admin.programs.slug.check');
 
         /*----------------------------------------
-         EVENTS MODULE: ATTENDANCE SETTINGS
+         REGISTRATION MODULE: REGISTRATION SETTINGS
        ----------------------------------------*/
-        //event attendance logs
-        Route::group(['prefix' => 'attendance'], function () {
-            Route::get('/all', 'App\Http\Controllers\Backend\EventsController@event_attendance_logs')->name('admin.event.attendance.logs');
-            Route::post('/all', 'App\Http\Controllers\Backend\EventsController@update_event_attendance_logs_status');
-            Route::post('/delete/{id}', 'App\Http\Controllers\Backend\EventsController@delete_event_attendance_logs')->name('admin.event.attendance.logs.delete');
-            Route::post('/send-mail', 'App\Http\Controllers\Backend\EventsController@send_mail_event_attendance_logs')->name('admin.event.attendance.send.mail');
-            Route::post('/bulk-action', 'App\Http\Controllers\Backend\EventsController@attendance_logs_bulk_action')->name('admin.event.attendance.bulk.action');
+        //program registration logs
+        Route::group(['prefix' => 'registration'], function () {
+            Route::get('/all', 'App\Http\Controllers\Backend\ProgramsController@program_registration_logs')->name('admin.program.registration.logs');
+            Route::post('/all', 'App\Http\Controllers\Backend\ProgramsController@update_program_registration_logs_status');
+            Route::post('/delete/{id}', 'App\Http\Controllers\Backend\ProgramsController@delete_program_registration_logs')->name('admin.program.registration.logs.delete');
+            Route::post('/send-mail', 'App\Http\Controllers\Backend\ProgramsController@send_mail_program_registration_logs')->name('admin.program.registration.send.mail');
+            Route::post('/bulk-action', 'App\Http\Controllers\Backend\ProgramsController@registration_logs_bulk_action')->name('admin.program.registration.bulk.action');
         });
 
         /*----------------------------------------
-        EVENTS MODULE: CATEGORY ROUTES
-         ----------------------------------------*/
-        Route::group(['prefix' => 'category'], function () {
-            //event category
-            Route::get('/', 'App\Http\Controllers\Backend\EventsCategoryController@all_events_category')->name('admin.events.category.all');
-            Route::post('/new', 'App\Http\Controllers\Backend\EventsCategoryController@store_events_category')->name('admin.events.category.new');
-            Route::post('/update', 'App\Http\Controllers\Backend\EventsCategoryController@update_events_category')->name('admin.events.category.update');
-            Route::post('/delete/{id}', 'App\Http\Controllers\Backend\EventsCategoryController@delete_events_category')->name('admin.events.category.delete');
-            Route::post('/lang', 'App\Http\Controllers\Backend\EventsCategoryController@Category_by_language_slug')->name('admin.events.category.by.lang');
-            Route::post('/bulk-action', 'App\Http\Controllers\Backend\EventsCategoryController@bulk_action')->name('admin.events.category.bulk.action');
-        });
-
-        /*----------------------------------------
-        EVENTS MODULE: OTHERS ROUTES
+        PROGRAMS MODULE: OTHERS ROUTES
         ----------------------------------------*/
-        Route::post('/event-attendance/reminder', 'App\Http\Controllers\Backend\EventsController@event_attedance_reminder')->name('admin.event.attendance.reminder');
-        Route::get('/attendance/report', 'App\Http\Controllers\Backend\EventsController@attendance_report')->name('admin.event.attendance.report');
+        Route::post('/program-registration/reminder', 'App\Http\Controllers\Backend\ProgramsController@program_registration_reminder')->name('admin.program.registration.reminder');
+        Route::get('/registration/report', 'App\Http\Controllers\Backend\ProgramsController@registration_report')->name('admin.program.registration.report');
     });
 
     /*==============================================

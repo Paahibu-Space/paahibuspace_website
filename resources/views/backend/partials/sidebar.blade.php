@@ -123,6 +123,28 @@
                         </ul>
                     </li>
                     {{-- @endif
+                    @if (check_page_permission_by_string('Programs Manage')) --}}
+                    <li
+                        class="main_dropdown
+                    @if (request()->is(['admin-home/programs/*', 'admin-home/programs'])) active @endif
+                            ">
+                        <a href="javascript:void(0)" aria-expanded="true">
+                            <i class="ti-layout"></i>
+                            <span>{{ __('Programs Manage') }}</span></a>
+                        <ul class="collapse">
+                            <li class="{{ active_menu('admin-home/programs/all') }}"><a
+                                    href="{{ route('admin.programs.all') }}">{{ __('All Programs') }}</a></li>
+                            <li class="{{ active_menu('admin-home/programs/new') }}"><a
+                                    href="{{ route('admin.programs.new') }}">{{ __('Add New Program') }}</a></li>
+                            <li class="{{ active_menu('admin-home/programs/registration/all') }}"><a
+                                    href="{{ route('admin.program.registration.logs') }}">{{ __('Program Registration Logs') }}</a>
+                            </li>
+                            <li class="{{ active_menu('admin-home/programs/registration/report') }}"><a
+                                    href="{{ route('admin.program.registration.report') }}">{{ __('Registration Report') }}</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{-- @endif
                     @if (check_page_permission_by_string('Portfolio')) --}}
                     <li class="main_dropdown
                     @if (request()->is(['admin-home/works/*', 'admin-home/works'])) active @endif ">
@@ -216,8 +238,9 @@
                             <li class="{{ active_menu('admin-home/general-settings/basic-settings') }}"><a
                                     href="{{ route('admin.general.basic.settings') }}">{{ __('Basic Settings') }}</a>
                             </li>
-                            <li class="{{active_menu('admin-home/general-settings/page-settings')}}"><a
-                                href="{{route('admin.general.page.settings')}}">{{__('Page Settings')}}</a></li>
+                            <li class="{{ active_menu('admin-home/general-settings/page-settings') }}"><a
+                                    href="{{ route('admin.general.page.settings') }}">{{ __('Page Settings') }}</a>
+                            </li>
 
                             <li class="{{ active_menu('admin-home/general-settings/email-template') }}"><a
                                     href="{{ route('admin.general.email.template') }}">{{ __('Email Template') }}</a>
