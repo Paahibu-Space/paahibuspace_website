@@ -53,6 +53,7 @@
                                     <form action="{{ route('frontend.form.builder.custom.submit') }}" method="post"
                                         id="custom_form_builder_crZ6HNapi2" class="custom-form-builder-form "
                                         enctype="multipart/form-data">
+                                        @csrf
                                         <input type="hidden" name="custom_form_id" value="1">
                                         <input type="hidden" name="captcha_token" id="gcaptcha_token">
                                         <div class="error-message"></div>

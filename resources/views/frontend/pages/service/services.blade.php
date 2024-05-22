@@ -12,7 +12,7 @@
 @endsection
 @section('content')
     <section id="services-hero" class="services-hero d-flex align-items-center"
-        style="background: url('{{ asset('assets/frontend/images/girlcode2.webp') }}') top center;">
+        style="background: url('{{ asset('assets/frontend/images/girlcode2.webp') }}') top center; background-size:cover;">
         <div class="container">
             <div class="row">
                 <div class="col-xl-4">

@@ -18,6 +18,7 @@ Route::get('/volunteers', 'App\Http\Controllers\Frontend\FrontendController@show
 $blog_page_slug = 'blog';
 $stories_page_slug = 'stories';
 $service_page_slug = 'service';
+$work_page_slug = 'work';
 
 
     /*--------------------------------------
@@ -67,6 +68,13 @@ Route::group(['middleware' => ['maintains_mode']], function () {
     Route::get('/registration-success/{id}', 'App\Http\Controllers\Frontend\FrontendController@program_payment_success')->name('frontend.program.payment.success');
     Route::get('/registration-cancel/{id}', 'App\Http\Controllers\Frontend\FrontendController@program_payment_cancel')->name('frontend.program.payment.cancel');
 });
+
+    /*--------------------------------------
+         FRONTEND: CASE STUDY/ WORKS ROUTES
+     ---------------------------------------*/
+     Route::get($work_page_slug, 'FrontendController@work_page')->name('frontend.work');
+     Route::get( $work_page_slug.'/{slug}', 'FrontendController@work_single_page')->name('frontend.work.single');
+     Route::get( $work_page_slug.'/category/{id}/{any?}', 'FrontendController@category_wise_works_page')->name('frontend.works.category');
 
     
 /*=======================================================
@@ -168,13 +176,13 @@ Route::prefix('admin-home')->group(function () {
     ==============================================*/
 
     Route::prefix('video-gallery')->middleware(['adminPermissionCheck:Video Gallery'])->group(function () {
-        Route::get('/', 'Admin\VideoGalleryController@index')->name('admin.video.gallery.all');
-        Route::post('/new', 'Admin\VideoGalleryController@store')->name('admin.video.gallery.new');
-        Route::post('/update', 'Admin\VideoGalleryController@update')->name('admin.video.gallery.update');
-        Route::post('/delete/{id}', 'Admin\VideoGalleryController@delete')->name('admin.video.gallery.delete');
-        Route::post('/bulk-action', 'Admin\VideoGalleryController@bulk_action')->name('admin.video.gallery.bulk.action');
-        Route::get('/page-settings', 'Admin\VideoGalleryController@page_settings')->name('admin.video.gallery.page.settings');
-        Route::post('/page-settings', 'Admin\VideoGalleryController@update_page_settings');
+        Route::get('/', 'VideoGalleryController@index')->name('admin.video.gallery.all');
+        Route::post('/new', 'VideoGalleryController@store')->name('admin.video.gallery.new');
+        Route::post('/update', 'VideoGalleryController@update')->name('admin.video.gallery.update');
+        Route::post('/delete/{id}', 'VideoGalleryController@delete')->name('admin.video.gallery.delete');
+        Route::post('/bulk-action', 'VideoGalleryController@bulk_action')->name('admin.video.gallery.bulk.action');
+        Route::get('/page-settings', 'VideoGalleryController@page_settings')->name('admin.video.gallery.page.settings');
+        Route::post('/page-settings', 'VideoGalleryController@update_page_settings');
     });
     /*==============================================
         IMAGE GALLERY ROUTES

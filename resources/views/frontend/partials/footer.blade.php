@@ -51,20 +51,15 @@
                             <li><i class="bi bi-chevron-right"></i> <a href="{{ route('homepage') }}">Home</a></li>
                             <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.about') }}">About us</a></li>
                             <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.service') }}">Services</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="about.html">Become a mentor</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="about.html">Become a volunteer</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="https://docs.google.com/forms/d/e/1FAIpQLSe18AXaRl79Gbq_RP05CSgY3xbvnNldfISPriy27H0b7hpdIw/viewform">Become a mentor</a></li>
+                            {{-- <li><i class="bi bi-chevron-right"></i> <a href="about.html">Become a volunteer</a></li> --}}
 
                         </ul>
                     </div>
 
                     <div class="col-lg-2 col-md-6 footer-links">
                         <h4>Our Services</h4>
-                        <ul>
-                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.service') }}">Web Design</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.service') }}">Web Development</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.service') }}">Marketing</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.service') }}">Graphic Design</a></li>
-                        </ul>
+                        {!! render_frontend_footer_services() !!}
                     </div>
 
                     <div class="col-lg-4 col-md-6 footer-newsletter subscription-form">

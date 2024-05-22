@@ -1292,7 +1292,7 @@ h6.service_summary-about::before {
 .footer .footer-content h4 {
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+  color: #fff !important;
   position: relative;
   padding-bottom: 12px;
   margin-bottom: 15px;
@@ -1353,6 +1353,10 @@ h6.service_summary-about::before {
   padding: 6px 10px;
   position: relative;
   border-radius: 4px;
+}
+
+.footer .footer-content .footer-newsletter p {
+  color: #FFF !important;
 }
 
 .footer .footer-content .footer-newsletter form input[type="email"] {

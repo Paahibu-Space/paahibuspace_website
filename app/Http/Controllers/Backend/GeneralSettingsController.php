@@ -67,7 +67,7 @@ class GeneralSettingsController extends Controller
             'case_study_query_success_message' => 'nullable|string',
             'contact_mail_success_message' => 'nullable|string',
             'get_in_touch_mail_success_message' => 'nullable|string',
-            'event_attendance_mail_success_message' => 'nullable|string',
+            'program_registration_mail_success_message' => 'nullable|string',
         ]);
 
         $fields = [
@@ -78,7 +78,7 @@ class GeneralSettingsController extends Controller
             'get_in_touch_mail_success_message',
             'apply_job_success_message',
             'order_mail_success_message',
-            'event_attendance_mail_success_message',
+            'program_registration_mail_success_message',
             'feedback_form_mail_success_message',
             'appointment_form_mail_success_message',
             'estimate_form_mail_success_message',

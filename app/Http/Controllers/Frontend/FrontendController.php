@@ -22,7 +22,10 @@ class FrontendController extends Controller
     }
 
     public function showAboutPage() {
-        return view('frontend.pages.about');
+        $all_team_members = TeamMember::orderBy('id', 'desc')->paginate(12);
+        return view('frontend.pages.about')->with([
+            'all_team_members' => $all_team_members
+        ]);
     }
 
     public function showProgramsPage() {

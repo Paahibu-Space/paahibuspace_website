@@ -21,7 +21,6 @@ class MenuBuilderFrontendRender
                             <a href="' . route('frontend.about') . '">Who we are</a>
                             <a href="' . route('frontend.stories') . '">Stories</a>
                             <a href="' . route('frontend.team') . '">Team</a>
-                            <a href="' . route('frontend.volunteers') . '">Volunteers</a>
                         </li>
                     </div>
 
@@ -74,7 +73,7 @@ class MenuBuilderFrontendRender
                     <div class="nav-list-container">
                         <li>
                             <a href="#">Volunteer</a>
-                            <a href="#">Be a mentor</a>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe18AXaRl79Gbq_RP05CSgY3xbvnNldfISPriy27H0b7hpdIw/viewform">Be a mentor</a>
                         </li>
                     </div>
 
@@ -121,6 +120,23 @@ class MenuBuilderFrontendRender
             </li>
             <li><a href="' . route('frontend.blog') . '">Blog</a></li>
         </ul>';
+
+        return $output;
+    }
+
+    public function render_frontend_footer_services()
+    {
+        $output = '';
+
+        $output .= '<ul>';
+
+        $all_services = Services::all();
+        foreach ($all_services as $service)
+        {
+            $output .= '<li><i class="bi bi-chevron-right"></i> <a href="' . route('frontend.service', $service->slug) . '">' . $service->title .'</a></li>';
+        }
+
+        $output .= '</ul>';
 
         return $output;
     }

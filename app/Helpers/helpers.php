@@ -301,3 +301,15 @@ function render_embed_google_map($address, $zoom = 10)
         $address
     );
 }
+
+function render_frontend_footer_services()
+{
+    $instance = new \App\MenuBuilder\MenuBuilderFrontendRender();
+    return $instance->render_frontend_footer_services();
+}
+
+function get_footer_copyright_text(){
+    $footer_copyright_text = get_static_option('site_footer_copyright');
+    $footer_copyright_text = str_replace(array('{copy}', '{year}'), array('&copy;', date('Y')), $footer_copyright_text);
+    return $footer_copyright_text;
+}
