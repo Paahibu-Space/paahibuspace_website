@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Actions\SlugChecker;
 use App\Models\Blog;
 use App\Models\BlogCategory;
-use App\Models\UpcomingPrograms;
+use App\Models\Programs;
 use App\Http\Requests\SlugCheckRequest;
 use App\Services;
 use App\Volunteer;
@@ -222,7 +222,7 @@ class BlogController extends Controller
 
     public function slug_check(SlugCheckRequest $request){
         $user_given_slug = $request->slug;
-        $query = UpcomingPrograms::Blog(['slug' => $user_given_slug]);
+        $query = Programs::Blog(['slug' => $user_given_slug]);
 
         return SlugChecker::Check($request,$query);
     }

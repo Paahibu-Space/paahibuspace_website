@@ -65,15 +65,15 @@
                     <div class="col-lg-4 col-md-6 footer-newsletter subscription-form">
                         <h4>Our Newsletter</h4>
                         <p>Join us, not as a client, but as an esteemed member of our close-knit family.</p>
-                        <form action="./forms/subscribe.php" method="post" class="form-subscribe">
-                            <input type="email" name="form_subscribe_email"><input type="submit" value="Subscribe">
+                        <form action="{{ route('frontend.subscribe.newsletter') }}" method="post" class="form-subscribe">
+                            <input type="email" name="email"><input type="submit" value="Subscribe" class="subscribe-btn">
 
                         </form>
                         <div class="my-3">
                             <div class="subscribing">Subscribing</div>
-                            <div class="error-subscription"></div>
-                            <div class="subscription-success">You have successfuly subscribed to our news letter. Thank
-                                you!</div>
+                            <div class="form-message-show"></div>
+                            {{-- <div class="error-subscription"></div>
+                            <div class="subscription-success">Thank you for Subscribing to Our Newsletter!</div> --}}
                         </div>
 
                     </div>

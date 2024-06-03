@@ -10,6 +10,7 @@ use App\Models\TeamMember;
 use App\Models\Services;
 use App\Models\ServiceCategory;
 use App\Models\Programs;
+use App\Models\Newsletter;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -199,6 +200,19 @@ class FrontendController extends Controller
         return view('frontend.pages.programs.program-registration')->with([
             'program' => $program
         ]);
+    }
+
+    public function subscribe_newsletter(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|string|email|max:191|unique:newsletters'
+        ],
+            [
+                'required' => __('Enter Valid Email'),
+                'unique' => __('This Email Already Registered'),
+            ]);
+        Newsletter::create($request->all());
+        return response()->json(__('success'));
     }
     
 }

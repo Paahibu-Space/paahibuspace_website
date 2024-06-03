@@ -30,14 +30,12 @@
                             <div class="tab-content" >
                                 @if(!auth()->check())
                                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel">
-                                        @if(get_static_option('disable_guest_mode_for_program_module'))
                                         <div class="checkout-type margin-bottom-30 @if(auth()->check()) d-none @endif ">
                                             <div class="custom-control custom-switch">
                                                 <input type="checkbox" class="custom-control-input" id="guest_logout" name="checkout_type">
                                                 <label class="custom-control-label" for="guest_logout">{{__('As A Guest')}}</label>
                                             </div>
                                         </div>
-                                        @endif
                                         @if(!auth()->check())
                                             <div class="login-form">
                                                 <form action="{{route('user.login')}}" method="post" enctype="multipart/form-data" class="account-form" id="login_form_order_page">
@@ -50,7 +48,7 @@
                                                         <input type="password" name="password" class="form-control" placeholder="{{__('Password')}}">
                                                     </div>
                                                     <div class="form-group btn-wrapper">
-                                                        <button type="submit" id="login_btn" class="submit-btn">{{__('Login')}}</button>
+                                                        <button type="submit" id="login_btn" class="submit-btn slider-boxed-btn about-boxed-btn">{{__('Login')}}</button>
                                                     </div>
                                                     <div class="row mb-4 rmber-area">
                                                         <div class="col-6">
@@ -91,7 +89,10 @@
                                         <input type="hidden" name="captcha_token" id="gcaptcha_token">
                                         <input type="hidden" name="program_id" value="{{$program->id}}">
                                         @csrf
-                                        {!! render_form_field_for_frontend(get_static_option('program_registration_form_fields')) !!}
+                                        <div class="form-group"> <input type="text" id="your-name" name="your-name" class="form-control" placeholder="Your Name"></div>
+                                        <div class="form-group"> <input type="email" id="your-email" name="your-email" class="form-control" placeholder="Your Email"></div>
+                                        <div class="form-group checkbox">  <input type="checkbox" id="terms-condition" name="terms-condition" class="form-control"> <label for="terms-condition">Agree With <a href="#">Terms Of Policy</a></label></div>
+                                        <div class="form-group textarea"><textarea name="your-messsage" id="your-messsage" cols="30" rows="10" class="form-control" placeholder="Message"></textarea></div>
                                         <div class="form-group">
                                             <label for="quantity">{{__('Quantity')}}</label>
                                             <input type="number" min="1" max="{{$program->available_tickets}}" value="1" name="quantity" id="quantity">
@@ -129,7 +130,7 @@
         $(document).ready(function ($) {
 
             $(document).on('click', '#login_btn', function (e) {
-                e.prprogramDefault();
+                e.preventDefault();
                 var formContainer = $('#login_form_order_page');
                 var el = $(this);
                 var username = formContainer.find('input[name="username"]').val();
@@ -173,7 +174,7 @@
             $('.payment-gateway-wrapper ul li[data-gateway="'+defaulGateway+'"]').addClass('selected');
 
             $(document).on('click','.payment-gateway-wrapper > ul > li',function (e) {
-                e.prprogramDefault();
+                e.preventDefault();
                 var gateway = $(this).data('gateway');
                 $(this).addClass('selected').siblings().removeClass('selected');
                 $('#site_global_payment_gateway').val(gateway);
@@ -186,7 +187,7 @@
             });
 
             $(document).on('change','#guest_logout',function (e) {
-                e.prprogramDefault();
+                e.preventDefault();
                 var infoTab = $('#nav-profile-tab');
                 var nextBtn = $('.next-step-btn');
                 if($(this).is(':checked')){

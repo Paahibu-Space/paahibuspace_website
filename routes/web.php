@@ -76,6 +76,29 @@ Route::group(['middleware' => ['maintains_mode']], function () {
      Route::get( $work_page_slug.'/{slug}', 'FrontendController@work_single_page')->name('frontend.work.single');
      Route::get( $work_page_slug.'/category/{id}/{any?}', 'FrontendController@category_wise_works_page')->name('frontend.works.category');
 
+     // Frontend Newsletter Subscription
+     Route::post('/subscribe-newsletter', 'App\Http\Controllers\Frontend\FrontendController@subscribe_newsletter')->name('frontend.subscribe.newsletter');
+
+    //user login
+    Route::get('/login', 'Auth\LoginController@showLoginForm')->name('user.login');
+    Route::post('/ajax-login', 'FrontendController@ajax_login')->name('user.ajax.login');
+    Route::post('/login', 'Auth\LoginController@login');
+    Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('user.register');
+    Route::post('/register', 'Auth\RegisterController@register');
+    Route::get('/login/forget-password', 'FrontendController@showUserForgetPasswordForm')->name('user.forget.password');
+    Route::get('/login/reset-password/{user}/{token}', 'FrontendController@showUserResetPasswordForm')->name('user.reset.password');
+    Route::post('/login/reset-password', 'FrontendController@UserResetPassword')->name('user.reset.password.change');
+    Route::post('/login/forget-password', 'FrontendController@sendUserForgetPasswordMail');
+    Route::post('/logout', 'Auth\LoginController@logout')->name('user.logout');
+    //user email verify
+    Route::get('/user/email-verify', 'UserDashboardController@user_email_verify_index')->name('user.email.verify');
+    Route::get('/user/resend-verify-code', 'UserDashboardController@reset_user_email_verify_code')->name('user.resend.verify.mail');
+    Route::post('/user/email-verify', 'UserDashboardController@user_email_verify');
+
+    Route::post('/request-quote', 'FrontendFormController@send_quote_message')->name('frontend.quote.message');
+    Route::post('/request-estimate', 'FrontendFormController@send_estimate_message')->name('frontend.estimate.message');
+    Route::get('/home/{id}', 'FrontendController@home_page_change')->name('frontend.homepage.demo');
+
     
 /*=======================================================
 ******************** ADMIN LOGIN ROUTES **********************

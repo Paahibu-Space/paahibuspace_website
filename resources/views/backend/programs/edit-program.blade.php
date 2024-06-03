@@ -50,6 +50,11 @@
                                         <input type="text" class="form-control"  id="time" name="time" value="{{$program->time}}" placeholder="{{__('time')}}">
                                     </div>
                                     <div class="form-group">
+                                        <label for="cost">{{__('Cost')}}</label>
+                                        <input type="text" class="form-control"  id="cost" name="cost" value="{{$event->cost}}" placeholder="{{__('cost')}}">
+                                        <span class="info-text">{{__('enter zero (0) to make this program free of cost')}}</span>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="available_registrations">{{__('Available Registrations')}}</label>
                                         <input type="text" class="form-control"  id="available_registrations" value="{{$program->available_registrations}}" name="available_registrations" placeholder="{{__('available tickets')}}">
                                     </div>

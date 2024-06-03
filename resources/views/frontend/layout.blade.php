@@ -31,6 +31,7 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ asset('assets/common/vendor/bootstrap/css/bootstrap.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/common/vendor/bootstrap-icons/bootstrap-icons.css') }}">
 
     <!-- Google Fonts -->
@@ -74,6 +75,7 @@
     <script src="{{ asset('assets/common/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('assets/common/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/common/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/common/vendor/jquery-2.2.4.min.js') }}"></script>
 </body>
 
 </html>
