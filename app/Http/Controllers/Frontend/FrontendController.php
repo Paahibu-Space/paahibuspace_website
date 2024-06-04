@@ -11,6 +11,7 @@ use App\Models\Services;
 use App\Models\ServiceCategory;
 use App\Models\Programs;
 use App\Models\Newsletter;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -36,7 +37,8 @@ class FrontendController extends Controller
     public function service_page()
     {
         $all_services = Services::orderBy('sr_order', 'asc')->paginate(get_static_option('service_page_service_items'));
-        return view('frontend.pages.service.services')->with(['all_services' => $all_services]);
+        $all_testimonials = Testimonial::get();
+        return view('frontend.pages.service.services')->with(['all_services' => $all_services, 'all_testimonials' => $all_testimonials]);
     }
 
     public function services_single_page($slug)

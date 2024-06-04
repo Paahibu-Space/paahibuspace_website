@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('assets/common/vendor/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/slick.css') }}">
 
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/common/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -68,7 +69,6 @@
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
     <script src="{{ asset('assets/frontend/js/simpleParallax.min.js') }}"></script>
     {{-- <script src="{{ asset('assets/frontend/js/subscribe.js') }}"></script> --}}
-    @include('frontend.partials.inline-script')
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('assets/common/vendor/swiper/swiper-bundle.min.js') }}"></script>
@@ -77,6 +77,14 @@
     <script src="{{ asset('assets/common/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/common/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/common/vendor/jquery-2.2.4.min.js') }}"></script>
+    
+    <script src="{{ asset('assets/frontend/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/slick.js') }}"></script>
+
+    @include('frontend.partials.inline-script')
+
+
+
 </body>
 
 </html>

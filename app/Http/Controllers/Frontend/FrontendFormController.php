@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
 use App\EventAttendance;
 use App\Events;
 use App\Facades\EmailTemplate;
 use App\Feedback;
-use App\FormBuilder;
+use App\Models\FormBuilder;
 use App\Helpers\NexelitHelpers;
 use App\JobApplicant;
 use App\Jobs;
@@ -29,101 +30,7 @@ use function GuzzleHttp\Promise\all;
 class FrontendFormController extends Controller
 {
 
-    public function get_touch(Request $request)
-    {
-
-        $validated_data = $this->get_filtered_data_from_request(get_static_option('get_in_touch_form_fields'),$request);
-        $all_attachment = $validated_data['all_attachment'];
-        $all_field_serialize_data = $validated_data['field_data'];
-
-        $google_captcha_result = google_captcha_check($request->captcha_token);
-
-        if (!$google_captcha_result['success']) {
-            $data['status'] = '400';
-            $data['msg'] = __('google recaptcha error');
-            return response()->json($data);
-        }
-        $succ_msg = get_static_option('get_in_touch_mail_'.get_user_lang().'_success_message');
-        $success_message = !empty($succ_msg) ? $succ_msg : __('Thanks for your contact!!');
-
-        try {
-            Mail::to(get_static_option('site_global_email'))
-                ->send(new ContactMessage(
-                    $all_field_serialize_data,
-                    $all_attachment,
-                    __('You Have Contact Mail')
-                ));
-        }catch (\Exception $e){
-            return response()->json([
-                'status' => '400',
-                'msg' => $e->getMessage()
-            ]);
-        }
-
-        $data['status'] = '200';
-        $data['msg'] = $success_message;
-        return response()->json($data);
-
-
-        $data['status'] = '400';
-        $data['msg'] = __('Something goes wrong, Please try again later !!');
-        return response()->json($data);
-    }
-
-    public function subscribe_newsletter(Request $request)
-    {
-        $this->validate($request, [
-            'email' => 'required|string|email|max:191|unique:newsletters'
-        ]);
-        $verify_token = \Str::random(32);
-        $newsletter = Newsletter::create([
-            'email' => $request->email,
-            'verified' => 0,
-            'token' => $verify_token
-        ]);
-        try{
-            //send verify mail to newsletter subscriber
-            Mail::to($request->email)
-                ->send(new BasicMail(EmailTemplate::newsletterVerifyMail($newsletter)));
-        }catch (\Exception $e){
-            return redirect()->back()->with(NexelitHelpers::item_delete($e->getMessage()));
-        }
-
-        return redirect()->back()->with([
-            'msg' => __('Thanks for Subscribe Our Newsletter'),
-            'type' => 'success'
-        ]);
-    }
-    
-    public function send_contact_message(Request $request)
-    {
-
-        $validated_data = $this->get_filtered_data_from_request(get_static_option('contact_page_contact_form_fields'),$request);
-        $all_attachment = $validated_data['all_attachment'];
-        $all_field_serialize_data = $validated_data['field_data'];
-
-        $google_captcha_result = google_captcha_check($request->captcha_token);
-        if (!$google_captcha_result['success'] ) {
-
-            return redirect()->back()->with(['msg' =>  __('google recaptcha error'), 'type' => 'danger']);
-        }
-
-        $succ_msg = get_static_option('contact_mail_' . get_user_lang() . '_success_message');
-        $success_message = !empty($succ_msg) ? $succ_msg : __('Thanks for your contact!!');
-        try {
-            Mail::to(get_static_option('site_global_email'))
-                ->send(new ContactMessage(
-                    $all_field_serialize_data,
-                    $all_attachment,
-                    __('You Have Contact Message from').' '.get_static_option('site_'.get_default_language().'_title')
-                ));
-        }catch (\Exception $e){
-            return redirect()->back()->with(NexelitHelpers::item_delete($e->getMessage()));
-        }
-        return redirect()->back()->with(['msg' => $success_message, 'type' => 'success']);
-    }
-
-    public function custom_form_builder_message(Request $request)
+        public function custom_form_builder_message(Request $request)
     {
         $this->validate($request,[
             "custom_form_id" => 'required'
@@ -137,10 +44,6 @@ class FrontendFormController extends Controller
         $all_attachment = $validated_data['all_attachment'];
         $all_field_serialize_data = $validated_data['field_data'];
         $success_message = $field_details->success_message ?? __('Thanks for your contact!!');
-        $google_captcha_result = google_captcha_check($request->captcha_token);
-        if (!$google_captcha_result['success']) {
-            return response()->json(['msg' => __('google recaptcha error!!, reload the page and try again'), 'type' => 'danger']);
-        }
         try {
             Mail::to($field_details->email)->send(
                 new CustomFormBuilderMail([
@@ -149,7 +52,7 @@ class FrontendFormController extends Controller
                         'attachments' => $all_attachment
                     ],
                     'form_title' => $field_details->title,
-                    'subject' => sprintf(__('You Have %s Message from'),$field_details->title).' '.get_static_option('site_'.get_default_language().'_title')
+                    'subject' => sprintf(__('You Have %s Message from'),$field_details->title).' '.get_static_option('site_title')
                 ])
             );
         }catch(\Exception $e){
@@ -157,131 +60,6 @@ class FrontendFormController extends Controller
         }
 
         return response()->json(['msg' => $success_message, 'type' => 'success']);
-    }
-
-
-
-    public function send_quote_message(Request $request)
-    {
-
-        $validated_data = $this->get_filtered_data_from_request(get_static_option('quote_page_form_fields'),$request);
-        $all_attachment = $validated_data['all_attachment'];
-        $all_field_serialize_data = $validated_data['field_data'];
-
-        $quote_details = Quote::create([
-            'custom_fields' => serialize($all_field_serialize_data),
-            'status' => 'pending',
-            'attachment' => serialize($all_attachment)
-        ]);
-
-        $google_captcha_result = google_captcha_check($request->captcha_token);
-
-        if (!$google_captcha_result['success'] ) {
-            return redirect()->back()->with(['msg' =>__( 'google recaptcha error!!'), 'type' => 'danger']);
-        }
-        //have to check mail
-        $succ_msg = get_static_option('quote_mail_' . get_user_lang() . '_success_message');
-        $success_message = !empty($succ_msg) ? $succ_msg : __('Thanks for your quote. we will get back to you very soon.');
-
-        try {
-            Mail::to(get_static_option('quote_page_form_mail'))
-                ->send(new BasicMail(EmailTemplate::quoteAdminMail($quote_details)));
-        }catch (\Exception $e){
-            return redirect()->back()->with(NexelitHelpers::item_delete($e->getMessage()));
-        }
-
-        return redirect()->back()->with(['msg' => $success_message, 'type' => 'success']);
-
-
-
-    }
-
-    public function store_event_booking_data(Request $request){
-
-        $validated_data = $this->get_filtered_data_from_request(get_static_option('event_attendance_form_fields'),$request);
-        $all_attachment = $validated_data['all_attachment'];
-        $all_field_serialize_data = $validated_data['field_data'];
-
-        $event_detials = Events::find($request->event_id);
-        $event_attendance_id = EventAttendance::create([
-            'custom_fields' => serialize($all_field_serialize_data),
-            'status' => 'pending',
-            'event_name' => $event_detials->title,
-            'event_cost' => $event_detials->cost,
-            'quantity' => $request->quantity,
-            'event_id' => $request->event_id,
-            'checkout_type' => !empty($request->checkout_type) ? $request->checkout_type : '',
-            'user_id' => Auth::guard('web')->check() ? Auth::guard('web')->user()->id : 0,
-            'attachment' => serialize($all_attachment)
-        ])->id;
-
-        if (in_array(env('APP_ENV'), ['development','local'])){
-            //have to set condition for redirect in payment page with payment information
-            if (!empty(get_static_option('site_payment_gateway'))) {
-
-                $succ_msg = get_static_option('event_attendance_mail_' . get_user_lang() . '_subject');
-                $success_message = !empty($succ_msg) ? $succ_msg : __('Thanks for your Booking. we will get back to you very soon.');
-                $order_mail = get_static_option('event_attendance_receiver_mail') ? get_static_option('event_attendance_receiver_mail') : get_static_option('site_global_email');
-
-                if ($event_detials->cost == 0 || empty(get_static_option('site_payment_gateway'))){
-                    try {
-                        Mail::to($order_mail)
-                            ->send(new ContactMessage(
-                                $all_field_serialize_data,
-                                $all_attachment,
-                                __('Your have an event booking for').' '.$event_detials->title
-                            ));
-
-                    }catch (\Exception $e){
-                        return redirect()->back()->with(NexelitHelpers::item_delete($e->getMessage()));
-                    }
-                    return redirect()->back()->with(['msg' => $success_message, 'type' => 'success']);
-                }
-
-                return redirect()->route('frontend.event.booking.confirm', $event_attendance_id);
-
-            }
-            event(new Events\AttendanceBooking([
-                'attendance_id' => $event_attendance_id,
-                'transaction_id' => 'free event'
-            ]));
-            $success_message = __('Thanks for your Booking. we will get back to you very soon.');
-            return redirect()->back()->with(['msg' => $success_message, 'type' => 'success']);
-        }
-
-
-        // $google_captcha_result = google_captcha_check($request->captcha_token);
-        // if ($google_captcha_result['success'] && !empty(get_static_option('site_google_captcha_status'))) {
-        //     return redirect()->back()->with(['msg' => __('google recaptcha error'), 'type' => 'danger']);
-        // }
-
-        //have to set condition for redirect in payment page with payment information
-        if (!empty(get_static_option('site_payment_gateway'))) {
-
-            $succ_msg = get_static_option('event_attendance_mail_' . get_user_lang() . '_subject');
-            $success_message = !empty($succ_msg) ? $succ_msg : __('Thanks for your Booking. we will get back to you very soon.');
-            $order_mail = get_static_option('event_attendance_receiver_mail') ? get_static_option('event_attendance_receiver_mail') : get_static_option('site_global_email');
-
-            if ($event_detials->cost == 0 || empty(get_static_option('site_payment_gateway'))){
-                try {
-                    Mail::to($order_mail)->send(new ContactMessage($all_field_serialize_data, $all_attachment, __('Your have an event booking for').' '.$event_detials->title));
-                }catch (\Exception $e){
-                    return redirect()->back()->with(NexelitHelpers::item_delete($e->getMessage()));
-                }
-                return redirect()->back()->with(['msg' => $success_message, 'type' => 'success']);
-            }
-
-            return redirect()->route('frontend.event.booking.confirm', $event_attendance_id);
-
-        }
-         event(new Events\AttendanceBooking([
-            'attendance_id' => $event_attendance_id,
-            'transaction_id' => 'free event'
-        ]));
-        $success_message = get_static_option('event_attendance_mail_'.get_user_lang().'_success_message') ?? __('Thanks for your Booking. we will get back to you very soon.');
-        return redirect()->back()->with(['msg' => $success_message, 'type' => 'success']);
-
-
     }
 
     public function get_filtered_data_from_request($option_value,$request,$file_save = true){
@@ -296,9 +74,6 @@ class FrontendFormController extends Controller
         //get field details from, form request
         $all_field_serialize_data = $request->all();
         unset($all_field_serialize_data['_token']);
-        if (isset($all_field_serialize_data['captcha_token'])){
-            unset($all_field_serialize_data['captcha_token']);
-        }
 
 
         if (!empty($all_field_name)){
@@ -344,39 +119,5 @@ class FrontendFormController extends Controller
             'all_attachment' => $all_attachment,
             'field_data' => $all_field_serialize_data
         ];
-    }
-
-    public function send_estimate_message(Request $request){
-
-        $validated_data = $this->get_filtered_data_from_request(get_static_option('estimate_form_fields'),$request);
-        $all_attachment = $validated_data['all_attachment'];
-        $all_field_serialize_data = $validated_data['field_data'];
-
-        $google_captcha_result = google_captcha_check($request->captcha_token);
-        if ($google_captcha_result['success'] &&  !empty(get_static_option('site_google_captcha_status'))) {
-            $data['status'] = '400';
-            $data['msg'] = __('google recaptcha error!!');
-            return response()->json($data);
-        }
-
-        $succ_msg = get_static_option('estimate_form_mail_' . get_user_lang() . '_success_message');
-        $success_message = !empty($succ_msg) ? $succ_msg : __('Thanks for your contact!!');
-        $send_mail = get_static_option('home_page_16_estimate_area_form_email') ?? get_static_option('site_global_email');
-        try {
-            Mail::to($send_mail)
-                ->send(new ContactMessage(
-                    $all_field_serialize_data,
-                    $all_attachment,
-                    __('You Have Estimate Message from').' '.get_static_option('site_'.get_default_language().'_title')
-                ));
-        }catch (\Exception $e){
-            $data['status'] = '400';
-            $data['msg'] = $e->getMessage();
-            return response()->json($data);
-        }
-        $data['status'] = '200';
-        $data['msg'] = $success_message;
-
-        return response()->json($data);
     }
 }

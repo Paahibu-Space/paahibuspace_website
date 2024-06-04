@@ -59,4 +59,52 @@
             </div>
         </div>
     </section>
+
+    <!--  Testimonial section -->
+    <section class="feedback-area home-21 home-21-section-bg padding-top-70 padding-bottom-100">
+        <div class="container container-three">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="global-slick-init feedback-slider feedback-nav" data-infinite="true" data-arrows="true" data-dots="false" data-slidesToShow="1" data-swipeToSlide="true" data-autoplay="true" data-autoplaySpeed="2500" data-prevArrow='<div class="prev-icon"><i class="fas fa-arrow-left"></i></div>'
+                         data-nextArrow='<div class="next-icon"><i class="fas fa-arrow-right"></i></div>'>
+                        @foreach($all_testimonials as $test)
+                            <div class="slick-slider-item">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-5 margin-top-30">
+                                        <div class="feedback-image-wrapper">
+                                            <div class="feedback-thumb">
+                                                {!! render_image_markup_by_attachment_id($test->image) !!}
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7 margin-top-30">
+                                        <div class="feedback-contents-wrapper">
+                                            <div class="section-title-21">
+                                                <span class="subtitle color-light mb-3">Testimonial</span>
+                                                <h2 class="title">
+                                                    @php
+                                                        $header_title = 'Clients Feedback';
+                                                        $header_title = str_replace(['{shape}','{/shape}'],['<span class="section-shape">','</span>'],$header_title);
+                                                    @endphp
+                                                    {!! $header_title !!}
+                                                </h2>
+                                            </div>
+                                            <div class="feedback-contents mt-5">
+                                                <p class="feedback-para"> {{$test->description}} </p>
+                                                <div class="clients-contents mt-5">
+                                                    <h3 class="client-title"> {{$test->name}} </h3>
+                                                    <span class="client-subtitle color-light mt-2"> {{$test->designation}}  </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

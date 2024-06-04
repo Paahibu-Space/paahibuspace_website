@@ -46,7 +46,7 @@ $work_page_slug = 'work';
     /*----------------------------------------
       FRONTEND: CUSTOM FORM BUILDER ROUTES
     -----------------------------------------*/
-    Route::post('submit-custom-form', 'FrontendFormController@custom_form_builder_message')->name('frontend.form.builder.custom.submit');
+    Route::post('submit-custom-form', 'App\Http\Controllers\Frontend\FrontendFormController@custom_form_builder_message')->name('frontend.form.builder.custom.submit');
 
     /*==============================================
     FRONTEND ROUTES: PROGRAM MODULE
