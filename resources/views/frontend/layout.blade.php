@@ -67,7 +67,8 @@
 
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
     <script src="{{ asset('assets/frontend/js/simpleParallax.min.js') }}"></script>
-    <script src="{{ asset('assets/frontend/js/subscribe.js') }}"></script>
+    {{-- <script src="{{ asset('assets/frontend/js/subscribe.js') }}"></script> --}}
+    @include('frontend.partials.inline-script')
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('assets/common/vendor/swiper/swiper-bundle.min.js') }}"></script>

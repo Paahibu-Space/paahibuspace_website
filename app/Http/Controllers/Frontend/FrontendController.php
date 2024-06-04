@@ -202,17 +202,24 @@ class FrontendController extends Controller
         ]);
     }
 
-    public function subscribe_newsletter(Request $request)
-    {
-        $this->validate($request, [
-            'email' => 'required|string|email|max:191|unique:newsletters'
-        ],
-            [
-                'required' => __('Enter Valid Email'),
-                'unique' => __('This Email Already Registered'),
-            ]);
-        Newsletter::create($request->all());
-        return response()->json(__('success'));
-    }
+public function subscribe_newsletter(Request $request)
+{
+    $this->validate($request, [
+        'email' => 'required|string|email|max:191|unique:newsletters'
+    ],
+        [
+            'required' => __('Enter Valid Email'),
+            'unique' => __('This Email Already Registered'),
+        ]);
+
+    Newsletter::create($request->all());
+
+    // Prepare success message
+    $message = __('Thank you for subscribing to our newsletter');
+
+    // Return JSON response with success message
+    return response()->json(['message' => $message]);
+}
+
     
 }
