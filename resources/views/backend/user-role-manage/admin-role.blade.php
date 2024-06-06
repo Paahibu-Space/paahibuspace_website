@@ -23,7 +23,8 @@
         "Testimonial",
         "General Settings",
         "Email Templates",
-        "Stories Manage"
+        "Stories Manage",
+        "Partners Manage",
     );
 @endphp
 

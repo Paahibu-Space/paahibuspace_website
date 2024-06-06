@@ -62,6 +62,49 @@ class FrontendFormController extends Controller
         return response()->json(['msg' => $success_message, 'type' => 'success']);
     }
 
+    public function get_touch(Request $request)
+    {
+        $this->validate($request, [
+            "your-name" => 'required',
+            "your-email" => 'required|email',
+            "your-phone" => 'required',
+            "your-message" => 'required',
+        ]);
+    $validated_data = [
+        'name' => $request->get('your-name'),
+        'email' => $request->get('your-email'),
+        'phone' => $request->get('your-phone'),
+        'message' => $request->get('your-message'),
+    ];
+    $all_attachment = [];
+
+        $succ_msg = 'Message sent successfully, thank you';
+        $success_message = !empty($succ_msg) ? $succ_msg : __('Thanks for your contact!!');
+
+        try {
+            Mail::to(get_static_option('site_global_email'))
+                ->send(new ContactMessage(
+                    $validated_data,
+                    $all_attachment,
+                    __('You Have Contact Mail')
+                ));
+        }catch (\Exception $e){
+            return response()->json([
+                'status' => '400',
+                'msg' => $e->getMessage()
+            ]);
+        }
+
+        $data['status'] = '200';
+        $data['msg'] = $success_message;
+        return response()->json($data);
+
+
+        $data['status'] = '400';
+        $data['msg'] = __('Something goes wrong, Please try again later !!');
+        return response()->json($data);
+    }
+
     public function get_filtered_data_from_request($option_value,$request,$file_save = true){
 
         $all_attachment = [];

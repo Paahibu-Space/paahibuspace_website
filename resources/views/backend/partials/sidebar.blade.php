@@ -204,6 +204,13 @@
                                 <span>{{ __('Team Members') }}</span></a>
                         </li>
                     @endif
+                    @if (check_page_permission_by_string('Partners Manage'))
+                        <li class="main_dropdown {{ active_menu('admin-home/partners') }}">
+                            <a href="{{ route('admin.partners') }}" aria-expanded="true"><i
+                                    class="ti-control-forward"></i>
+                                <span>{{ __('Partners Manage') }}</span></a>
+                        </li>
+                    @endif
                     @if (check_page_permission_by_string('Testimonial'))
                         <li class="main_dropdown {{ active_menu('admin-home/testimonial') }}">
                             <a href="{{ route('admin.testimonial') }}" aria-expanded="true"><i

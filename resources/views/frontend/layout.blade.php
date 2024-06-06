@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="{{asset('assets/frontend/css/fontawesome.min.css')}}">
     <!-- vendor files -->
     <link rel="stylesheet" href="{{ asset('assets/common/vendor/fontawesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/slick.css') }}">
 
@@ -34,6 +33,8 @@
     <link rel="stylesheet" href="{{ asset('assets/common/vendor/bootstrap/css/bootstrap.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/common/vendor/bootstrap-icons/bootstrap-icons.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

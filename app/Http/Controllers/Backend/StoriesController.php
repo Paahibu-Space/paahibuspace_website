@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Actions\SlugChecker;
 use App\Models\Stories;
-use App\Models\UpcomingPrograms;
+use App\Models\Programs;
 use App\Http\Requests\SlugCheckRequest;
 use App\Services;
 use App\Volunteer;
@@ -38,11 +38,14 @@ class StoriesController extends Controller
            'stories_content' => 'required',
            'title' => 'required',
            'excerpt' => 'required',
+           'tags' => 'required',
            'status' => 'required',
            'author' => 'required',
            'slug' => 'nullable',
            'image' => 'nullable|string|max:191',
            'video_url' => 'nullable|string',
+           'meta_tags' => 'nullable|string',
+           'meta_description' => 'nullable|string',
         ]);
         $slug = !empty($request->slug) ? $request->slug : Str::slug($request->title);
 
@@ -51,11 +54,14 @@ class StoriesController extends Controller
             'content' => $request->stories_content,
             'title' => $request->title,
             'excerpt' => $request->excerpt,
+            'tags' => $request->tags,
             'status' => $request->status,
             'image' => $request->image,
             'user_id' => Auth::user()->id,
             'author' => $request->author,
             'video_url' => $request->video_url,
+            'meta_tags' => $request->meta_tags,
+            'meta_description' => $request->meta_description,
         ]);
         return redirect()->back()->with([
             'msg' => __('New Story Post Added...'),
@@ -70,6 +76,7 @@ class StoriesController extends Controller
             'content' => $story_details->content,
             'title' => $story_details->title,
             'excerpt' => $story_details->excerpt,
+            'tags' => $story_details->tags,
             'status' => 'draft',
             'image' => $story_details->image,
             'user_id' => null,
@@ -94,11 +101,14 @@ class StoriesController extends Controller
             'stories_content' => 'required',
             'title' => 'required',
             'excerpt' => 'required',
+            'tags' => 'required',
             'status' => 'required',
             'author' => 'required',
             'slug' => 'nullable',
             'image' => 'nullable|string|max:191',
             'video_url' => 'nullable|string',
+            'meta_tags' => 'nullable|string',
+            'meta_description' => 'nullable|string',
 
         ]);
         $slug = !empty($request->slug) ? $request->slug : Str::slug($request->title);
@@ -107,11 +117,14 @@ class StoriesController extends Controller
             'content' => $request->stories_content,
             'title' => $request->title,
             'excerpt' => $request->excerpt,
+            'tags' => $request->tags,
             'status' => $request->status,
             'image' => $request->image,
             'user_id' => Auth::user()->id,
             'author' => $request->author,
             'video_url' => $request->video_url,
+            'meta_tags' => $request->meta_tags,
+            'meta_description' => $request->meta_description,
         ]);
 
         return redirect()->back()->with([
@@ -136,7 +149,7 @@ class StoriesController extends Controller
 
     public function slug_check(SlugCheckRequest $request){
         $user_given_slug = $request->slug;
-        $query = UpcomingPrograms::Stories(['slug' => $user_given_slug]);
+        $query = Programs::Stories(['slug' => $user_given_slug]);
 
         return SlugChecker::Check($request,$query);
     }

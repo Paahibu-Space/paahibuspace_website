@@ -3,7 +3,7 @@
   --main-color-one: #272974;
   --heading-color: #1B1C25;
   --paragraph-color: #878a95;
-  --body-font-home-21: "Manrope", sans-serif;
+  --body-font: "Arial", sans-serif;
 }
 
 * {
@@ -11,9 +11,31 @@
   margin: 0;
 }
 
+body {
+  font-family: var(--body-font);
+}
+
 a {
   text-decoration: none !important;
   color: inherit;
+}
+
+input[type=button]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+input[type=password]:focus,
+input[type=reset]:focus,
+input[type=search]:focus,
+input[type=submit]:focus,
+input[type=tel]:focus,
+input[type=text]:focus,
+input[type=url]:focus,
+select:focus,
+textarea:focus {
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid #ddd
 }
 
 /* General styles */
@@ -94,7 +116,7 @@ section {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #272974;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--body-font);
 }
 
 .section-title h2::after {
@@ -340,7 +362,7 @@ height: 3000px;
   padding: 20px 40px;
   height: auto;
   transition: 0.3s;
-  font-family: var(--font-secondary);
+  font-family: var(--body-font);
 }
 
 @media (max-width: 1279px) {
@@ -380,7 +402,7 @@ height: 3000px;
     align-items: center;
     justify-content: space-between;
     padding: 14px 28px;
-    font-family: var(--font-secondary);
+    font-family: var(--body-font);
     font-size: 14px;
     font-weight: 400;
     color: #fff;
@@ -1637,20 +1659,20 @@ h6.service_summary-about::before {
   font-weight: 700;
   line-height: 1.2;
   color: #fff;
-  font-family: var(--font-secondary);
+  font-family: var(--body-font);
 }
 
 .services-hero blockquote {
   color: #fff;
   padding-left: 20px;
   font-size: 15px;
-  font-family: var(--font-default);
+  font-family: var(--body-font);
   border-left: 2px solid #f6871f;
   margin: 40px 0;
 }
 
 .services-hero .btn-get-started {
-  font-family: var(--font-secondary);
+  font-family: var(--body-font);
   font-weight: 500;
   font-size: 15px;
   letter-spacing: 1px;
@@ -2016,6 +2038,194 @@ h6.service_summary-about::before {
     transform: rotate(360deg);
   }
 }
+
+
+
+/*--------------------------------------------------------------
+# Connect Section
+--------------------------------------------------------------*/
+/* Connect area */
+
+.home-21.connects-area {
+  position: relative;
+  z-index: 0;
+}
+
+.home-21 .connect-inner-content .single-connects {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  gap: 30px;
+  margin-top: 50px;
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .home-21 .connect-inner-content .single-connects {
+      gap: 20px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .home-21 .connect-inner-content .single-connects {
+      gap: 20px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .home-21 .connect-inner-content .single-connects {
+      display: block;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .home-21 .connect-inner-content .single-connects .connect-content {
+      margin-top: 10px;
+  }
+}
+
+.home-21 .connect-inner-content .single-connects .connect-content .connect-title {
+  font-size: 28px;
+  line-height: 32px;
+  font-family: var(--heading-font-home-21);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 1400px) and (max-width: 1599.98px) {
+  .home-21 .connect-inner-content .single-connects .connect-content .connect-title {
+      font-size: 26px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+  .home-21 .connect-inner-content .single-connects .connect-content .connect-title {
+      font-size: 24px;
+      margin-bottom: 15px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .home-21 .connect-inner-content .single-connects .connect-content .connect-title {
+      font-size: 24px;
+      margin-bottom: 15px;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .home-21 .connect-inner-content .single-connects .connect-content .connect-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+  }
+}
+
+.home-21 .connect-inner-content .single-connects .connect-content .connect-item {
+  display: block;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 32px;
+  font-family: var(--body-font-home-21);
+  color: var(--light-color);
+}
+
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+  .home-21 .connect-inner-content .single-connects .connect-content .connect-item {
+      font-size: 17px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .home-21 .connect-inner-content .single-connects .connect-content .connect-item {
+      font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .home-21 .connect-inner-content .single-connects .connect-content .connect-item {
+      font-size: 16px;
+  }
+}
+
+.home-21 .connect-inner-content .single-connects .connect-content .connect-item .connect {
+  display: inline-block;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.home-21 .connect-inner-content .single-connects .connect-content .connect-item .connect:hover {
+  color: var(--main-color-two);
+}
+
+.home-21 .connect-form-inner {
+  padding-top: 10px;
+}
+
+.home-21 .connect-form-inner .single-input .connect-label {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: var(--body-font-home-21);
+  color: var(--light-color);
+  line-height: 30px;
+  margin-bottom: 15px;
+}
+
+.home-21 .connect-form-inner .form-group {
+  margin-bottom: 1rem;
+}
+
+.home-21 .connect-form-inner .form-group .form-control,
+.home-21 .connect-form-inner .single-input .form--control {
+  height: 60px;
+  border: 0;
+  outline: none;
+  background-color: #F8F8F8;
+  width: 100%;
+  padding: 0 20px;
+  font-family: var(--body-font-home-21);
+}
+
+.home-21 .connect-form-inner .single-input .form--message,
+.home-21 .connect-form-inner .form-group textarea.form-control {
+  padding: 20px;
+  height: 120px;
+}
+
+.white-color {
+  color: #fff;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.end-text {
+  text-align: right;
+}
+
+.home-21 .connect-form-inner button {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 15px 30px;
+  background-color: var(--main-color-two);
+  color: var(--heading-color);
+  border: 0;
+  outline: none;
+  margin-top: 30px;
+  cursor: pointer;
+  border: 2px solid var(--main-color-two);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border-radius: 0;
+}
+
+.home-21 .connect-form-inner button:hover {
+  background: none;
+  color: var(--main-color-two);
+}
+
 
 /*--------------------------------------------------------------
 # about-page Section

@@ -12,14 +12,19 @@ use App\Models\ServiceCategory;
 use App\Models\Programs;
 use App\Models\Newsletter;
 use App\Models\Testimonial;
+use App\Models\Partners;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     public function index() {
         $all_services = Services::where(['status' => 'publish'])->orderBy('sr_order', 'asc')->get();
+        $all_partners = Partners::all();
+        $all_stories = Stories::all();
         return view('frontend.pages.index')->with([
-            'all_services' => $all_services
+            'all_services' => $all_services,
+            'all_partners' => $all_partners,
+            'all_stories' => $all_stories,
         ]);
     }
 

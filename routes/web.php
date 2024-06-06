@@ -79,6 +79,10 @@ Route::group(['middleware' => ['maintains_mode']], function () {
      // Frontend Newsletter Subscription
      Route::post('/subscribe-newsletter', 'App\Http\Controllers\Frontend\FrontendController@subscribe_newsletter')->name('frontend.subscribe.newsletter');
 
+    //  Get in touch
+     Route::post('/get-touch', 'App\Http\Controllers\Frontend\FrontendFormController@get_touch')->name('frontend.get.touch');
+
+
     //user login
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('user.login');
     Route::post('/ajax-login', 'FrontendController@ajax_login')->name('user.ajax.login');
@@ -324,6 +328,18 @@ Route::prefix('admin-home')->group(function () {
         Route::post('/delete', 'App\Http\Controllers\Backend\MediaUploadController@delete_upload_media_file')->name('admin.upload.media.file.delete');
         Route::get('/page', 'App\Http\Controllers\Backend\MediaUploadController@all_upload_media_images_for_page')->name('admin.upload.media.images.page');
         Route::post('/alt', 'App\Http\Controllers\Backend\MediaUploadController@alt_change_upload_media_file')->name('admin.upload.media.file.alt.change');
+    });
+
+        /*==============================================
+       PARTNERS ANS SUPPORTERS ROUTES
+    ==============================================*/
+    Route::prefix('partners')->middleware(['adminPermissionCheck:Partners Manage'])->group(function () {
+        //partner logos
+        Route::get('/', 'App\Http\Controllers\Backend\PartnersController@index')->name('admin.partners');
+        Route::post('/', 'App\Http\Controllers\Backend\PartnersController@store');
+        Route::post('/update', 'App\Http\Controllers\Backend\PartnersController@update')->name('admin.partners.update');
+        Route::post('/delete/{id}', 'App\Http\Controllers\Backend\PartnersController@delete')->name('admin.partners.delete');
+        Route::post('/bulk-action', 'App\Http\Controllers\Backend\PartnersController@bulk_action')->name('admin.partners.bulk.action');
     });
 
     /*==============================================
