@@ -313,3 +313,4 @@ function get_footer_copyright_text(){
     $footer_copyright_text = str_replace(array('{copy}', '{year}'), array('&copy;', date('Y')), $footer_copyright_text);
     return $footer_copyright_text;
 }
+

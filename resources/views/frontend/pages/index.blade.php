@@ -74,10 +74,10 @@
                                                 width="500" height="666" class="lazy thumparallax-down img-fluid"
                                                 alt="two-images-1.jpg"></div>
                                     </div>
-                                    <div class="exp-about">
+                                    {{-- <div class="exp-about">
                                         <h5 class="nmb-font-about">2</h5>
                                         <h6 class="service_summary-about">- Years of experience</h6>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -101,7 +101,7 @@
                     <h4 class="about-heading1-home">About Paahibu Space</h4>
                     <h3 class="about-heading2-home">Inclusivity and Access to Knowledge</h3>
 
-                    <p>Paahibu Space is a non-profit tech and entrepreneurship development organization focusing
+                    <p>Paahibu Space is an African tech and entrepreneurship development organization focusing
                         providing digital solutions to small businesses and nonprofits led by women, while educating,
                         inspiring, empowering, and shaping the personal and professional development of the next
                         generation of African female leaders in technology, innovation, entrepreneurship, and business
@@ -228,24 +228,24 @@
     </section><!-- End partners Section -->
 
 
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg">
+    <!-- ======= home-stories Section ======= -->
+    <section id="home-stories" class="home-stories section-bg">
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
                 <h2>Impact Stories</h2>
-                <!-- <p>Testimonials</p> -->
+                <!-- <p>home-stories</p> -->
             </div>
 
-            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+            <div class="home-stories-slider swiper" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper-wrapper">
                     @foreach ($all_stories as $story)
                     <div class="swiper-slide">
-                        <div class="testimonial-wrap">
-                            <div class="testimonial-item">
+                        <div class="story-wrap">
+                            <div class="story-item">
                                 @if (!empty($story->image))
-                                {!! render_image_markup_by_attachment_id($story->image, 'testimonial-img') !!}
-                                @else <img src="{{ asset('assets/frontend/images/no-image.webp') }}" alt="No image" class="testimonial-img">
+                                {!! render_image_markup_by_attachment_id($story->image, 'story-img') !!}
+                                @else <img src="{{ asset('assets/frontend/images/no-image.webp') }}" alt="No image" class="story-img">
                                 @endif
                                 <h3>{{ $story->title }}</h3>
                                 <h4>{{ $story->tags }}</h4>
@@ -256,7 +256,7 @@
                                 </p>
                             </div>
                         </div>
-                    </div><!-- End testimonial item -->
+                    </div><!-- End story item -->
                     @endforeach
                     
 
@@ -265,7 +265,7 @@
             </div>
 
         </div>
-    </section><!-- End Testimonials Section -->
+    </section><!-- End home-stories Section -->
 
     <section class="connects-area home-21 padding-top-70 padding-bottom-50">
         <div class="container container-three">

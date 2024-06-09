@@ -30,8 +30,10 @@ class FrontendController extends Controller
 
     public function showAboutPage() {
         $all_team_members = TeamMember::orderBy('id', 'desc')->paginate(12);
+        $all_testimonials = Testimonial::get();
         return view('frontend.pages.about')->with([
-            'all_team_members' => $all_team_members
+            'all_team_members' => $all_team_members,
+            'all_testimonial' => $all_testimonials,
         ]);
     }
 

@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
    /**
    * Testimonials slider
    */
-   new Swiper('.testimonials-slider', {
+   new Swiper('.home-stories-slider', {
     speed: 600,
     loop: true,
     autoplay: {
