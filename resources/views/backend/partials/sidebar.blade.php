@@ -245,6 +245,9 @@
                                 <li class="{{ active_menu('admin-home/general-settings/basic-settings') }}"><a
                                         href="{{ route('admin.general.basic.settings') }}">{{ __('Basic Settings') }}</a>
                                 </li>
+                                <li class="{{ active_menu('admin-home/general-settings/seo-settings') }}"><a
+                                    href="{{ route('admin.general.seo.settings') }}">{{ __('SEO Settings') }}</a>
+                            </li>
                                 <li class="{{ active_menu('admin-home/general-settings/page-settings') }}"><a
                                         href="{{ route('admin.general.page.settings') }}">{{ __('Page Settings') }}</a>
                                 </li>

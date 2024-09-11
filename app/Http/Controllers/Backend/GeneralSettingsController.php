@@ -172,6 +172,27 @@ class GeneralSettingsController extends Controller
         return redirect()->back()->with(['msg' => __('Basic Settings Update Success'), 'type' => 'success']);
     }
 
+    public function seo_settings()
+    {
+        return view('backend.general-settings.seo');
+    }
+
+    public function update_seo_settings(Request $request)
+    {
+
+            $this->validate($request, [
+                'site_meta_tags' => 'required|string',
+                'site_meta_description' => 'required|string'
+            ]);
+
+            $site_tags = 'site_meta_tags';
+            $site_description = 'site_meta_description';
+
+            update_static_option($site_tags, $request->$site_tags);
+            update_static_option($site_description, $request->$site_description);
+
+        return redirect()->back()->with(['msg' => __('SEO Settings Update Success'), 'type' => 'success']);
+    }
 
     public function email_template_settings()
     {

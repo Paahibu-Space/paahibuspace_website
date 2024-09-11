@@ -11,7 +11,7 @@
     {!! render_og_meta_image_by_attachment_id($service_item->image) !!}
 @endsection
 @section('site-title')
-    {{ $service_item->title }} - {{ get_static_option('service_page_name') }}
+    {{ $service_item->title }} {{ get_static_option('service_page_name') }}
 @endsection
 @section('page-title')
     {{ $service_item->title }}

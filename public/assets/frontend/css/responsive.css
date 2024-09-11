@@ -1,0 +1,59 @@
+@media only screen and (max-width: 991px) {
+    .experience-author .thumb-2 {
+        position: initial;
+    }
+    .header-bottom-area.padding-bottom-80.padding-top-80 {
+        padding-top: 0 !important;
+    }
+
+    .padding-bottom-100 {
+        padding-bottom: 0 !important;
+    }
+
+    .top-experience-area {
+        padding-top: 0 !important;
+    }
+
+    .single-header-bottom-item-02 {
+        border: 1px solid #d7d7d7
+    }
+    .single-header-bottom-item-04 {
+        padding-bottom: 0
+    }
+
+    .single-header-bottom-item-02 .icon {
+        font-size: 50px;
+        line-height: 80px;
+        width: 80px;
+        height: 80px;
+        margin-bottom: 0
+    }
+
+    .single-header-bottom-item-02 .icon:after {
+        width: 100px;
+        height: 100px
+    }
+
+    .global-content .title {
+        font-size: 32px;
+        line-height: 42px;
+    }
+
+    .map-img {
+        padding-top: 60px;
+    }
+
+    .breadcrumbs h2 {
+        font-size: 36px;
+        line-height: 46px;
+        margin-bottom: 10px;
+    }
+
+    .footer .footer-content .footer-logo img {
+        width: 40%;
+    }
+
+    .img-bg {
+        background-image: url('../images/hero-img-half.jpeg') !important;
+    }
+}

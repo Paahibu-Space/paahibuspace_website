@@ -121,6 +121,20 @@
                   }
               });
           }
+
+          /* HOME ABOUT PARALAX */
+	    if (jQuery(window).width() > 768) {
+			let img1 = document.getElementsByClassName('thumparallax');
+			new simpleParallax(img1, {
+			  	delay: 2
+			});
+
+			let img2 = document.getElementsByClassName('thumparallax-down');
+			new simpleParallax(img2, {
+			  	delay: 2,
+			  	orientation: 'down'
+			});
+		}
           
     })
 }(jQuery);

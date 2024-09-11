@@ -4,7 +4,6 @@
     <!-- ======= Hero Slider Section ======= -->
     <div id="hero-slider" class="hero-slider">
         <div class="hero-container" data-aos="fade-in">
-            <div class="row">
                 <div class="col-12">
                     <div class="swiper sliderFeaturedPosts">
                         <div class="swiper-wrapper">
@@ -54,7 +53,6 @@
                         <div class="swiper-pagination"></div>
                     </div>
                 </div>
-            </div>
         </div>
     </div><!-- End Hero Slider Section -->
 
@@ -62,14 +60,14 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-7">
+                <div class="col-md-7 order-2">
 
                     <div class="pictures-row">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="item-about">
                                     <div class="imgone big-paral">
-                                        <div class="simpleParallax" data-aos="fade-up" data-aos-delay="200"><img
+                                        <div class="simpleParallax" data-aos="fade-up" data-aos-delay="200"><img class="lazy thumparallax-down img-fluid"
                                                 src="{{ asset('assets/frontend/images/about-left-img.jpeg') }}"
                                                 width="500" height="666" class="lazy thumparallax-down img-fluid"
                                                 alt="two-images-1.jpg"></div>
@@ -83,7 +81,7 @@
                             <div class="col-md-6">
                                 <div class="item-about">
                                     <div class="imgtwo big-paral">
-                                        <div class="simpleParallax" data-aos="fade-down" data-aos-delay="100"><img
+                                        <div class="simpleParallax" data-aos="fade-down" data-aos-delay="100"><img class="lazy thumparallax img-fluid"
                                                 src="{{ asset('assets/frontend/images/about-right-img.jpeg') }}"
                                                 width="500" height="820" class="lazy thumparallax img-fluid"
                                                 alt="two-images-1.jpg"></div>
@@ -108,7 +106,7 @@
                         by equipping them with knowledge and skills they will need to turn their communities’ problems
                         and challenges into solutions and opportunities in an evolving digital world.</p>
 
-                    <a href="about.html" target="_self" class="about-boxed-btn slider-boxed-btn"><span>Read
+                    <a href="{{ route('frontend.about') }}" target="_self" class="about-boxed-btn slider-boxed-btn"><span>Read
                             more</span></a>
 
                 </div>

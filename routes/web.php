@@ -531,6 +531,12 @@ Route::prefix('admin-home')->group(function () {
         Route::post('/basic-settings', 'App\Http\Controllers\Backend\GeneralSettingsController@update_basic_settings');
 
         /*----------------------------------------------------
+          SEO SETTINGS
+        ----------------------------------------------------*/
+        Route::get('/seo-settings', 'App\Http\Controllers\Backend\GeneralSettingsController@seo_settings')->name('admin.general.seo.settings');
+        Route::post('/seo-settings', 'App\Http\Controllers\Backend\GeneralSettingsController@update_seo_settings');
+
+        /*----------------------------------------------------
          PAGE SETTINGS
         ----------------------------------------------------*/
         Route::get('/page-settings', 'App\Http\Controllers\Backend\GeneralSettingsController@page_settings')->name('admin.general.page.settings');

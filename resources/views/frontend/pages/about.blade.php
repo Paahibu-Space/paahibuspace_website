@@ -17,8 +17,7 @@
             <div class="container">
 
                 <div class="about-page-section-header section-title">
-                    <h2>About Us</h2>
-                    <p>Paahibu Space is a non-profit tech and entrepreneurship development organization focusing providing
+                    <p>Paahibu Space is a tech and entrepeneurship development organization focusing providing
                         digital
                         solutions to small businesses and nonprofits led by women, while educating, inspiring, empowering,
                         and
@@ -190,7 +189,7 @@
                                 <i class="flaticon-network"></i>
                             </div>
                             <div class="content">
-                                <h4 class="title">Provide all kind of it service</h4>
+                                <h4 class="title">Your trusted IT partner</h4>
                             </div>
                         </div>
                     </div>
@@ -200,7 +199,7 @@
                                 <i class="flaticon-safe"></i>
                             </div>
                             <div class="content">
-                                <h4 class="title">Solutions for all security</h4>
+                                <h4 class="title">We secure your digital world</h4>
                             </div>
                         </div>
                     </div>
@@ -210,7 +209,7 @@
                                 <i class="flaticon-group"></i>
                             </div>
                             <div class="content">
-                                <h4 class="title">Most expert peoples</h4>
+                                <h4 class="title">Most expert team</h4>
                             </div>
                         </div>
                     </div>
@@ -237,10 +236,10 @@
                                 We Have Global Network Of Clients
                             </h2>
                             <p>
-                              Renowned for its pan-African presence and with a reputation for delivering world-class customer experience and technology services, Paahibu Space is an internationally acclaimed digital solutions service provider with a legacy of 15 years of customer experiende excellence.
+                              Renowned for its pan-African presence and with a reputation for delivering world-class customer experience and technology services, Paahibu Space is an internationally acclaimed digital solutions service provider with a legacy of 15 years of customer experience excellence.
                             </p>
                             <div class="btn-wrapper padding-top-25">
-                                <a href="#" class="boxed-btn reverse-color">Learn More</a>
+                                <a href="#testimonial-area" class="boxed-btn reverse-color">Learn More</a>
                             </div>
                         </div>
                     </div>
@@ -304,7 +303,7 @@
             </div>
         </section><!-- End about_page-team Section -->
 
-        <section class="testimonial-area bg-image-01 padding-top-110 padding-bottom-115 margin-bottom-100"
+        <section id="testimonial-area" class="testimonial-area bg-image-01 padding-top-110 padding-bottom-115 margin-bottom-100"
             style="background-image: url({{ asset('assets/frontend/images/img3.jpeg') }})">
             <div class=" container ">
                 <div class="row justify-content-center ">

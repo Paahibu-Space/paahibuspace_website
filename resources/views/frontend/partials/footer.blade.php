@@ -5,7 +5,7 @@
                 class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
 
                 <div class="footer-logo col-lg-8">
-                    <img src="{{ asset('assets/frontend/images/logo-bgr.png') }}" alt="">
+                    {!! render_image_markup_by_attachment_id(get_static_option('site_white_logo')) !!}
                 </div>
 
                 <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
@@ -33,11 +33,9 @@
                                 focusing providing digital solutions to small businesses and nonprofits led by women,
                                 while educating, inspiring, empowering, and shaping the personal and professional
                                 development of the next generation of African female leaders in technology, innovation,
-                                entrepreneurship, and business by equipping them with knowledge and skills they will
-                                need to turn their communities’ problems and challenges into solutions and opportunities
-                                in an evolving digital world. <br>
-                                Insurance Road <br><br>
-                                Wa-UWR Ghana<br><br>
+                                entrepreneurship, and business. <br><br>
+                                Insurance Road <br>
+                                Wa-UWR Ghana<br>
                                 <strong>Phone:</strong> <a href="tel:+233 24 725 4326">+233 24 725 4326</a><br>
                                 <strong>Email:</strong> <a
                                     href="mailto: info@paahibuspace.org">info@paahibuspace.org</a><br>

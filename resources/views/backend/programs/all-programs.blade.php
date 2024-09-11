@@ -23,7 +23,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="margin-top-40"></div>
-                @include('backend/partials/message')
+                <x-error-msg/>
+                <x-flash-msg/>
                 @if($errors->any())
                     <div class="alert alert-danger">
                         <ul>

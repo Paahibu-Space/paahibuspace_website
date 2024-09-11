@@ -3,7 +3,8 @@
     <div class="container-fluid d-flex align-items-center justify-content-between p-0">
 
         <a href="{{ route('homepage') }}" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
-            <img src="{{ asset('assets/frontend/images/white-logo.png') }}" alt="">
+            {{-- <img src="{{ asset('assets/frontend/images/white-logo.png') }}" alt=""> --}}
+            {!! render_image_markup_by_attachment_id(get_static_option('site_white_logo')) !!}
         </a>
 
         <nav id="navbar" class="navbar-nav">
