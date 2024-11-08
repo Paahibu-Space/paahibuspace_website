@@ -105,7 +105,7 @@
                                                     <a class="btn btn-xs btn-primary btn-xs mb-3 mr-1" href="{{route('admin.story.edit',$data->id)}}">
                                                         <i class="ti-pencil"></i>
                                                     </a>
-                                                    <a class="btn btn-xs btn-primary btn-xs mb-3 mr-1" target="_blank" href="{{route('frontend.blog.single', $data->slug)}}">
+                                                    <a class="btn btn-xs btn-primary btn-xs mb-3 mr-1" target="_blank" href="{{route('frontend.story.single', $data->slug)}}">
                                                         <i class="ti-eye"></i>
                                                     </a>
                                                     <form action="{{route('admin.story.clone')}}" method="post" style="display: inline-block">

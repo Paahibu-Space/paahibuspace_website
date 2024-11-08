@@ -13,11 +13,13 @@ use App\Models\Programs;
 use App\Models\Newsletter;
 use App\Models\Testimonial;
 use App\Models\Partners;
+use App\Models\Works;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $all_services = Services::where(['status' => 'publish'])->orderBy('sr_order', 'asc')->get();
         $all_partners = Partners::all();
         $all_stories = Stories::all();
@@ -28,7 +30,8 @@ class FrontendController extends Controller
         ]);
     }
 
-    public function showAboutPage() {
+    public function showAboutPage()
+    {
         $all_team_members = TeamMember::orderBy('id', 'desc')->paginate(12);
         $all_testimonials = Testimonial::get();
         return view('frontend.pages.about')->with([
@@ -37,21 +40,24 @@ class FrontendController extends Controller
         ]);
     }
 
-    public function showProgramsPage() {
+    public function showProgramsPage()
+    {
         return view('frontend.pages.programs.programs');
     }
-    
+
     public function service_page()
     {
         $all_services = Services::orderBy('sr_order', 'asc')->paginate(get_static_option('service_page_service_items'));
         $all_testimonials = Testimonial::get();
-        return view('frontend.pages.service.services')->with(['all_services' => $all_services, 'all_testimonials' => $all_testimonials]);
+        $all_blog = Blog::where(['status' => 'publish'])->orderBy('id', 'desc')->take(6)->get();
+        $all_work = Works::where(['status' => 'publish'])->orderBy('id', 'desc')->take(get_static_option('home_page_01_case_study_items'))->get();
+        return view('frontend.pages.service.digital-services')->with(['all_services' => $all_services, 'all_testimonials' => $all_testimonials, 'all_blog' => $all_blog, 'all_work' => $all_work] );
     }
 
     public function services_single_page($slug)
     {
         $service_item = Services::where('slug', $slug)->first();
-        if (empty($service_item)){
+        if (empty($service_item)) {
             abort(404);
         }
         $service_category = ServiceCategory::where(['status' => 'publish'])->get();
@@ -61,20 +67,22 @@ class FrontendController extends Controller
     public function category_wise_services_page($id, $any)
     {
         $category_name = ServiceCategory::find($id)->name;
-        if(empty($category_name)){
+        if (empty($category_name)) {
             abort('404');
         }
         $service_item = Services::where(['categories_id' => $id])->paginate(6);
         return view('frontend.pages.service.service-category')->with(['service_items' => $service_item, 'category_name' => $category_name]);
     }
-    
-    public function showTeamPage() {
+
+    public function showTeamPage()
+    {
         $all_team_members = TeamMember::orderBy('id', 'desc')->paginate(12);
 
         return view('frontend.pages.team')->with(['all_team_members' => $all_team_members]);
     }
-    
-    public function showVolunteersPage() {
+
+    public function showVolunteersPage()
+    {
         return view('frontend.pages.volunteers');;
     }
 
@@ -82,8 +90,8 @@ class FrontendController extends Controller
     public function blog_page()
     {
         $all_blogs = Blog::where(['status' => 'publish'])->orderBy('id', 'desc')->paginate(get_static_option('blog_page_item'));
-        $all_categories = BlogCategory::where(['status' => 'publish'])->orderBy('id','desc')->get();
-        if (!empty($post_items)){
+        $all_categories = BlogCategory::where(['status' => 'publish'])->orderBy('id', 'desc')->get();
+        if (!empty($post_items)) {
             $all_categories = $all_categories->take($post_items);
         }
         return view('frontend.pages.blog.blog')->with([
@@ -96,8 +104,8 @@ class FrontendController extends Controller
     public function category_wise_blog_page($id)
     {
 
-        $all_blogs = Blog::where(['blog_categories_id' => $id,'status' => 'publish'])->orderBy('id', 'desc')->paginate(get_static_option('blog_page_item'));
-        if (empty($all_blogs)){
+        $all_blogs = Blog::where(['blog_categories_id' => $id, 'status' => 'publish'])->orderBy('id', 'desc')->paginate(get_static_option('blog_page_item'));
+        if (empty($all_blogs)) {
             abort(404);
         }
         $all_recent_blogs = Blog::where(['status' => 'publish'])->orderBy('id', 'desc')->take(get_static_option('blog_page_recent_post_widget_item'))->get();
@@ -116,7 +124,7 @@ class FrontendController extends Controller
     {
         $all_blogs = Blog::where(['status' => 'publish'])->Where('tags', 'LIKE', '%' . $tag . '%')
             ->orderBy('id', 'desc')->paginate(get_static_option('blog_page_item'));
-        if (empty($all_blogs)){
+        if (empty($all_blogs)) {
             abort(404);
         }
         $all_recent_blogs = Blog::where(['status' => 'publish'])->orderBy('id', 'desc')->take(get_static_option('blog_page_recent_post_widget_item'))->get();
@@ -151,7 +159,7 @@ class FrontendController extends Controller
     {
 
         $blog_post = Blog::where('slug', $slug)->first();
-        if (empty($blog_post)){
+        if (empty($blog_post)) {
             abort(404);
         }
         $all_recent_blogs = Blog::where(['status' => 'publish'])->orderBy('id', 'desc')->paginate(get_static_option('blog_page_recent_post_widget_item'));
@@ -175,7 +183,8 @@ class FrontendController extends Controller
         ]);
     }
 
-    public function story_single_page($slug) {
+    public function story_single_page($slug)
+    {
         $story = Stories::where('slug', $slug)->first();
         return view('frontend.pages.stories.single-story')->with([
             'story' => $story,
@@ -211,24 +220,25 @@ class FrontendController extends Controller
         ]);
     }
 
-public function subscribe_newsletter(Request $request)
-{
-    $this->validate($request, [
-        'email' => 'required|string|email|max:191|unique:newsletters'
-    ],
-        [
-            'required' => __('Enter Valid Email'),
-            'unique' => __('This Email Already Registered'),
-        ]);
+    public function subscribe_newsletter(Request $request)
+    {
+        $this->validate(
+            $request,
+            [
+                'email' => 'required|string|email|max:191|unique:newsletters'
+            ],
+            [
+                'required' => __('Enter Valid Email'),
+                'unique' => __('This Email Already Registered'),
+            ]
+        );
 
-    Newsletter::create($request->all());
+        Newsletter::create($request->all());
 
-    // Prepare success message
-    $message = __('Thank you for subscribing to our newsletter');
+        // Prepare success message
+        $message = __('Thank you for subscribing to our newsletter');
 
-    // Return JSON response with success message
-    return response()->json(['message' => $message]);
-}
-
-    
+        // Return JSON response with success message
+        return response()->json(['message' => $message]);
+    }
 }

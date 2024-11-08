@@ -314,6 +314,21 @@ function get_footer_copyright_text(){
     return $footer_copyright_text;
 }
 
+
+// Services
+
 function filter_static_option_value(string $index , array $array = []){
     return $array[$index] ?? '';
+}
+
+function render_background_image_markup_by_attachment_id($id, $size = 'full')
+{
+    if (empty($id)) return '';
+    $output = '';
+
+    $image_details = get_attachment_image_by_id($id, $size);
+    if (!empty($image_details)) {
+        $output = 'style="background-image: url(' . $image_details['img_url'] . ');"';
+    }
+    return $output;
 }

@@ -38,7 +38,7 @@ class StoriesController extends Controller
            'stories_content' => 'required',
            'title' => 'required',
            'excerpt' => 'required',
-           'tags' => 'required',
+           'tags' => 'nullable',
            'status' => 'required',
            'author' => 'required',
            'slug' => 'nullable',

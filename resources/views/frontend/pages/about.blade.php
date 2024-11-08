@@ -303,7 +303,7 @@
             </div>
         </section><!-- End about_page-team Section -->
 
-        <section id="testimonial-area" class="testimonial-area bg-image-01 padding-top-110 padding-bottom-115 margin-bottom-100"
+        {{-- <section id="testimonial-area" class="testimonial-area bg-image-01 padding-top-110 padding-bottom-115 margin-bottom-100"
             style="background-image: url({{ asset('assets/frontend/images/img3.jpeg') }})">
             <div class=" container ">
                 <div class="row justify-content-center ">
@@ -340,7 +340,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
 
     </main>
 @endsection
