@@ -4,55 +4,97 @@
     <!-- ======= Hero Slider Section ======= -->
     <div id="hero-slider" class="hero-slider">
         <div class="hero-container" data-aos="fade-in">
-                <div class="col-12">
-                    <div class="swiper sliderFeaturedPosts">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="img-bg d-flex align-items-end"
-                                    style="background-image: url('{{ asset('assets/frontend/images/hero-img.jpeg') }}');">
-                                    {{-- <div class="img-bg-inner" data-aos="fade-left" data-aos-delay="100">
+            <div class="col-12">
+                <div class="swiper sliderFeaturedPosts">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="img-bg d-flex align-items-end"
+                                style="background-image: url('{{ asset('assets/frontend/images/hero-img.jpeg') }}');">
+                                {{-- <div class="img-bg-inner" data-aos="fade-left" data-aos-delay="100">
                                     <h1>Paahibu Space</h1>
                                     <h2>Access | Innovate | Transfrom</h2>
                                     <p>Paahibu Space aims at creating an amazing community of African women who are
                                         passionate about using tech to revolutionize Africa and beyond.</p>
                                     <a href="#about-section" class="slider-boxed-btn">Learn More</a>
                                 </div> --}}
-                                </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="video-bg">
-                                    <iframe width="100%" height="100%"
-                                        src="{{ asset('assets/frontend/images/pexels-edmond-dantès-8643891 (2160p).mp4') }}"
-                                        frameborder="0" allowfullscreen loop></iframe>
-                                </div>
-
-                                <div class="content-overlay">
-                                    <div class="vid-bg d-flex align-items-end">
-                                        <div class="vid-bg-inner">
-                                            <h1>Paahibu Space</h1>
-                                            <h2>Access | Innovate | Transform</h2>
-                                            <p>Paahibu Space endeavours to equip, empower and endow girls and women-led
-                                                businesses with the competencies to leverage technology, to lead and
-                                                venture into the real world and to transform themselves and their
-                                                communities, building a better world for themselves and future
-                                                generations.</p>
-                                            <a href="#about-section" class="slider-boxed-btn">Learn More</a>
+                        </div>
+                        <div class="swiper-slide bg-blue height-85">
+                            <div class="container">
+                                <div class="row gy-4">
+                                    <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center white-color"
+                                        data-aos="fade-in">
+                                        <h1>Hey sis, you belong to tech too</h1>
+                                        <p class="white-color">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                            Perferendis quidem.</p>
+                                        <div class="d-flex">
+                                            <a href="#about" class="slider-boxed-btn">Learn more</a>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out"
+                                        data-aos-delay="100">
+                                        <img src="{{ asset('assets/frontend/images/techsiss.png') }}"
+                                            class="img-fluid animated" alt="">
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="swiper-slide bg-blue height-85">
+                            <div class="container">
+                                <div class="row gy-4">
+                                    <div class="col-lg-6 order-1 order-lg-1 hero-img padding-top-80" data-aos="zoom-out"
+                                        data-aos-delay="100">
+                                        <img src="{{ asset('assets/frontend/images/women-in-bus.png') }}"
+                                            class="img-fluid animated" alt="">
+                                    </div>
 
+                                    <div class="col-lg-6 order-2 order-lg-2 d-flex flex-column justify-content-center white-color"
+                                        data-aos="fade-in">
+                                        <h1>Women in Digital Business</h1>
+                                        <p class="white-color">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                            Perferendis quidem.</p>
+                                        <div class="d-flex">
+                                            <a href="#about" class="slider-boxed-btn">Learn more</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
-                        <div class="custom-swiper-button-next">
-                            <span class="bi-chevron-right"></span>
-                        </div>
-                        <div class="custom-swiper-button-prev">
-                            <span class="bi-chevron-left"></span>
+                        <div class="swiper-slide">
+                            <div class="video-bg">
+                                <iframe width="100%" height="100%"
+                                    src="{{ asset('assets/frontend/images/pexels-edmond-dantès-8643891 (2160p).mp4') }}"
+                                    frameborder="0" allowfullscreen loop></iframe>
+                            </div>
+
+                            <div class="content-overlay">
+                                <div class="vid-bg d-flex align-items-end">
+                                    <div class="vid-bg-inner">
+                                        <h1>Paahibu Space</h1>
+                                        <h2>Access | Innovate | Transform</h2>
+                                        <p>Paahibu Space endeavours to equip, empower and endow girls and women-led
+                                            businesses with the competencies to leverage technology, to lead and
+                                            venture into the real world and to transform themselves and their
+                                            communities, building a better world for themselves and future
+                                            generations.</p>
+                                        <a href="#about-section" class="slider-boxed-btn">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="swiper-pagination"></div>
                     </div>
+                    <div class="custom-swiper-button-next">
+                        <span class="bi-chevron-right"></span>
+                    </div>
+                    <div class="custom-swiper-button-prev">
+                        <span class="bi-chevron-left"></span>
+                    </div>
+
+                    <div class="swiper-pagination"></div>
                 </div>
+            </div>
         </div>
     </div><!-- End Hero Slider Section -->
 
@@ -67,7 +109,8 @@
                             <div class="col-md-6">
                                 <div class="item-about">
                                     <div class="imgone big-paral">
-                                        <div class="simpleParallax" data-aos="fade-up" data-aos-delay="200"><img class="lazy thumparallax-down img-fluid"
+                                        <div class="simpleParallax" data-aos="fade-up" data-aos-delay="200"><img
+                                                class="lazy thumparallax-down img-fluid"
                                                 src="{{ asset('assets/frontend/images/about-left-img.jpeg') }}"
                                                 width="500" height="666" class="lazy thumparallax-down img-fluid"
                                                 alt="two-images-1.jpg"></div>
@@ -81,7 +124,8 @@
                             <div class="col-md-6">
                                 <div class="item-about">
                                     <div class="imgtwo big-paral">
-                                        <div class="simpleParallax" data-aos="fade-down" data-aos-delay="100"><img class="lazy thumparallax img-fluid"
+                                        <div class="simpleParallax" data-aos="fade-down" data-aos-delay="100"><img
+                                                class="lazy thumparallax img-fluid"
                                                 src="{{ asset('assets/frontend/images/about-right-img.jpeg') }}"
                                                 width="500" height="820" class="lazy thumparallax img-fluid"
                                                 alt="two-images-1.jpg"></div>
@@ -106,7 +150,8 @@
                         by equipping them with knowledge and skills they will need to turn their communities’ problems
                         and challenges into solutions and opportunities in an evolving digital world.</p>
 
-                    <a href="{{ route('frontend.about') }}" target="_self" class="about-boxed-btn slider-boxed-btn"><span>Read
+                    <a href="{{ route('frontend.about') }}" target="_self"
+                        class="about-boxed-btn slider-boxed-btn"><span>Read
                             more</span></a>
 
                 </div>
@@ -122,6 +167,7 @@
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
+                <span>Philosophy</span>
                 <h2>Our Philosophy</h2>
                 <p></p>
 
@@ -130,7 +176,7 @@
             <div class="row g-0" data-aos="fade-up" data-aos-delay="200">
 
                 <div class="col-xl-5 img-bgg"
-                    style="background-image: url('{{ asset('assets/frontend/images/customers-love.jpeg') }}')">
+                    style="background-image: url('{{ asset('assets/frontend/images/wibid.png') }}'); background-position: center">
                 </div>
                 <div class="col-xl-7 slides  position-relative">
 
@@ -167,7 +213,7 @@
                                 <div class="item">
                                     <h3 class="mb-3">Why We Continue to Stand Out</h3>
                                     <!-- <h4 class="mb-3">
-                                        </h4> -->
+                                            </h4> -->
                                     <p>Community-Centric Approach: You're not just a client; you're an integral part of
                                         our thriving community.</p>
                                 </div>
@@ -202,10 +248,163 @@
         </div>
     </section><!-- End Why Choose Us Section -->
 
+    <section id="features" class="features section">
+
+        <div class="container">
+
+            <div class="d-flex justify-content-center">
+
+                <ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
+
+                    <li class="nav-item">
+                        <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
+                            <h4>Access</h4>
+                        </a>
+                    </li><!-- End tab nav item -->
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
+                            <h4>Innovate</h4>
+                        </a><!-- End tab nav item -->
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
+                            <h4>Transform</h4>
+                        </a>
+                    </li><!-- End tab nav item -->
+
+                </ul>
+
+            </div>
+
+            <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+
+                <div class="tab-pane fade active show" id="features-tab-1">
+                    <div class="row">
+                        <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                            <h3>Providing Opportunities for All</h3>
+                            <p class="fst-italic">
+                                At Paahibu Space, we believe that access is the cornerstone of empowerment. We provide our diverse community of girls, women, and youth with the resources and opportunities they need to thrive in the digital age. 
+                            </p>
+                            <ul>
+                                <li><i class="bi bi-person-plus-fill"></i> <span>Our TechSistars Mentorship Program connects aspiring girls with established female tech experts.</span></li>
+                                <li><i class="bi bi-chat-dots-fill"></i> <span>Mentorship and capacity-building training</span></li>
+                                <li><i class="bi bi-people-fill"></i> <span>Our Community Ambassadors Network connects you with like-minded individuals on campus.</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 order-1 order-lg-2 text-center">
+                            <img src="{{ asset('assets/frontend/images/access.jpg') }}" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div><!-- End tab content item -->
+
+                <div class="tab-pane fade" id="features-tab-2">
+                    <div class="row">
+                        <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                            <h3>Fostering a Culture of Creativity</h3>
+                            <p class="fst-italic">
+                                Innovation is at the heart of what we do at Paahibu Space. We encourage our community to think outside the box, challenge the status quo, and embrace new ideas. Our collaborative environment fosters creativity, allowing individuals to work together, share insights, and develop groundbreaking solutions.
+                            </p>
+                            <ul>
+                                <li><i class="bi bi-check2-all"></i> <span>We provide an annual networking event where girls bring forth tech solutions to address community challenges.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>We introduce girls to tech opportunities, our STEM BY GIRLS FOR GIRLS program includes discussions, mentorship, and workshops in schools.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Our 3-month Student Internship Program develops young women's skills in tech and entrepreneurship. Real projects, portfolio building, and potential full-time opportunities await.</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 order-1 order-lg-2 text-center">
+                            <img src="{{ asset('assets/frontend/images/mentorship.webp') }}" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div><!-- End tab content item -->
+
+                <div class="tab-pane fade" id="features-tab-3">
+                    <div class="row">
+                        <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                            <h3>Creating Lasting Change</h3>
+                            <ul>
+                                <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo
+                                        consequat.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in
+                                        voluptate velit.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Provident mollitia neque rerum asperiores
+                                        dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</span></li>
+                            </ul>
+                            <p class="fst-italic">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                labore et dolore
+                                magna aliqua.
+                            </p>
+                        </div>
+                        <div class="col-lg-6 order-1 order-lg-2 text-center">
+                            <img src="{{ asset('assets/frontend/images/innovate4.webp') }}" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div><!-- End tab content item -->
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Features Cards Section -->
+    <section id="features-cards" class="features-cards section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <span>Programs</span>
+            <h2>What we do</h2>
+            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        </div><!-- End Section Title -->
+
+        <div class="container">
+
+            <div class="row gy-4">
+
+                <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="feature-box orange">
+                        <i class="bi bi-award"></i>
+                        <h4>Corporis voluptates</h4>
+                        <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                    </div>
+                </div><!-- End Feature Borx-->
+
+                <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="feature-box blue">
+                        <i class="bi bi-patch-check"></i>
+                        <h4>Explicabo consectetur</h4>
+                        <p>Est autem dicta beatae suscipit. Sint veritatis et sit quasi ab aut inventore</p>
+                    </div>
+                </div><!-- End Feature Borx-->
+
+                <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="feature-box green">
+                        <i class="bi bi-sunrise"></i>
+                        <h4>Ullamco laboris</h4>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                    </div>
+                </div><!-- End Feature Borx-->
+
+                <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="feature-box red">
+                        <i class="bi bi-shield-check"></i>
+                        <h4>Labore consequatur</h4>
+                        <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                    </div>
+                </div><!-- End Feature Borx-->
+
+            </div>
+
+        </div>
+
+    </section><!-- /Features Cards Section -->
+
     <!-- ======= partners Section ======= -->
     <section id="partners" class="partners">
         <div class="container" data-aos="zoom-out">
             <div class="section-title">
+                <span>Partners</span>
                 <h2>Our Partners And Supporters</h2>
                 <p></p>
 
@@ -231,6 +430,7 @@
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
+                <span>Impact</span>
                 <h2>Impact Stories</h2>
                 <!-- <p>home-stories</p> -->
             </div>
@@ -238,25 +438,27 @@
             <div class="home-stories-slider swiper" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper-wrapper">
                     @foreach ($all_stories as $story)
-                    <div class="swiper-slide">
-                        <div class="story-wrap">
-                            <div class="story-item">
-                                @if (!empty($story->image))
-                                {!! render_image_markup_by_attachment_id($story->image, 'story-img') !!}
-                                @else <img src="{{ asset('assets/frontend/images/no-image.webp') }}" alt="No image" class="story-img">
-                                @endif
-                                <h3>{{ $story->title }}</h3>
-                                <h4>{{ $story->tags }}</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    {!! iFrameFilterInSummernoteAndRender($story->excerpt) !!}
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
+                        <div class="swiper-slide">
+                            <div class="story-wrap">
+                                <div class="story-item">
+                                    @if (!empty($story->image))
+                                        {!! render_image_markup_by_attachment_id($story->image, 'story-img') !!}
+                                    @else
+                                        <img src="{{ asset('assets/frontend/images/no-image.webp') }}" alt="No image"
+                                            class="story-img">
+                                    @endif
+                                    <h3>{{ $story->title }}</h3>
+                                    <h4>{{ $story->tags }}</h4>
+                                    <p>
+                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                        {!! iFrameFilterInSummernoteAndRender($story->excerpt) !!}
+                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    </div><!-- End story item -->
+                        </div><!-- End story item -->
                     @endforeach
-                    
+
 
                 </div>
                 <div class="swiper-pagination"></div>
