@@ -14,7 +14,7 @@
         </nav><!-- .navbar -->
 
         <div class="btn-donate">
-            <a target="_blank" href="https://paystack.com/pay/donate-to-paahibuspace">Donate</a>
+            <a target="_blank" href="https://bit.ly/GROWKommunity">Join GROW</a>
         </div>
 
     </div>

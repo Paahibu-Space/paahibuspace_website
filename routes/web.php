@@ -246,19 +246,20 @@ Route::prefix('admin-home')->group(function () {
         Route::post('/update', 'App\Http\Controllers\Backend\TeamMemberController@update')->name('admin.team.member.update');
         Route::post('/delete/{id}', 'App\Http\Controllers\Backend\TeamMemberController@delete')->name('admin.team.member.delete');
         Route::post('/bulk-action', 'App\Http\Controllers\Backend\TeamMemberController@bulk_action')->name('admin.team.member.bulk.action');
+
+                /*-------------------------
+          TEAM MEMBERS CATEGORIES ROUTES
+        --------------------------*/
+        Route::group(['prefix' => 'category'], function () {
+            Route::get('/', 'App\Http\Controllers\Backend\TeamMemberController@category')->name('admin.team.category');
+            Route::post('/', 'App\Http\Controllers\Backend\TeamMemberController@new_category');
+            Route::post('/delete/{id}', 'App\Http\Controllers\Backend\TeamMemberController@delete_category')->name('admin.team.category.delete');
+            Route::post('/update', 'App\Http\Controllers\Backend\TeamMemberController@update_category')->name('admin.team.category.update');
+            Route::post('/bulk-action', 'App\Http\Controllers\Backend\TeamMemberController@category_bulk_action')->name('admin.team.category.bulk.action');
+        });
     });
 
-    /*==============================================
-        TEAM MEMBER PAGE ROUTES
-    ==============================================*/
-    Route::prefix('team-member')->middleware(['adminPermissionCheck:Team Members'])->group(function () {
-        //team member
-        Route::get('/', 'App\Http\Controllers\Backend\TeamMemberController@index')->name('admin.team.member');
-        Route::post('/', 'App\Http\Controllers\Backend\TeamMemberController@store');
-        Route::post('/update', 'App\Http\Controllers\Backend\TeamMemberController@update')->name('admin.team.member.update');
-        Route::post('/delete/{id}', 'App\Http\Controllers\Backend\TeamMemberController@delete')->name('admin.team.member.delete');
-        Route::post('/bulk-action', 'App\Http\Controllers\Backend\TeamMemberController@bulk_action')->name('admin.team.member.bulk.action');
-    });
+
 
     /*======================================
         EMAIL TEMPLATE SETTINGS

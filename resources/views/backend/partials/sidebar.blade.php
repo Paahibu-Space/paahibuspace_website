@@ -196,12 +196,21 @@
                         </li>
                     @endif --}}
 
-
                     @if (check_page_permission_by_string('Team Members'))
-                        <li class="main_dropdown {{ active_menu('admin-home/team-member') }}">
-                            <a href="{{ route('admin.team.member') }}" aria-expanded="true"><i
-                                    class="ti-control-forward"></i>
-                                <span>{{ __('Team Members') }}</span></a>
+                        <li
+                            class="main_dropdown
+                    @if (request()->is(['admin-home/team-member/*', 'admin-home/team-member'])) active @endif
+                    ">
+                            <a href="javascript:void(0)" aria-expanded="true">
+                                <i class="ti-layout"></i>
+                                <span>{{ __('Team Members') }}</span>
+                            </a>
+                            <ul class="collapse">
+                                <li class="{{ active_menu('admin-home/team-member') }}"><a
+                                        href="{{ route('admin.team.member') }}">{{ __('Team Members') }}</a></li>
+                                <li class="{{ active_menu('admin-home/team-category') }}"><a
+                                        href="{{ route('admin.team.category') }}">{{ __('Team Category') }}</a></li>
+                            </ul>
                         </li>
                     @endif
                     @if (check_page_permission_by_string('Partners Manage'))

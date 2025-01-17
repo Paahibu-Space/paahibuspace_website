@@ -1,6 +1,6 @@
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
-        <div class="footer-content" style="background: url('{{ asset('assets/frontend/images/footer-bg.jpeg') }}');">
+        <div class="footer-content">
             <div
                 class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
 
@@ -47,24 +47,45 @@
                         <h4>Stay in the know</h4>
                         <ul>
                             <li><i class="bi bi-chevron-right"></i> <a href="{{ route('homepage') }}">Home</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.about') }}">About us</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.service') }}">Services</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="https://docs.google.com/forms/d/e/1FAIpQLSe18AXaRl79Gbq_RP05CSgY3xbvnNldfISPriy27H0b7hpdIw/viewform">Become a mentor</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.about') }}">About us</a>
+                            </li>
+                            <li><i class="bi bi-chevron-right"></i> <a
+                                    href="{{ route('frontend.service') }}">Services</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a
+                                    href="https://docs.google.com/forms/d/e/1FAIpQLSe18AXaRl79Gbq_RP05CSgY3xbvnNldfISPriy27H0b7hpdIw/viewform">Become
+                                    a mentor</a></li>
                             {{-- <li><i class="bi bi-chevron-right"></i> <a href="about.html">Become a volunteer</a></li> --}}
 
                         </ul>
                     </div>
 
-                    <div class="col-lg-2 col-md-6 footer-links">
+                    {{-- <div class="col-lg-2 col-md-6 footer-links">
                         <h4>Our Services</h4>
                         {!! render_frontend_footer_services() !!}
+                    </div> --}}
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Our Programs</h4>
+                        <ul>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('homepage') }}">Skills2Work Initiative</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.about') }}">Cyber Girls</a>
+                            </li>
+                            <li><i class="bi bi-chevron-right"></i> <a
+                                    href="{{ route('frontend.service') }}">Ndiara</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a
+                                    href="https://docs.google.com/forms/d/e/1FAIpQLSe18AXaRl79Gbq_RP05CSgY3xbvnNldfISPriy27H0b7hpdIw/viewform">Become
+                                    a mentor</a></li>
+                            {{-- <li><i class="bi bi-chevron-right"></i> <a href="about.html">Become a volunteer</a></li> --}}
+
+                        </ul>
                     </div>
 
                     <div class="col-lg-4 col-md-6 footer-newsletter subscription-form">
                         <h4>Our Newsletter</h4>
                         <p>Join us, not as a client, but as an esteemed member of our close-knit family.</p>
-                        <form action="{{ route('frontend.subscribe.newsletter') }}" class="form-subscribe" method="POST">
-                            <input type="email" name="email"><input type="submit" value="Subscribe" class="subscribe-btn">
+                        <form action="{{ route('frontend.subscribe.newsletter') }}" class="form-subscribe"
+                            method="POST">
+                            <input type="email" name="email"><input type="submit" value="Subscribe"
+                                class="subscribe-btn">
 
                         </form>
                         <div class="my-3">
@@ -78,7 +99,14 @@
 
                 </div>
             </div>
+
+            <div class="request-shape-wrap"><img src="{{ asset('assets/frontend/images/bg/footer-left-img.png') }}"><img
+                    src="{{ asset('assets/frontend/images/bg/footer-right-img.png') }}" data-bb-lazy="true"
+                    alt="Request a call back"></div>
+
+
         </div>
+
 
         <div class="footer-legal text-center">
             <div
@@ -93,3 +121,5 @@
         </div>
 
     </footer><!-- End Footer -->
+
+

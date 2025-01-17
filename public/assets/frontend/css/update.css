@@ -4,7 +4,7 @@
   --heading-color: #0a1121;
   --default-color: #212529;
   /* --paragraph-color: #878a95; */
-  --paragraph-color: #0a1121;
+  --paragraph-color: rgb(33, 37, 41);
   --body-font: "Nunito", sans-serif;
   --heading-font: "Open Sans", sans-serif;
 }

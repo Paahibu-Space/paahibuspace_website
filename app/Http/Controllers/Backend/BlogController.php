@@ -101,7 +101,7 @@ class BlogController extends Controller
     }
 
     public function edit_blog($id){
-        $blog_post = Blog::find($id);
+        $blog_post = Blog::find(id: $id);
         $all_category = BlogCategory::get();
         return view('backend.blog.edit')->with([
             'all_category' => $all_category,

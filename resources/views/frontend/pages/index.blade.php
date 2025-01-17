@@ -213,7 +213,7 @@
                                 <div class="item">
                                     <h3 class="mb-3">Why We Continue to Stand Out</h3>
                                     <!-- <h4 class="mb-3">
-                                            </h4> -->
+                                                    </h4> -->
                                     <p>Community-Centric Approach: You're not just a client; you're an integral part of
                                         our thriving community.</p>
                                 </div>
@@ -285,12 +285,17 @@
                         <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
                             <h3>Providing Opportunities for All</h3>
                             <p class="fst-italic">
-                                At Paahibu Space, we believe that access is the cornerstone of empowerment. We provide our diverse community of girls, women, and youth with the resources and opportunities they need to thrive in the digital age. 
+                                At Paahibu Space, we believe that access is the cornerstone of empowerment. We provide our
+                                diverse community of girls, women, and youth with the resources and opportunities they need
+                                to thrive in the digital age.
                             </p>
                             <ul>
-                                <li><i class="bi bi-person-plus-fill"></i> <span>Our TechSistars Mentorship Program connects aspiring girls with established female tech experts.</span></li>
-                                <li><i class="bi bi-chat-dots-fill"></i> <span>Mentorship and capacity-building training</span></li>
-                                <li><i class="bi bi-people-fill"></i> <span>Our Community Ambassadors Network connects you with like-minded individuals on campus.</span></li>
+                                <li><i class="bi bi-person-plus-fill"></i> <span>Our TechSistars Mentorship Program
+                                        connects aspiring girls with established female tech experts.</span></li>
+                                <li><i class="bi bi-chat-dots-fill"></i> <span>Mentorship and capacity-building
+                                        training</span></li>
+                                <li><i class="bi bi-people-fill"></i> <span>Our Community Ambassadors Network connects you
+                                        with like-minded individuals on campus.</span></li>
                             </ul>
                         </div>
                         <div class="col-lg-6 order-1 order-lg-2 text-center">
@@ -304,16 +309,25 @@
                         <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
                             <h3>Fostering a Culture of Creativity</h3>
                             <p class="fst-italic">
-                                Innovation is at the heart of what we do at Paahibu Space. We encourage our community to think outside the box, challenge the status quo, and embrace new ideas. Our collaborative environment fosters creativity, allowing individuals to work together, share insights, and develop groundbreaking solutions.
+                                Innovation is at the heart of what we do at Paahibu Space. We encourage our community to
+                                think outside the box, challenge the status quo, and embrace new ideas. Our collaborative
+                                environment fosters creativity, allowing individuals to work together, share insights, and
+                                develop groundbreaking solutions.
                             </p>
                             <ul>
-                                <li><i class="bi bi-check2-all"></i> <span>We provide an annual networking event where girls bring forth tech solutions to address community challenges.</span></li>
-                                <li><i class="bi bi-check2-all"></i> <span>We introduce girls to tech opportunities, our STEM BY GIRLS FOR GIRLS program includes discussions, mentorship, and workshops in schools.</span></li>
-                                <li><i class="bi bi-check2-all"></i> <span>Our 3-month Student Internship Program develops young women's skills in tech and entrepreneurship. Real projects, portfolio building, and potential full-time opportunities await.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>We provide an annual networking event where
+                                        girls bring forth tech solutions to address community challenges.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>We introduce girls to tech opportunities, our
+                                        STEM BY GIRLS FOR GIRLS program includes discussions, mentorship, and workshops in
+                                        schools.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>Our 3-month Student Internship Program develops
+                                        young women's skills in tech and entrepreneurship. Real projects, portfolio
+                                        building, and potential full-time opportunities await.</span></li>
                             </ul>
                         </div>
                         <div class="col-lg-6 order-1 order-lg-2 text-center">
-                            <img src="{{ asset('assets/frontend/images/mentorship.webp') }}" alt="" class="img-fluid">
+                            <img src="{{ asset('assets/frontend/images/mentorship.webp') }}" alt=""
+                                class="img-fluid">
                         </div>
                     </div>
                 </div><!-- End tab content item -->
@@ -337,7 +351,8 @@
                             </p>
                         </div>
                         <div class="col-lg-6 order-1 order-lg-2 text-center">
-                            <img src="{{ asset('assets/frontend/images/innovate4.webp') }}" alt="" class="img-fluid">
+                            <img src="{{ asset('assets/frontend/images/innovate4.webp') }}" alt=""
+                                class="img-fluid">
                         </div>
                     </div>
                 </div><!-- End tab content item -->
@@ -364,32 +379,31 @@
 
                 <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
                     <div class="feature-box orange">
-                        <i class="bi bi-award"></i>
-                        <h4>Corporis voluptates</h4>
+                        <i class="bi bi-laptop"></i>
+                        <h4>Entrepreneurship, Digital Business & Digital Skills Training</h4>
                         <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                    </div>
-                </div><!-- End Feature Borx-->
-
-                <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="feature-box blue">
-                        <i class="bi bi-patch-check"></i>
-                        <h4>Explicabo consectetur</h4>
-                        <p>Est autem dicta beatae suscipit. Sint veritatis et sit quasi ab aut inventore</p>
                     </div>
                 </div><!-- End Feature Borx-->
 
                 <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
                     <div class="feature-box green">
-                        <i class="bi bi-sunrise"></i>
-                        <h4>Ullamco laboris</h4>
+                        <i class="bi bi-megaphone"></i>
+                        <h4>Advocacy</h4>
                         <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
                     </div>
                 </div><!-- End Feature Borx-->
 
                 <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
                     <div class="feature-box red">
-                        <i class="bi bi-shield-check"></i>
-                        <h4>Labore consequatur</h4>
+                        <i class="bi bi-people"></i>
+                        <h4>Community Engagement</h4>
+                        <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                    </div>
+                </div><!-- End Feature Borx-->
+                <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="feature-box red">
+                        <i class="bi bi-person-badge"></i>
+                        <h4>Mentorship</h4>
                         <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
                     </div>
                 </div><!-- End Feature Borx-->
@@ -426,7 +440,7 @@
 
 
     <!-- ======= home-stories Section ======= -->
-    <section id="home-stories" class="home-stories section-bg">
+    {{-- <section id="home-stories" class="home-stories section-bg">
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
@@ -465,7 +479,63 @@
             </div>
 
         </div>
-    </section><!-- End home-stories Section -->
+    </section><!-- End home-stories Section --> --}}
+
+    <section class="testimonial-three-area"
+        style="background-image: url('{{ asset('assets/frontend/images/bg/stories-bg.png') }}')">
+        <div class="testimonial-three__wrp">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-5 col-xl-3">
+                    <div class="section-header margin-bottom-40">
+                        <h5 class="wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+                            Our Impact Stories
+                        </h5>
+                        <h2 class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">Hundreds of Female
+                            entrepreneurs are changing the world</h2>
+                    </div>
+                    <div class="testimonial-three__arry-btn d-flex gap-3 wow fadeInDown" data-wow-delay="400ms"
+                        data-wow-duration="1500ms">
+                        <button class="arry-prev testimonial-three__arry-prev"><i class="bi bi-chevron-left"></i></button>
+                        <button class="arry-next testimonial-three__arry-next active"><i
+                                class="bi bi-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-7 col-xl-9">
+                    <div class="swiper testimonial-three__slider">
+                        <div class="swiper-wrapper">
+                            @foreach ($all_stories as $story)
+                                <div class="swiper-slide">
+                                    <div class="testimonial-three__item">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="testimonial-three__image">
+                                                <svg width="24" height="18" viewBox="0 0 24 18" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M0 0V18L9 9V0H0ZM15 0V18L24 9V0H15Z" fill="#3C72FC" />
+                                                </svg>
+                                                @if (!empty($story->image))
+                                                    {!! render_image_markup_by_attachment_id($story->image, 'testimonial-img') !!}
+                                                @else
+                                                    <img src="{{ asset('assets/frontend/images/no-image.webp') }}"
+                                                        alt="No image" class="testimonial-img">
+                                                @endif
+                                            </div>
+                                            <div class="con">
+                                                <h4>{{ $story->title }}</h4>
+                                                <span>{{ $story->tags }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="story-content">
+                                            <p class="mt-30">“ {!! iFrameFilterInSummernoteAndRender($story->excerpt) !!} ”</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="connects-area home-21 padding-top-70 padding-bottom-50">
         <div class="container container-three">

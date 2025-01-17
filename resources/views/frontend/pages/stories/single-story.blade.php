@@ -23,10 +23,10 @@
 @section('content')
 
     <!-- ======= story Page ======= -->
-    <div class="container d-flex justify-content-center align-items-center min-vh-100 py-5">
-        <div class="col-md-8 col-sm-10 col-xs-12">
-            <div class="card shadow-lg border-0">
-                <div class="d-flex align-items-center p-3 text-white story-page-heading">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="col-lg-10 col-11 m-aut">
+            <div class="card story-item">
+                <div class="d-flex align-items-center p-3 story-page-heading">
                     <img src="{{ asset('assets/frontend/images/no-image.webp') }}" class="rounded-circle me-3" alt="Storyteller" style="width: 60px; height: 60px;">
                     <h2 class="mb-0">{{ $story->title }}</h2>
                 </div>

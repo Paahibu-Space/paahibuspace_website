@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\Stories;
 use App\Models\TeamMember;
+use App\Models\TeamMemberCategory;
 use App\Models\Services;
 use App\Models\ServiceCategory;
 use App\Models\Programs;
@@ -34,9 +35,11 @@ class FrontendController extends Controller
     {
         $all_team_members = TeamMember::orderBy('id', 'desc')->paginate(12);
         $all_testimonials = Testimonial::get();
+        $all_categories = TeamMemberCategory::get();
         return view('frontend.pages.about')->with([
             'all_team_members' => $all_team_members,
             'all_testimonial' => $all_testimonials,
+            'all_categories' => $all_categories
         ]);
     }
 
@@ -77,8 +80,8 @@ class FrontendController extends Controller
     public function showTeamPage()
     {
         $all_team_members = TeamMember::orderBy('id', 'desc')->paginate(12);
-
-        return view('frontend.pages.team')->with(['all_team_members' => $all_team_members]);
+        $all_categories = TeamMemberCategory::get();
+        return view('frontend.pages.team')->with(['all_team_members' => $all_team_members, 'all_categories' => $all_categories]);
     }
 
     public function showVolunteersPage()
@@ -195,8 +198,10 @@ class FrontendController extends Controller
     {
 
         $all_programs = Programs::where(['status' => 'publish'])->orderBy('id', 'desc')->paginate(get_static_option('site_programs_post_items'));
+        $all_stories = Stories::where(['status' => 'publish'])->orderBy('id', 'desc')->get();
         return view('frontend.pages.programs.program')->with([
             'all_programs' => $all_programs,
+            'all_stories' => $all_stories,
         ]);
     }
 

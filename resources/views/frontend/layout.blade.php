@@ -13,12 +13,14 @@
     <link rel=preload href="{{asset('assets/frontend/css/fontawesome.min.css')}}" as="style">
     <link rel=preload href="{{asset('assets/frontend/css/flaticon.css')}}" as="style">
     <link rel=preload href="{{asset('assets/frontend/css/nexicon.css')}}" as="style">
+    <link rel=stylesheet href="{{asset('assets/frontend/css/animate.css')}}">
 
     <link rel="stylesheet" href="{{asset('assets/frontend/css/flaticon.css')}}">
     <link rel="stylesheet" href="{{asset('assets/frontend/css/nexicon.css')}}">
     <link rel="stylesheet" href="{{asset('assets/frontend/css/fontawesome.min.css')}}">
     <!-- vendor files -->
     <link rel="stylesheet" href="{{ asset('assets/common/vendor/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/common/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/slick.css') }}">
 
@@ -35,15 +37,16 @@
     <link rel="stylesheet" href="{{ asset('assets/common/vendor/bootstrap-icons/bootstrap-icons.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/program.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/update.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/test.css') }}">
 
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     @include('frontend.partials.og-meta')
 </head>
 
@@ -60,13 +63,14 @@
     {{-- FOOTER --}}
     @include('frontend.partials.footer')
 
-    <!-- back to top -->
-    <div class="progress-wrap">
-        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+    <div class="scroll-up active-scroll">
+        <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+                style="transition: stroke-dashoffset 10ms linear; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 29.694;">
+            </path>
         </svg>
     </div>
-
+    
     <div id="preloader"></div>
 
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
@@ -84,6 +88,7 @@
     <script src="{{ asset('assets/frontend/js/slick.js') }}"></script>
     <script src="{{asset('assets/frontend/js/owl.carousel.min.js')}}"></script>
     <script src="{{ asset('assets/frontend/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/common/vendor/purecounter/purecounter_vanilla.js') }}"></script>
 
 
     @include('frontend.partials.inline-script')

@@ -137,6 +137,8 @@
                     <div class="card-body">
                         <h4 class="header-title">{{__('New Team Member')}}</h4>
                         <form action="{{route('admin.team.member')}}" method="post" enctype="multipart/form-data">
+                            @method('POST')
+
                             @csrf
                             <div class="form-group">
                                 <label for="name">{{__('Name')}}</label>
@@ -145,6 +147,16 @@
                             <div class="form-group">
                                 <label for="designation">{{__('Designation')}}</label>
                                 <input type="text" class="form-control"  id="designation"  name="designation" placeholder="{{__('Designation')}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="category">{{ __('Category') }}</label>
+                                <select name="category" class="form-control" id="category">
+
+                                    <option value="">{{ __('Select Category') }}</option>
+                                    @foreach ($all_category as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="icon_one" class="d-block">{{__('Social Profile One')}}</label>
@@ -259,6 +271,17 @@
                         <div class="form-group">
                             <label for="edit_designation">{{__('Designation')}}</label>
                             <input type="text" class="form-control"  id="edit_designation"  name="designation" placeholder="{{__('Designation')}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="category">{{__('Category')}}</label>
+                            <select name="category" class="form-control" id="category">
+                                <option value="">{{__("Select Category")}}</option>
+                                {{-- <option id="edit_category_id" name="category_id"></option> --}}
+
+                                @foreach($all_category as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="edit_icon_one" class="d-block">{{__('Social Profile One')}}</label>
