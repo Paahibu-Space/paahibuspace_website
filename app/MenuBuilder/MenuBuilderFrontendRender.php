@@ -39,14 +39,34 @@ class MenuBuilderFrontendRender
 
             </ul>
         </li>
-        <li class="dropdown megamenu"><a href="' . route('frontend.programs') . '"><span>Programs</span> <i
+        <li class="dropdown megamenu"><a href=""><span>Programs</span> <i
                     class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul class="mega-dropdown-content">
                 <div class="justify-content-between d-flex">
                     <div class="nav-list-container">
                         <li>';
 
-                            $output .= '<a href="' . route('frontend.programs') . '">' . 'Women in Digital Economy Initiative (WiDEI)' . '</a>';
+                            $output .= '<a href="' . route('frontend.widei') . '">' . 'Women in Digital Economy Initiative (WiDEI)' . '</a>';
+                        $output .= '
+                        </li>
+                        <li>';
+
+                            $output .= '<a href="' . route('frontend.skills2work') . '">' . 'Skills2Work Initiative' . '</a>';
+                        $output .= '
+                        </li>
+                        <li>';
+
+                            $output .= '<a href="' . route('frontend.widib') . '">' . 'Women in Digital Business (WiDIB)' . '</a>';
+                        $output .= '
+                        </li>
+                        <li>';
+
+                            $output .= '<a href="' . route('frontend.ndiara') . '">' . 'Ndiara' . '</a>';
+                        $output .= '
+                        </li>
+                        <li>';
+
+                            $output .= '<a href="' . route('frontend.techsistars') . '">' . 'TechSistars Mentorship Program' . '</a>';
                         $output .= '
                         </li>
                     </div>

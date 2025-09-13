@@ -48,7 +48,7 @@ body {
 .about-bg {
     background-position: 50%;
     background-size: cover;
-    padding: 140px 0 200px;
+    padding-bottom: 150px;
 }
 
 .about-img-wrap {

@@ -257,7 +257,7 @@
 .about__list-box .list-wrap li {
     align-items: flex-start;
     display: flex;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
     gap: 12px;
     margin-bottom: 10px

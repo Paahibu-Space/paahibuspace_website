@@ -25,21 +25,20 @@
                                     <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center white-color"
                                         data-aos="fade-in">
                                         <h1>Hey sis, you belong to tech too</h1>
-                                        <p class="white-color">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                            Perferendis quidem.</p>
+                                        <p class="white-color">At Paahibu Space, we’re breaking barriers and creating opportunities for women and girls to thrive in technology, innovation, and entrepreneurship. This is your space to learn, grow, and lead — because the future of tech needs your voice, your ideas, and your brilliance.</p>
                                         <div class="d-flex">
                                             <a href="#about" class="slider-boxed-btn">Learn more</a>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out"
-                                        data-aos-delay="100">
-                                        <img src="{{ asset('assets/frontend/images/techsiss.png') }}"
+                                        data-aos-delay="100" style="padding-top: 12%;">
+                                        <img src="{{ asset('assets/frontend/images/hey-sis.webp') }}"
                                             class="img-fluid animated" alt="">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide bg-blue height-85">
+                        {{-- <div class="swiper-slide bg-blue height-85">
                             <div class="container">
                                 <div class="row gy-4">
                                     <div class="col-lg-6 order-1 order-lg-1 hero-img padding-top-80" data-aos="zoom-out"
@@ -60,7 +59,7 @@
 
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         {{-- <div class="swiper-slide">
                             <div class="video-bg">
                                 <iframe width="100%" height="100%"
@@ -94,7 +93,7 @@
                                     <div class="vid-bg-inner">
                                         <h1>Paahibu Space</h1>
                                         <h2>Access | Innovate | Transform</h2>
-                                        <p>Paahibu Space endeavours to equip, empower and endow girls and women-led
+                                        <p>We endeavours to equip, empower and endow girls and women-led
                                             businesses with the competencies to leverage technology, to lead and
                                             venture into the real world and to transform themselves and their
                                             communities, building a better world for themselves and future
@@ -206,13 +205,9 @@
 
                             <div class="swiper-slide">
                                 <div class="item">
-                                    <h3 class="mb-3">Building Relationships, Not Just Transactions</h3>
-                                    <h4 class="mb-3">We believe in fostering enduring relationships. It's not a
-                                        one-time
-                                        deal; it's a commitment to your business's sustained growth.</h4>
-                                    <p>Beyond Business, We Nurture Connections
-                                        Our commitment doesn't end with the project. We're here for the long haul,
-                                        nurturing our connections well beyond the scope of the initial engagement.
+                                    <h3 class="mb-3">Building Relationships</h3>
+                                    <h4 class="mb-3">We believe in fostering enduring relationships. It's a commitment to your business's sustained growth.</h4>
+                                    <p>Paahibu Space is not just about activities or projects; it is about people. We focus on building deep, meaningful relationships with the communities we serve. By fostering trust, collaboration, and shared vision, we ensure that every woman and business we support feels valued, empowered, and equipped to create transformation that lasts.
 
                                     </p>
                                 </div>
@@ -221,11 +216,10 @@
                             <div class="swiper-slide">
                                 <div class="item">
                                     <h3 class="mb-3">One Big Family</h3>
-                                    <h4 class="mb-3">Joining hands with Paahibu Digital Solutions isn't just a
+                                    {{-- <h4 class="mb-3">Joining hands with Paahibu Digital Solutions isn't just a
                                         business
-                                        decision;</h4>
-                                    <p>it's becoming a part of our extensive family. Your success is our success, and
-                                        your challenges are our challenges.
+                                        decision;</h4> --}}
+                                    <p>At Paahibu Space, we believe true growth happens in community. Every woman, girl, and business that joins us becomes part of a bigger family — a network of support, encouragement, and shared progress. We celebrate your milestones, stand with you in challenges, and create a safe, inclusive space where everyone belongs and thrives together.
                                     </p>
                                 </div>
                             </div><!-- End slide item -->
@@ -235,24 +229,17 @@
                                     <h3 class="mb-3">Why We Continue to Stand Out</h3>
                                     <!-- <h4 class="mb-3">
                                                     </h4> -->
-                                    <p>Community-Centric Approach: You're not just a client; you're an integral part of
-                                        our thriving community.</p>
+                                    <p>What makes Paahibu Space unique is our people-first approach. We go beyond providing digital and entrepreneurial skills — we create an ecosystem of inclusivity, innovation, and support. By combining knowledge, mentorship, and community, we empower women, girls, and youth not only to thrive in today’s digital world but to become leaders who shape the future.</p>
                                 </div>
                             </div><!-- End slide item -->
 
                             <div class="swiper-slide">
                                 <div class="item">
                                     <h3 class="mb-3">Relationship Commitment</h3>
-                                    <h4 class="mb-3">Our dedication extends far beyond the completion of a project;
+                                    <h4 class="mb-3">Our dedication extends far beyond the completion of a project,
                                         it's
                                         about standing by you in your journey.</h4>
-                                    <p>Family Values: At Paahibu Digital Solutions, we operate like a family. Your
-                                        victories are our celebrations, and we navigate challenges together.
-
-                                        Join us, not as a client, but as an esteemed member of our close-knit family.
-                                        Experience business relationships that go beyond transactions and see how,
-                                        together, we can achieve remarkable milestones. Welcome to Paahibu Digital
-                                        Soluti3, where we build not just websites and brands but lasting partnerships.
+                                    <p>Our work doesn’t stop at delivering a program or workshop. We are committed to walking alongside women and youth through every stage of their journey — from building skills to scaling businesses. This commitment is rooted in our belief that lasting impact comes from long-term relationships, consistent mentorship, and continuous opportunities for growth
                                     </p>
                                 </div>
                             </div><!-- End slide item -->
@@ -358,17 +345,12 @@
                         <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
                             <h3>Creating Lasting Change</h3>
                             <ul>
-                                <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat.</span></li>
-                                <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in
-                                        voluptate velit.</span></li>
-                                <li><i class="bi bi-check2-all"></i> <span>Provident mollitia neque rerum asperiores
-                                        dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>We equip women and youth with lifelong skills that open doors to opportunities.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>We foster communities of support, mentorship, and collaboration that endure.</span></li>
+                                <li><i class="bi bi-check2-all"></i> <span>We inspire transformation that extends beyond individuals to families, businesses, and societies.</span></li>
                             </ul>
                             <p class="fst-italic">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore
-                                magna aliqua.
+                               At Paahibu Space, we believe true impact goes beyond the moment. Our work is about building foundations that empower women, girls, and communities to thrive today, tomorrow, and for generations to come.
                             </p>
                         </div>
                         <div class="col-lg-6 order-1 order-lg-2 text-center">
@@ -391,7 +373,7 @@
         <div class="container section-title" data-aos="fade-up">
             <span>Programs</span>
             <h2>What we do</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>At Paahibu Space, we empower women, girls, and youth with the tools, skills, and networks they need to transform their lives, businesses, and communities. Through our programs, we create pathways to opportunity, inclusion, and lasting impact.</p>
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -402,7 +384,7 @@
                     <div class="feature-box orange">
                         <i class="bi bi-laptop"></i>
                         <h4>Entrepreneurship, Digital Business & Digital Skills Training</h4>
-                        <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                        <p>From digital literacy to advanced business tools, we provide hands-on training that helps entrepreneurs innovate, grow, and compete globally</p>
                     </div>
                 </div><!-- End Feature Borx-->
 
@@ -410,7 +392,7 @@
                     <div class="feature-box green">
                         <i class="bi bi-megaphone"></i>
                         <h4>Advocacy</h4>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                        <p>Through campaigns, partnerships, and dialogues, we champion inclusivity, equality, and access to opportunities in the digital and entrepreneurial space</p>
                     </div>
                 </div><!-- End Feature Borx-->
 
@@ -418,14 +400,14 @@
                     <div class="feature-box red">
                         <i class="bi bi-people"></i>
                         <h4>Community Engagement</h4>
-                        <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                        <p>By engaging schools, local groups, and women-led initiatives, we build networks of support that inspire collaboration, creativity, and shared growth</p>
                     </div>
                 </div><!-- End Feature Borx-->
                 <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
                     <div class="feature-box red">
                         <i class="bi bi-person-badge"></i>
                         <h4>Mentorship</h4>
-                        <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                        <p>Our mentorship programs connect aspiring leaders with experienced professionals, creating a bridge of knowledge, guidance, and empowerment</p>
                     </div>
                 </div><!-- End Feature Borx-->
 

@@ -10,9 +10,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\Frontend\FrontendController@index')->name('homepage');
 Route::get('/about', 'App\Http\Controllers\Frontend\FrontendController@showAboutPage')->name('frontend.about');
-Route::get('/programs', action: 'App\Http\Controllers\Frontend\FrontendController@showProgramsPage')->name('frontend.programs');
 Route::get('/team', 'App\Http\Controllers\Frontend\FrontendController@showTeamPage')->name('frontend.team');
 Route::get('/volunteers', 'App\Http\Controllers\Frontend\FrontendController@showVolunteersPage')->name('frontend.volunteers');
+Route::get('/widei', 'App\Http\Controllers\Frontend\ProgramController@wideiPage')->name('frontend.widei');
+Route::get('/skills2work', 'App\Http\Controllers\Frontend\ProgramController@skills2workPage')->name('frontend.skills2work');
+Route::get('/widib', 'App\Http\Controllers\Frontend\ProgramController@widibPage')->name('frontend.widib');
+Route::get('/techsistars', 'App\Http\Controllers\Frontend\ProgramController@techsistarsPage')->name('frontend.techsistars');
+Route::get('/ndiara', 'App\Http\Controllers\Frontend\ProgramController@ndiara')->name('frontend.ndiara');
 
 // Static Pages
 $blog_page_slug = 'blog';
@@ -21,98 +25,99 @@ $service_page_slug = 'service';
 $work_page_slug = 'work';
 
 
-    /*--------------------------------------
+/*--------------------------------------
         FRONTEND: BLOGS ROUTES
     ---------------------------------------*/
-    Route::get($blog_page_slug, 'App\Http\Controllers\Frontend\FrontendController@blog_page')->name('frontend.blog');
-    Route::get( $blog_page_slug.'/{slug}', 'App\Http\Controllers\Frontend\FrontendController@blog_single_page')->name('frontend.blog.single');
-    Route::get( $blog_page_slug.'-search', 'App\Http\Controllers\Frontend\FrontendController@blog_search_page')->name('frontend.blog.search');
-    Route::get( $blog_page_slug.'-category/{id}/{any}', 'App\Http\Controllers\Frontend\FrontendController@category_wise_blog_page')->name('frontend.blog.category');
-    Route::get( $blog_page_slug.'-tags/{name}', 'App\Http\Controllers\Frontend\FrontendController@tags_wise_blog_page')->name('frontend.blog.tags.page');
+Route::get($blog_page_slug, 'App\Http\Controllers\Frontend\FrontendController@blog_page')->name('frontend.blog');
+Route::get($blog_page_slug . '/{slug}', 'App\Http\Controllers\Frontend\FrontendController@blog_single_page')->name('frontend.blog.single');
+Route::get($blog_page_slug . '-search', 'App\Http\Controllers\Frontend\FrontendController@blog_search_page')->name('frontend.blog.search');
+Route::get($blog_page_slug . '-category/{id}/{any}', 'App\Http\Controllers\Frontend\FrontendController@category_wise_blog_page')->name('frontend.blog.category');
+Route::get($blog_page_slug . '-tags/{name}', 'App\Http\Controllers\Frontend\FrontendController@tags_wise_blog_page')->name('frontend.blog.tags.page');
 
-    /*--------------------------------------
+/*--------------------------------------
         FRONTEND: STORIES ROUTES
     ---------------------------------------*/
-    Route::get($stories_page_slug, 'App\Http\Controllers\Frontend\FrontendController@story_page')->name('frontend.stories');
-    Route::get( $stories_page_slug.'/{slug}', 'App\Http\Controllers\Frontend\FrontendController@story_single_page')->name('frontend.story.single');
+Route::get($stories_page_slug, 'App\Http\Controllers\Frontend\FrontendController@story_page')->name('frontend.stories');
+Route::get($stories_page_slug . '/{slug}', 'App\Http\Controllers\Frontend\FrontendController@story_single_page')->name('frontend.story.single');
 
-    /*--------------------------------------
+/*--------------------------------------
         FRONTEND: SERVICES ROUTES
     ---------------------------------------*/
-    Route::get($service_page_slug, 'App\Http\Controllers\Frontend\FrontendController@service_page')->name('frontend.service');
-    Route::get($service_page_slug.'/category/{id}/{any?}', 'App\Http\Controllers\Frontend\FrontendController@category_wise_services_page')->name('frontend.services.category');
-    Route::get( $service_page_slug.'/{slug}', 'App\Http\Controllers\Frontend\FrontendController@services_single_page')->name('frontend.services.single');
+Route::get($service_page_slug, 'App\Http\Controllers\Frontend\FrontendController@service_page')->name('frontend.service');
+Route::get($service_page_slug . '/category/{id}/{any?}', 'App\Http\Controllers\Frontend\FrontendController@category_wise_services_page')->name('frontend.services.category');
+Route::get($service_page_slug . '/{slug}', 'App\Http\Controllers\Frontend\FrontendController@services_single_page')->name('frontend.services.single');
 
-    /*----------------------------------------
+/*----------------------------------------
       FRONTEND: CUSTOM FORM BUILDER ROUTES
     -----------------------------------------*/
-    Route::post('submit-custom-form', 'App\Http\Controllers\Frontend\FrontendFormController@custom_form_builder_message')->name('frontend.form.builder.custom.submit');
+Route::post('submit-custom-form', 'App\Http\Controllers\Frontend\FrontendFormController@custom_form_builder_message')->name('frontend.form.builder.custom.submit');
 
-    /*==============================================
+/*==============================================
     FRONTEND ROUTES: PROGRAM MODULE
 ==============================================*/
 Route::group(['middleware' => ['maintains_mode']], function () {
 
     $programs_page_slug = 'programs';
     //programs
-    Route::get($programs_page_slug , 'App\Http\Controllers\Frontend\FrontendController@programs')->name('frontend.programs');
-    Route::get($programs_page_slug.'/{slug}', 'App\Http\Controllers\Frontend\FrontendController@programs_single')->name('frontend.programs.single');
-    Route::get($programs_page_slug.'-category/{id}/{any?}', 'App\Http\Controllers\FrontendController@programs_category')->name('frontend.programs.category');
-    Route::get($programs_page_slug.'-search', 'App\Http\Controllers\Frontend\FrontendController@programs_search')->name('frontend.programs.search');
-    Route::get($programs_page_slug.'-registration/{id}', 'App\Http\Controllers\Frontend\FrontendController@program_registration')->name('frontend.program.registration');
-    Route::post($programs_page_slug.'-registration', 'App\Http\Controllers\Frontend\FrontendFormController@store_program_registration_data')->name('frontend.program.registration.store');
 
-    //program registration
-    Route::get('/registration-confirm/{id}', 'App\Http\Controllers\Frontend\FrontendController@registration_confirm')->name('frontend.program.registration.confirm');
-    Route::post('/registration-confirm', 'ProgramPaymentLogsController@registration_payment_form')->name('frontend.program.payment.confirm');
-    Route::get('/registration-success/{id}', 'App\Http\Controllers\Frontend\FrontendController@program_payment_success')->name('frontend.program.payment.success');
-    Route::get('/registration-cancel/{id}', 'App\Http\Controllers\Frontend\FrontendController@program_payment_cancel')->name('frontend.program.payment.cancel');
+    // Route::get($programs_page_slug, 'App\Http\Controllers\Frontend\FrontendController@programs')->name('frontend.programs');
+    // Route::get($programs_page_slug . '/{slug}', 'App\Http\Controllers\Frontend\FrontendController@programs_single')->name('frontend.programs.single');
+    // Route::get($programs_page_slug . '-category/{id}/{any?}', 'App\Http\Controllers\FrontendController@programs_category')->name('frontend.programs.category');
+    // Route::get($programs_page_slug . '-search', 'App\Http\Controllers\Frontend\FrontendController@programs_search')->name('frontend.programs.search');
+    // Route::get($programs_page_slug . '-registration/{id}', 'App\Http\Controllers\Frontend\FrontendController@program_registration')->name('frontend.program.registration');
+    // Route::post($programs_page_slug . '-registration', 'App\Http\Controllers\Frontend\FrontendFormController@store_program_registration_data')->name('frontend.program.registration.store');
+
+    // //program registration
+    // Route::get('/registration-confirm/{id}', 'App\Http\Controllers\Frontend\FrontendController@registration_confirm')->name('frontend.program.registration.confirm');
+    // Route::post('/registration-confirm', 'ProgramPaymentLogsController@registration_payment_form')->name('frontend.program.payment.confirm');
+    // Route::get('/registration-success/{id}', 'App\Http\Controllers\Frontend\FrontendController@program_payment_success')->name('frontend.program.payment.success');
+    // Route::get('/registration-cancel/{id}', 'App\Http\Controllers\Frontend\FrontendController@program_payment_cancel')->name('frontend.program.payment.cancel');
 });
 
-    /*--------------------------------------
+/*--------------------------------------
          FRONTEND: CASE STUDY/ WORKS ROUTES
      ---------------------------------------*/
-     Route::get($work_page_slug, 'FrontendController@work_page')->name('frontend.work');
-     Route::get( $work_page_slug.'/{slug}', 'FrontendController@work_single_page')->name('frontend.work.single');
-     Route::get( $work_page_slug.'/category/{id}/{any?}', 'FrontendController@category_wise_works_page')->name('frontend.works.category');
+Route::get($work_page_slug, 'FrontendController@work_page')->name('frontend.work');
+Route::get($work_page_slug . '/{slug}', 'FrontendController@work_single_page')->name('frontend.work.single');
+Route::get($work_page_slug . '/category/{id}/{any?}', 'FrontendController@category_wise_works_page')->name('frontend.works.category');
 
-     // Frontend Newsletter Subscription
-     Route::post('/subscribe-newsletter', 'App\Http\Controllers\Frontend\FrontendController@subscribe_newsletter')->name('frontend.subscribe.newsletter');
+// Frontend Newsletter Subscription
+Route::post('/subscribe-newsletter', 'App\Http\Controllers\Frontend\FrontendController@subscribe_newsletter')->name('frontend.subscribe.newsletter');
 
-    //  Get in touch
-     Route::post('/get-touch', 'App\Http\Controllers\Frontend\FrontendFormController@get_touch')->name('frontend.get.touch');
+//  Get in touch
+Route::post('/get-touch', 'App\Http\Controllers\Frontend\FrontendFormController@get_touch')->name('frontend.get.touch');
 
 
-    //user login
-    Route::get('/login', 'Auth\LoginController@showLoginForm')->name('user.login');
-    Route::post('/ajax-login', 'FrontendController@ajax_login')->name('user.ajax.login');
-    Route::post('/login', 'Auth\LoginController@login');
-    Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('user.register');
-    Route::post('/register', 'Auth\RegisterController@register');
-    Route::get('/login/forget-password', 'FrontendController@showUserForgetPasswordForm')->name('user.forget.password');
-    Route::get('/login/reset-password/{user}/{token}', 'FrontendController@showUserResetPasswordForm')->name('user.reset.password');
-    Route::post('/login/reset-password', 'FrontendController@UserResetPassword')->name('user.reset.password.change');
-    Route::post('/login/forget-password', 'FrontendController@sendUserForgetPasswordMail');
-    Route::post('/logout', 'Auth\LoginController@logout')->name('user.logout');
-    //user email verify
-    Route::get('/user/email-verify', 'UserDashboardController@user_email_verify_index')->name('user.email.verify');
-    Route::get('/user/resend-verify-code', 'UserDashboardController@reset_user_email_verify_code')->name('user.resend.verify.mail');
-    Route::post('/user/email-verify', 'UserDashboardController@user_email_verify');
+//user login
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('user.login');
+Route::post('/ajax-login', 'FrontendController@ajax_login')->name('user.ajax.login');
+Route::post('/login', 'Auth\LoginController@login');
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('user.register');
+Route::post('/register', 'Auth\RegisterController@register');
+Route::get('/login/forget-password', 'FrontendController@showUserForgetPasswordForm')->name('user.forget.password');
+Route::get('/login/reset-password/{user}/{token}', 'FrontendController@showUserResetPasswordForm')->name('user.reset.password');
+Route::post('/login/reset-password', 'FrontendController@UserResetPassword')->name('user.reset.password.change');
+Route::post('/login/forget-password', 'FrontendController@sendUserForgetPasswordMail');
+Route::post('/logout', 'Auth\LoginController@logout')->name('user.logout');
+//user email verify
+Route::get('/user/email-verify', 'UserDashboardController@user_email_verify_index')->name('user.email.verify');
+Route::get('/user/resend-verify-code', 'UserDashboardController@reset_user_email_verify_code')->name('user.resend.verify.mail');
+Route::post('/user/email-verify', 'UserDashboardController@user_email_verify');
 
-    Route::post('/request-quote', 'FrontendFormController@send_quote_message')->name('frontend.quote.message');
-    Route::post('/request-estimate', 'FrontendFormController@send_estimate_message')->name('frontend.estimate.message');
-    Route::get('/home/{id}', 'FrontendController@home_page_change')->name('frontend.homepage.demo');
+Route::post('/request-quote', 'FrontendFormController@send_quote_message')->name('frontend.quote.message');
+Route::post('/request-estimate', 'FrontendFormController@send_estimate_message')->name('frontend.estimate.message');
+Route::get('/home/{id}', 'FrontendController@home_page_change')->name('frontend.homepage.demo');
 
-    
+
 /*=======================================================
 ******************** ADMIN LOGIN ROUTES **********************
 =======================================================*/
 
-    Route::get('login/admin', 'App\Http\Controllers\Auth\LoginController@showAdminLoginForm')->name('admin.login');
-    Route::post('login/admin', 'App\Http\Controllers\Auth\LoginController@adminLogin');
-    Route::post('/logout/admin', 'App\Http\Controllers\Backend\AdminDashboardController@adminLogout')->name('admin.logout');
+Route::get('login/admin', 'App\Http\Controllers\Auth\LoginController@showAdminLoginForm')->name('admin.login');
+Route::post('login/admin', 'App\Http\Controllers\Auth\LoginController@adminLogin');
+Route::post('/logout/admin', 'App\Http\Controllers\Backend\AdminDashboardController@adminLogout')->name('admin.logout');
 
-  
+
 
 /*--------------------------------------
     ALL ADMIN PANEL ROUTES
@@ -247,7 +252,7 @@ Route::prefix('admin-home')->group(function () {
         Route::post('/delete/{id}', 'App\Http\Controllers\Backend\TeamMemberController@delete')->name('admin.team.member.delete');
         Route::post('/bulk-action', 'App\Http\Controllers\Backend\TeamMemberController@bulk_action')->name('admin.team.member.bulk.action');
 
-                /*-------------------------
+        /*-------------------------
           TEAM MEMBERS CATEGORIES ROUTES
         --------------------------*/
         Route::group(['prefix' => 'category'], function () {
@@ -331,7 +336,7 @@ Route::prefix('admin-home')->group(function () {
         Route::post('/alt', 'App\Http\Controllers\Backend\MediaUploadController@alt_change_upload_media_file')->name('admin.upload.media.file.alt.change');
     });
 
-        /*==============================================
+    /*==============================================
        PARTNERS ANS SUPPORTERS ROUTES
     ==============================================*/
     Route::prefix('partners')->middleware(['adminPermissionCheck:Partners Manage'])->group(function () {

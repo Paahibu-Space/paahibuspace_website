@@ -194,36 +194,36 @@ class FrontendController extends Controller
         ]);
     }
 
-    public function programs()
-    {
+    // public function programs()
+    // {
 
-        $all_programs = Programs::where(['status' => 'publish'])->orderBy('id', 'desc')->paginate(get_static_option('site_programs_post_items'));
-        $all_stories = Stories::where(['status' => 'publish'])->orderBy('id', 'desc')->get();
-        return view('frontend.pages.programs.program')->with([
-            'all_programs' => $all_programs,
-            'all_stories' => $all_stories,
-        ]);
-    }
+    //     $all_programs = Programs::where(['status' => 'publish'])->orderBy('id', 'desc')->paginate(get_static_option('site_programs_post_items'));
+    //     $all_stories = Stories::where(['status' => 'publish'])->orderBy('id', 'desc')->get();
+    //     return view('frontend.pages.programs.program')->with([
+    //         'all_programs' => $all_programs,
+    //         'all_stories' => $all_stories,
+    //     ]);
+    // }
 
-    public function programs_single($slug)
-    {
+    // public function programs_single($slug)
+    // {
 
-        $program = Programs::where('slug', $slug)->first();
-        if (empty($program)) {
-            return redirect_404_page();
-        }
-        return view('frontend.pages.programs.program-single')->with([
-            'program' => $program,
-        ]);
-    }
+    //     $program = Programs::where('slug', $slug)->first();
+    //     if (empty($program)) {
+    //         return redirect_404_page();
+    //     }
+    //     return view('frontend.pages.programs.program-single')->with([
+    //         'program' => $program,
+    //     ]);
+    // }
 
-    public function program_registration($id)
-    {
-        $program = Programs::find($id);
-        return view('frontend.pages.programs.program-registration')->with([
-            'program' => $program
-        ]);
-    }
+    // public function program_registration($id)
+    // {
+    //     $program = Programs::find($id);
+    //     return view('frontend.pages.programs.program-registration')->with([
+    //         'program' => $program
+    //     ]);
+    // }
 
     public function subscribe_newsletter(Request $request)
     {

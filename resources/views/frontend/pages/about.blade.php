@@ -83,10 +83,11 @@
 
                                 <p><b>Paahibu</b> originates from a Waali-speaking word among the Wala people of Wa, found
                                     in the Upper
-                                    West Region of Ghana, West Africa. Paahibu means inclusion, access, equality and
-                                    community/unity/togetherness.</p>
+                                    West Region of Ghana, West Africa. Paahibu means <b>inclusion, access, equality</b> and
+                                    <b>community/unity/togetherness</b>.
+                                </p>
 
-                                <p>At Paahibu Space, we are more than a tech and entrepreneurship development organization;
+                                <p>At Paahibu Space, we are more than a tech and entrepreneurship development organization,
                                     we are a
                                     movement with purpose. Like a compass, we believe movement is crucial for girls'
                                     development and
@@ -102,7 +103,8 @@
                                     unity, diversity,
                                     inclusivity and completeness.</p>
 
-                                <p>Our main goals are to break stereotypes, grow more informed, and encourage the active
+                                <p>Our main goals are to <b>break stereotypes</b>, grow more informed, and encourage the
+                                    active
                                     participation
                                     of girls and women in the digital economy.
                                     Out of a powerful sense that inability to access opportunities, discrimination, and
@@ -127,7 +129,8 @@
                                     that transform not just yourself but your business and community.
                                 </p>
 
-                                <p><b>The Paahibu Space’s</b> brand symbolises energy, strength, equality, and a world free
+                                <p><b>The Paahibu Space’s</b> brand symbolises <b>energy</b>, strength<br>, <b>equality</b>,
+                                    and a world free
                                     of
                                     injustice
                                     against women and girls. Our organization signifies innovation, love, and respect, and
@@ -261,31 +264,44 @@
                     <div class="row align-items-center">
                         <div class="col-lg-5">
                             <div class="about-img-wrap"><img src="{{ asset('assets/frontend/images/female-in-tech.png') }}"
-                                data-bb-lazy="true" class="main-img entered loaded" loading="lazy"
-                                data-src="{{ asset('assets/frontend/images/female-in-tech.png') }}"
-                                alt="Female in Tech" data-ll-status="loaded">
-                                <img
-                                src="{{ asset('assets/frontend/images/about-shape1.png') }}"
-                                data-bb-lazy="true" loading="lazy"
-                                data-src="{{ asset('assets/frontend/images/about-shape1.png') }}"
-                                alt="Female in Tech" data-ll-status="loaded"
-                                class="entered loaded"><img
-                                src="{{ asset('assets/frontend/images/about-shape-2.png') }}" data-bb-lazy="true"
-                                loading="lazy" data-src="{{ asset('assets/frontend/images/about-shape-2.png') }}"
-                                alt="Female in Tech" data-ll-status="loaded"
-                                class="entered loaded">
+                                    data-bb-lazy="true" class="main-img entered loaded" loading="lazy"
+                                    data-src="{{ asset('assets/frontend/images/female-in-tech.png') }}" alt="Female in Tech"
+                                    data-ll-status="loaded">
+                                <img src="{{ asset('assets/frontend/images/about-shape1.png') }}" data-bb-lazy="true"
+                                    loading="lazy" data-src="{{ asset('assets/frontend/images/about-shape1.png') }}"
+                                    alt="Female in Tech" data-ll-status="loaded" class="entered loaded"><img
+                                    src="{{ asset('assets/frontend/images/about-shape-2.png') }}" data-bb-lazy="true"
+                                    loading="lazy" data-src="{{ asset('assets/frontend/images/about-shape-2.png') }}"
+                                    alt="Female in Tech" data-ll-status="loaded" class="entered loaded">
                             </div>
                         </div>
                         <div class="col-lg-7">
                             <div class="about-content">
                                 <div class="about-section-title mb-25">
-                                    <span class="sub-title">Why we need female perspective in tech</span>
-                                    <h2 class="title tg-element-title">
+                                    <span class="sub-title">
+                                        <h5>Why we need female perspective in tech</h5>
+                                    </span>
+                                    {{-- <h2 class="title tg-element-title">
                                         The need for female perspective in tech
-                                    </h2>
+                                    </h2> --}}
                                 </div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, error. Perferendis
-                                    doloribus quae eligendi, magni nulla dolores iste cumque odio consequatur</p>
+                                <p style="margin:0 0 1.25rem; font-size:1rem; color:#374151;">
+                                    Technology shapes how we live, work, and connect, yet <b>women are still
+                                        underrepresented</b>
+                                    in building the tools that shape our future. Including female perspectives leads to
+                                    <b>better products, fairer outcomes, and more resilient innovation.</b> <br><br>
+
+                                    Women remain underrepresented in technology, making up only <b>28% of the global tech
+                                        workforce.</b>
+                                    Their absence limits innovation, as female perspectives bring <b>empathy-driven design,
+                                        diverse problem-solving, and inclusive solutions.</b>
+                                    Research shows that companies with gender-diverse leadership are <b>21% more likely to
+                                        outperform competitors.</b><br>
+                                    At Paahibu Space, we believe <b>empowering women in tech is not just about fairness —
+                                        it’s essential</b>
+                                    for creating technology that truly serves everyone.
+                                </p>
+
                             </div>
                         </div>
                     </div>
@@ -305,11 +321,7 @@
                                         <h2 class="title">Increased Innovation</h2>
                                     </div>
                                     <p class="truncate-2-custom">
-                                        Id beatae eaque quis sint id. Quod qui voluptas nihil vitae dolorum modi. Autem qui
-                                        perspiciatis quod laboriosam quo omnis. Nam autem blanditiis eius unde veritatis
-                                        placeat perferendis praesentium. Magnam perferendis dolorum in ratione officia
-                                        voluptas. Rerum sint tempora voluptate necessitatibus dolor itaque. Pariatur vitae
-                                        ducimus ut ipsum.</p>
+                                        Diverse perspectives fuel creativity. Including women in tech leads to solutions that are more inclusive, practical, and impactful.</p>
                                 </div>
                             </div>
                         </div>
@@ -321,11 +333,7 @@
                                         <h2 class="title">Effective Leadership</h2>
                                     </div>
                                     <p class="truncate-2-custom">
-                                        Reiciendis et molestias commodi rerum reprehenderit et tempora. Natus est
-                                        exercitationem vitae et. Non minima voluptas dolores minus repudiandae repellat. Non
-                                        a deleniti ut recusandae. Enim est quisquam quia. Debitis commodi nostrum aut vero
-                                        et voluptatem molestias. Ab dignissimos ab mollitia ea sed magnam. Sed omnis
-                                        accusantium quidem officia sequi.</p>
+                                        Women bring collaboration, empathy, and resilience to leadership qualities that drive stronger teams and better outcomes.</p>
                                 </div>
                             </div>
                         </div>
@@ -337,10 +345,7 @@
                                         <h2 class="title">Entrepreneurship Growth</h2>
                                     </div>
                                     <p class="truncate-2-custom">
-                                        Aut voluptate quaerat in beatae. Vel et quo rem et ut. Commodi dolorem beatae et
-                                        magni magnam repellat. Ratione eaque laudantium velit provident. Illum natus totam
-                                        et voluptatem quas animi in. Quo sed et tempora eum. Eos et neque voluptas quibusdam
-                                        consequatur. Assumenda sint laborum quos tempore iste maxime.</p>
+                                        Women bring collaboration, empathy, and resilience to leadership — qualities that drive stronger teams and better outcomes.</p>
                                 </div>
                             </div>
                         </div>
@@ -455,8 +460,7 @@
                                     Gender Gap Statistics
                                 </h2>
                             </div>
-                            <p>Morem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elita Florai Psum Dolor Sit Amet,
-                                Consecteture.Borem.</p>
+                            <p>Despite progress, the gender gap in technology and entrepreneurship remains wide. Women represent less than <b>30%</b> of the global tech workforce and own fewer than <b>1 in 3</b> businesses worldwide. In many African countries, the gap is even greater, with women facing limited access to resources, mentorship, and digital opportunities.</p>
                             <div class="choose-circle-wrap">
                                 <div class="circle-item" data-color="#0055FF">
                                     <div class="chart" data-percent="25">
@@ -517,16 +521,20 @@
                             <div class="about-section-title mb-25">
                                 <span class="sub-title">GROW Community</span>
                                 <h2 class="title tg-element-title">
-                                    We (Weomen Excel) are GROWers!
+                                    We (Women Excel) are GROWers!
                                 </h2>
-                                <p><span style="color: #f6871f; font-weight: 700">GROW (Gather, Rise, Overcome, Win)</span>  provides a network,
-                                    support system, and personal and professional development
+                                <p><span style="color: #f6871f; font-weight: 700">GROW (Girls and Women Rising on the Web)</span>
+                                    provides a network,
+                                    support system, personal and professional development
                                     opportunities to amplify the success of self-identifying women
                                     who are interested in tech, leadership, entrepreneurship or
                                     are already starting businesses in Africa.
-                                    
-                                    </p>
-                                <p><span style="color: #f6871f; font-weight: 700">GROW</span> mission is to give <span style="color: #f6871f; font-weight: 700">YOU</span> the network, resources, and accountability to develop both personally and professionally to succeed in whatever career path you chose.</p>
+
+                                </p>
+                                <p><span style="color: #f6871f; font-weight: 700">GROW</span> mission is to give <span
+                                        style="color: #f6871f; font-weight: 700">YOU</span> the network, resources, and
+                                    accountability to develop both personally and professionally to succeed in whatever
+                                    career path you chose.</p>
                             </div>
                             <div class="about-three__info margin-bottom-40">
                                 <div class="row g-4 wow fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms"
@@ -581,7 +589,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="https://bit.ly/GROWKommunity" class="about-boxed-btn slider-boxed-btn">Join Now</a>
+                                <a href="https://bit.ly/GROWKommunity" class="about-boxed-btn slider-boxed-btn">Join
+                                    Now</a>
                             </div>
                         </div>
                     </div>
@@ -605,8 +614,7 @@
                                 <img src="https://gratech.coevs.com/assets/general/images/AR4qBRWmgCOWHac7I0BQ.png"
                                     alt="image">
                             </div>
-                            <img src="{{ asset('assets/frontend/images/grow-network.webp') }}"
-                                alt="image">
+                            <img src="{{ asset('assets/frontend/images/grow-network.webp') }}" alt="image">
                         </div>
                     </div>
                 </div>
@@ -700,7 +708,7 @@
                     <span>Team</span>
                     <h2>Our Team in a Glance</h2>
                     <p>At Paahibu Space, our Leadership Team is a dynamic ensemble of skilled and passionate young
-                        individuals. We are not just a team; we are the driving force behind the technological and
+                        individuals. We are not just a team, we are the driving force behind the technological and
                         entrepreneurial empowerment of girls and women-led businesses.</p>
 
                 </div>
