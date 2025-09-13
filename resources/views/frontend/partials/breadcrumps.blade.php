@@ -1,7 +1,7 @@
 <!-- ======= Breadcrumbs ======= -->
 <section class="breadcrumbs lign-items-center  @if (in_array(request()->route()->getName(), ['homepage', 'frontend.service']) && empty($page_post->breadcrumb_status)) d-none
         @else d-flex @endif"
-    style="background-image: url('{{ asset('assets/frontend/images/img3.jpeg') }}');">
+    style="background-image: url('{{ asset('assets/frontend/images/bg/team-with-grow.webp') }}');">
     <div class="shape3 wow slideInRight" data-wow-delay="200ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 200ms; animation-name: slideInRight;">
 		<img class="sway__animationX" src="{{ asset('assets/frontend/images/bg/breadcrump-animated-image.png') }}" alt="shape">
 	</div>

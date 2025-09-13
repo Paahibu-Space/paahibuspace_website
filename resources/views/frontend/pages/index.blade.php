@@ -61,11 +61,32 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide">
+                        {{-- <div class="swiper-slide">
                             <div class="video-bg">
                                 <iframe width="100%" height="100%"
                                     src="{{ asset('assets/frontend/images/pexels-edmond-dantès-8643891 (2160p).mp4') }}"
                                     frameborder="0" allowfullscreen loop></iframe>
+                            </div>
+
+                            <div class="content-overlay">
+                                <div class="vid-bg d-flex align-items-end">
+                                    <div class="vid-bg-inner">
+                                        <h1>Paahibu Space</h1>
+                                        <h2>Access | Innovate | Transform</h2>
+                                        <p>Paahibu Space endeavours to equip, empower and endow girls and women-led
+                                            businesses with the competencies to leverage technology, to lead and
+                                            venture into the real world and to transform themselves and their
+                                            communities, building a better world for themselves and future
+                                            generations.</p>
+                                        <a href="#about-section" class="slider-boxed-btn">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --}}
+
+                        <div class="swiper-slide">
+                            <div class="video-bg">
+                                <img src="{{ asset('assets/frontend/images/gifty_web.webp') }}" alt="">
                             </div>
 
                             <div class="content-overlay">
@@ -111,7 +132,7 @@
                                     <div class="imgone big-paral">
                                         <div class="simpleParallax" data-aos="fade-up" data-aos-delay="200"><img
                                                 class="lazy thumparallax-down img-fluid"
-                                                src="{{ asset('assets/frontend/images/about-left-img.jpeg') }}"
+                                                src="{{ asset('assets/frontend/images/about-right-img.jpeg') }}"
                                                 width="500" height="666" class="lazy thumparallax-down img-fluid"
                                                 alt="two-images-1.jpg"></div>
                                     </div>
@@ -126,7 +147,7 @@
                                     <div class="imgtwo big-paral">
                                         <div class="simpleParallax" data-aos="fade-down" data-aos-delay="100"><img
                                                 class="lazy thumparallax img-fluid"
-                                                src="{{ asset('assets/frontend/images/about-right-img.jpeg') }}"
+                                                src="{{ asset('assets/frontend/images/right-img.webp') }}"
                                                 width="500" height="820" class="lazy thumparallax img-fluid"
                                                 alt="two-images-1.jpg"></div>
                                     </div>
@@ -176,7 +197,7 @@
             <div class="row g-0" data-aos="fade-up" data-aos-delay="200">
 
                 <div class="col-xl-5 img-bgg"
-                    style="background-image: url('{{ asset('assets/frontend/images/wibid.png') }}'); background-position: center">
+                    style="background-image: url('{{ asset('assets/frontend/images/three.webp') }}'); background-position: center">
                 </div>
                 <div class="col-xl-7 slides  position-relative">
 
@@ -299,7 +320,7 @@
                             </ul>
                         </div>
                         <div class="col-lg-6 order-1 order-lg-2 text-center">
-                            <img src="{{ asset('assets/frontend/images/access.jpg') }}" alt="" class="img-fluid">
+                            <img src="{{ asset('assets/frontend/images/grow-helping.webp') }}" alt="" class="img-fluid">
                         </div>
                     </div>
                 </div><!-- End tab content item -->
@@ -351,7 +372,7 @@
                             </p>
                         </div>
                         <div class="col-lg-6 order-1 order-lg-2 text-center">
-                            <img src="{{ asset('assets/frontend/images/innovate4.webp') }}" alt=""
+                            <img src="{{ asset('assets/frontend/images/transform.webp') }}" alt=""
                                 class="img-fluid">
                         </div>
                     </div>

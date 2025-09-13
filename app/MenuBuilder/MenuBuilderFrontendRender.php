@@ -26,7 +26,7 @@ class MenuBuilderFrontendRender
 
                     <div class="right-content">
                         <div class="right-img">
-                            <img src="' . asset('assets/frontend/images/img2.jpeg') . '" alt="" width="400">
+                            <img src="' . asset('assets/frontend/images/about-us.webp') . '" alt="" width="400">
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@ class MenuBuilderFrontendRender
 
                     <div class="right-content">
                         <div class="right-img">
-                            <img src="' . asset('assets/frontend/images/img3.jpeg') . '" alt="" width="400">
+                            <img src="' . asset('assets/frontend/images/hey-sis-r.png') . '" alt="" width="300">
                         </div>
                     </div>
                 </div>

@@ -210,7 +210,7 @@ section {
     min-height: 50vh;
     position: relative;
     background-size: cover;
-    background-position: center;
+    /* background-position: center; */
     background-repeat: no-repeat;
     top: 60px;
     margin-bottom: 60px;
@@ -835,10 +835,17 @@ section {
     height: 945px;
     position: absolute;
     top: 0;
-    left: 0;
     z-index: -1;
     overflow: hidden;
 }
+
+@media (min-width: 768px) {
+    .video-bg {
+        left: -185px;
+
+    }
+}
+
 
 .content-overlay {
     position: relative;
@@ -874,7 +881,7 @@ section {
 
 .vid-bg .vid-bg-inner {
     position: absolute;
-    left: 20%;
+    left: 55%;
     top: 40%;
     max-width: 40%;
     color: #ffffff;
@@ -920,7 +927,7 @@ section {
 
     .vid-bg .vid-bg-inner {
         max-width: 100%;
-        top: 30%;
+        top: 40%;
         padding-left: 0;
         left: 10%;
     }
@@ -931,6 +938,19 @@ section {
 
     .hero-slider h1 {
         font-size: 26px;
+    }
+
+    .video-bg {
+        width: 100%;
+        height: auto;
+    }
+
+    .video-bg img {
+        height: 100vh;
+    }
+
+    .vid-bg {
+        height: 100vh;
     }
     
 

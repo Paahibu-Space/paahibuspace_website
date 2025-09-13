@@ -592,7 +592,7 @@
                                     src="https://gratech.coevs.com/assets/general/images/jlk9SbvrzRdSnaROyQgl.png"
                                     alt="shape">
                             </div>
-                            <div class="about-three-count p-4 d-flex align-items-center gap-3">
+                            {{-- <div class="about-three-count p-4 d-flex align-items-center gap-3">
                                 <img class="icon"
                                     src="https://gratech.coevs.com/assets/general/images/yzBJyIcquJ1ZTyQGKKQI.png"
                                     alt="icon">
@@ -600,12 +600,12 @@
                                     <h3><span class="count">500</span>+</h3>
                                     <span class="span">Community Members</span>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="faq__line sway__animation">
                                 <img src="https://gratech.coevs.com/assets/general/images/AR4qBRWmgCOWHac7I0BQ.png"
                                     alt="image">
                             </div>
-                            <img src="{{ asset('assets/frontend/images/grow.png') }}"
+                            <img src="{{ asset('assets/frontend/images/grow-network.webp') }}"
                                 alt="image">
                         </div>
                     </div>
