@@ -71,7 +71,7 @@
         </svg>
     </div>
     
-    <div id="preloader"></div>
+    <!--<div id="preloader"></div>-->
 
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
     <script src="{{ asset('assets/frontend/js/simpleParallax.min.js') }}"></script>

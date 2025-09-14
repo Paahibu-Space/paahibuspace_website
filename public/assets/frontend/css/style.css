@@ -1,4 +1,4 @@
-:root {
+::root {
     --main-color-two: #f6871f;
     --main-color-one: #272974;
     --heading-color: #0a1121;
@@ -802,6 +802,14 @@ section {
 }
 
 /* Hero Slider */
+
+.hero-slider {
+    margin-top: 60px;
+}
+
+.hero-slider img {
+    width: 100%;
+}
 
 .img-bg {
     height: 85vh;
@@ -4109,7 +4117,7 @@ h6.service_summary-about::before {
 }
 
 .story-item {
-    margin-top: -300px;
+    margin-top: -100px;
     z-index: 1;
 
 }

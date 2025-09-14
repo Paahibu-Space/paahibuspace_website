@@ -17,7 +17,7 @@
 
             <div class="row gy-4">
                 <div class="col-lg-6 order-1 order-lg-2">
-                    <img src="{{ asset('assets/frontend/images/women-in-bus.png') }}" class="img-fluid" alt="">
+                    <img loading="lazy" src="{{ asset('assets/frontend/images/program/women-in-bus.webp') }}" class="img-fluid" alt="Women-in-business">
                 </div>
                 <div class="col-lg-6 order-2 order-lg-1 content">
                     <h2 class="title">Women in Digital Economy Inititive</h2>
@@ -55,9 +55,9 @@
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-6 col-md-8">
                     <div class="about__img-wrap-six">
-                        <img src="{{ asset('assets/frontend/images/program/hajia.png') }}"
+                        <img src="{{ asset('assets/frontend/images/program/hajia.webp') }}"
                             data-bb-lazy="true" loading="lazy"
-                            data-src="{{ asset('assets/frontend/images/program/hajia.png') }}"
+                            data-src="{{ asset('assets/frontend/images/program/hajia.webp') }}"
                             alt="image" data-ll-status="loaded" class="entered loaded">
                     </div>
                 </div>
@@ -156,7 +156,7 @@
             <div class="counter__wrp gradient-bg">
                 <div class="counter__item wow bounceInUp" data-wow-delay="00ms" data-wow-duration="1000ms"
                     style="visibility: visible; animation-duration: 1000ms; animation-delay: 0ms; animation-name: bounceInUp;">
-                    <img src="https://gratech.coevs.com/assets/general/images/ETP5udJr7yH1P3J0fAr1.png" alt="icon">
+                    <img loading="lazy" src="https://gratech.coevs.com/assets/general/images/ETP5udJr7yH1P3J0fAr1.png" alt="icon">
                     <div class="content">
                         <h3><span data-purecounter-start="0" data-purecounter-end="232"
                             data-purecounter-duration="1" class="purecounter"></span>+</h3>
@@ -165,7 +165,7 @@
                 </div>
                 <div class="counter__item wow bounceInUp" data-wow-delay="00ms" data-wow-duration="1000ms"
                     style="visibility: visible; animation-duration: 1000ms; animation-delay: 0ms; animation-name: bounceInUp;">
-                    <img src="https://gratech.coevs.com/assets/general/images/8MUE9rfNP2etAZJ3WEEw.png" alt="icon">
+                    <img loading="lazy" src="https://gratech.coevs.com/assets/general/images/8MUE9rfNP2etAZJ3WEEw.png" alt="icon">
                     <div class="content">
                         <h3><span data-purecounter-start="0" data-purecounter-end="500"
                             data-purecounter-duration="1" class="purecounter"></span>+</h3>
@@ -183,7 +183,7 @@
                 </div>
                 <div class="counter__item wow bounceInUp" data-wow-delay="00ms" data-wow-duration="1000ms"
                     style="visibility: visible; animation-duration: 1000ms; animation-delay: 0ms; animation-name: bounceInUp;">
-                    <img src="https://gratech.coevs.com/assets/general/images/ZXTeT8rvVoyRWhQginA0.png" alt="icon">
+                    <img loading="lazy" src="https://gratech.coevs.com/assets/general/images/ZXTeT8rvVoyRWhQginA0.png" alt="icon">
                     <div class="content">
                         <h3><span data-purecounter-start="0" data-purecounter-end="120"
                             data-purecounter-duration="1" class="purecounter"></span>+</h3>
@@ -341,12 +341,12 @@
                                         @if (!empty($story->image))
                                             {!! render_image_markup_by_attachment_id($story->image, 'testimonial-img') !!}
                                         @else
-                                            <img src="{{ asset('assets/frontend/images/no-image.webp') }}" alt="No image"
+                                            <img loading="lazy" src="{{ asset('assets/frontend/images/no-image.webp') }}" alt="No image"
                                                 class="testimonial-img">
                                         @endif
                                     </div>
                                     <h3 clas="">
-                                        <a href="#"><span class="">{{ $story->title }}</a>
+                                        <a href="{{ route('frontend.story.single', $story->slug) }}"><span class="">{{ $story->title }}</a>
                                     </h3>
                                     <span class="d-block position">{{ $story->tags }}</span>
                                     <p>
