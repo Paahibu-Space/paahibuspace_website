@@ -85,7 +85,7 @@
 
                     <div class="col-lg-4 col-md-6 footer-newsletter subscription-form">
                         <h4>Our Newsletter</h4>
-                        <p>Join us, not as a client, but as an esteemed member of our close-knit family.</p>
+                        <p>Join us as an esteemed member of our close-knit family.</p>
                         <form action="{{ route('frontend.subscribe.newsletter') }}" class="form-subscribe"
                             method="POST">
                             <input type="email" name="email"><input type="submit" value="Subscribe"

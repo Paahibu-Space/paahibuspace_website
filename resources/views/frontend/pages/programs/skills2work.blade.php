@@ -202,7 +202,7 @@
                     <p>Join the Stills2Work Program and take the first step toward transforming your future in technology and entrepreneurship.</p>
                 </div>
                 <div class="col-lg-6 margin-bottom-30">
-                    <h3 style="color: #f6871f !important; font-weight: 700">Next Cohort Begins in March</h3>
+                    <h3 style="color: #f6871f !important; font-weight: 700">Next Cohort Begins Soon</h3>
                     <p> Be part of a vibrant community dedicated to equipping women with digital and entrepreneurial skills. Applications are now open! Seize this opportunity to innovate, grow, and lead in the digital economy.
                     </p>
                 </div>
