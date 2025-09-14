@@ -1,7 +1,7 @@
 @extends('frontend.layout')
 
 @section('content')
-     <!--======= Hero Slider Section ======= -->
+    <!-- ======= Hero Slider Section ======= -->
     <div id="hero-slider" class="hero-slider">
         <div class="hero-container" data-aos="fade-in">
             <div class="col-12">
@@ -9,7 +9,7 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="img-bg d-flex align-items-end"
-                                style="background-image: url('{{ asset('assets/frontend/images/hero-img.webp') }}');">
+                                style="background-image: url('{{ asset('assets/frontend/images/hero-img.jpeg') }}');">
                                 {{-- <div class="img-bg-inner" data-aos="fade-left" data-aos-delay="100">
                                     <h1>Paahibu Space</h1>
                                     <h2>Access | Innovate | Transfrom</h2>
@@ -25,30 +25,15 @@
                                     <div class="col-lg-6 order-2 order-lg-2 d-flex flex-column justify-content-center white-color"
                                         data-aos="fade-in">
                                         <h1>Hey sis, you belong to tech too</h1>
-<<<<<<< Updated upstream
                                         <p class="white-color">At Paahibu Space, we’re breaking barriers and creating opportunities for women and girls to thrive in technology, innovation, and entrepreneurship. This is your space to learn, grow, and lead — because the future of tech needs your voice, your ideas, and your brilliance.</p>
-=======
-                                        <p class="white-color">We endeavours to equip, empower and endow girls and women-led
-                                            businesses with the competencies to leverage technology, to lead and
-                                            venture into the real world and to transform themselves and their
-                                            communities, building a better world for themselves and future
-                                            generations.</p>
->>>>>>> Stashed changes
                                         <div class="d-flex">
                                             <a href="#about" class="slider-boxed-btn">Learn more</a>
                                         </div>
                                     </div>
-<<<<<<< Updated upstream
                                     <div class="col-lg-6 order-1 order-lg-1 hero-img" data-aos="zoom-out"
                                         data-aos-delay="100" style="padding-top: 12%;">
                                         <img src="{{ asset('assets/frontend/images/hey-sis.webp') }}"
                                             class="img-fluid animated" alt="">
-=======
-                                    <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out"
-                                        data-aos-delay="100">
-                                        <img loading="lazy" src="{{ asset('assets/frontend/images/techsistar.webp') }}"
-                                            class="img-fluid animated" alt="Tech Sisters">
->>>>>>> Stashed changes
                                     </div>
                                 </div>
                             </div>
@@ -58,8 +43,8 @@
                                 <div class="row gy-4">
                                     <div class="col-lg-6 order-1 order-lg-1 hero-img padding-top-80" data-aos="zoom-out"
                                         data-aos-delay="100">
-                                        <img loading="lazy" src="{{ asset('assets/frontend/images/program/women-in-bus.webp') }}"
-                                            class="img-fluid animated" alt="Women in business">
+                                        <img src="{{ asset('assets/frontend/images/women-in-bus.png') }}"
+                                            class="img-fluid animated" alt="">
                                     </div>
 
                                     <div class="col-lg-6 order-2 order-lg-2 d-flex flex-column justify-content-center white-color"
@@ -74,12 +59,11 @@
 
                                 </div>
                             </div>
-<<<<<<< Updated upstream
                         </div> --}}
                         {{-- <div class="swiper-slide">
                             <div class="video-bg">
                                 <iframe width="100%" height="100%"
-                                    src="{{ asset('assets/frontend/images/pexels-edmond-dantès-8643891 (2160p).mp4') }}"
+                                    src="{{ asset('assets/frontend/images/pexels-edmond-dantès-8643891 (2160p).mp4') }}"
                                     frameborder="0" allowfullscreen loop></iframe>
                             </div>
 
@@ -119,31 +103,6 @@
                                 </div>
                             </div>
                         </div>
-=======
-                        </div>
-                        <!--<div class="swiper-slide">-->
-                        <!--    <div class="video-bg">-->
-                        <!--        <iframe width="100%" height="100%"-->
-                        <!--            src="{{ asset('assets/frontend/images/pexels-edmond-dantès-8643891 (2160p).mp4') }}"-->
-                        <!--            frameborder="0" allowfullscreen loop></iframe>-->
-                        <!--    </div>-->
-
-                        <!--    <div class="content-overlay">-->
-                        <!--        <div class="vid-bg d-flex align-items-end">-->
-                        <!--            <div class="vid-bg-inner">-->
-                        <!--                <h1>Paahibu Space</h1>-->
-                        <!--                <h2>Access | Innovate | Transform</h2>-->
-                        <!--                <p>Paahibu Space endeavours to equip, empower and endow girls and women-led-->
-                        <!--                    businesses with the competencies to leverage technology, to lead and-->
-                        <!--                    venture into the real world and to transform themselves and their-->
-                        <!--                    communities, building a better world for themselves and future-->
-                        <!--                    generations.</p>-->
-                        <!--                <a href="#about-section" class="slider-boxed-btn">Learn More</a>-->
-                        <!--            </div>-->
-                        <!--        </div>-->
-                        <!--    </div>-->
-                        <!--</div>-->
->>>>>>> Stashed changes
 
                     </div>
                     <div class="custom-swiper-button-next">
@@ -172,11 +131,7 @@
                                     <div class="imgone big-paral">
                                         <div class="simpleParallax" data-aos="fade-up" data-aos-delay="200"><img
                                                 class="lazy thumparallax-down img-fluid"
-<<<<<<< Updated upstream
                                                 src="{{ asset('assets/frontend/images/about-right-img.jpeg') }}"
-=======
-                                                src="{{ asset('assets/frontend/images/about-left-img.webp') }}"
->>>>>>> Stashed changes
                                                 width="500" height="666" class="lazy thumparallax-down img-fluid"
                                                 alt="two-images-1.jpg"></div>
                                     </div>
@@ -191,11 +146,7 @@
                                     <div class="imgtwo big-paral">
                                         <div class="simpleParallax" data-aos="fade-down" data-aos-delay="100"><img
                                                 class="lazy thumparallax img-fluid"
-<<<<<<< Updated upstream
                                                 src="{{ asset('assets/frontend/images/right-img.webp') }}"
-=======
-                                                src="{{ asset('assets/frontend/images/about-right-img.webp') }}"
->>>>>>> Stashed changes
                                                 width="500" height="820" class="lazy thumparallax img-fluid"
                                                 alt="two-images-1.jpg"></div>
                                     </div>
