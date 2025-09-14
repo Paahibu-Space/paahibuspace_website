@@ -24,7 +24,7 @@
                                 <div class="row gy-4">
                                     <div class="col-lg-6 order-2 order-lg-2 d-flex flex-column justify-content-center white-color"
                                         data-aos="fade-in">
-                                        <h1>Hey sis, you belong to tech too</h1>
+                                        <h1>Hey sis, you belong in tech too</h1>
                                         <p class="white-color">At Paahibu Space, we’re breaking barriers and creating opportunities for women and girls to thrive in technology, innovation, and entrepreneurship. This is your space to learn, grow, and lead — because the future of tech needs your voice, your ideas, and your brilliance.</p>
                                         <div class="d-flex">
                                             <a href="#about" class="slider-boxed-btn">Learn more</a>
