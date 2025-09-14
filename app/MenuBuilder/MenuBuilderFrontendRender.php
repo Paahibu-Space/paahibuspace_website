@@ -26,7 +26,7 @@ class MenuBuilderFrontendRender
 
                     <div class="right-content">
                         <div class="right-img">
-                            <img src="' . asset('assets/frontend/images/about-us.webp') . '" alt="" width="400">
+                            <img src="' . asset('assets/frontend/images/hiqmat-in-action.webp') . '" alt="" width="400">
                         </div>
                     </div>
                 </div>
@@ -44,6 +44,11 @@ class MenuBuilderFrontendRender
             <ul class="mega-dropdown-content">
                 <div class="justify-content-between d-flex">
                     <div class="nav-list-container">
+                                            <li>';
+
+                            $output .= '<a href="' . route('frontend.grow-network') . '">' . 'Girls & Women Rising on the Web (GROW' . '</a>';
+                        $output .= '
+                        </li>
                         <li>';
 
                             $output .= '<a href="' . route('frontend.widei') . '">' . 'Women in Digital Economy Initiative (WiDEI)' . '</a>';
@@ -51,12 +56,16 @@ class MenuBuilderFrontendRender
                         </li>
                         <li>';
 
+                            $output .= '<a href="' . route('frontend.widib') . '">' . 'Women in Digital Business (WiDiB)' . '</a>';
+
                             $output .= '<a href="' . route('frontend.skills2work') . '">' . 'Skills2Work Initiative' . '</a>';
                         $output .= '
                         </li>
+
                         <li>';
 
-                            $output .= '<a href="' . route('frontend.widib') . '">' . 'Women in Digital Business (WiDIB)' . '</a>';
+
+                            $output .= '<a href="' . route('frontend.techsistars') . '">' . 'TechSistars Mentorship Program' . '</a>';
                         $output .= '
                         </li>
                         <li>';
@@ -64,11 +73,8 @@ class MenuBuilderFrontendRender
                             $output .= '<a href="' . route('frontend.ndiara') . '">' . 'Ndiara' . '</a>';
                         $output .= '
                         </li>
-                        <li>';
 
-                            $output .= '<a href="' . route('frontend.techsistars') . '">' . 'TechSistars Mentorship Program' . '</a>';
-                        $output .= '
-                        </li>
+
                     </div>
 
                     <div class="right-content">

@@ -22,7 +22,7 @@
                         <div class="swiper-slide bg-blue height-85">
                             <div class="container">
                                 <div class="row gy-4">
-                                    <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center white-color"
+                                    <div class="col-lg-6 order-2 order-lg-2 d-flex flex-column justify-content-center white-color"
                                         data-aos="fade-in">
                                         <h1>Hey sis, you belong to tech too</h1>
                                         <p class="white-color">At Paahibu Space, we’re breaking barriers and creating opportunities for women and girls to thrive in technology, innovation, and entrepreneurship. This is your space to learn, grow, and lead — because the future of tech needs your voice, your ideas, and your brilliance.</p>
@@ -30,7 +30,7 @@
                                             <a href="#about" class="slider-boxed-btn">Learn more</a>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out"
+                                    <div class="col-lg-6 order-1 order-lg-1 hero-img" data-aos="zoom-out"
                                         data-aos-delay="100" style="padding-top: 12%;">
                                         <img src="{{ asset('assets/frontend/images/hey-sis.webp') }}"
                                             class="img-fluid animated" alt="">

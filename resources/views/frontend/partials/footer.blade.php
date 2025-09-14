@@ -66,11 +66,15 @@
                     <div class="col-lg-2 col-md-6 footer-links">
                         <h4>Our Programs</h4>
                         <ul>
-                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('homepage') }}">Skills2Work Initiative</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('frontend.about') }}">Cyber Girls</a>
-                            </li>
                             <li><i class="bi bi-chevron-right"></i> <a
-                                    href="{{ route('frontend.service') }}">Ndiara</a></li>
+                                    href="{{ route('frontend.techsistars') }}">TechsiStars</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a
+                                    href="{{ route('frontend.widib') }}">WIDIB</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a
+                                    href="{{ route('frontend.widei') }}">WiDEI</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a
+                                    href="{{ route('frontend.grow-network') }}">GROW</a></li>
+
                             <li><i class="bi bi-chevron-right"></i> <a
                                     href="https://docs.google.com/forms/d/e/1FAIpQLSe18AXaRl79Gbq_RP05CSgY3xbvnNldfISPriy27H0b7hpdIw/viewform">Become
                                     a mentor</a></li>
@@ -121,5 +125,3 @@
         </div>
 
     </footer><!-- End Footer -->
-
-

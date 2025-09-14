@@ -14,10 +14,17 @@
 <section class="program-overview">
     <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4">
-            <div class="col-lg-6 order-1 order-lg-2">
-                <img src="{{ asset('assets/frontend/images/women-in-bus.png') }}" class="img-fluid" alt="">
+            <div class="col-lg-6 order-1 order-lg-1">
+                <img src="{{ asset('assets/frontend/images/program/skills2work.webp') }}" class="img-fluid" alt="">
+
+                <p>
+                    <span class="fw-bold">Skills2Work</span> is a 12-month hybrid upskilling initiative designed to equip rural girls and young women 
+                    with future-ready digital skills to start their own businesses, connect them with online communities and women-owned MSMEs, 
+                    while providing continuous mentorship for economic independence.
+                </p>
             </div>
-            <div class="col-lg-6 order-2 order-lg-1 content">
+            
+            <div class="col-lg-6 order-2 order-lg-2 content">
                 <h2 class="title">Skills2Work Program</h2>
                 <p class="fst-italic">
                     Equipping young women for tech careers, Skills2Work imparts basic tech skills, making them hireable. 
@@ -31,11 +38,7 @@
                     <li><i class="bi bi-check2-all"></i> <span>Improve and digitize women-led MSMEs for growth</span></li>
                     <li><i class="bi bi-check2-all"></i> <span>Access networks, mentorship, and partnerships for long-term success</span></li>
                 </ul>
-                <p>
-                    <span class="fw-bold">Skills2Work</span> is a 12-month hybrid upskilling initiative designed to equip rural girls and young women 
-                    with future-ready digital skills to start their own businesses, connect them with online communities and women-owned MSMEs, 
-                    while providing continuous mentorship for economic independence.
-                </p>
+   
             </div>
         </div>
     </div>
@@ -45,14 +48,7 @@
 <section class="about__area-six">
     <div class="container">
         <div class="row align-items-center justify-content-center">
-            <div class="col-lg-6 col-md-8">
-                <div class="about__img-wrap-six">
-                    <img src="{{ asset('assets/frontend/images/program/hajia.png') }}"
-                        data-bb-lazy="true" loading="lazy"
-                        data-src="{{ asset('assets/frontend/images/program/hajia.png') }}"
-                        alt="image" data-ll-status="loaded" class="entered loaded">
-                </div>
-            </div>
+           
             <div class="col-lg-6">
                 <div class="about__content-six">
                     <div class="mb-25 tg-heading-subheading animation-style3">
@@ -75,6 +71,14 @@
                             </ul>
                         </div>
                     </div>
+                </div>
+            </div>
+             <div class="col-lg-6 col-md-8">
+                <div class="about__img-wrap-six">
+                    <img src="{{ asset('assets/frontend/images/program/skills2work2.webp') }}"
+                        data-bb-lazy="true" loading="lazy"
+                        data-src="{{ asset('assets/frontend/images/program/skills2work2.webp') }}"
+                        alt="image" data-ll-status="loaded" class="entered loaded">
                 </div>
             </div>
         </div>
@@ -135,9 +139,9 @@
             </div>
             <div class="col-lg-6 col-md-9 margin-bottom-30">
                 <div class="choose__img-wrap-five">
-                    <img src="{{ asset('assets/frontend/images/program/wibid-objectives.png') }}"
+                    <img src="{{ asset('assets/frontend/images/program/skill2work1.webp') }}"
                         data-bb-lazy="true" loading="lazy"
-                        data-src="{{ asset('assets/frontend/images/program/wibid-objectives.png') }}"
+                        data-src="{{ asset('assets/frontend/images/program/skill2work1.webp') }}"
                         alt="image" data-ll-status="loaded" class="entered loaded">
                 </div>
             </div>
@@ -195,10 +199,10 @@
             <div class="row">
                 <div class="col-lg-6 margin-bottom-30">
                     <h3 class="text-capitalize mw-460"> The Application Process</h3>
-                    <p>Join the WiDEI Program and take the first step toward transforming your future in technology and entrepreneurship.</p>
+                    <p>Join the Stills2Work Program and take the first step toward transforming your future in technology and entrepreneurship.</p>
                 </div>
                 <div class="col-lg-6 margin-bottom-30">
-                    <h3 style="color: #f6871f !important; font-weight: 700">2025 Cohort Begins On March</h3>
+                    <h3 style="color: #f6871f !important; font-weight: 700">Next Cohort Begins On March</h3>
                     <p> Be part of a vibrant community dedicated to equipping women with digital and entrepreneurial skills. Applications are now open! Seize this opportunity to innovate, grow, and lead in the digital economy.
                     </p>
                 </div>

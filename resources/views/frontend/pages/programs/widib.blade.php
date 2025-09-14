@@ -15,14 +15,20 @@
     <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4">
             <div class="col-lg-6 order-1 order-lg-2">
-                <img src="{{ asset('assets/frontend/images/women-in-bus.png') }}" class="img-fluid" alt="">
+                <img src="{{ asset('assets/frontend/images/program/widib.webp') }}" class="img-fluid" alt=""><br><br>
+                                <p>
+                    <span class="fw-bold">WiDiB</span> blends expert-led training, peer learning, case studies, and toolkits. 
+                    It is fully virtual, flexible, and accessible—designed for women balancing both business and family responsibilities. 
+                    <br>
+                    Access to mentorship, peer networks & follow-up coaching
+                </p>
             </div>
             <div class="col-lg-6 order-2 order-lg-1 content">
                 <h2 class="title">Women in Digital Business (WiDiB)</h2>
                 <p class="fst-italic">
-                    WiDiB is a 6-week virtual program designed for women-led micro and small businesses. 
+                    WiDiB is a hybrid program designed for women-led micro and small businesses. 
                     It equips participants with essential skills in branding, marketing, e-commerce, cybersecurity, and digital finance 
-                    to grow and protect their businesses in the online economy.
+                    to grow and protect their businesses in the online economy. 
                 </p>
                 <h5 class="fw-bold">What participants gain:</h5>
                 <ul class="program-components">
@@ -31,12 +37,8 @@
                     <li><i class="bi bi-check2-all"></i> <span>Understand cybersecurity to safeguard data & assets</span></li>
                     <li><i class="bi bi-check2-all"></i> <span>Use digital tools for bookkeeping, invoicing & online payments</span></li>
                     <li><i class="bi bi-check2-all"></i> <span>Confidence in using e-commerce platforms to reach wider markets</span></li>
-                    <li><i class="bi bi-check2-all"></i> <span>Access to mentorship, peer networks & follow-up coaching</span></li>
                 </ul>
-                <p>
-                    <span class="fw-bold">WiDiB</span> blends expert-led training, peer learning, case studies, and toolkits. 
-                    It is fully virtual, flexible, and accessible—designed for women balancing both business and family responsibilities. 
-                </p>
+
             </div>
         </div>
     </div>
@@ -48,9 +50,9 @@
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-6 col-md-8">
                 <div class="about__img-wrap-six">
-                    <img src="{{ asset('assets/frontend/images/program/hajia.png') }}"
+                    <img src="{{ asset('assets/frontend/images/program/widib-why.webp') }}"
                         data-bb-lazy="true" loading="lazy"
-                        data-src="{{ asset('assets/frontend/images/program/hajia.png') }}"
+                        data-src="{{ asset('assets/frontend/images/program/widib-why.webp') }}"
                         alt="image" data-ll-status="loaded" class="entered loaded">
                 </div>
             </div>
@@ -137,9 +139,9 @@
             </div>
             <div class="col-lg-6 col-md-9 margin-bottom-30">
                 <div class="choose__img-wrap-five">
-                    <img src="{{ asset('assets/frontend/images/program/wibid-objectives.png') }}"
+                    <img src="{{ asset('assets/frontend/images/program/widib-goals.webp') }}"
                         data-bb-lazy="true" loading="lazy"
-                        data-src="{{ asset('assets/frontend/images/program/wibid-objectives.png') }}"
+                        data-src="{{ asset('assets/frontend/images/program/widib-goals.webp') }}"
                         alt="image" data-ll-status="loaded" class="entered loaded">
                 </div>
             </div>
@@ -197,10 +199,10 @@
             <div class="row">
                 <div class="col-lg-6 margin-bottom-30">
                     <h3 class="text-capitalize mw-460"> The Application Process</h3>
-                    <p>Join the WiDEI Program and take the first step toward transforming your future in technology and entrepreneurship.</p>
+                    <p>Join the WIDIB Program and take the first step toward transforming your future in technology and entrepreneurship.</p>
                 </div>
                 <div class="col-lg-6 margin-bottom-30">
-                    <h3 style="color: #f6871f !important; font-weight: 700">2025 Cohort Begins On March</h3>
+                    <h3 style="color: #f6871f !important; font-weight: 700">Next Cohort Begins On March</h3>
                     <p> Be part of a vibrant community dedicated to equipping women with digital and entrepreneurial skills. Applications are now open! Seize this opportunity to innovate, grow, and lead in the digital economy.
                     </p>
                 </div>
@@ -370,7 +372,7 @@
       <div class="col-lg-5" data-aos="fade-up">
         <h2 class="faq-title">Have a question? Check out the FAQ</h2>
         <p class="faq-description">
-          Here are some of the most common questions about the Skills2Work program. 
+          Here are some of the most common questions about the WIDIB program. 
           If you don’t find your answer, feel free to contact us directly.
         </p>
         <div class="faq-arrow d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
@@ -384,49 +386,49 @@
         <div class="faq-container">
 
           <div class="faq-item faq-active">
-            <h3>Who can apply for the Skills2Work program?</h3>
+            <h3>Who can participate in WIDIB?</h3>
             <div class="faq-content">
-              <p>The program is open to rural girls, young women, and female teachers who are eager to gain digital skills and explore entrepreneurship opportunities.</p>
+              <p>The program is open to women entrepreneurs, innovators, and young women-led businesses in Ghana and beyond who want to build, grow, and scale using digital tools.</p>
             </div>
             <i class="faq-toggle bi bi-chevron-right"></i>
           </div><!-- End Faq item-->
 
           <div class="faq-item">
-            <h3>How long does the program last?</h3>
+            <h3>How long is the WIDIB program?</h3>
             <div class="faq-content">
-              <p>Skills2Work is a 12-month hybrid upskilling program that combines online and in-person sessions for effective learning and mentorship.</p>
+              <p>WIDIB runs as a 9-month hybrid program with a blend of mentorship, training workshops, and project implementation support.</p>
             </div>
             <i class="faq-toggle bi bi-chevron-right"></i>
           </div><!-- End Faq item-->
 
           <div class="faq-item">
-            <h3>What skills will participants gain?</h3>
+            <h3>What support will participants receive?</h3>
             <div class="faq-content">
-              <p>Participants will gain future-ready digital skills, entrepreneurial knowledge, employability skills, and access to mentorship and networks that boost career and business opportunities.</p>
+              <p>Participants receive mentorship, digital skills training, entrepreneurship support, access to networks, and opportunities for funding and market linkages.</p>
             </div>
             <i class="faq-toggle bi bi-chevron-right"></i>
           </div><!-- End Faq item-->
 
           <div class="faq-item">
-            <h3>Is there a cost to join the program?</h3>
+            <h3>Is the program free?</h3>
             <div class="faq-content">
-              <p>No. Skills2Work is offered at no cost to participants, thanks to the support of our partners and sponsors.</p>
+              <p>Yes. WIDIB is fully sponsored and free for selected participants, thanks to our supporting partners and organizations.</p>
             </div>
             <i class="faq-toggle bi bi-chevron-right"></i>
           </div><!-- End Faq item-->
 
           <div class="faq-item">
-            <h3>How will the program benefit rural communities?</h3>
+            <h3>How does WIDIB impact women-led businesses?</h3>
             <div class="faq-content">
-              <p>The program bridges the digital divide, enhances women-led MSMEs, creates jobs, and fosters economic independence, positively impacting families and entire communities.</p>
+              <p>The program strengthens women-led businesses by providing tools, mentorship, and skills to grow sustainably, create jobs, and impact communities.</p>
             </div>
             <i class="faq-toggle bi bi-chevron-right"></i>
           </div><!-- End Faq item-->
 
           <div class="faq-item">
-            <h3>What happens after completing the program?</h3>
+            <h3>What happens after completing WIDIB?</h3>
             <div class="faq-content">
-              <p>Graduates will join a thriving community of women entrepreneurs, access ongoing mentorship, and be connected to networks and opportunities for long-term success.</p>
+              <p>Graduates join an alumni network, continue to receive mentorship, and access opportunities for partnerships, funding, and scaling their businesses.</p>
             </div>
             <i class="faq-toggle bi bi-chevron-right"></i>
           </div><!-- End Faq item-->

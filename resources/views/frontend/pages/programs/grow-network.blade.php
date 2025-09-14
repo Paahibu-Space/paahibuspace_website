@@ -11,35 +11,96 @@
     {!! render_og_meta_image_by_attachment_id(get_static_option('programs_page_meta_image')) !!}
 @endsection
 @section('content')
-    <section class="program-overview">
+<style>
+    /* Success Criteria */
+.success__area {
+  padding: 70px 0;
+  background: #f9fafc;
+}
+.success__area .section-header {
+  margin-bottom: 40px;
+}
+.success__card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+.success__card h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #2a2a2a;
+}
+.success__card p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+.success__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* Monitoring Section */
+.monitoring__area {
+  padding: 70px 0;
+  background: #fff;
+}
+.monitoring__area .section-header {
+  margin-bottom: 30px;
+}
+.monitoring__list ul {
+  list-style: none;
+  padding: 0;
+}
+.monitoring__list li {
+  font-size: 16px;
+  margin-bottom: 15px;
+  padding-left: 35px;
+  position: relative;
+  line-height: 1.6;
+  color: #444;
+}
+.monitoring__list li i {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: #28a745;
+  font-size: 20px;
+}
+</style>
+<section class="program-overview">
     <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4">
             <div class="col-lg-6 order-1 order-lg-2">
-                {{-- <img src="{{ asset('assets/frontend/images/program/ndiara.png') }}" class="img-fluid" alt="Ndiara Program"> --}}
+                <img src="{{ asset('assets/frontend/images/grow-network.webp') }}" class="img-fluid" alt=""><br><br>
+                <p>
+                    <span class="fw-bold">GROW (Girls and Women Rising on the Web)</span> is a flagship initiative of Paahibu Space, 
+                    designed to empower informal women micro-entrepreneurs through digital inclusion, economic empowerment, 
+                    policy advocacy, and collaborative support systems. 
+                    <br>
+                    Rooted in the belief that sustainable growth must include women, particularly in underserved communities, 
+                    GROW equips participants with tools, skills, and networks to thrive in the digital economy.
+                </p>
             </div>
             <div class="col-lg-6 order-2 order-lg-1 content">
-                <h2 class="title">Ndiara Program</h2>
+                <h2 class="title">GROW Network</h2>
                 <p class="fst-italic">
-                    Ndiara is a financial inclusion initiative designed for women with disabilities engaged in economic activities. 
-                    It raises financial literacy awareness and introduces fintech solutions, making financial services accessible 
-                    and opportunities reachable.
+                    The GROW Network addresses the gendered digital divide, providing women in informal trade 
+                    with practical training, financial literacy, advocacy, and community-driven solutions 
+                    to strengthen their resilience and competitiveness in the digital space. 
                 </p>
                 <h5 class="fw-bold">What participants gain:</h5>
                 <ul class="program-components">
-                    <li><i class="bi bi-check2-all"></i> <span>Understand money management, budgeting, savings, and credit</span></li>
-                    <li><i class="bi bi-check2-all"></i> <span>Confidence in using mobile money, digital wallets, and inclusive fintech platforms</span></li>
-                    <li><i class="bi bi-check2-all"></i> <span>Access financial services tailored to their needs and contexts</span></li>
-                    <li><i class="bi bi-check2-all"></i> <span>Learn simple tools to build and manage small businesses</span></li>
-                    <li><i class="bi bi-check2-all"></i> <span>Improve economic decision-making and financial independence</span></li>
-                    <li><i class="bi bi-check2-all"></i> <span>Connect with networks and inclusive financial institutions</span></li>
-                    <li><i class="bi bi-check2-all"></i> <span>Receive toolkits and follow-up support for practical application</span></li>
-                    <li><i class="bi bi-check2-all"></i> <span>Strengthen their voice and agency in family, community, and business</span></li>
+                    <li><i class="bi bi-check2-all"></i> <span>Access to digital skills and financial literacy training</span></li>
+                    <li><i class="bi bi-check2-all"></i> <span>Mentorship and peer-to-peer learning opportunities</span></li>
+                    <li><i class="bi bi-check2-all"></i> <span>Networks and collaboration with ecosystem stakeholders</span></li>
+                    <li><i class="bi bi-check2-all"></i> <span>Advocacy support for inclusive and gender-responsive policies</span></li>
+                    <li><i class="bi bi-check2-all"></i> <span>Confidence and tools to scale their businesses sustainably</span></li>
                 </ul>
-                <p>
-                    <span class="fw-bold">Ndiara</span> is a 6-week blended (in-person + digital) program, developed in collaboration with 
-                    disabled persons' organizations, financial institutions, and community leaders to ensure inclusivity, accessibility, 
-                    and real economic empowerment for women with disabilities.
-                </p>
             </div>
         </div>
     </div>
@@ -50,12 +111,12 @@
     <div class="container">
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-6 col-md-8">
-                {{-- <div class="about__img-wrap-six">
-                    <img src="{{ asset('assets/frontend/images/program/ndiara-need.png') }}"
+                <div class="about__img-wrap-six">
+                    <img src="{{ asset('assets/frontend/images/program/grow-team.webp') }}"
                         data-bb-lazy="true" loading="lazy"
-                        data-src="{{ asset('assets/frontend/images/program/ndiara-need.png') }}"
-                        alt="Ndiara Need" data-ll-status="loaded" class="entered loaded">
-                </div> --}}
+                        data-src="{{ asset('assets/frontend/images/program/grow-team.webp') }}"
+                        alt="image" class="entered loaded">
+                </div>
             </div>
             <div class="col-lg-6">
                 <div class="about__content-six">
@@ -66,16 +127,18 @@
                         </h2>
                     </div>
                     <p>
-                        Many women with disabilities remain excluded from financial systems and opportunities due to systemic barriers. 
-                        Ndiara creates a safe, inclusive, and empowering space to address these challenges and enable access to financial independence.
+                        Many informal women entrepreneurs face systemic barriers such as lack of digital access, 
+                        exclusion from financial systems, limited training, and underrepresentation in policy spaces. 
+                        GROW responds by creating safe learning spaces, advocating for change, 
+                        and connecting women with tools to succeed.
                     </p>
                     <div class="about__content-inner-four">
                         <div class="about__list-box">
                             <ul class="list-wrap">
-                                <li><i class="bi bi-arrow-right"></i> Lack of accessible financial education in rural and underserved areas</li>
-                                <li><i class="bi bi-arrow-right"></i> Limited access to banks or mobile money agents due to infrastructure</li>
-                                <li><i class="bi bi-arrow-right"></i> Stigma and discrimination from providers and society</li>
-                                <li><i class="bi bi-arrow-right"></i> Digital illiteracy limiting use of fintech for autonomy</li>
+                                <li><i class="bi bi-arrow-right"></i> Limited access to digital and financial literacy</li>
+                                <li><i class="bi bi-arrow-right"></i> Gendered digital divide in underserved communities</li>
+                                <li><i class="bi bi-arrow-right"></i> Lack of representation in digital economy policies</li>
+                                <li><i class="bi bi-arrow-right"></i> Exclusion from entrepreneurial networks and opportunities</li>
                             </ul>
                         </div>
                     </div>
@@ -95,58 +158,85 @@
                         <span class="sub-title">GOALS</span>
                         <h2 class="title">Our Goals For This Program</h2>
                     </div>
-                    <p>
-                        Ndiara aims to break financial barriers for women with disabilities, strengthening their financial literacy, 
-                        confidence, and independence while promoting inclusive policies and services.
-                    </p>
-                    <div class="choose__box-wrap">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="choose__box">
-                                    <div class="content">
-                                        <h4 class="title">200+</h4>
-                                        <p>Train 200+ women with disabilities in financial literacy & business management</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="choose__box">
-                                    <div class="content">
-                                        <h4 class="title">60%</h4>
-                                        <p>Ensure 60% gain access to inclusive fintech tools</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="choose__box">
-                                    <div class="content">
-                                        <h4 class="title">50%</h4>
-                                        <p>Enable 50% to open and actively use mobile money or bank accounts</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="choose__box">
-                                    <div class="content">
-                                        <h4 class="title">Impact</h4>
-                                        <p>Build peer networks, strengthen voices, and influence inclusive policies</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <ul class="list-wrap">
+                        <li><i class="bi bi-check2-circle"></i> Foster gender-responsive digital transformation for informal women entrepreneurs</li>
+                        <li><i class="bi bi-check2-circle"></i> Advocate for inclusive policies addressing systemic barriers</li>
+                        <li><i class="bi bi-check2-circle"></i> Strengthen collaboration among civil society, tech hubs, and women-led groups</li>
+                        <li><i class="bi bi-check2-circle"></i> Build supportive communities offering mentorship and peer-to-peer learning</li>
+                    </ul>
                 </div>
             </div>
             <div class="col-lg-6 col-md-9 margin-bottom-30">
-                {{-- <div class="choose__img-wrap-five">
-                    <img src="{{ asset('assets/frontend/images/program/ndiara-objectives.png') }}"
+                <div class="choose__img-wrap-five">
+                    <img src="{{ asset('assets/frontend/images/edith-in-action.webp') }}"
                         data-bb-lazy="true" loading="lazy"
-                        data-src="{{ asset('assets/frontend/images/program/ndiara-objectives.png') }}"
-                        alt="Ndiara Goals" data-ll-status="loaded" class="entered loaded">
-                </div> --}}
+                        data-src="{{ asset('assets/frontend/images/edith-in-action.webp') }}"
+                        alt="image" class="entered loaded">
+                </div>
             </div>
         </div>
     </div>
+</section>
+
+<!-- Success Criteria -->
+<section class="success__area">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="sub-title">SUCCESS CRITERIA</span>
+      <h2 class="title">How We Measure Our Success</h2>
+    </div>
+    <div class="row gy-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="success__card">
+          <h4>1. Empowerment of Informal Women Entrepreneurs</h4>
+          <p>At least 80 women trained in digital and financial literacy with measurable improvement in usage and operations.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="success__card">
+          <h4>2. Increased Digital & Economic Inclusion</h4>
+          <p>Access to digital tools & platforms for micro-businesses, with documented cases of scaling through digital skills.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="success__card">
+          <h4>3. Stakeholder Engagement</h4>
+          <p>Effective partnerships among civil society, tech hubs, government, and private sector to support entrepreneurs.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="success__card">
+          <h4>4. Advocacy for Policies</h4>
+          <p>Two policy briefs developed & presented, plus active participation in public dialogues on gender & digital equity.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="success__card">
+          <h4>5. Strong Visibility</h4>
+          <p>Media features, storytelling, and community feedback showcasing project outcomes and impact.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Monitoring & Performance Measurement -->
+<section class="monitoring__area">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="sub-title">MONITORING & PERFORMANCE</span>
+      <h2 class="title">Tracking Progress & Accountability</h2>
+    </div>
+    <div class="monitoring__list">
+      <ul>
+        <li><i class="bi bi-check2-circle"></i> Baseline & endline surveys to measure growth in knowledge, skills, and performance.</li>
+        <li><i class="bi bi-check2-circle"></i> Milestone reporting</b>.</li>
+        <li><i class="bi bi-check2-circle"></i> Bi-weekly joint check-ins with partner organizations.</li>
+        <li><i class="bi bi-check2-circle"></i> Quarterly documentation reviews (photos, videos, feedback).</li>
+        <li><i class="bi bi-check2-circle"></i> Real-time dashboards tracking outputs, outcomes, and advocacy milestones.</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
     {{-- Impact Statistics --}}
@@ -199,10 +289,10 @@
             <div class="row">
                 <div class="col-lg-6 margin-bottom-30">
                     <h3 class="text-capitalize mw-460"> The Application Process</h3>
-                    <p>Join the Ndiara and take the first step toward transforming your future in technology and entrepreneurship.</p>
+                    <p>Join the GROW Network and take the first step toward transforming your future in technology and entrepreneurship.</p>
                 </div>
                 <div class="col-lg-6 margin-bottom-30">
-                    <h3 style="color: #f6871f !important; font-weight: 700">Next Cohort Begins On March</h3>
+                    <h3 style="color: #f6871f !important; font-weight: 700">2026 Cohort Begins Soon</h3>
                     <p> Be part of a vibrant community dedicated to equipping women with digital and entrepreneurial skills. Applications are now open! Seize this opportunity to innovate, grow, and lead in the digital economy.
                     </p>
                 </div>
@@ -360,81 +450,85 @@
             </div>
             <!-- /.container -->
         </div>
-    </section><!-- /impact-story Section -->
+    </section>
+    
+    <!-- /impact-story Section -->
 
         <!-- Faq Section -->
-        <section class="faq-9 faq section light-background" id="faq">
+<section class="faq-9 faq section light-background" id="faq">
+  <div class="container">
+    <div class="row">
 
-            <div class="container">
-              <div class="row">
-      
-                <div class="col-lg-5" data-aos="fade-up">
-                  <h2 class="faq-title">Have a question? Check out the FAQ</h2>
-                  <p class="faq-description">Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet adipiscing sem neque sed ipsum.</p>
-                  <div class="faq-arrow d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
-                    <svg class="faq-arrow" width="200" height="211" viewBox="0 0 200 211" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M198.804 194.488C189.279 189.596 179.529 185.52 169.407 182.07L169.384 182.049C169.227 181.994 169.07 181.939 168.912 181.884C166.669 181.139 165.906 184.546 167.669 185.615C174.053 189.473 182.761 191.837 189.146 195.695C156.603 195.912 119.781 196.591 91.266 179.049C62.5221 161.368 48.1094 130.695 56.934 98.891C84.5539 98.7247 112.556 84.0176 129.508 62.667C136.396 53.9724 146.193 35.1448 129.773 30.2717C114.292 25.6624 93.7109 41.8875 83.1971 51.3147C70.1109 63.039 59.63 78.433 54.2039 95.0087C52.1221 94.9842 50.0776 94.8683 48.0703 94.6608C30.1803 92.8027 11.2197 83.6338 5.44902 65.1074C-1.88449 41.5699 14.4994 19.0183 27.9202 1.56641C28.6411 0.625793 27.2862 -0.561638 26.5419 0.358501C13.4588 16.4098 -0.221091 34.5242 0.896608 56.5659C1.8218 74.6941 14.221 87.9401 30.4121 94.2058C37.7076 97.0203 45.3454 98.5003 53.0334 98.8449C47.8679 117.532 49.2961 137.487 60.7729 155.283C87.7615 197.081 139.616 201.147 184.786 201.155L174.332 206.827C172.119 208.033 174.345 211.287 176.537 210.105C182.06 207.125 187.582 204.122 193.084 201.144C193.346 201.147 195.161 199.887 195.423 199.868C197.08 198.548 193.084 201.144 195.528 199.81C196.688 199.192 197.846 198.552 199.006 197.935C200.397 197.167 200.007 195.087 198.804 194.488ZM60.8213 88.0427C67.6894 72.648 78.8538 59.1566 92.1207 49.0388C98.8475 43.9065 106.334 39.2953 114.188 36.1439C117.295 34.8947 120.798 33.6609 124.168 33.635C134.365 33.5511 136.354 42.9911 132.638 51.031C120.47 77.4222 86.8639 93.9837 58.0983 94.9666C58.8971 92.6666 59.783 90.3603 60.8213 88.0427Z" fill="currentColor"></path>
-                    </svg>
-                  </div>
-                </div>
-      
-                <div class="col-lg-7" data-aos="fade-up" data-aos-delay="300">
-                  <div class="faq-container">
-      
-                    <div class="faq-item faq-active">
-                      <h3>Non consectetur a erat nam at lectus urna duis?</h3>
-                      <div class="faq-content">
-                        <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
-                      </div>
-                      <i class="faq-toggle bi bi-chevron-right"></i>
-                    </div><!-- End Faq item-->
-      
-                    <div class="faq-item">
-                      <h3>Feugiat scelerisque varius morbi enim nunc faucibus?</h3>
-                      <div class="faq-content">
-                        <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
-                      </div>
-                      <i class="faq-toggle bi bi-chevron-right"></i>
-                    </div><!-- End Faq item-->
-      
-                    <div class="faq-item">
-                      <h3>Dolor sit amet consectetur adipiscing elit pellentesque?</h3>
-                      <div class="faq-content">
-                        <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis</p>
-                      </div>
-                      <i class="faq-toggle bi bi-chevron-right"></i>
-                    </div><!-- End Faq item-->
-      
-                    <div class="faq-item">
-                      <h3>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</h3>
-                      <div class="faq-content">
-                        <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
-                      </div>
-                      <i class="faq-toggle bi bi-chevron-right"></i>
-                    </div><!-- End Faq item-->
-      
-                    <div class="faq-item">
-                      <h3>Tempus quam pellentesque nec nam aliquam sem et tortor?</h3>
-                      <div class="faq-content">
-                        <p>Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in</p>
-                      </div>
-                      <i class="faq-toggle bi bi-chevron-right"></i>
-                    </div><!-- End Faq item-->
-      
-                    <div class="faq-item">
-                      <h3>Perspiciatis quod quo quos nulla quo illum ullam?</h3>
-                      <div class="faq-content">
-                        <p>Enim ea facilis quaerat voluptas quidem et dolorem. Quis et consequatur non sed in suscipit sequi. Distinctio ipsam dolore et.</p>
-                      </div>
-                      <i class="faq-toggle bi bi-chevron-right"></i>
-                    </div><!-- End Faq item-->
-      
-                  </div>
-                </div>
-      
-              </div>
+      <div class="col-lg-5" data-aos="fade-up">
+        <h2 class="faq-title">Have a question? Check out the FAQ</h2>
+        <p class="faq-description">
+          Here are some of the most common questions about the GROW Network. 
+          If you don’t find your answer, feel free to contact us directly.
+        </p>
+        <div class="faq-arrow d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
+          <svg class="faq-arrow" width="200" height="211" viewBox="0 0 200 211" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M198.804 194.488C189.279 189.596 179.529 185.52 169.407 182.07L169.384 182.049C169.227 181.994 169.07 181.939 168.912 181.884C166.669 181.139 165.906 184.546 167.669 185.615C174.053 189.473 182.761 191.837 189.146 195.695C156.603 195.912 119.781 196.591 91.266 179.049C62.5221 161.368 48.1094 130.695 56.934 98.891C84.5539 98.7247 112.556 84.0176 129.508 62.667C136.396 53.9724 146.193 35.1448 129.773 30.2717C114.292 25.6624 93.7109 41.8875 83.1971 51.3147C70.1109 63.039 59.63 78.433 54.2039 95.0087C52.1221 94.9842 50.0776 94.8683 48.0703 94.6608C30.1803 92.8027 11.2197 83.6338 5.44902 65.1074C-1.88449 41.5699 14.4994 19.0183 27.9202 1.56641C28.6411 0.625793 27.2862 -0.561638 26.5419 0.358501C13.4588 16.4098 -0.221091 34.5242 0.896608 56.5659C1.8218 74.6941 14.221 87.9401 30.4121 94.2058C37.7076 97.0203 45.3454 98.5003 53.0334 98.8449C47.8679 117.532 49.2961 137.487 60.7729 155.283C87.7615 197.081 139.616 201.147 184.786 201.155L174.332 206.827C172.119 208.033 174.345 211.287 176.537 210.105C182.06 207.125 187.582 204.122 193.084 201.144C193.346 201.147 195.161 199.887 195.423 199.868C197.08 198.548 193.084 201.144 195.528 199.81C196.688 199.192 197.846 198.552 199.006 197.935C200.397 197.167 200.007 195.087 198.804 194.488ZM60.8213 88.0427C67.6894 72.648 78.8538 59.1566 92.1207 49.0388C98.8475 43.9065 106.334 39.2953 114.188 36.1439C117.295 34.8947 120.798 33.6609 124.168 33.635C134.365 33.5511 136.354 42.9911 132.638 51.031C120.47 77.4222 86.8639 93.9837 58.0983 94.9666C58.8971 92.6666 59.783 90.3603 60.8213 88.0427Z" fill="currentColor"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="col-lg-7" data-aos="fade-up" data-aos-delay="300">
+        <div class="faq-container">
+
+          <div class="faq-item faq-active">
+            <h3>Who can participate in GROW?</h3>
+            <div class="faq-content">
+              <p>The program is open to informal women micro-entrepreneurs, especially in underserved communities like Ghana’s Upper West Region, who want to use digital tools to grow their businesses.</p>
             </div>
-          </section><!-- /Faq Section -->
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div><!-- End Faq item-->
+
+          <div class="faq-item">
+            <h3>How long is the GROW program?</h3>
+            <div class="faq-content">
+              <p>GROW is an ongoing flagship initiative with structured activities, advocacy, and training cycles across 2025. Key milestones are measured quarterly.</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div><!-- End Faq item-->
+
+          <div class="faq-item">
+            <h3>What support will participants receive?</h3>
+            <div class="faq-content">
+              <p>Participants receive digital skills training, financial literacy, mentorship, access to tools, safe learning spaces, peer-to-peer learning, and networks for scaling their businesses.</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div><!-- End Faq item-->
+
+          <div class="faq-item">
+            <h3>Is the program free?</h3>
+            <div class="faq-content">
+              <p>Yes. GROW is free for selected participants, supported by partners and collaborators who are committed to women’s empowerment and inclusion.</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div><!-- End Faq item-->
+
+          <div class="faq-item">
+            <h3>How does GROW impact women entrepreneurs?</h3>
+            <div class="faq-content">
+              <p>The program empowers women through increased digital inclusion, improved financial literacy, policy advocacy, and opportunities for business growth, creating sustainable community impact.</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div><!-- End Faq item-->
+
+          <div class="faq-item">
+            <h3>What happens after completing GROW?</h3>
+            <div class="faq-content">
+              <p>Graduates join the GROW Network, continue peer-learning, access mentorship, benefit from stakeholder partnerships, and engage in advocacy for gender-responsive policies.</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-right"></i>
+          </div><!-- End Faq item-->
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section><!-- /Faq Section -->
 
 
     {{-- Cohort dates --}}

@@ -17,6 +17,7 @@ Route::get('/skills2work', 'App\Http\Controllers\Frontend\ProgramController@skil
 Route::get('/widib', 'App\Http\Controllers\Frontend\ProgramController@widibPage')->name('frontend.widib');
 Route::get('/techsistars', 'App\Http\Controllers\Frontend\ProgramController@techsistarsPage')->name('frontend.techsistars');
 Route::get('/ndiara', 'App\Http\Controllers\Frontend\ProgramController@ndiara')->name('frontend.ndiara');
+Route::get('/grow-network', 'App\Http\Controllers\Frontend\ProgramController@growNetwork')->name('frontend.grow-network');
 
 // Static Pages
 $blog_page_slug = 'blog';

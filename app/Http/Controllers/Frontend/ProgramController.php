@@ -48,4 +48,11 @@ class ProgramController extends Controller
         ]);
     }
 
+    public function growNetwork() {
+        $all_stories = Stories::where(['status' => 'publish'])->orderBy('id', 'desc')->get();
+        return view('frontend.pages.programs.grow-network')->with([
+            'all_stories' => $all_stories
+        ]);
+    }
+
 }
