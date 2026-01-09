@@ -31,7 +31,7 @@ class LoginController extends Controller
     protected $redirectTo = '/';
 
     public function redirectTo(){
-        return route('user.home');
+        return '/';
     }
     /**
      * Create a new controller instance.
@@ -40,7 +40,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except(['logout', 'showAdminLoginForm', 'adminLogin']);
         $this->middleware('guest:admin')->except('logout');
     }
     /**

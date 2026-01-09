@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\TeamMember;
-use App\Models\TeamMemberCategory;
+use App\Models\TeamCategory;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
 
 class TeamMemberController extends Controller
 {
@@ -17,40 +16,38 @@ class TeamMemberController extends Controller
 
     public function index()
     {
-        $all_team_member = TeamMember::all();
-        $all_category = TeamMemberCategory::get();
-        return view('backend.team.team-member')->with(['all_team_member' => $all_team_member, 'all_category' => $all_category, ]);
+        $all_team_member = TeamMember::with('category')->get();
+        $all_category = TeamCategory::all();
+        return view('backend.team.team-member')->with([
+            'all_team_member' => $all_team_member, 
+            'all_category' => $all_category, 
+        ]);
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|string|max:191',
-            'designation' => 'required|string|max:191',
-            'category' => 'required',
+            'designation' => 'required|string|max:191', // Mapped to role
+            'category' => 'required', // Mapped to team_category_id
             'image' => 'nullable|string|max:191',
-            'icon_one' => 'nullable|string|max:191',
-            'icon_two' => 'nullable|string|max:191',
-            'icon_three' => 'nullable|string|max:191',
-            'icon_four' => 'nullable|string|max:191',
-            'icon_one_url' => 'nullable|string|max:191',
-            'icon_two_url' => 'nullable|string|max:191',
-            'icon_three_url' => 'nullable|string|max:191',
-            'icon_four_url' => 'nullable|string|max:191'
+            'linkedin_url' => 'nullable|string|max:191',
+            'email' => 'nullable|email|max:191',
+            'status' => 'required'
         ]);
+        
+        // Note: Legacy view sends 'designation', new model uses 'role'.
+        // Legacy view sends 'category', new model uses 'team_category_id'.
+
         TeamMember::create([
             'name' => $request->name,
-            'designation' => $request->designation,
+            'role' => $request->designation,
             'team_category_id' => $request->category,
             'image' => $request->image,
-            'icon_one' => $request->icon_one,        
-            'icon_two' => $request->icon_two,        
-            'icon_three' => $request->icon_three,        
-            'icon_four' => $request->icon_four,        
-            'icon_one_url' => $request->icon_one_url,        
-            'icon_two_url' => $request->icon_two_url,        
-            'icon_three_url' => $request->icon_three_url,        
-            'icon_four_url' => $request->icon_four_url
+            'linkedin_url' => $request->icon_one_url ?? $request->linkedin_url, // Fallback if view still sends icon_one_url
+            'email' => $request->email,
+            'is_active' => $request->status === 'publish',
+            'order' => 0
         ]);
 
         return redirect()->back()->with(['msg' => __('New Team Member Added...'), 'type' => 'success']);
@@ -58,39 +55,24 @@ class TeamMemberController extends Controller
 
     public function update(Request $request)
     {
-
-
         $this->validate($request, [
             'name' => 'required|string|max:191',
             'designation' => 'required|string|max:191',
             'category' => 'required',
             'image' => 'nullable|string|max:191',
-            'icon_one' => 'nullable|string|max:191',
-            'icon_two' => 'nullable|string|max:191',
-            'icon_three' => 'nullable|string|max:191',
-            'icon_four' => 'nullable|string|max:191',
-            'icon_one_url' => 'nullable|string|max:191',
-            'icon_two_url' => 'nullable|string|max:191',
-            'icon_three_url' => 'nullable|string|max:191',
-            'icon_four_url' => 'nullable|string|max:191'
+            'linkedin_url' => 'nullable|string|max:191',
+            'email' => 'nullable|email|max:191',
+            'status' => 'required'
         ]);
-
-        $team_post = TeamMember::find(id: $request->id);
-
 
         TeamMember::find($request->id)->update([
             'name' => $request->name,
-            'designation' => $request->designation,
+            'role' => $request->designation,
             'team_category_id' => $request->category,
             'image' => $request->image,
-            'icon_one' => $request->icon_one,        
-            'icon_two' => $request->icon_two,        
-            'icon_three' => $request->icon_three,        
-            'icon_four' => $request->icon_four,        
-            'icon_one_url' => $request->icon_one_url,        
-            'icon_two_url' => $request->icon_two_url,        
-            'icon_three_url' => $request->icon_three_url,        
-            'icon_four_url' => $request->icon_four_url
+            'linkedin_url' => $request->icon_one_url ?? $request->linkedin_url,
+            'email' => $request->email,
+            'is_active' => $request->status === 'publish',
         ]);
 
         return redirect()->back()->with(['msg' => __('Team Member Details Updated...'), 'type' => 'success']);
@@ -108,17 +90,24 @@ class TeamMemberController extends Controller
     }
 
     public function category(){
-        $all_category = TeamMemberCategory::all();
+        $all_category = TeamCategory::all();
         return view('backend.team.category')->with([
             'all_category' => $all_category,
         ]);
     }
     public function new_category(Request $request){
         $this->validate($request,[
-            'name' => 'required|string|max:191|unique:team_members_categories',
+            'name' => 'required|string|max:191',
         ]);
+        
+        // Slug generation
+        $slug = \Illuminate\Support\Str::slug($request->name);
 
-        TeamMemberCategory::create($request->all());
+        TeamCategory::create([
+            'name' => $request->name,
+            'slug' => $slug,
+            'order' => 0
+        ]);
 
         return redirect()->back()->with([
             'msg' => __('New Team Category Added...'),
@@ -131,8 +120,9 @@ class TeamMemberController extends Controller
             'name' => 'required|string|max:191',
         ]);
 
-        TeamMemberCategory::find($request->id)->update([
+        TeamCategory::find($request->id)->update([
             'name' => $request->name,
+            'slug' => \Illuminate\Support\Str::slug($request->name),
         ]);
 
         return redirect()->back()->with([
@@ -142,13 +132,13 @@ class TeamMemberController extends Controller
     }
 
     public function delete_category(Request $request,$id){
-        if (TeamMember::where('team_categories_id',$id)->first()){
+        if (TeamMember::where('team_category_id',$id)->first()){
             return redirect()->back()->with([
                 'msg' => __('You Can Not Delete This Category, It Already Associated With A Post...'),
                 'type' => 'danger'
             ]);
         }
-        TeamMemberCategory::find($id)->delete();
+        TeamCategory::find($id)->delete();
         return redirect()->back()->with([
             'msg' => __('Category Delete Success...'),
             'type' => 'danger'
@@ -156,7 +146,7 @@ class TeamMemberController extends Controller
     }
 
     public function category_bulk_action(Request $request){
-        TeamMemberCategory::whereIn('id',$request->ids)->delete();
+        TeamCategory::whereIn('id',$request->ids)->delete();
         return response()->json(['status' => 'ok']);
     }
 }

@@ -51,82 +51,80 @@
                             </div>
                         </div>
                         <div class="tab-content margin-top-40" id="myTabContent">
-                            @php $b=0; @endphp
-                            @foreach($all_team_member as $key => $team)
-                                <div class="tab-pane fade @if($b == 0) show active @endif" id="slider_tab_{{$key}}" role="tabpanel" >
-                                    <div class="table-wrap table-responsive">
-                                        <table class="table table-default">
-                                        <thead>
-                                        <th class="no-sort">
-                                            <div class="mark-all-checkbox">
-                                                <input type="checkbox" class="all-checkbox">
-                                            </div>
-                                        </th>
-                                        <th>{{__('ID')}}</th>
-                                        <th>{{__('Image')}}</th>
-                                        <th>{{__('Name')}}</th>
-                                        <th>{{__('Designation')}}</th>
-                                        <th>{{__('Action')}}</th>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($all_team_member as $data)
-                                            @php $img_url =''; @endphp
-                                            <tr>
-                                                <td>
-                                                    <div class="bulk-checkbox-wrapper">
-                                                        <input type="checkbox" class="bulk-checkbox" name="bulk_delete[]" value="{{$data->id}}">
-                                                    </div>
-                                                </td>
-                                                <td>{{$data->id}}</td>
-                                                <td>
-                                                    @php
-                                                        $brand_img = get_attachment_image_by_id($data->image,null,true);
-                                                    @endphp
-                                                    @if (!empty($brand_img))
-                                                        <div class="attachment-preview">
-                                                            <div class="thumbnail">
-                                                                <div class="centered">
-                                                                    <img class="avatar user-thumb" src="{{$brand_img['img_url']}}" alt="">
-                                                                </div>
+                            <div class="table-wrap table-responsive">
+                                <table class="table table-default">
+                                    <thead>
+                                    <th class="no-sort">
+                                        <div class="mark-all-checkbox">
+                                            <input type="checkbox" class="all-checkbox">
+                                        </div>
+                                    </th>
+                                    <th>{{__('ID')}}</th>
+                                    <th>{{__('Image')}}</th>
+                                    <th>{{__('Name')}}</th>
+                                    <th>{{__('Role')}}</th>
+                                    <th>{{__('Status')}}</th>
+                                    <th>{{__('Action')}}</th>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($all_team_member as $data)
+                                        @php $img_url =''; @endphp
+                                        <tr>
+                                            <td>
+                                                <div class="bulk-checkbox-wrapper">
+                                                    <input type="checkbox" class="bulk-checkbox" name="bulk_delete[]" value="{{$data->id}}">
+                                                </div>
+                                            </td>
+                                            <td>{{$data->id}}</td>
+                                            <td>
+                                                @php
+                                                    $brand_img = get_attachment_image_by_id($data->image,null,true);
+                                                @endphp
+                                                @if (!empty($brand_img))
+                                                    <div class="attachment-preview">
+                                                        <div class="thumbnail">
+                                                            <div class="centered">
+                                                                <img class="avatar user-thumb" src="{{$brand_img['img_url']}}" alt="">
                                                             </div>
                                                         </div>
-                                                        @php  $img_url = $brand_img['img_url']; @endphp
-                                                    @endif
-                                                </td>
-                                                <td>{{$data->name}}</td>
-                                                <td>{{$data->designation}}</td>
-                                                <td>
-                                                    <x-delete-popover :url="route('admin.team.member.delete',$data->id)"/>
-                                                    <a href="#"
-                                                       data-toggle="modal"
-                                                       data-target="#team_member_item_edit_modal"
-                                                       class="btn btn-primary btn-xs mb-3 mr-1 team_member_edit_btn"
-                                                       data-id="{{$data->id}}"
-                                                       data-action="{{route('admin.team.member.update')}}"
-                                                       data-name="{{$data->name}}"
-                                                       data-imageid="{{$data->image}}"
-                                                       data-image="{{$img_url}}"
-                                                       data-designation="{{$data->designation}}"
-                                                       data-iconOne="{{$data->icon_one}}"
-                                                       data-iconTwo="{{$data->icon_two}}"
-                                                       data-iconThree="{{$data->icon_three}}"
-                                                       data-iconFour="{{$data->icon_four}}"
-                                                       data-iconOneUrl="{{$data->icon_one_url}}"
-                                                       data-iconTwoUrl="{{$data->icon_two_url}}"
-                                                       data-iconThreeUrl="{{$data->icon_three_url}}"
-                                                       data-iconFourUrl="{{$data->icon_four_url}}"
-                                                    >
-                                                        <i class="ti-pencil"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                    </div>
-                                </div>
-                                @php $b++; @endphp
-                            @endforeach
+                                                    </div>
+                                                    @php  $img_url = $brand_img['img_url']; @endphp
+                                                @endif
+                                            </td>
+                                            <td>{{$data->name}}</td>
+                                            <td>{{$data->role}}</td>
+                                              <td>
+                                                @if($data->is_active)
+                                                    <span class="alert alert-success">{{__('Active')}}</span>
+                                                @else
+                                                    <span class="alert alert-warning">{{__('In Active')}}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <x-delete-popover :url="route('admin.team.member.delete',$data->id)"/>
+                                                <a href="#"
+                                                   data-toggle="modal"
+                                                   data-target="#team_member_item_edit_modal"
+                                                   class="btn btn-primary btn-xs mb-3 mr-1 team_member_edit_btn"
+                                                   data-id="{{$data->id}}"
+                                                   data-action="{{route('admin.team.member.update')}}"
+                                                   data-name="{{$data->name}}"
+                                                   data-imageid="{{$data->image}}"
+                                                   data-image="{{$img_url}}"
+                                                   data-designation="{{$data->role}}"
+                                                   data-category="{{$data->team_category_id}}"
+                                                   data-linkedin="{{$data->linkedin_url}}"
+                                                   data-email="{{$data->email}}"
+                                                   data-status="{{$data->is_active ? 'publish' : 'draft'}}"
+                                                >
+                                                    <i class="ti-pencil"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
 
                     </div>
@@ -138,102 +136,43 @@
                         <h4 class="header-title">{{__('New Team Member')}}</h4>
                         <form action="{{route('admin.team.member')}}" method="post" enctype="multipart/form-data">
                             @method('POST')
-
                             @csrf
                             <div class="form-group">
                                 <label for="name">{{__('Name')}}</label>
                                 <input type="text" class="form-control"  id="name"  name="name" placeholder="{{__('Name')}}">
                             </div>
                             <div class="form-group">
-                                <label for="designation">{{__('Designation')}}</label>
-                                <input type="text" class="form-control"  id="designation"  name="designation" placeholder="{{__('Designation')}}">
+                                <label for="designation">{{__('Role / Designation')}}</label>
+                                <input type="text" class="form-control"  id="designation"  name="designation" placeholder="{{__('Role')}}">
                             </div>
                             <div class="form-group">
                                 <label for="category">{{ __('Category') }}</label>
                                 <select name="category" class="form-control" id="category">
-
                                     <option value="">{{ __('Select Category') }}</option>
                                     @foreach ($all_category as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
+                            
                             <div class="form-group">
-                                <label for="icon_one" class="d-block">{{__('Social Profile One')}}</label>
-                                <div class="btn-group ">
-                                    <button type="button" class="btn btn-primary iconpicker-component">
-                                        <i class="fab fa-instagram"></i>
-                                    </button>
-                                    <button type="button" class="icp icp-dd btn btn-primary dropdown-toggle"
-                                            data-selected="fab fa-instagram" data-toggle="dropdown">
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <div class="dropdown-menu"></div>
-                                </div>
-                                <input type="hidden" class="form-control"  id="icon_one" value="fab fa-instagram" name="icon_one">
+                                <label for="linkedin_url">{{__('LinkedIn URL')}}</label>
+                                <input type="text" class="form-control"  id="linkedin_url"  name="linkedin_url" placeholder="{{__('LinkedIn URL')}}">
                             </div>
+
                             <div class="form-group">
-                                <label for="icon_one_url">{{__('Social Profile One URL')}}</label>
-                                <input type="text" class="form-control"  id="icon_one_url"  name="icon_one_url" placeholder="{{__('Social Profile One URL')}}">
+                                <label for="email">{{__('Email')}}</label>
+                                <input type="email" class="form-control"  id="email"  name="email" placeholder="{{__('Email')}}">
                             </div>
-                            <div class="form-group">
-                                <label for="icon_two" class="d-block">{{__('Social Profile Two')}}</label>
-                                <div class="btn-group ">
-                                    <button type="button" class="btn btn-primary iconpicker-component">
-                                        <i class="bi bi-twitter-x"></i>
-                                    </button>
-                                    <button type="button" class="icp icp-dd btn btn-primary dropdown-toggle"
-                                            data-selected="bi bi-twitter-x" data-toggle="dropdown">
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <div class="dropdown-menu"></div>
-                                </div>
-                                <input type="hidden" class="form-control"  id="icon_two" value="bi bi-twitter-x" name="icon_two">
+
+                             <div class="form-group">
+                                <label for="status">{{__('Status')}}</label>
+                                <select name="status" class="form-control" id="status">
+                                    <option value="publish">{{__("Publish")}}</option>
+                                    <option value="draft">{{__("Draft")}}</option>
+                                </select>
                             </div>
-                            <div class="form-group">
-                                <label for="icon_two_url">{{__('Social Profile Two URL')}}</label>
-                                <input type="text" class="form-control"  id="icon_two_url"  name="icon_two_url" placeholder="{{__('Social Profile Two URL')}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="icon_three" class="d-block">{{__('Social Profile Three')}}</label>
-                                <div class="btn-group ">
-                                    <button type="button" class="btn btn-primary iconpicker-component">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </button>
-                                    <button type="button" class="icp icp-dd btn btn-primary dropdown-toggle"
-                                            data-selected="fab fa-facebook-f" data-toggle="dropdown">
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <div class="dropdown-menu"></div>
-                                </div>
-                                <input type="hidden" class="form-control"  id="icon_three" value="fab fa-facebook-f" name="icon_three">
-                            </div>
-                            <div class="form-group">
-                                <label for="icon_three_url">{{__('Social Profile Three URL')}}</label>
-                                <input type="text" class="form-control"  id="icon_three_url"  name="icon_three_url" placeholder="{{__('Social Profile Three URL')}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="icon_four" class="d-block">{{__('Social Profile Four')}}</label>
-                                <div class="btn-group ">
-                                    <button type="button" class="btn btn-primary iconpicker-component">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </button>
-                                    <button type="button" class="icp icp-dd btn btn-primary dropdown-toggle"
-                                            data-selected="fab fa-facebook-f" data-toggle="dropdown">
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <div class="dropdown-menu"></div>
-                                </div>
-                                <input type="hidden" class="form-control"  id="icon_four" value="fab fa-facebook-f" name="icon_four">
-                            </div>
-                            <div class="form-group">
-                                <label for="icon_four_url">{{__('Social Profile Four URL')}}</label>
-                                <input type="text" class="form-control"  id="icon_four_url"  name="icon_four_url" placeholder="{{__('Social Profile Four URL')}}">
-                            </div>
+
                             <div class="form-group">
                                 <label for="image">{{__('Image')}}</label>
                                 <div class="media-upload-btn-wrapper">
@@ -245,7 +184,7 @@
                                 </div>
                                 <small>{{__('Recommended image size 270x280')}}</small>
                             </div>
-                            <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">{{__('Add  New Team Member')}}</button>
+                            <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">{{__('Add New Team Member')}}</button>
                         </form>
                     </div>
                 </div>
@@ -269,99 +208,37 @@
                             <input type="text" class="form-control"  id="edit_name"  name="name" placeholder="{{__('Name')}}">
                         </div>
                         <div class="form-group">
-                            <label for="edit_designation">{{__('Designation')}}</label>
-                            <input type="text" class="form-control"  id="edit_designation"  name="designation" placeholder="{{__('Designation')}}">
+                            <label for="edit_designation">{{__('Role / Designation')}}</label>
+                            <input type="text" class="form-control"  id="edit_designation"  name="designation" placeholder="{{__('Role')}}">
                         </div>
                         <div class="form-group">
-                            <label for="category">{{__('Category')}}</label>
-                            <select name="category" class="form-control" id="category">
+                            <label for="edit_category">{{__('Category')}}</label>
+                            <select name="category" class="form-control" id="edit_category"> // Fixed ID
                                 <option value="">{{__("Select Category")}}</option>
-                                {{-- <option id="edit_category_id" name="category_id"></option> --}}
-
                                 @foreach($all_category as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="edit_icon_one" class="d-block">{{__('Social Profile One')}}</label>
-                            <div class="btn-group edit_icon_one">
-                                <button type="button" class="btn btn-primary iconpicker-component">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </button>
-                                <button type="button" class="icp icp-dd btn btn-primary dropdown-toggle"
-                                        data-selected="fas fa-exclamation-triangle" data-toggle="dropdown">
-                                    <span class="caret"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu"></div>
-                            </div>
-                            <input type="hidden" class="form-control"  id="edit_icon_one" value="fas fa-exclamation-triangle" name="icon_one">
-                        </div>
-                        <div class="form-group">
-                            <label for="edit_icon_one_url">{{__('Social Profile One URL')}}</label>
-                            <input type="text" class="form-control"  id="edit_icon_one_url"  name="icon_one_url" placeholder="{{__('Social Profile One URL')}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="edit_icon_two" class="d-block">{{__('Social Profile Two')}}</label>
-                            <div class="btn-group edit_icon_two">
-                                <button type="button" class="btn btn-primary iconpicker-component">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </button>
-                                <button type="button" class="icp icp-dd btn btn-primary dropdown-toggle"
-                                        data-selected="fas fa-exclamation-triangle" data-toggle="dropdown">
-                                    <span class="caret"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu"></div>
-                            </div>
-                            <input type="hidden" class="form-control"  id="edit_icon_two" value="fas fa-exclamation-triangle" name="icon_two">
-                        </div>
-                        <div class="form-group">
-                            <label for="edit_icon_two_url">{{__('Social Profile Two URL')}}</label>
-                            <input type="text" class="form-control"  id="edit_icon_two_url"  name="icon_two_url" placeholder="{{__('Social Profile Two URL')}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="edit_icon_three" class="d-block">{{__('Social Profile Three')}}</label>
-                            <div class="btn-group edit_icon_three">
-                                <button type="button" class="btn btn-primary iconpicker-component">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </button>
-                                <button type="button" class="icp icp-dd btn btn-primary dropdown-toggle"
-                                        data-selected="fas fa-exclamation-triangle" data-toggle="dropdown">
-                                    <span class="caret"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu"></div>
-                            </div>
-                            <input type="hidden" class="form-control"  id="edit_icon_three" value="fas fa-exclamation-triangle" name="icon_three">
-                        </div>
-                        <div class="form-group">
-                            <label for="edit_icon_three_url">{{__('Social Profile Three URL')}}</label>
-                            <input type="text" class="form-control"  id="edit_icon_three_url"  name="icon_three_url" placeholder="{{__('Social Profile Three URL')}}">
+                        
+                         <div class="form-group">
+                            <label for="edit_linkedin_url">{{__('LinkedIn URL')}}</label>
+                            <input type="text" class="form-control"  id="edit_linkedin_url"  name="linkedin_url" placeholder="{{__('LinkedIn URL')}}">
                         </div>
 
-
-
                         <div class="form-group">
-                            <label for="edit_icon_four" class="d-block">{{__('Social Profile Four')}}</label>
-                            <div class="btn-group edit_icon_four">
-                                <button type="button" class="btn btn-primary iconpicker-component">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </button>
-                                <button type="button" class="icp icp-dd btn btn-primary dropdown-toggle"
-                                        data-selected="fas fa-exclamation-triangle" data-toggle="dropdown">
-                                    <span class="caret"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu"></div>
-                            </div>
-                            <input type="hidden" class="form-control"  id="edit_icon_four" value="fas fa-exclamation-triangle" name="icon_four">
+                            <label for="edit_email">{{__('Email')}}</label>
+                            <input type="email" class="form-control"  id="edit_email"  name="email" placeholder="{{__('Email')}}">
                         </div>
-                        <div class="form-group">
-                            <label for="edit_icon_four_url">{{__('Social Profile Four URL')}}</label>
-                            <input type="text" class="form-control"  id="edit_icon_four_url"  name="icon_four_url" placeholder="{{__('Social Profile Four URL')}}">
+
+                         <div class="form-group">
+                            <label for="edit_status">{{__('Status')}}</label>
+                            <select name="status" class="form-control" id="edit_status">
+                                <option value="publish">{{__("Publish")}}</option>
+                                <option value="draft">{{__("Draft")}}</option>
+                            </select>
                         </div>
+
                         <div class="form-group">
                             <label for="image">{{__('Image')}}</label>
                             <div class="media-upload-btn-wrapper">
@@ -385,7 +262,6 @@
     @include('backend.partials.media-upload.media-upload-markup')
 @endsection
 @section('script')
-
     <script>
         $(document).ready(function () {
 
@@ -412,14 +288,12 @@
                         }
                     });
                 }
-
             });
 
             $('.all-checkbox').on('change',function (e) {
                 e.preventDefault();
                 var value = $('.all-checkbox').is(':checked');
                 var allChek = $(this).parent().parent().parent().parent().parent().find('.bulk-checkbox');
-                //have write code here fr
                 if( value == true){
                     allChek.prop('checked',true);
                 }else{
@@ -435,49 +309,32 @@
                 var action = el.data('action');
                 var image = el.data('image');
                 var imageid = el.data('imageid');
+                var category = el.data('category'); // Get category
+                var linkedin = el.data('linkedin');
+                var email = el.data('email');
+                var status = el.data('status');
+
                 var form = $('#team_member_edit_modal_form');
 
                 form.attr('action',action);
                 form.find('#team_member_id').val(id);
                 form.find('#edit_name').val(name);
                 form.find('#edit_designation').val(designation);
-                form.find('#edit_description').val(el.data('description'));
-                form.find('#edit_icon_one').val(el.data('iconone'));
-                form.find('#edit_icon_two').val(el.data('icontwo'));
-                form.find('#edit_icon_three').val(el.data('iconthree'));
-                form.find('#edit_icon_four').val(el.data('iconfour'));
-                form.find('#edit_icon_one_url').val(el.data('icononeurl'));
-                form.find('#edit_icon_two_url').val(el.data('icontwourl'));
-                form.find('#edit_icon_three_url').val(el.data('iconthreeurl'));
-                form.find('#edit_icon_four_url').val(el.data('iconfoururl'));
-                form.find('#preview_image').attr('src',image);
+                form.find('#edit_category').val(category); // Set category
+                form.find('#edit_linkedin_url').val(linkedin);
+                form.find('#edit_email').val(email);
+                form.find('#edit_status').val(status);
 
-                form.find('.edit_icon_four .icp-dd').attr('data-selected',el.data('iconfour'));
-                form.find('.edit_icon_four .iconpicker-component i').attr('class',el.data('iconfour'));
-                form.find('.edit_icon_three .icp-dd').attr('data-selected',el.data('iconthree'));
-                form.find('.edit_icon_three .iconpicker-component i').attr('class',el.data('iconthree'));
-                form.find('.edit_icon_two .icp-dd').attr('data-selected',el.data('icontwo'));
-                form.find('.edit_icon_two .iconpicker-component i').attr('class',el.data('icontwo'));
-                form.find('.edit_icon_one .icp-dd').attr('data-selected',el.data('iconone'));
-                form.find('.edit_icon_one .iconpicker-component i').attr('class',el.data('iconone'));
+                form.find('#preview_image').attr('src',image);
 
                 if(imageid != ''){
                     form.find('.media-upload-btn-wrapper .img-wrap').html('<div class="attachment-preview"><div class="thumbnail"><div class="centered"><img class="avatar user-thumb" src="'+image+'" > </div></div></div>');
                     form.find('.media-upload-btn-wrapper input').val(imageid);
                     form.find('.media-upload-btn-wrapper .media_upload_form_btn').text('Change Image');
                 }
-
             });
-
-            $('.icp-dd').iconpicker();
-            $('.icp-dd').on('iconpickerSelected', function (e) {
-                var selectedIcon = e.iconpickerValue;
-                $(this).parent().parent().children('input').val(selectedIcon);
-            });
-
         });
     </script>
-    <!-- Start datatable js -->
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <script src="//cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
     <script src="//cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
@@ -485,7 +342,6 @@
     <script src="//cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
     <script>
         $(document).ready(function() {
-
             $('.table-wrap > table').DataTable( {
                 "order": [[ 1, "desc" ]],
                 'columnDefs' : [{

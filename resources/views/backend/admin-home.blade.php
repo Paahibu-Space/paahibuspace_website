@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="content">
                                         <span class="total">{{$total_program_registration}}</span>
-                                        <h4 class="title">{{__('Total Programs Registration')}}</h4>
+                                        <h4 class="title">{{__('Waitlist Entries')}}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -67,13 +67,13 @@
                     <div class="col-md-3 mt-md-5 mb-3">
                         <div class="card text-dark  mb-3">
                             <div class="dsh-box-style">
-                                <a href="{{route('admin.services.new')}}" class="add-new"><i class="ti-plus"></i></a>
+                                <a href="{{route('admin.story.new')}}" class="add-new"><i class="ti-plus"></i></a>
                                 <div class="icon">
-                                    <i class="ti-blackboard"></i>
+                                    <i class="ti-write"></i>
                                 </div>
                                 <div class="content">
-                                    <span class="total">{{$total_services}}</span>
-                                    <h4 class="title">{{__('Total Services')}}</h4>
+                                    <span class="total">{{$total_stories}}</span>
+                                    <h4 class="title">{{__('Total Stories')}}</h4>
                                 </div>
                             </div>
                         </div>
@@ -81,13 +81,13 @@
                     <div class="col-md-3 mt-md-5 mb-3">
                         <div class="card text-dark  mb-3">
                             <div class="dsh-box-style">
-                                <a href="{{route('admin.work.new')}}" class="add-new"><i class="ti-plus"></i></a>
+                                <a href="{{route('admin.team.member')}}" class="add-new"><i class="ti-plus"></i></a>
                                 <div class="icon">
-                                    <i class="ti-write"></i>
+                                    <i class="ti-user"></i>
                                 </div>
                                 <div class="content">
-                                    <span class="total">{{$total_works}}</span>
-                                    <h4 class="title">{{__('Portfolios')}}</h4>
+                                    <span class="total">{{$total_team}}</span>
+                                    <h4 class="title">{{__('Team Members')}}</h4>
                                 </div>
                             </div>
                         </div>

@@ -12,8 +12,11 @@ class CustomRedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            $route = ($guard === 'admin') ? 'admin.home' : 'user.home';
-            return redirect()->route($route);
+            if ($guard === 'admin') {
+                return redirect()->route('admin.home');
+            }
+            // For non-admin users (disabled frontend), redirect to root
+            return redirect('/');
         }
 
         return $next($request);

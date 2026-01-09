@@ -22,8 +22,7 @@
     {{__('All Attendances')}}
 @endsection
 @section('content')
-    <p>This section is still under development</p>
-    {{-- <div class="col-lg-12 col-ml-12 padding-bottom-30">
+    <div class="col-lg-12 col-ml-12 padding-bottom-30">
         <div class="row">
             <div class="col-12 mt-5">
                 <div class="card">
@@ -41,7 +40,7 @@
                                             </ul>
                                         </div>
                                     @endif
-                                    <h4 class="header-title">{{__('All Attendances')}}</h4>
+                                    <h4 class="header-title">{{__('All Waitlists')}}</h4>
                                     <div class="bulk-delete-wrapper">
                                         <div class="select-box-wrap">
                                             <select name="bulk_option" id="bulk_option">
@@ -49,6 +48,7 @@
                                                 <option value="delete">{{{__('Delete')}}}</option>
                                             </select>
                                             <button class="btn btn-primary btn-sm" id="bulk_delete_btn">{{__('Apply')}}</button>
+                                            <a href="{{ route('admin.program.waitlist.export') }}" class="btn btn-info btn-sm ml-3">{{__('Export to CSV')}}</a>
                                         </div>
                                     </div>
                                     <div class="data-tables datatable-primary table-responsive">
@@ -62,9 +62,6 @@
                                                 </th>
                                                 <th>{{__('ID')}}</th>
                                                 <th>{{__('Event Name')}}</th>
-                                                <th>{{__('Event Cost')}}</th>
-                                                <th>{{__('Quantity')}}</th>
-                                                <th>{{__('Payment Status')}}</th>
                                                 <th>{{__('Status')}}</th>
                                                 <th>{{__('Date')}}</th>
                                                 <th>{{__('Action')}}</th>
@@ -80,15 +77,6 @@
                                                     </td>
                                                     <td>{{$data->id}}</td>
                                                     <td>{{$data->program_name}}</td>
-                                                    <td>{{amount_with_currency_symbol($data->program_cost)}}</td>
-                                                    <td>{{$data->quantity}}</td>
-                                                    <td>
-                                                        @if($data->payment_status == 'pending')
-                                                            <span class="alert alert-warning text-capitalize">{{$data->payment_status}}</span>
-                                                        @else
-                                                            <span class="alert alert-success text-capitalize">{{$data->payment_status}}</span>
-                                                        @endif
-                                                    </td>
                                                     <td>
                                                         @if($data->status == 'pending')
                                                         <span class="alert alert-warning text-capitalize">{{__($data->status)}}</span>
@@ -100,59 +88,9 @@
                                                             <span class="alert alert-success text-capitalize">{{__($data->status)}}</span>
                                                         @endif
                                                     </td>
-                                                        @php
-                                                            $all_custom_fields = [];
-                                                            $all_custom_fields_un = unserialize($data->custom_fields);
-                                                            $all_custom_fields = json_encode($all_custom_fields_un);
-                                                        @endphp
                                                     <td>{{date_format($data->created_at,'d M Y')}}</td>
                                                     <td>
-                                                         <x-delete-popover :url="route('admin.program.registration.logs.delete',$data->id)"/>
-                                                        <a href="#"
-                                                           data-toggle="modal"
-                                                           data-target="#user_edit_modal"
-                                                           class="btn btn-xs btn-primary btn-sm mb-3 mr-1 user_edit_btn"
-                                                        >
-                                                            <i class="ti-email"></i>
-                                                        </a>
-                                                        <a href="#"
-                                                           data-toggle="modal"
-                                                           data-target="#view_order_details_modal"
-                                                           data-status="{{$data->status}}"
-                                                           data-paystatus="{{$data->payment_status}}"
-                                                           data-packageid="{{$data->package_id}}"
-                                                           data-packageprice="{{$data->package_price}}"
-                                                           data-packagename="{{$data->package_name}}"
-                                                           data-customfield="{{$all_custom_fields}}"
-                                                           data-checkoutType="{{$data->checkout_type}}"
-                                                           data-userId="{{get_user_name_by_id($data->user_id)}}"
-                                                           data-date="{{date_format($data->created_at,'d M Y')}}"
-                                                           data-attachment="{{json_encode(unserialize($data->attachment))}}"
-                                                           class="btn btn-xs btn-primary btn-sm mb-3 mr-1 view_order_details_btn"
-                                                        >
-                                                            <i class="ti-eye"></i>
-                                                        </a>
-                                                        <a href="#"
-                                                           data-id="{{$data->id}}"
-                                                           data-status="{{$data->status}}"
-                                                           data-toggle="modal"
-                                                           data-target="#order_status_change_modal"
-                                                           class="btn btn-xs btn-info btn-sm mb-3 mr-1 order_status_change_btn"
-                                                        >
-                                                            {{__("Update Status")}}
-                                                        </a>
-                                                        @if(!empty($data->user_id) && $data->payment_status == 'pending')
-                                                            <form action="{{route('admin.program.registration.reminder')}}"  method="post">
-                                                                @csrf
-                                                                <input type="hidden" name="id" value="{{$data->id}}">
-                                                                <button class="btn btn-secondary mb-2" type="submit"><i class="fas fa-bell"></i></button>
-                                                            </form>
-                                                        @endif
-                                                        <form action="{{route('frontend.program.invoice.generate')}}"  method="post">
-                                                            @csrf
-                                                            <input type="hidden" name="id" id="invoice_generate_order_field" value="{{$data->id}}">
-                                                            <button class="btn btn-secondary" type="submit">{{__('Invoice')}}</button>
-                                                        </form>
+                                                        <x-delete-popover :url="route('admin.program.registration.logs.delete',$data->id)"/>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -270,7 +208,7 @@
     @include('backend.partials.media-upload.media-upload-markup')
 @endsection
 
-{{-- @section('script')
+@section('script')
     <script src="{{asset('assets/backend/js/summernote-bs4.js')}}"></script>
     <script src="{{asset('assets/backend/js/bootstrap-tagsinput.js')}}"></script>
     <!-- Start datatable js -->
@@ -359,7 +297,7 @@
                 }
             })
             $(document).on('click','.order_status_change_btn',function(e){
-                e.prprogramDefault();
+                e.preventDefault();
                 var el = $(this);
                 var form = $('#order_status_change_modal');
                 form.find('#order_id').val(el.data('id'));
@@ -389,5 +327,5 @@
     </script>
     <script src="{{asset('assets/backend/js/dropzone.js')}}"></script>
     @include('backend.partials.media-upload.media-js')
-@endsection --}}
+@endsection
 

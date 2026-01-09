@@ -26,6 +26,7 @@
 
                         <form action="{{route('admin.blog.update',$blog_post->id)}}" method="post" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="id" value="{{$blog_post->id}}">{{-- Sometimes needed --}}
                             <div class="row">
                                 <div class="col-lg-8">
                                     <div class="form-group">
@@ -34,17 +35,17 @@
                                     </div>
                                     <div class="form-group">
                                         <label>{{__('Content')}}</label>
-                                        {{-- iFrameFilterInSummernoteAndRender($blog_post->content) --}}
                                         <textarea class="form-control d-none" name="blog_content" >{{$blog_post->content}}</textarea>
-                                        <div class="summernote" data-content='{{iFrameFilterInSummernoteAndRender($blog_post->content)}}'></div>
+                                        {{-- Removed iFrameFilterInSummernoteAndRender as it might not be available or compatible. Just basic content --}}
+                                        <div class="summernote" data-content='{{ $blog_post->content }}'></div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="meta_tags">{{__('Meta Tags')}}</label>
-                                        <input type="text" name="meta_tags"  class="form-control" data-role="tagsinput" value="{{$blog_post->meta_tags}}" id="meta_tags">
+                                        <label for="seo_title">{{__('SEO Title')}}</label>
+                                        <input type="text" name="seo_title"  class="form-control" value="{{$blog_post->seo_title}}" id="seo_title">
                                     </div>
                                     <div class="form-group">
-                                        <label for="meta_description">{{__('Meta Description')}}</label>
-                                        <textarea name="meta_description"  class="form-control" rows="5" id="meta_description">{{$blog_post->meta_description}}</textarea>
+                                        <label for="seo_description">{{__('SEO Description')}}</label>
+                                        <textarea name="seo_description"  class="form-control" rows="5" id="seo_description">{{$blog_post->seo_description}}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -61,37 +62,32 @@
                                         <select name="category" class="form-control" id="category">
                                             <option value="">{{__("Select Category")}}</option>
                                             @foreach($all_category as $category)
-                                                <option @if($blog_post->blog_categories_id == $category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
+                                                <option @if($blog_post->blog_category_id == $category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="title">{{__('Tags')}}</label>
-                                        <input type="text" class="form-control" value="{{$blog_post->tags}}" name="tags" data-role="tagsinput">
+                                        <input type="text" class="form-control" value="{{$blog_post->tag_list}}" name="tags" data-role="tagsinput">
                                     </div>
                                     <div class="form-group">
-                                        <label for="author">{{__('Author Name')}}</label>
-                                        <input type="text" class="form-control" name="author" value="{{$blog_post->author}}" id="author">
+                                        <label for="author_id">{{__('Author')}}</label>
+                                        <select name="author_id" class="form-control" id="author_id">
+                                            <option value="">{{__("Select Author")}}</option>
+                                            @foreach($all_team_members as $member)
+                                                <option @if($blog_post->author_id == $member->id) selected @endif value="{{$member->id}}">{{$member->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="video_url">{{__('Video Url')}}</label>
-                                        <input type="text" class="form-control" name="video_url" value="{{$blog_post->video_url}}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="breaking_news"><strong>{{__('Is Breaking News')}}</strong></label>
-                                        <label class="switch">
-                                            <input type="checkbox" name="breaking_news" @if($blog_post->breaking_news === 1) checked @endif>
-                                            <span class="slider onff"></span>
-                                        </label>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <label for="status">{{__('Status')}}</label>
                                         <select name="status" id="status" class="form-control">
-                                            <option  @if($blog_post->status == 'publish') selected @endif value="publish">{{__('Publish')}}</option>
-                                            <option  @if($blog_post->status == 'draft') selected @endif value="draft">{{__('Draft')}}</option>
+                                            <option  @if($blog_post->is_published) selected @endif value="publish">{{__('Publish')}}</option>
+                                            <option  @if(!$blog_post->is_published) selected @endif value="draft">{{__('Draft')}}</option>
                                         </select>
                                     </div>
-                                    <x-media-upload :id="$blog_post->image" :name="'image'" :dimentions="'1920x1280'" :title="__('Image')"/>
+                                    <x-media-upload :id="$blog_post->featured_image" :name="'image'" :dimentions="'1920x1280'" :title="__('Image')"/>
                                     <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">{{__('Update Post')}}</button>
                                 </div>
                             </div>
@@ -110,9 +106,6 @@
     <x-backend.auto-slug-js :url="route('admin.blog.slug.check')" :type="'update'"/>
     <script>
         $(document).ready(function () {
-
-
-
             $('.summernote').summernote({
                 height: 400,   //set editable area's height
                 codemirror: { // codemirror options
@@ -120,11 +113,7 @@
                 },
                 callbacks: {
                     onChange: function(contents, $editable) {
-                        
                         let finalContenat =  iFrameFilterInSummernote(contents);
-
-                        // console.log(finalContenat)
-                        
                         $(this).prev('textarea').val(finalContenat);
                     }
                 }
@@ -134,7 +123,6 @@
                     $(this).summernote('code', $(this).data('content'));
                 });
             }
-
         });
     </script>
     <script src="{{asset('assets/backend/js/dropzone.js')}}"></script>

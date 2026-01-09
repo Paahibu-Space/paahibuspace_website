@@ -24,27 +24,24 @@ class AdminDashboardController extends Controller
 
     public function adminIndex()
     {
-
-
         $all_blogs = Blog::count();
         $total_admin = Admin::count();
-        $total_testimonial = Testimonial::count();
         $total_team_member = TeamMember::count();
-        $total_services = Services::count();
-        $total_works = Works::count();
+        $total_partners = \App\Models\Partner::count();
         $total_programs = Programs::count();
-        $total_program_registration = ProgramRegistration::where('status','complete')->count();
+        $total_stories = \App\Models\Story::count();
+        $total_program_registration = ProgramRegistration::count();
         $program_registration_recent_registration = ProgramRegistration::orderBy('id','desc')->take(5)->get();
-
 
         return view('backend.admin-home')->with([
             'blog_count' => $all_blogs,
             'total_admin' => $total_admin,
-            'total_works' => $total_works,
-            'total_services' => $total_services,
             'total_program_registration' => $total_program_registration,
             'program_registration_recent_registration' => $program_registration_recent_registration,
             'total_programs' => $total_programs,
+            'total_stories' => $total_stories,
+            'total_team' => $total_team_member,
+            'total_partners' => $total_partners,
         ]);
     }
 

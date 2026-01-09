@@ -30,57 +30,66 @@
                             <div class="row">
                                 <div class="col-lg-8">
                                     <div class="form-group">
-                                        <label for="title">{{ __('Title') }}</label>
-                                        <input type="text" class="form-control" value="{{ old('title') }}"
-                                            name="title" placeholder="{{ __('Title') }}">
+                                        <label for="title">{{ __('Name / Title') }}</label>
+                                        <input type="text" class="form-control" value="{{ old('name') }}"
+                                            name="name" id="title" placeholder="{{ __('Name') }}">
                                     </div>
+                                    
                                     <div class="form-group">
-                                        <label>{{ __('Content') }}</label>
+                                        <label for="full_story_heading">{{ __('Full Story Heading') }}</label>
+                                        <input type="text" class="form-control" value="{{ old('full_story_heading') }}"
+                                            name="full_story_heading" placeholder="{{ __('Full Story Heading') }}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{{ __('Full Story Content') }}</label>
                                         <input type="hidden" name="stories_content">
                                         <div class="summernote"></div>
                                     </div>
+
                                     <div class="form-group">
-                                        <label for="meta_tags">{{ __('Meta Tags') }}</label>
-                                        <input type="text" name="meta_tags" class="form-control"
-                                            value="{{ old('meta_tags') }}" data-role="tagsinput" id="meta_tags">
+                                        <label for="quote">{{ __('Quote') }}</label>
+                                        <textarea name="quote" class="form-control" rows="3">{{ old('quote') }}</textarea>
                                     </div>
+
                                     <div class="form-group">
-                                        <label for="meta_description">{{ __('Meta Description') }}</label>
-                                        <textarea name="meta_description" class="form-control" rows="5" id="meta_description"></textarea>
+                                        <label for="short_story">{{ __('Short Story (Excerpt)') }}</label>
+                                        <textarea name="short_story" class="form-control" rows="3">{{ old('short_story') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="title">{{ __('Slug') }}</label>
+                                        <label for="slug">{{ __('Slug') }}</label>
                                         <input type="text" class="form-control" id="slug"
                                             value="{{ old('slug') }}" name="slug" placeholder="{{ __('Slug') }}">
                                     </div>
+                                    
                                     <div class="form-group">
-                                        <label for="title">{{ __('Excerpt') }}</label>
-                                        <textarea name="excerpt" id="excerpt" class="form-control max-height-150" cols="30" rows="10"></textarea>
+                                        <label for="story_type_id">{{ __('Story Type') }}</label>
+                                        <select name="story_type_id" class="form-control">
+                                            <option value="">Select Type</option>
+                                            @foreach($story_types as $type)
+                                                <option value="{{ $type->id }}" {{ old('story_type_id') == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
+
                                     <div class="form-group">
-                                        <label for="title">{{ __('Tags') }}</label>
-                                        <input type="text" class="form-control" name="tags"
-                                            value="{{ old('tags') }}" data-role="tagsinput">
+                                        <label for="program_id">{{ __('Program') }}</label>
+                                        <select name="program_id" class="form-control">
+                                            <option value="">Select Program</option>
+                                            @foreach($programs as $program)
+                                                <option value="{{ $program->id }}" {{ old('program_id') == $program->id ? 'selected' : '' }}>{{ $program->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
+
                                     <div class="form-group">
-                                        <label for="author">{{ __('Author Name') }}</label>
-                                        <input type="text" class="form-control" name="author" id="author"
-                                            value="{{ old('author') }}">
+                                        <label for="role">{{ __('Role') }}</label>
+                                        <input type="text" class="form-control" name="role"
+                                            value="{{ old('role') }}" placeholder="e.g. Beneficiary">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="video_url">{{ __('Video Url') }}</label>
-                                        <input type="text" class="form-control" name="video_url"
-                                            value="{{ old('video_url') }}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="breaking_news"><strong>{{ __('Is Breaking News') }}</strong></label>
-                                        <label class="switch">
-                                            <input type="checkbox" name="breaking_news">
-                                            <span class="slider onff"></span>
-                                        </label>
-                                    </div>
+
                                     <div class="form-group">
                                         <label for="status">{{ __('Status') }}</label>
                                         <select name="status" id="status" class="form-control">
@@ -91,6 +100,7 @@
 
                                     <x-media-upload :id="''" :name="'image'" :dimentions="'1920x1280'"
                                         :title="__('Image')" />
+                                    
                                     <button type="submit"
                                         class="btn btn-primary mt-4 pr-4 pl-4">{{ __('Add New Post') }}</button>
                                 </div>

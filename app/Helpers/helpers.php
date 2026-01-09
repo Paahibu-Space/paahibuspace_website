@@ -189,9 +189,10 @@ function get_blog_category_by_id($id,$type = '',$class = ''){
     $blog_cat = \App\Models\BlogCategory::find($id);
     if (!empty($blog_cat)){
         $return_val = $blog_cat->name;
-        if ($type == 'link' ){
-            $return_val = '<a class="'.$class.'" href="'.route('frontend.blog.category',['id' => $blog_cat->id,'any' => Str::slug($blog_cat->name,'-',null) ]).'">'.$blog_cat->name.'</a>';
-        }
+        // Frontend link deprecated
+        // if ($type == 'link' ){
+        //     $return_val = '<a class="'.$class.'" href="'.route('frontend.blog.category',['id' => $blog_cat->id,'any' => Str::slug($blog_cat->name,'-',null) ]).'">'.$blog_cat->name.'</a>';
+        // }
     }
 
     return $return_val;
@@ -206,9 +207,10 @@ function get_service_category_by_id($id,$type = ''){
     $blog_cat = \App\Models\ServiceCategory::find($id);
     if (!empty($blog_cat)){
         $return_val = $blog_cat->name;
-        if ($type == 'link' ){
-            $return_val = '<a href="'.route('frontend.services.category',['id' => $blog_cat->id,'any' => Str::slug($blog_cat->name,'-',null) ]).'">'.$blog_cat->name.'</a>';
-        }
+         // Frontend link deprecated
+        // if ($type == 'link' ){
+        //     $return_val = '<a href="'.route('frontend.services.category',['id' => $blog_cat->id,'any' => Str::slug($blog_cat->name,'-',null) ]).'">'.$blog_cat->name.'</a>';
+        // }
     }
 
     return $return_val;
@@ -280,13 +282,15 @@ function render_og_meta_image_by_attachment_id($id, $size = 'full')
 }
 
 function render_frontend_menu(){
-    $instance = new \App\MenuBuilder\MenuBuilderFrontendRender();
-    return $instance->render_frontend_nav_menu();
+    // $instance = new \App\MenuBuilder\MenuBuilderFrontendRender();
+    // return $instance->render_frontend_nav_menu();
+    return '';
 }
 
 function redirect_404_page()
 {
-    return view('frontend.pages.404');
+    // return view('frontend.pages.404');
+    return response()->json(['message' => 'Page Not Found'], 404);
 }
 
 function render_embed_google_map($address, $zoom = 10)
@@ -304,8 +308,9 @@ function render_embed_google_map($address, $zoom = 10)
 
 function render_frontend_footer_services()
 {
-    $instance = new \App\MenuBuilder\MenuBuilderFrontendRender();
-    return $instance->render_frontend_footer_services();
+    // $instance = new \App\MenuBuilder\MenuBuilderFrontendRender();
+    // return $instance->render_frontend_footer_services();
+    return '';
 }
 
 function get_footer_copyright_text(){

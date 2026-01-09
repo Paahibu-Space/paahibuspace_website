@@ -92,10 +92,10 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if('publish' == $data->status)
-                                                        <span class="btn btn-success btn-sm">{{ucfirst(__($data->status))}}</span>
+                                                    @if($data->is_active)
+                                                        <span class="btn btn-success btn-sm">{{__('Publish')}}</span>
                                                     @else
-                                                        <span class="btn btn-warning btn-sm">{{ucfirst(__($data->status))}}</span>
+                                                        <span class="btn btn-warning btn-sm">{{__('Draft')}}</span>
                                                     @endif
                                                 </td>
                                                 <td>
@@ -106,7 +106,7 @@
                                                        class="btn btn-xs btn-primary mb-3 mr-1 category_edit_btn"
                                                        data-id="{{$data->id}}"
                                                        data-name="{{$data->name}}"
-                                                       data-status="{{$data->status}}"
+                                                       data-status="{{$data->is_active ? 'publish' : 'draft'}}"
                                                        data-imageid="{{$data->image}}"
                                                        data-image="{{$img_url}}"
                                                     >

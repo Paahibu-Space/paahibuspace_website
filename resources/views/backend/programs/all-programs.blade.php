@@ -1,4 +1,7 @@
 @extends('backend.admin-master')
+@section('site-title')
+    {{__('All Programs')}}
+@endsection
 @section('style')
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
@@ -13,10 +16,6 @@
             display: inline-block;
         }
     </style>
-    <link rel="stylesheet" href="{{asset('assets/backend/css/media-uploader.css')}}">
-@endsection
-@section('site-title')
-    {{__('All Programs')}}
 @endsection
 @section('content')
     <div class="col-lg-12 col-ml-12 padding-bottom-30">
@@ -25,15 +24,6 @@
                 <div class="margin-top-40"></div>
                 <x-error-msg/>
                 <x-flash-msg/>
-                @if($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{$error}}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
             </div>
             <div class="col-lg-12 mt-5">
                 <div class="card">
@@ -48,84 +38,47 @@
                                 <button class="btn btn-primary btn-sm" id="bulk_delete_btn">{{__('Apply')}}</button>
                             </div>
                         </div>
-                        <div class="tab-content margin-top-40" id="myTabContent">
-                            @php $b=0; @endphp
-                            @foreach($all_programs as $key => $program)
-                                <div class="tab-pane fade @if($b == 0) show active @endif" id="slider_tab_{{$key}}" role="tabpanel" >
-                                    <div class="table-wrap table-responsive">
-                                        <table class="table table-default" id="all_blog_table">
-                                            <thead>
-                                            <th class="no-sort">
-                                                <div class="mark-all-checkbox">
-                                                    <input type="checkbox" class="all-checkbox">
-                                                </div>
-                                            </th>
-                                            <th>{{__('ID')}}</th>
-                                            <th>{{__('Title')}}</th>
-                                            <th>{{__('Image')}}</th>
-                                            <th>{{__('Program Date')}}</th>
-                                            <th>{{__('Status')}}</th>
-                                            <th>{{__('Action')}}</th>
-                                            </thead>
-                                            <tbody>
-                                            @foreach($all_programs as $data)
-                                                <tr>
-                                                    <td>
-                                                        <div class="bulk-checkbox-wrapper">
-                                                            <input type="checkbox" class="bulk-checkbox" name="bulk_delete[]" value="{{$data->id}}">
-                                                        </div>
-                                                    </td>
-                                                    <td>{{$data->id}}</td>
-                                                    <td>{{$data->title}}</td>
-                                                    <td>
-                                                       <div class="img-wrap">
-                                                           @php
-                                                               $program_img = get_attachment_image_by_id($data->image,'thumbnail',true);
-                                                           @endphp
-                                                           @if (!empty($program_img))
-                                                               <div class="attachment-preview">
-                                                                   <div class="thumbnail">
-                                                                       <div class="centered">
-                                                                           <img class="avatar user-thumb" src="{{$program_img['img_url']}}" alt="">
-                                                                       </div>
-                                                                   </div>
-                                                               </div>
-                                                           @endif
-                                                       </div>
-                                                    </td>
-                                                    <td>{{date("d - M - Y", strtotime($data->date))}}</td>
-                                                    <td>
-                                                        @if($data->status == 'draft')
-                                                            <span class="alert alert-warning" >{{__('Draft')}}</span>
-                                                        @else
-                                                            <span class="alert alert-success">{{__('Publish')}}</span>
-                                                        @endif
-                                                    </td>
-                                                    <td>
-                                                        <x-delete-popover :url="route('admin.programs.delete',$data->id)"/>
-                                                        
-                                                        <a class="btn btn-primary btn-xs mb-3 mr-1" href="{{route('admin.programs.edit',$data->id)}}">
-                                                            <i class="ti-pencil"></i>
-                                                        </a>
-                                                        <a class="btn btn-info btn-xs mb-3 mr-1" target="_blank" href="{{route('frontend.programs.single',$data->slug)}}">
-                                                            <i class="ti-eye"></i>
-                                                        </a>
-                                                        <form action="{{route('admin.programs.clone')}}" method="post" style="display: inline-block">
-                                                            @csrf
-                                                            <input type="hidden" name="item_id" value="{{$data->id}}">
-                                                            <button type="submit" title="clone this to new draft" class="btn btn-xs btn-secondary btn-sm mb-3 mr-1"><i class="far fa-copy"></i></button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
+                        <div class="table-wrap table-responsive">
+                            <table class="table table-default" id="all_blog_table">
+                                <thead>
+                                <th class="no-sort">
+                                    <div class="mark-all-checkbox">
+                                        <input type="checkbox" class="all-checkbox">
                                     </div>
-                                </div>
-                                @php $b++; @endphp
-                            @endforeach
+                                </th>
+                                <th>{{__('ID')}}</th>
+                                <th>{{__('Name')}}</th>
+                                <th>{{__('Status')}}</th>
+                                <th>{{__('Action')}}</th>
+                                </thead>
+                                <tbody>
+                                @foreach($all_programs as $data)
+                                    <tr>
+                                        <td>
+                                            <div class="bulk-checkbox-wrapper">
+                                                <input type="checkbox" class="bulk-checkbox" name="bulk_delete[]" value="{{$data->id}}">
+                                            </div>
+                                        </td>
+                                        <td>{{$data->id}}</td>
+                                        <td>{{$data->name}}</td>
+                                        <td>
+                                            @if($data->is_active)
+                                                <span class="alert alert-success">{{__('Publish')}}</span>
+                                            @else
+                                                <span class="alert alert-warning" >{{__('Draft')}}</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <x-delete-popover :url="route('admin.programs.delete',$data->id)"/>
+                                            <a class="btn btn-primary btn-xs mb-3 mr-1" href="{{route('admin.programs.edit',$data->id)}}">
+                                                <i class="ti-pencil"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -142,9 +95,8 @@
     <script src="//cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
     <script>
         $(document).ready(function() {
-
             $(document).on('click','#bulk_delete_btn',function (e) {
-                e.prprogramDefault();
+                e.preventDefault();
 
                 var bulkOption = $('#bulk_option').val();
                 var allCheckbox =  $('.bulk-checkbox:checked');
@@ -166,14 +118,12 @@
                         }
                     });
                 }
-
             });
 
             $('.all-checkbox').on('change',function (e) {
-                e.prprogramDefault();
+                e.preventDefault();
                 var value = $('.all-checkbox').is(':checked');
                 var allChek = $(this).parent().parent().parent().parent().parent().find('.bulk-checkbox');
-                //have write code here fr
                 if( value == true){
                     allChek.prop('checked',true);
                 }else{

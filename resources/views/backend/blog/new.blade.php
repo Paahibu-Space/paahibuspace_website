@@ -40,13 +40,13 @@
                                         <div class="summernote"></div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="meta_tags">{{ __('Meta Tags') }}</label>
-                                        <input type="text" name="meta_tags" class="form-control"
-                                            value="{{ old('meta_tags') }}" data-role="tagsinput" id="meta_tags">
+                                        <label for="seo_title">{{ __('SEO Title') }}</label>
+                                        <input type="text" name="seo_title" class="form-control"
+                                            value="{{ old('seo_title') }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="meta_description">{{ __('Meta Description') }}</label>
-                                        <textarea name="meta_description" class="form-control" rows="5" id="meta_description"></textarea>
+                                        <label for="seo_description">{{ __('SEO Description') }}</label>
+                                        <textarea name="seo_description" class="form-control" rows="5" id="seo_description">{{ old('seo_description') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -57,12 +57,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="title">{{ __('Excerpt') }}</label>
-                                        <textarea name="excerpt" id="excerpt" class="form-control max-height-150" cols="30" rows="10"></textarea>
+                                        <textarea name="excerpt" id="excerpt" class="form-control max-height-150" cols="30" rows="10">{{ old('excerpt') }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="category">{{ __('Category') }}</label>
                                         <select name="category" class="form-control" id="category">
-
                                             <option value="">{{ __('Select Category') }}</option>
                                             @foreach ($all_category as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -72,25 +71,18 @@
                                     <div class="form-group">
                                         <label for="title">{{ __('Tags') }}</label>
                                         <input type="text" class="form-control" name="tags"
-                                            value="{{ old('tags') }}" data-role="tagsinput">
+                                            value="{{ old('tags') }}" data-role="tagsinput" placeholder="Comma separated tags">
                                     </div>
                                     <div class="form-group">
-                                        <label for="author">{{ __('Author Name') }}</label>
-                                        <input type="text" class="form-control" name="author" id="author"
-                                            value="{{ old('author') }}">
+                                        <label for="author_id">{{ __('Author') }}</label>
+                                        <select name="author_id" class="form-control" id="author_id">
+                                            <option value="">{{ __('Select Author') }}</option>
+                                            @foreach ($all_team_members as $member)
+                                                <option value="{{ $member->id }}">{{ $member->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="video_url">{{ __('Video Url') }}</label>
-                                        <input type="text" class="form-control" name="video_url"
-                                            value="{{ old('video_url') }}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="breaking_news"><strong>{{ __('Is Breaking News') }}</strong></label>
-                                        <label class="switch">
-                                            <input type="checkbox" name="breaking_news">
-                                            <span class="slider onff"></span>
-                                        </label>
-                                    </div>
+                                   
                                     <div class="form-group">
                                         <label for="status">{{ __('Status') }}</label>
                                         <select name="status" id="status" class="form-control">

@@ -75,7 +75,7 @@
                                                 <td>{{$data->id}}</td>
                                                 <td>{{$data->name}}</td>
                                                 <td>
-                                                    <x-delete-popover :url="route('admin.blog.category.delete',$data->id)"/>
+                                                    <x-delete-popover :url="route('admin.team.category.delete',$data->id)"/>
                                                     <a href="#"
                                                        data-toggle="modal"
                                                        data-target="#category_edit_modal"

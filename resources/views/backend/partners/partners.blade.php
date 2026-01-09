@@ -58,9 +58,10 @@
                                 </div>
                             </th>
                             <th>{{__('ID')}}</th>
-                            <th>{{__('Title')}}</th>
+                            <th>{{__('Name')}}</th>
                             <th>{{__('Url')}}</th>
                             <th>{{__('Image')}}</th>
+                            <th>{{__('Status')}}</th>
                             <th>{{__('Action')}}</th>
                             </thead>
                             <tbody>
@@ -72,11 +73,11 @@
                                         </div>
                                     </td>
                                     <td>{{$data->id}}</td>
-                                    <td>{{$data->title}}</td>
-                                    <td>{{$data->url}}</td>
+                                    <td>{{$data->name}}</td>
+                                    <td>{{$data->website_url}}</td>
                                     <td>
                                         @php
-                                            $partners_img = get_attachment_image_by_id($data->image,null,true);
+                                            $partners_img = get_attachment_image_by_id($data->logo,null,true);
                                             $img_url = '';
                                         @endphp
                                         @if (!empty($partners_img))
@@ -90,6 +91,13 @@
                                             @php  $img_url = $partners_img['img_url']; @endphp
                                         @endif
                                     </td>
+                                     <td>
+                                        @if($data->is_active)
+                                            <span class="alert alert-success">{{__('Active')}}</span>
+                                        @else
+                                            <span class="alert alert-warning">{{__('In Active')}}</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <x-delete-popover :url="route('admin.partners.delete',$data->id)"/>
                                         <a href="#"
@@ -97,10 +105,11 @@
                                            data-target="#partners_item_edit_modal"
                                            class="btn btn-xs btn-primary btn-sm mb-3 mr-1 partners_edit_btn"
                                            data-id="{{$data->id}}"
-                                           data-title="{{$data->title}}"
-                                           data-url="{{$data->url}}"
-                                           data-imageid="{{$data->image}}"
+                                           data-name="{{$data->name}}"
+                                           data-url="{{$data->website_url}}"
+                                           data-imageid="{{$data->logo}}"
                                            data-image="{{$img_url}}"
+                                           data-status="{{$data->is_active ? 'publish' : 'draft'}}"
                                         >
                                             <i class="ti-pencil"></i>
                                         </a>
@@ -116,23 +125,32 @@
             <div class="col-lg-6 mt-5">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="header-title">{{__('New Brand')}}</h4>
+                        <h4 class="header-title">{{__('New Partner')}}</h4>
                         <form action="{{route('admin.partners')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="title">{{__('Title')}}</label>
-                                <input type="text" class="form-control"  id="title"  name="title" placeholder="{{__('Title')}}">
+                                <label for="name">{{__('Name')}}</label>
+                                <input type="text" class="form-control"  id="name"  name="name" placeholder="{{__('Name')}}">
                             </div>
                             <div class="form-group">
-                                <label for="url">{{__('URl')}}</label>
+                                <label for="url">{{__('Website URL')}}</label>
                                 <input type="text" class="form-control"  id="url"  name="url" placeholder="{{__('Url')}}">
                             </div>
+
+                             <div class="form-group">
+                                <label for="status">{{__('Status')}}</label>
+                                <select name="status" class="form-control" id="status">
+                                    <option value="publish">{{__("Publish")}}</option>
+                                    <option value="draft">{{__("Draft")}}</option>
+                                </select>
+                            </div>
+
                             <div class="form-group">
                                 <label for="image">{{__('Image')}}</label>
                                 <div class="media-upload-btn-wrapper">
                                     <div class="img-wrap"></div>
                                     <input type="hidden" name="image">
-                                    <button type="button" class="btn btn-info media_upload_form_btn" data-btntitle="Select Brand Image" data-modaltitle="Upload Brand Image" data-toggle="modal" data-target="#media_upload_modal">
+                                    <button type="button" class="btn btn-info media_upload_form_btn" data-btntitle="Select Partner Image" data-modaltitle="Upload Partner Image" data-toggle="modal" data-target="#media_upload_modal">
                                         {{__('Upload Image')}}
                                     </button>
                                 </div>
@@ -150,7 +168,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">{{__('Edit Brand Item')}}</h5>
+                    <h5 class="modal-title">{{__('Edit Partner Item')}}</h5>
                     <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
                 </div>
                 <form action="{{route('admin.partners.update')}}" id="partners_edit_modal_form"  method="post" enctype="multipart/form-data">
@@ -158,19 +176,28 @@
                         @csrf
                         <input type="hidden" class="form-control" name="id"  id="partners_id" >
                         <div class="form-group">
-                            <label for="edit_title">{{__('Title')}}</label>
-                            <input type="text" class="form-control"  id="edit_title"  name="title" placeholder="{{__('Title')}}">
+                            <label for="edit_name">{{__('Name')}}</label>
+                            <input type="text" class="form-control"  id="edit_name"  name="name" placeholder="{{__('Name')}}">
                         </div>
                         <div class="form-group">
-                            <label for="edit_url">{{__('URl')}}</label>
+                            <label for="edit_url">{{__('Website URL')}}</label>
                             <input type="text" class="form-control"  id="edit_url"  name="url" placeholder="{{__('Url')}}">
                         </div>
+
+                         <div class="form-group">
+                            <label for="edit_status">{{__('Status')}}</label>
+                            <select name="status" class="form-control" id="edit_status">
+                                <option value="publish">{{__("Publish")}}</option>
+                                <option value="draft">{{__("Draft")}}</option>
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <label for="edit_image">{{__('Image')}}</label>
                             <div class="media-upload-btn-wrapper">
                                 <div class="img-wrap"></div>
                                 <input type="hidden" id="edit_image" name="image" value="">
-                                <button type="button" class="btn btn-info media_upload_form_btn" data-btntitle="Select Brand Image" data-modaltitle="Upload Brand Image" data-toggle="modal" data-target="#media_upload_modal">
+                                <button type="button" class="btn btn-info media_upload_form_btn" data-btntitle="Select Partner Image" data-modaltitle="Upload Partner Image" data-toggle="modal" data-target="#media_upload_modal">
                                     {{__('Upload Image')}}
                                 </button>
                             </div>
@@ -214,14 +241,12 @@
                         }
                     });
                 }
-
             });
 
             $('.all-checkbox').on('change',function (e) {
                 e.preventDefault();
                 var value = $('.all-checkbox').is(':checked');
                 var allChek = $(this).parent().parent().parent().parent().parent().find('.bulk-checkbox');
-                //have write code here fr
                 if( value == true){
                     allChek.prop('checked',true);
                 }else{
@@ -232,14 +257,16 @@
             $(document).on('click','.partners_edit_btn',function(){
                 var el = $(this);
                 var id = el.data('id');
-                var title = el.data('title');
+                var name = el.data('name');
                 var form = $('#partners_edit_modal_form');
                 var image = el.data('image');
                 var imageid = el.data('imageid');
+                var status = el.data('status');
 
                 form.find('#partners_id').val(id);
-                form.find('#edit_title').val(title);
+                form.find('#edit_name').val(name);
                 form.find('#edit_url').val(el.data('url'));
+                form.find('#edit_status').val(status);
 
                 if(imageid != ''){
                     form.find('.media-upload-btn-wrapper .img-wrap').html('<div class="attachment-preview"><div class="thumbnail"><div class="centered"><img class="avatar user-thumb" src="'+image+'" > </div></div></div>');
@@ -249,7 +276,6 @@
             });
         });
     </script>
-    <!-- Start datatable js -->
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <script src="//cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
     <script src="//cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
@@ -257,7 +283,6 @@
     <script src="//cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
     <script>
         $(document).ready(function() {
-
             $('.table-wrap > table').DataTable( {
                 "order": [[ 1, "desc" ]],
                 'columnDefs' : [{

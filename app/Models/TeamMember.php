@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class TeamMember extends Model
 {
-    protected $table = 'team_members';
-    protected $fillable = ['name','description', 'team_category_id', 'designation','image','icon_one','icon_two','icon_three','icon_one_url','icon_two_url','icon_three_url'];
+    protected $guarded = ['id'];
 
-    public function category(){
-        return $this->belongsTo('App\Models\TeamMemberCategory','team_category_id');
+    public function category()
+    {
+        return $this->belongsTo(TeamCategory::class, 'team_category_id');
     }
 }

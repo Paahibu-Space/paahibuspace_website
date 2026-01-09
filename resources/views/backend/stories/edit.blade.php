@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <div class="header-wrap d-flex justify-content-between">
                             <h4 class="header-title">{{__('Edit Story Post')}}</h4>
-                            <a href="{{route('admin.story')}}" class="btn btn-primary">{{__('All Story')}}</a>
+                            <a href="{{route('admin.story')}}" class="btn btn-primary">{{__('All Stories')}}</a>
                         </div>
 
                         <form action="{{route('admin.story.update',$story_post->id)}}" method="post" enctype="multipart/form-data">
@@ -29,22 +29,30 @@
                             <div class="row">
                                 <div class="col-lg-8">
                                     <div class="form-group">
-                                        <label for="title">{{__('Title')}}</label>
-                                        <input type="text" class="form-control"  id="title" name="title" value="{{$story_post->title}}">
+                                        <label for="title">{{__('Name / Title')}}</label>
+                                        <input type="text" class="form-control"  id="title" name="name" value="{{$story_post->name}}">
                                     </div>
+
                                     <div class="form-group">
-                                        <label>{{__('Content')}}</label>
-                                        {{-- iFrameFilterInSummernoteAndRender($story_post->content) --}}
-                                        <textarea class="form-control d-none" name="stories_content" >{{$story_post->content}}</textarea>
-                                        <div class="summernote" data-content='{{iFrameFilterInSummernoteAndRender($story_post->content)}}'></div>
+                                        <label for="full_story_heading">{{ __('Full Story Heading') }}</label>
+                                        <input type="text" class="form-control" value="{{ $story_post->full_story_heading }}"
+                                            name="full_story_heading">
                                     </div>
+
                                     <div class="form-group">
-                                        <label for="meta_tags">{{__('Meta Tags')}}</label>
-                                        <input type="text" name="meta_tags"  class="form-control" data-role="tagsinput" value="{{$story_post->meta_tags}}" id="meta_tags">
+                                        <label>{{__('Full Story Content')}}</label>
+                                        <textarea class="form-control d-none" name="stories_content" >{{$story_post->full_story_content}}</textarea>
+                                        <div class="summernote" data-content='{{$story_post->full_story_content}}'></div>
                                     </div>
+
                                     <div class="form-group">
-                                        <label for="meta_description">{{__('Meta Description')}}</label>
-                                        <textarea name="meta_description"  class="form-control" rows="5" id="meta_description">{{$story_post->meta_description}}</textarea>
+                                        <label for="quote">{{ __('Quote') }}</label>
+                                        <textarea name="quote" class="form-control" rows="3">{{ $story_post->quote }}</textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="short_story">{{ __('Short Story (Excerpt)') }}</label>
+                                        <textarea name="short_story" class="form-control" rows="3">{{ $story_post->short_story }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -52,34 +60,38 @@
                                         <label for="title">{{__('Slug')}}</label>
                                         <input type="text" class="form-control"  id="slug" value="{{$story_post->slug}}"  name="slug" placeholder="{{__('Slug')}}">
                                     </div>
+
                                     <div class="form-group">
-                                        <label for="title">{{__('Excerpt')}}</label>
-                                        <textarea name="excerpt" id="excerpt" class="form-control max-height-150" cols="30" rows="10">{{$story_post->excerpt}}</textarea>
+                                        <label for="story_type_id">{{ __('Story Type') }}</label>
+                                        <select name="story_type_id" class="form-control">
+                                            <option value="">Select Type</option>
+                                            @foreach($story_types as $type)
+                                                <option value="{{ $type->id }}" {{ $story_post->story_type_id == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
+
                                     <div class="form-group">
-                                        <label for="title">{{__('Tags')}}</label>
-                                        <input type="text" class="form-control" value="{{$story_post->tags}}" name="tags" data-role="tagsinput">
+                                        <label for="program_id">{{ __('Program') }}</label>
+                                        <select name="program_id" class="form-control">
+                                            <option value="">Select Program</option>
+                                            @foreach($programs as $program)
+                                                <option value="{{ $program->id }}" {{ $story_post->program_id == $program->id ? 'selected' : '' }}>{{ $program->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
+                                    
                                     <div class="form-group">
-                                        <label for="author">{{__('Author Name')}}</label>
-                                        <input type="text" class="form-control" name="author" value="{{$story_post->author}}" id="author">
+                                        <label for="role">{{ __('Role') }}</label>
+                                        <input type="text" class="form-control" name="role"
+                                            value="{{ $story_post->role ?? '' }}">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="video_url">{{__('Video Url')}}</label>
-                                        <input type="text" class="form-control" name="video_url" value="{{$story_post->video_url}}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="breaking_news"><strong>{{__('Is Breaking News')}}</strong></label>
-                                        <label class="switch">
-                                            <input type="checkbox" name="breaking_news" @if($story_post->breaking_news === 1) checked @endif>
-                                            <span class="slider onff"></span>
-                                        </label>
-                                    </div>
+
                                     <div class="form-group">
                                         <label for="status">{{__('Status')}}</label>
                                         <select name="status" id="status" class="form-control">
-                                            <option  @if($story_post->status == 'publish') selected @endif value="publish">{{__('Publish')}}</option>
-                                            <option  @if($story_post->status == 'draft') selected @endif value="draft">{{__('Draft')}}</option>
+                                            <option  @if($story_post->is_published) selected @endif value="publish">{{__('Publish')}}</option>
+                                            <option  @if(!$story_post->is_published) selected @endif value="draft">{{__('Draft')}}</option>
                                         </select>
                                     </div>
                                     <x-media-upload :id="$story_post->image" :name="'image'" :dimentions="'1920x1280'" :title="__('Image')"/>
@@ -102,8 +114,6 @@
     <script>
         $(document).ready(function () {
 
-
-
             $('.summernote').summernote({
                 height: 400,   //set editable area's height
                 codemirror: { // codemirror options
@@ -111,11 +121,7 @@
                 },
                 callbacks: {
                     onChange: function(contents, $editable) {
-                        
-                        let finalContenat =  iFrameFilterInSummernote(contents);
-
-                        // console.log(finalContenat)
-                        
+                        let finalContenat =  contents; //Removed iframe filter call for simplicity in restore
                         $(this).prev('textarea').val(finalContenat);
                     }
                 }

@@ -3,19 +3,13 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Actions\SlugChecker;
-use App\Models\Blog;
+use App\Models\BlogPost;
 use App\Models\BlogCategory;
-use App\Models\Programs;
-use App\Http\Requests\SlugCheckRequest;
-use App\Services;
-use App\Volunteer;
+use App\Models\BlogTag;
+use App\Models\TeamMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
-use Intervention\Image\ImageManager;
 use Illuminate\Support\Str;
-
 
 class BlogController extends Controller
 {
@@ -23,76 +17,95 @@ class BlogController extends Controller
     {
         $this->middleware('auth:admin');
     }
+
     public function index(){
-        $all_blog = Blog::all();
+        $all_blog = BlogPost::with('category')->get();
         return view('backend.blog.index')->with([
             'all_blog' => $all_blog
         ]);
     }
+
     public function new_blog(){
-        $all_category = BlogCategory::get();
+        $all_category = BlogCategory::all();
+        $all_team_members = TeamMember::select('id', 'name')->get(); // For Author selection
         return view('backend.blog.new')->with([
             'all_category' => $all_category,
+            'all_team_members' => $all_team_members
         ]);
     }
+
     public function store_new_blog(Request $request){
         $this->validate($request,[
            'category' => 'required',
            'blog_content' => 'required',
-           'tags' => 'required',
+           'tags' => 'nullable|string',
            'excerpt' => 'required',
            'title' => 'required',
            'status' => 'required',
-           'author' => 'required',
+           'author_id' => 'required', // Changed from author string to ID
            'slug' => 'nullable',
-           'video_url' => 'nullable|string',
-           'breaking_news' => 'nullable|string',
-           'meta_tags' => 'nullable|string',
-           'meta_description' => 'nullable|string',
-           'image' => 'nullable|string|max:191',
+           'image' => 'nullable|string',
+           'seo_title' => 'nullable|string',
+           'seo_description' => 'nullable|string',
         ]);
+
         $slug = !empty($request->slug) ? $request->slug : Str::slug($request->title);
 
-        Blog::create([
-            'blog_categories_id' => $request->category,
-            'slug' => $slug ,
-            'content' => $request->blog_content,
-            'tags' => $request->tags,
+        $blog = BlogPost::create([
+            'blog_category_id' => $request->category,
+            'slug' => $slug,
             'title' => $request->title,
-            'status' => $request->status,
-            'meta_tags' => $request->meta_tags,
-            'meta_description' => $request->meta_description,
             'excerpt' => $request->excerpt,
-            'image' => $request->image,
-            'user_id' => Auth::user()->id,
-            'author' => $request->author,
-            'video_url' => $request->video_url,
-            'breaking_news' => !empty($request->breaking_news) ? 1 : 0,
+            'content' => $request->blog_content,
+            'featured_image' => $request->image,
+            'author_id' => $request->author_id,
+            'is_published' => $request->status === 'publish',
+            'published_at' => $request->status === 'publish' ? now() : null,
+            'seo_title' => $request->seo_title,
+            'seo_description' => $request->seo_description,
         ]);
+
+        // Handle Tags
+        if ($request->tags) {
+            $tagNames = explode(',', $request->tags);
+            $tagIds = [];
+            foreach ($tagNames as $tagName) {
+                $tagName = trim($tagName);
+                if($tagName) {
+                    $tag = BlogTag::firstOrCreate(['name' => $tagName], ['slug' => Str::slug($tagName)]);
+                    $tagIds[] = $tag->id;
+                }
+            }
+            $blog->tags()->sync($tagIds);
+        }
+
         return redirect()->back()->with([
             'msg' => __('New Blog Post Added...'),
             'type' => 'success'
         ]);
     }
+
     public function clone_blog(Request $request)
     {
-        $blog_details = Blog::find($request->item_id);
-        Blog::create([
-            'blog_categories_id' => $blog_details->blog_categories_id,
-            'slug' => $blog_details->slug.'33',
-            'content' => $blog_details->content,
-            'tags' => $blog_details->tags,
+        $blog_details = BlogPost::with('tags')->find($request->item_id);
+        
+        $newBlog = BlogPost::create([
+            'blog_category_id' => $blog_details->blog_category_id,
+            'slug' => $blog_details->slug.'-clone-' . time(),
             'title' => $blog_details->title,
-            'status' => 'draft',
-            'meta_tags' => $blog_details->meta_tags,
-            'meta_description' => $blog_details->meta_description,
             'excerpt' => $blog_details->excerpt,
-            'image' => $blog_details->image,
-            'video_url' => $blog_details->video_url,
-            'user_id' => null,
-            'author' => $blog_details->author,
-            'breaking_news' => $blog_details->breaking_news,
+            'content' => $blog_details->content,
+            'featured_image' => $blog_details->featured_image,
+            'author_id' => $blog_details->author_id,
+            'is_published' => false,
+            'seo_title' => $blog_details->seo_title,
+            'seo_description' => $blog_details->seo_description,
         ]);
+
+        // Clone Tags
+        if ($blog_details->tags) {
+            $newBlog->tags()->sync($blog_details->tags->pluck('id')->toArray());
+        }
 
         return redirect()->back()->with([
             'msg' => __('Blog Post cloned success...'),
@@ -101,53 +114,78 @@ class BlogController extends Controller
     }
 
     public function edit_blog($id){
-        $blog_post = Blog::find(id: $id);
-        $all_category = BlogCategory::get();
+        $blog_post = BlogPost::with('tags')->find($id);
+        $all_category = BlogCategory::all();
+        $all_team_members = TeamMember::select('id', 'name')->get();
+
+        // Convert tags to string for input
+        $tags = $blog_post->tags->pluck('name')->implode(',');
+        // Inject strictly for view
+        $blog_post->tag_list = $tags; 
+
         return view('backend.blog.edit')->with([
             'all_category' => $all_category,
+            'all_team_members' => $all_team_members,
             'blog_post' => $blog_post,
         ]);
     }
+
     public function update_blog(Request $request,$id){
         $this->validate($request,[
-            'category' => 'required',
-            'blog_content' => 'required',
-            'tags' => 'required',
-            'excerpt' => 'required',
-            'title' => 'required',
-            'status' => 'required',
-            'author' => 'required',
-            'slug' => 'nullable',
-            'meta_tags' => 'nullable|string',
-            'meta_description' => 'nullable|string',
-            'image' => 'nullable|string|max:191',
+           'category' => 'required',
+           'blog_content' => 'required',
+           'tags' => 'nullable|string',
+           'excerpt' => 'required',
+           'title' => 'required',
+           'status' => 'required',
+           'author_id' => 'required',
+           'slug' => 'nullable',
+           'image' => 'nullable|string',
+           'seo_title' => 'nullable|string',
+           'seo_description' => 'nullable|string',
+        ]);
 
-        ]);
         $slug = !empty($request->slug) ? $request->slug : Str::slug($request->title);
-        Blog::where('id',$id)->update([
-            'blog_categories_id' => $request->category,
+        
+        $blog = BlogPost::find($id);
+        $blog->update([
+            'blog_category_id' => $request->category,
             'slug' => $slug,
-            'content' => $request->blog_content,
-            'tags' => $request->tags,
             'title' => $request->title,
-            'status' => $request->status,
-            'meta_tags' => $request->meta_tags,
-            'meta_description' => $request->meta_description,
             'excerpt' => $request->excerpt,
-            'video_url' => $request->video_url,
-            'image' => $request->image,
-            'user_id' => Auth::user()->id,
-            'author' => $request->author,
-            'breaking_news' => !empty($request->breaking_news) ? 1 : 0,
+            'content' => $request->blog_content,
+            'featured_image' => $request->image,
+            'author_id' => $request->author_id,
+            'is_published' => $request->status === 'publish',
+            // 'published_at' => ... // logic to keeping orig date or update
+            'seo_title' => $request->seo_title,
+            'seo_description' => $request->seo_description,
         ]);
+
+        // Handle Tags
+        if ($request->tags) {
+            $tagNames = explode(',', $request->tags);
+            $tagIds = [];
+            foreach ($tagNames as $tagName) {
+                $tagName = trim($tagName);
+                if($tagName) {
+                    $tag = BlogTag::firstOrCreate(['name' => $tagName], ['slug' => Str::slug($tagName)]);
+                    $tagIds[] = $tag->id;
+                }
+            }
+            $blog->tags()->sync($tagIds);
+        } else {
+            $blog->tags()->detach();
+        }
 
         return redirect()->back()->with([
             'msg' => __('Blog Post updated...'),
             'type' => 'success'
         ]);
     }
+
     public function delete_blog(Request $request,$id){
-        Blog::find($id)->delete();
+        BlogPost::find($id)->delete();
 
         return redirect()->back()->with([
             'msg' => __('Blog Post Delete Success...'),
@@ -161,14 +199,18 @@ class BlogController extends Controller
             'all_category' => $all_category,
         ]);
     }
+
     public function new_category(Request $request){
         $this->validate($request,[
             'name' => 'required|string|max:191|unique:blog_categories',
-            'status' => 'required|string|max:191',
-            'image' => 'nullable|string|max:191'
+            'status' => 'required',
         ]);
 
-        BlogCategory::create($request->all());
+        BlogCategory::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'is_active' => $request->status === 'publish',
+        ]);
 
         return redirect()->back()->with([
             'msg' => __('New Category Added...'),
@@ -179,14 +221,13 @@ class BlogController extends Controller
     public function update_category(Request $request){
         $this->validate($request,[
             'name' => 'required|string|max:191',
-            'status' => 'required|string|max:191',
-            'image' => 'nullable|string|max:191'
+            'status' => 'required',
         ]);
 
         BlogCategory::find($request->id)->update([
             'name' => $request->name,
-            'status' => $request->status,
-            'image' => $request->image,
+            'slug' => Str::slug($request->name),
+            'is_active' => $request->status === 'publish',
         ]);
 
         return redirect()->back()->with([
@@ -196,7 +237,7 @@ class BlogController extends Controller
     }
 
     public function delete_category(Request $request,$id){
-        if (Blog::where('blog_categories_id',$id)->first()){
+        if (BlogPost::where('blog_category_id',$id)->first()){
             return redirect()->back()->with([
                 'msg' => __('You Can Not Delete This Category, It Already Associated With A Post...'),
                 'type' => 'danger'
@@ -210,7 +251,7 @@ class BlogController extends Controller
     }
 
     public function bulk_action(Request $request){
-        Blog::whereIn('id',$request->ids)->delete();
+        BlogPost::whereIn('id',$request->ids)->delete();
         return response()->json(['status' => 'ok']);
     }
 
@@ -219,11 +260,11 @@ class BlogController extends Controller
         return response()->json(['status' => 'ok']);
     }
 
-
-    public function slug_check(SlugCheckRequest $request){
-        $user_given_slug = $request->slug;
-        $query = Programs::Blog(['slug' => $user_given_slug]);
-
-        return SlugChecker::Check($request,$query);
+    // Retaining simplified slug check
+    public function slug_check(Request $request){
+        $slug = $request->slug;
+        // Simple check implementation instead of using the service which might depend on old models
+        $exists = BlogPost::where('slug', $slug)->exists();
+        return response()->json(['status' => $exists ? 'failed' : 'ok']);
     }
 }

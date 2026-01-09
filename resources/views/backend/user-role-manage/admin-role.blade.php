@@ -9,22 +9,16 @@
 
 @php
     $all_permission_list = array(
-        "Video Gallery",
         "Admin Manage",
-        "Users Manage",
-        "Newsletter Manage",
         "Blogs Manage",
         "Programs Manage",
-        "Knowledgebase",
-        "Services",
-        "Case Study",
-        "404 Page Manage",
-        "Team Members",
-        "Testimonial",
-        "General Settings",
-        "Email Templates",
         "Stories Manage",
         "Partners Manage",
+        "Impact Stats Manage",
+        "Team Members",
+        "Newsletter Manage",
+        "Testimonial",
+        "General Settings",
     );
 @endphp
 
