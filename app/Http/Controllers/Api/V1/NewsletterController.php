@@ -27,9 +27,7 @@ class NewsletterController extends Controller
              return response()->json([
                 'success' => true, // Return true so frontend shows success message (or change to false if you want error UI)
                 'message' => 'You are already subscribed to our newsletter.'
-            ], 200)->header('Access-Control-Allow-Origin', '*')
-                  ->header('Access-Control-Allow-Methods', 'POST, OPTIONS')
-                  ->header('Access-Control-Allow-Headers', 'Content-Type');
+            ], 200);
         }
 
         Newsletter::create([
@@ -40,8 +38,6 @@ class NewsletterController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Subscribed successfully.'
-        ], 201)->header('Access-Control-Allow-Origin', '*')
-              ->header('Access-Control-Allow-Methods', 'POST, OPTIONS')
-              ->header('Access-Control-Allow-Headers', 'Content-Type');
+        ], 201);
     }
 }
