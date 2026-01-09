@@ -38,6 +38,18 @@
                                         <input type="text" class="form-control"  id="slug" name="slug" value="{{old('slug')}}" placeholder="{{__('Slug')}}">
                                     </div>
                                     <div class="form-group">
+                                        <label for="application_link">{{__('Application Link')}}</label>
+                                        <input type="text" class="form-control"  id="application_link" name="application_link" value="{{old('application_link')}}" placeholder="{{__('Application Link')}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="application_start_date">{{__('Application Start Date')}}</label>
+                                        <input type="date" class="form-control"  id="application_start_date" name="application_start_date" value="{{old('application_start_date')}}" placeholder="{{__('Application Start Date')}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="application_end_date">{{__('Application End Date')}}</label>
+                                        <input type="date" class="form-control"  id="application_end_date" name="application_end_date" value="{{old('application_end_date')}}" placeholder="{{__('Application End Date')}}">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="status">{{__('Status')}}</label>
                                         <select name="status" id="status"  class="form-control">
                                             <option value="publish">{{__('Publish')}}</option>

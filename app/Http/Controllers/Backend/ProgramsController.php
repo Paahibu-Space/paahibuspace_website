@@ -22,15 +22,26 @@ class ProgramsController extends Controller
         $this->validate($request,[
             'name' => 'required|string|max:191',
             'slug' => 'nullable|string',
-            'status' => 'required'
+            'status' => 'required',
+            'application_start_date' => 'nullable|date',
+            'application_end_date' => 'nullable|date',
+            'application_link' => 'nullable|url'
         ]);
 
-        $slug = !empty($request->slug) ? $request->slug : Str::slug($request->name);
+        $slug = null;
+        if (!empty($request->slug) && $request->slug !== '[object Object]') {
+             $slug = Str::slug($request->slug);
+        } else {
+             $slug = Str::slug($request->name);
+        }
         
         Program::create([
             'name' => $request->name,
             'slug' => $slug,
             'is_active' => $request->status === 'publish',
+            'application_start_date' => $request->application_start_date,
+            'application_end_date' => $request->application_end_date,
+            'application_link' => $request->application_link,
         ]);
 
         return redirect()->back()->with(['msg' => __('New Program Created Success...'),'type'=>'success']);
@@ -55,15 +66,26 @@ class ProgramsController extends Controller
         $this->validate($request,[
             'name' => 'required|string|max:191',
             'slug' => 'nullable|string',
-            'status' => 'required'
+            'status' => 'required',
+            'application_start_date' => 'nullable|date',
+            'application_end_date' => 'nullable|date',
+            'application_link' => 'nullable|url'
         ]);
 
-        $slug = !empty($request->slug) ? $request->slug : Str::slug($request->name);
+        $slug = null;
+        if (!empty($request->slug) && $request->slug !== '[object Object]') {
+             $slug = Str::slug($request->slug);
+        } else {
+             $slug = Str::slug($request->name);
+        }
 
         Program::find($request->program_id)->update([
             'name' => $request->name,
             'slug' => $slug,
             'is_active' => $request->status === 'publish',
+            'application_start_date' => $request->application_start_date,
+            'application_end_date' => $request->application_end_date,
+            'application_link' => $request->application_link,
         ]);
 
         return redirect()->back()->with(['msg' => __('Program Update Success...'),'type'=>'success']);
@@ -76,8 +98,25 @@ class ProgramsController extends Controller
 
     public function slug_check(Request $request){
         $slug = $request->slug;
-        $exists = Program::where('slug', $slug)->exists();
-        return response()->json(['status' => $exists ? 'failed' : 'ok']);
+        $type = $request->type;
+        
+        // For new items, check if slug exists and modify if needed
+        if ($type === 'new') {
+            $exists = Program::where('slug', $slug)->exists();
+            if ($exists) {
+                // Append number to make it unique
+                $counter = 1;
+                $newSlug = $slug . '-' . $counter;
+                while (Program::where('slug', $newSlug)->exists()) {
+                    $counter++;
+                    $newSlug = $slug . '-' . $counter;
+                }
+                return response()->json($newSlug);
+            }
+        }
+        
+        // Return the slug as-is
+        return response()->json($slug);
     }
 
     // Waitlist Functions
@@ -123,7 +162,7 @@ class ProgramsController extends Controller
             "Expires"             => "0"
         );
 
-        $columns = array('ID', 'Event Name', 'Status', 'Date'); 
+        $columns = array('ID', 'Name', 'Email', 'Phone', 'Location', 'Program', 'Status', 'Date', 'Notes'); 
 
         $callback = function() use($registrations, $columns) {
             $file = fopen('php://output', 'w');
@@ -132,9 +171,14 @@ class ProgramsController extends Controller
             foreach ($registrations as $reg) {
                 fputcsv($file, array(
                     $reg->id, 
+                    $reg->name ?? '',
+                    $reg->email ?? '',
+                    $reg->phone ?? '',
+                    $reg->location ?? '',
                     $reg->program_name ?? '', 
                     $reg->status,
-                    $reg->created_at
+                    $reg->created_at,
+                    $reg->notes ?? ''
                 ));
             }
 

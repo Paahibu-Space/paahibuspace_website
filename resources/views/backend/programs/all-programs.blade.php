@@ -49,6 +49,7 @@
                                 <th>{{__('ID')}}</th>
                                 <th>{{__('Name')}}</th>
                                 <th>{{__('Status')}}</th>
+                                <th>{{__('Application Status')}}</th>
                                 <th>{{__('Action')}}</th>
                                 </thead>
                                 <tbody>
@@ -67,6 +68,21 @@
                                             @else
                                                 <span class="alert alert-warning" >{{__('Draft')}}</span>
                                             @endif
+                                        </td>
+                                        <td>
+                                            @php $appStatus = $data->application_status; @endphp
+                                            @if($appStatus == 'Open')
+                                                <span class="badge badge-success">{{__('Open')}}</span>
+                                            @elseif($appStatus == 'Closed')
+                                                <span class="badge badge-danger">{{__('Closed')}}</span>
+                                            @else
+                                                <span class="badge badge-info">{{$appStatus}}</span>
+                                            @endif
+                                            <small class="d-block mt-1">
+                                                @if($data->application_end_date)
+                                                    {{ __('End:') }} {{ $data->application_end_date->format('d M Y') }}
+                                                @endif
+                                            </small>
                                         </td>
                                         <td>
                                             <x-delete-popover :url="route('admin.programs.delete',$data->id)"/>

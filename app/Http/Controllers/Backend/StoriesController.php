@@ -39,6 +39,7 @@ class StoriesController extends Controller
            'slug' => 'nullable|unique:stories',
            'story_type_id' => 'required',
            'program_id' => 'required',
+           'year' => 'nullable|string',
            'image' => 'required|string',
            'quote' => 'required',
            'short_story' => 'required',
@@ -47,13 +48,19 @@ class StoriesController extends Controller
            'status' => 'required', // Maps to is_published
         ]);
 
-        $slug = !empty($request->slug) ? $request->slug : Str::slug($request->name);
+        $slug = null;
+        if (!empty($request->slug) && $request->slug !== '[object Object]') {
+             $slug = Str::slug($request->slug);
+        } else {
+             $slug = Str::slug($request->name);
+        }
 
         Story::create([
             'name' => $request->name,
             'slug' => $slug,
             'story_type_id' => $request->story_type_id,
             'program_id' => $request->program_id,
+            'year' => $request->year,
             'image' => $request->image,
             'quote' => $request->quote,
             'short_story' => $request->short_story,
@@ -111,6 +118,7 @@ class StoriesController extends Controller
            'slug' => 'nullable',
            'story_type_id' => 'required',
            'program_id' => 'required',
+           'year' => 'nullable|string',
            'image' => 'nullable|string',
            'quote' => 'required',
            'short_story' => 'required',
@@ -119,13 +127,19 @@ class StoriesController extends Controller
            'status' => 'required',
         ]);
 
-        $slug = !empty($request->slug) ? $request->slug : Str::slug($request->name);
+        $slug = null;
+        if (!empty($request->slug) && $request->slug !== '[object Object]') {
+             $slug = Str::slug($request->slug);
+        } else {
+             $slug = Str::slug($request->name);
+        }
         
         Story::where('id',$id)->update([
             'name' => $request->name,
             'slug' => $slug,
             'story_type_id' => $request->story_type_id,
             'program_id' => $request->program_id,
+            'year' => $request->year,
             'image' => $request->image,
             'quote' => $request->quote,
             'short_story' => $request->short_story,
@@ -155,11 +169,26 @@ class StoriesController extends Controller
         return response()->json(['status' => 'ok']);
     }
 
-    public function slug_check(SlugCheckRequest $request){
-        $user_given_slug = $request->slug;
-        $query = Story::where('slug', $user_given_slug)->get(); // Simplified check
-        // Assuming SlugChecker expects a query builder or something similar.
-        // Reverting to similar behavior as before but with new model
-        return SlugChecker::Check($request, Story::where('slug', $user_given_slug));
+    public function slug_check(Request $request){
+        $slug = $request->slug;
+        $type = $request->type;
+        
+        // For new items, check if slug exists and modify if needed
+        if ($type === 'new') {
+            $exists = Story::where('slug', $slug)->exists();
+            if ($exists) {
+                // Append number to make it unique
+                $counter = 1;
+                $newSlug = $slug . '-' . $counter;
+                while (Story::where('slug', $newSlug)->exists()) {
+                    $counter++;
+                    $newSlug = $slug . '-' . $counter;
+                }
+                return response()->json($newSlug);
+            }
+        }
+        
+        // Return the slug as-is
+        return response()->json($slug);
     }
 }

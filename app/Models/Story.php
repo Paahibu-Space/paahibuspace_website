@@ -10,7 +10,21 @@ class Story extends Model
 {
     use SoftDeletes;
 
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'name',
+        'slug',
+        'story_type_id',
+        'program_id',
+        'year',
+        'image',
+        'quote',
+        'short_story',
+        'full_story_heading',
+        'full_story_content',
+        'is_published',
+        'role',
+        'order',
+    ];
 
     public function storyType()
     {
@@ -32,8 +46,19 @@ class Story extends Model
         return $this->hasMany(StoryTimeline::class)->orderBy('order');
     }
 
+    public function mediaEntry()
+    {
+        return $this->belongsTo(MediaUpload::class, 'image');
+    }
+
     public function getImageUrlAttribute()
     {
-        return Storage::url($this->image);
+        if ($this->mediaEntry) {
+            return asset('assets/uploads/media-uploader/' . $this->mediaEntry->path);
+        }
+        if ($this->image) {
+             return asset('assets/uploads/media-uploader/' . $this->image);
+        }
+        return null;
     }
 }

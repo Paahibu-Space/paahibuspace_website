@@ -86,6 +86,11 @@
                                         <input type="text" class="form-control" name="role"
                                             value="{{ $story_post->role ?? '' }}">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="year">{{ __('Year') }}</label>
+                                        <input type="text" class="form-control" name="year"
+                                            value="{{ $story_post->year ?? '' }}">
+                                    </div>
 
                                     <div class="form-group">
                                         <label for="status">{{__('Status')}}</label>

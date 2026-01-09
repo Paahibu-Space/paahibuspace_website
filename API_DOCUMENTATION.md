@@ -95,7 +95,89 @@ Retrieve news and blog posts.
 
 ---
 
-## 6. Metadata (Dropdowns)
+## 6. Programs
+Retrieve programs and join waitlists.
+
+### Get All Programs
+- **Endpoint**: `GET /programs`
+- **Description**: Returns a list of all active programs with application status.
+- **Response**:
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Tech Entrepreneurship Program",
+      "slug": "tech-entrepreneurship-program",
+      "application_status": "Open",
+      "is_application_open": true,
+      "application_link": "https://forms.example.com/apply",
+      "application_start_date": "2026-01-01T00:00:00.000000Z",
+      "application_end_date": "2026-12-31T23:59:59.000000Z"
+    }
+  ]
+}
+```
+
+### Get Single Program
+- **Endpoint**: `GET /programs/{slug}`
+- **Description**: Retrieve a single program by its slug.
+
+### Join Program Waitlist
+- **Endpoint**: `POST /programs/{slug}/waitlist`
+- **Description**: Submit a waitlist registration for a program.
+- **Request Body**:
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "phone": "+1234567890",
+  "location": "Nairobi",
+  "notes": "Interested in the program"
+}
+```
+- **Response**:
+```json
+{
+  "message": "You have been added to the waitlist successfully.",
+  "success": true
+}
+```
+
+---
+
+## 7. Annual Reports
+Retrieve annual reports.
+
+### Get All Annual Reports
+- **Endpoint**: `GET /annual-reports`
+- **Description**: Returns a list of all annual reports with PDF download links.
+
+---
+
+## 8. Newsletter
+Subscribe to the newsletter.
+
+### Subscribe
+- **Endpoint**: `POST /newsletter/subscribe`
+- **Description**: Subscribe an email to the newsletter.
+- **Request Body**:
+```json
+{
+  "email": "user@example.com"
+}
+```
+- **Response**:
+```json
+{
+  "success": true,
+  "message": "Subscribed successfully."
+}
+```
+
+---
+
+## 9. Metadata (Dropdowns)
 Helper endpoints to populate dynamic filters on the frontend.
 
 - **Story Types**: `GET /meta/story-types`

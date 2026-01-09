@@ -13,6 +13,11 @@ class ProgramResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
+            'application_status' => $this->application_status, // Open, Closed, Upcoming
+            'is_application_open' => $this->is_application_open,
+            'application_link' => $this->application_link,
+            'application_start_date' => $this->application_start_date ? $this->application_start_date->toISOString() : null,
+            'application_end_date' => $this->application_end_date ? $this->application_end_date->toISOString() : null,
         ];
     }
 }

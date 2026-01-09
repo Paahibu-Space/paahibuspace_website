@@ -31,6 +31,11 @@ class BlogPost extends Model
         return $this->belongsToMany(BlogTag::class);
     }
 
+    public function featuredEntry()
+    {
+        return $this->belongsTo(MediaUpload::class, 'featured_image');
+    }
+
     public function scopePublished($query)
     {
         return $query->where('is_published', true)->whereNotNull('published_at');

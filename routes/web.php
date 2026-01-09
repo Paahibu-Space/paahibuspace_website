@@ -33,8 +33,8 @@ Route::prefix('admin-home')->group(function () {
     /* --------------------------
         MAINTAINS PAGE
     -------------------------- */
-    Route::get('/maintains-page/settings', 'MaintainsPageController@maintains_page_settings')->name('admin.maintains.page.settings');
-    Route::post('/maintains-page/settings', 'MaintainsPageController@update_maintains_page_settings');
+    // Route::get('/maintains-page/settings', 'MaintainsPageController@maintains_page_settings')->name('admin.maintains.page.settings');
+    // Route::post('/maintains-page/settings', 'MaintainsPageController@update_maintains_page_settings');
 
 
     /*---------------------------
@@ -52,97 +52,97 @@ Route::prefix('admin-home')->group(function () {
     /*-----------------------------------
           KNOWLEDGEBASE ROUTES
     ------------------------------------*/
-    Route::prefix('knowledge')->middleware(['adminPermissionCheck:Knowledgebase'])->group(function () {
+    // Route::prefix('knowledge')->middleware(['adminPermissionCheck:Knowledgebase'])->group(function () {
 
-        Route::get('/', 'App\Http\Controllers\Backend\KnowledgebaseController@all_knowledgebases')->name('admin.knowledge.all');
-        Route::get('/new', 'App\Http\Controllers\Backend\KnowledgebaseController@new_knowledgebase')->name('admin.knowledge.new');
-        Route::post('/new', 'App\Http\Controllers\Backend\KnowledgebaseController@store_knowledgebases');
-        Route::get('/edit/{id}', 'App\Http\Controllers\Backend\KnowledgebaseController@edit_knowledgebases')->name('admin.knowledge.edit');
-        Route::post('/update', 'App\Http\Controllers\Backend\KnowledgebaseController@update_knowledgebases')->name('admin.knowledge.update');
-        Route::post('/delete/{id}', 'App\Http\Controllers\Backend\KnowledgebaseController@delete_knowledgebases')->name('admin.knowledge.delete');
-        Route::post('/clone', 'App\Http\Controllers\Backend\KnowledgebaseController@clone_knowledgebases')->name('admin.knowledge.clone');
-        Route::post('/bulk-action', 'App\Http\Controllers\Backend\KnowledgebaseController@bulk_action')->name('admin.knowledge.bulk.action');
-        Route::post('/slug-check', 'App\Http\Controllers\Backend\KnowledgebaseController@slug_check')->name('admin.knowledge.slug.check');
+    //     Route::get('/', 'App\Http\Controllers\Backend\KnowledgebaseController@all_knowledgebases')->name('admin.knowledge.all');
+    //     Route::get('/new', 'App\Http\Controllers\Backend\KnowledgebaseController@new_knowledgebase')->name('admin.knowledge.new');
+    //     Route::post('/new', 'App\Http\Controllers\Backend\KnowledgebaseController@store_knowledgebases');
+    //     Route::get('/edit/{id}', 'App\Http\Controllers\Backend\KnowledgebaseController@edit_knowledgebases')->name('admin.knowledge.edit');
+    //     Route::post('/update', 'App\Http\Controllers\Backend\KnowledgebaseController@update_knowledgebases')->name('admin.knowledge.update');
+    //     Route::post('/delete/{id}', 'App\Http\Controllers\Backend\KnowledgebaseController@delete_knowledgebases')->name('admin.knowledge.delete');
+    //     Route::post('/clone', 'App\Http\Controllers\Backend\KnowledgebaseController@clone_knowledgebases')->name('admin.knowledge.clone');
+    //     Route::post('/bulk-action', 'App\Http\Controllers\Backend\KnowledgebaseController@bulk_action')->name('admin.knowledge.bulk.action');
+    //     Route::post('/slug-check', 'App\Http\Controllers\Backend\KnowledgebaseController@slug_check')->name('admin.knowledge.slug.check');
 
-        /*-----------------------------------
-         KNOWLEDGEBASE: CATEGORY ROUTES
-       ------------------------------------*/
-        Route::group(['prefix' => 'category'], function () {
-            Route::get('/', 'App\Http\Controllers\Backend\KnowledgebaseTopicsController@all_knowledgebase_category')->name('admin.knowledge.category.all');
-            Route::post('/new', 'App\Http\Controllers\Backend\KnowledgebaseTopicsController@store_knowledgebase_category')->name('admin.knowledge.category.new');
-            Route::post('/update', 'App\Http\Controllers\Backend\KnowledgebaseTopicsController@update_knowledgebase_category')->name('admin.knowledge.category.update');
-            Route::post('/delete/{id}', 'App\Http\Controllers\Backend\KnowledgebaseTopicsController@delete_knowledgebase_category')->name('admin.knowledge.category.delete');
-            Route::post('/lang', 'App\Http\Controllers\Backend\KnowledgebaseTopicsController@category_by_language_slug')->name('admin.knowledge.category.by.lang');
-            Route::post('/bulk-action', 'App\Http\Controllers\Backend\KnowledgebaseTopicsController@bulk_action')->name('admin.knowledge.category.bulk.action');
-        });
-    });
+    //     /*-----------------------------------
+    //      KNOWLEDGEBASE: CATEGORY ROUTES
+    //    ------------------------------------*/
+    //     Route::group(['prefix' => 'category'], function () {
+    //         Route::get('/', 'App\Http\Controllers\Backend\KnowledgebaseTopicsController@all_knowledgebase_category')->name('admin.knowledge.category.all');
+    //         Route::post('/new', 'App\Http\Controllers\Backend\KnowledgebaseTopicsController@store_knowledgebase_category')->name('admin.knowledge.category.new');
+    //         Route::post('/update', 'App\Http\Controllers\Backend\KnowledgebaseTopicsController@update_knowledgebase_category')->name('admin.knowledge.category.update');
+    //         Route::post('/delete/{id}', 'App\Http\Controllers\Backend\KnowledgebaseTopicsController@delete_knowledgebase_category')->name('admin.knowledge.category.delete');
+    //         Route::post('/lang', 'App\Http\Controllers\Backend\KnowledgebaseTopicsController@category_by_language_slug')->name('admin.knowledge.category.by.lang');
+    //         Route::post('/bulk-action', 'App\Http\Controllers\Backend\KnowledgebaseTopicsController@bulk_action')->name('admin.knowledge.category.bulk.action');
+    //     });
+    // });
 
     /*==============================================
           SERVICES MODULE
     ==============================================*/
-    Route::prefix('services')->middleware(['adminPermissionCheck:Services'])->group(function () {
-        /*-----------------------------------
-         SERVICES MODULE : SERVICES ROUTES
-        ------------------------------------*/
-        Route::get('/', 'App\Http\Controllers\Backend\ServiceController@index')->name('admin.services');
-        Route::post('/', 'App\Http\Controllers\Backend\ServiceController@store');
-        Route::get('/new', 'App\Http\Controllers\Backend\ServiceController@new_service')->name('admin.services.new');
-        Route::get('/edit/{id}', 'App\Http\Controllers\Backend\ServiceController@edit_service')->name('admin.services.edit');
-        Route::post('/cat-by-slug', 'App\Http\Controllers\Backend\ServiceController@category_by_slug')->name('admin.service.category.by.slug');
-        Route::post('/update', 'App\Http\Controllers\Backend\ServiceController@update')->name('admin.services.update');
-        Route::post('/clone', 'App\Http\Controllers\Backend\ServiceController@clone_service_as_draft')->name('admin.services.clone');
-        Route::post('/bulk-action', 'App\Http\Controllers\Backend\ServiceController@bulk_action')->name('admin.services.bulk.action');
-        Route::post('/delete/{id}', 'App\Http\Controllers\Backend\ServiceController@delete')->name('admin.services.delete');
-        Route::post('/slug-check', 'App\Http\Controllers\Backend\ServiceController@slug_check')->name('admin.services.slug.check');
-        /*-----------------------------------
-            SERVICES MODULE : CATEGORY ROUTES
-         ------------------------------------*/
-        Route::group(['prefix' => 'category'], function () {
-            Route::get('/', 'App\Http\Controllers\Backend\ServiceController@category_index')->name('admin.service.category');
-            Route::post('/', 'App\Http\Controllers\Backend\ServiceController@category_store');
-            Route::post('/update', 'App\Http\Controllers\Backend\ServiceController@category_update')->name('admin.service.category.update');
-            Route::post('/delete/{id}', 'App\Http\Controllers\Backend\ServiceController@category_delete')->name('admin.service.category.delete');
-            Route::post('/bulk-action', 'App\Http\Controllers\Backend\ServiceController@category_bulk_action')->name('admin.service.category.bulk.action');
-        });
-    });
+    // Route::prefix('services')->middleware(['adminPermissionCheck:Services'])->group(function () {
+    //     /*-----------------------------------
+    //      SERVICES MODULE : SERVICES ROUTES
+    //     ------------------------------------*/
+    //     Route::get('/', 'App\Http\Controllers\Backend\ServiceController@index')->name('admin.services');
+    //     Route::post('/', 'App\Http\Controllers\Backend\ServiceController@store');
+    //     Route::get('/new', 'App\Http\Controllers\Backend\ServiceController@new_service')->name('admin.services.new');
+    //     Route::get('/edit/{id}', 'App\Http\Controllers\Backend\ServiceController@edit_service')->name('admin.services.edit');
+    //     Route::post('/cat-by-slug', 'App\Http\Controllers\Backend\ServiceController@category_by_slug')->name('admin.service.category.by.slug');
+    //     Route::post('/update', 'App\Http\Controllers\Backend\ServiceController@update')->name('admin.services.update');
+    //     Route::post('/clone', 'App\Http\Controllers\Backend\ServiceController@clone_service_as_draft')->name('admin.services.clone');
+    //     Route::post('/bulk-action', 'App\Http\Controllers\Backend\ServiceController@bulk_action')->name('admin.services.bulk.action');
+    //     Route::post('/delete/{id}', 'App\Http\Controllers\Backend\ServiceController@delete')->name('admin.services.delete');
+    //     Route::post('/slug-check', 'App\Http\Controllers\Backend\ServiceController@slug_check')->name('admin.services.slug.check');
+    //     /*-----------------------------------
+    //         SERVICES MODULE : CATEGORY ROUTES
+    //      ------------------------------------*/
+    //     Route::group(['prefix' => 'category'], function () {
+    //         Route::get('/', 'App\Http\Controllers\Backend\ServiceController@category_index')->name('admin.service.category');
+    //         Route::post('/', 'App\Http\Controllers\Backend\ServiceController@category_store');
+    //         Route::post('/update', 'App\Http\Controllers\Backend\ServiceController@category_update')->name('admin.service.category.update');
+    //         Route::post('/delete/{id}', 'App\Http\Controllers\Backend\ServiceController@category_delete')->name('admin.service.category.delete');
+    //         Route::post('/bulk-action', 'App\Http\Controllers\Backend\ServiceController@category_bulk_action')->name('admin.service.category.bulk.action');
+    //     });
+    // });
 
     /*==============================================
         IMAGE GALLERY ROUTES
     ==============================================*/
 
-    Route::prefix('video-gallery')->middleware(['adminPermissionCheck:Video Gallery'])->group(function () {
-        Route::get('/', 'VideoGalleryController@index')->name('admin.video.gallery.all');
-        Route::post('/new', 'VideoGalleryController@store')->name('admin.video.gallery.new');
-        Route::post('/update', 'VideoGalleryController@update')->name('admin.video.gallery.update');
-        Route::post('/delete/{id}', 'VideoGalleryController@delete')->name('admin.video.gallery.delete');
-        Route::post('/bulk-action', 'VideoGalleryController@bulk_action')->name('admin.video.gallery.bulk.action');
-        Route::get('/page-settings', 'VideoGalleryController@page_settings')->name('admin.video.gallery.page.settings');
-        Route::post('/page-settings', 'VideoGalleryController@update_page_settings');
-    });
+    // Route::prefix('video-gallery')->middleware(['adminPermissionCheck:Video Gallery'])->group(function () {
+    //     Route::get('/', 'VideoGalleryController@index')->name('admin.video.gallery.all');
+    //     Route::post('/new', 'VideoGalleryController@store')->name('admin.video.gallery.new');
+    //     Route::post('/update', 'VideoGalleryController@update')->name('admin.video.gallery.update');
+    //     Route::post('/delete/{id}', 'VideoGalleryController@delete')->name('admin.video.gallery.delete');
+    //     Route::post('/bulk-action', 'VideoGalleryController@bulk_action')->name('admin.video.gallery.bulk.action');
+    //     Route::get('/page-settings', 'VideoGalleryController@page_settings')->name('admin.video.gallery.page.settings');
+    //     Route::post('/page-settings', 'VideoGalleryController@update_page_settings');
+    // });
     /*==============================================
         IMAGE GALLERY ROUTES
     ==============================================*/
 
-    Route::prefix('gallery-page')->middleware(['adminPermissionCheck:Gallery Page'])->group(function () {
-        Route::get('/', 'ImageGalleryPageController@index')->name('admin.gallery.all');
-        Route::post('/new', 'ImageGalleryPageController@store')->name('admin.gallery.new');
-        Route::post('/update', 'ImageGalleryPageController@update')->name('admin.gallery.update');
-        Route::post('/delete/{id}', 'ImageGalleryPageController@delete')->name('admin.gallery.delete');
-        Route::post('/bulk-action', 'ImageGalleryPageController@bulk_action')->name('admin.gallery.bulk.action');
-        Route::get('/page-settings', 'ImageGalleryPageController@page_settings')->name('admin.gallery.page.settings');
-        Route::post('/page-settings', 'ImageGalleryPageController@update_page_settings');
-        /*------------------------
-            IMAGE CATEGORY
-        -------------------------*/
-        Route::group(['prefix' => 'category'], function () {
-            Route::get('/', 'ImageGalleryPageController@category_index')->name('admin.gallery.category');
-            Route::post('/new', 'ImageGalleryPageController@category_store')->name('admin.gallery.category.new');
-            Route::post('/update', 'ImageGalleryPageController@category_update')->name('admin.gallery.category.update');
-            Route::post('/delete/{id}', 'ImageGalleryPageController@category_delete')->name('admin.gallery.category.delete');
-            Route::post('/bulk-action', 'ImageGalleryPageController@category_bulk_action')->name('admin.gallery.category.bulk.action');
-        });
-        Route::post('/category-by-slug', 'ImageGalleryPageController@category_by_slug')->name('admin.gallery.category.by.lang');
-    });
+    // Route::prefix('gallery-page')->middleware(['adminPermissionCheck:Gallery Page'])->group(function () {
+    //     Route::get('/', 'ImageGalleryPageController@index')->name('admin.gallery.all');
+    //     Route::post('/new', 'ImageGalleryPageController@store')->name('admin.gallery.new');
+    //     Route::post('/update', 'ImageGalleryPageController@update')->name('admin.gallery.update');
+    //     Route::post('/delete/{id}', 'ImageGalleryPageController@delete')->name('admin.gallery.delete');
+    //     Route::post('/bulk-action', 'ImageGalleryPageController@bulk_action')->name('admin.gallery.bulk.action');
+    //     Route::get('/page-settings', 'ImageGalleryPageController@page_settings')->name('admin.gallery.page.settings');
+    //     Route::post('/page-settings', 'ImageGalleryPageController@update_page_settings');
+    //     /*------------------------
+    //         IMAGE CATEGORY
+    //     -------------------------*/
+    //     Route::group(['prefix' => 'category'], function () {
+    //         Route::get('/', 'ImageGalleryPageController@category_index')->name('admin.gallery.category');
+    //         Route::post('/new', 'ImageGalleryPageController@category_store')->name('admin.gallery.category.new');
+    //         Route::post('/update', 'ImageGalleryPageController@category_update')->name('admin.gallery.category.update');
+    //         Route::post('/delete/{id}', 'ImageGalleryPageController@category_delete')->name('admin.gallery.category.delete');
+    //         Route::post('/bulk-action', 'ImageGalleryPageController@category_bulk_action')->name('admin.gallery.category.bulk.action');
+    //     });
+    //     Route::post('/category-by-slug', 'ImageGalleryPageController@category_by_slug')->name('admin.gallery.category.by.lang');
+    // });
 
     /*==============================================
         TEAM MEMBER PAGE ROUTES
@@ -172,49 +172,49 @@ Route::prefix('admin-home')->group(function () {
     /*======================================
         EMAIL TEMPLATE SETTINGS
     =======================================*/
-    Route::prefix('email-template')->middleware(['auth:admin', 'adminPermissionCheck:Email Templates'])->namespace('Admin')->group(function () {
-        Route::get('/all', 'App\Http\Controllers\Backend\EmailTemplateController@all')->name('admin.email.template.all');
+    // Route::prefix('email-template')->middleware(['auth:admin', 'adminPermissionCheck:Email Templates'])->namespace('Admin')->group(function () {
+    //     Route::get('/all', 'App\Http\Controllers\Backend\EmailTemplateController@all')->name('admin.email.template.all');
 
-        /*-------------------------------------------
-            ADMIN PASSWORD RESET ROUTES
-        ---------------------------------------------*/
-        Route::get('/admin-password-reset', 'App\Http\Controllers\Backend\EmailTemplateController@admin_password_reset')->name('admin.email.template.admin.password.reset');
-        Route::post('/admin-password-reset', 'App\Http\Controllers\Backend\EmailTemplateController@update_admin_password_reset');
+    //     /*-------------------------------------------
+    //         ADMIN PASSWORD RESET ROUTES
+    //     ---------------------------------------------*/
+    //     Route::get('/admin-password-reset', 'App\Http\Controllers\Backend\EmailTemplateController@admin_password_reset')->name('admin.email.template.admin.password.reset');
+    //     Route::post('/admin-password-reset', 'App\Http\Controllers\Backend\EmailTemplateController@update_admin_password_reset');
 
-        /*-------------------------------------------
-          USER PASSWORD RESET ROUTES
-        ---------------------------------------------*/
-        Route::get('/user-password-reset', 'App\Http\Controllers\Backend\EmailTemplateController@user_password_reset')->name('admin.email.template.user.password.reset');
-        Route::post('/user-password-reset', 'App\Http\Controllers\Backend\EmailTemplateController@update_user_password_reset');
+    //     /*-------------------------------------------
+    //       USER PASSWORD RESET ROUTES
+    //     ---------------------------------------------*/
+    //     Route::get('/user-password-reset', 'App\Http\Controllers\Backend\EmailTemplateController@user_password_reset')->name('admin.email.template.user.password.reset');
+    //     Route::post('/user-password-reset', 'App\Http\Controllers\Backend\EmailTemplateController@update_user_password_reset');
 
-        /*-------------------------------------------
-         USER EMAIL VERIFY ROUTES
-        ---------------------------------------------*/
-        Route::get('/user-email-verify', 'App\Http\Controllers\Backend\EmailTemplateController@user_email_verify')->name('admin.email.template.user.email.verify');
-        Route::post('/user-email-verify', 'App\Http\Controllers\Backend\EmailTemplateController@update_user_email_verify');
+    //     /*-------------------------------------------
+    //      USER EMAIL VERIFY ROUTES
+    //     ---------------------------------------------*/
+    //     Route::get('/user-email-verify', 'App\Http\Controllers\Backend\EmailTemplateController@user_email_verify')->name('admin.email.template.user.email.verify');
+    //     Route::post('/user-email-verify', 'App\Http\Controllers\Backend\EmailTemplateController@update_user_email_verify');
 
-        /*-------------------------------------------
-            NEWSLETTER VERIFY ROUTES
-        ---------------------------------------------*/
-        Route::get('/newsletter-verify', 'App\Http\Controllers\Backend\EmailTemplateController@newsletter_verify')->name('admin.email.template.newsletter.verify');
-        Route::post('/newsletter-verify', 'App\Http\Controllers\Backend\EmailTemplateController@update_newsletter_verify');
+    //     /*-------------------------------------------
+    //         NEWSLETTER VERIFY ROUTES
+    //     ---------------------------------------------*/
+    //     Route::get('/newsletter-verify', 'App\Http\Controllers\Backend\EmailTemplateController@newsletter_verify')->name('admin.email.template.newsletter.verify');
+    //     Route::post('/newsletter-verify', 'App\Http\Controllers\Backend\EmailTemplateController@update_newsletter_verify');
 
-        /*==========================================
-            PROGRAM EMAIL TEMPLATE ROUTE
-        ==========================================*/
+    //     /*==========================================
+    //         PROGRAM EMAIL TEMPLATE ROUTE
+    //     ==========================================*/
 
-        /* program order mail admin */
-        Route::get('/program-registration-mail-admin', 'App\Http\Controllers\Backend\EmailTemplateController@program_registration_mail_admin')->name('admin.email.template.program.registration.mail.admin');
-        Route::post('/program-registration-mail-admin', 'App\Http\Controllers\Backend\EmailTemplateController@update_program_registration_mail_admin');
+    //     /* program order mail admin */
+    //     Route::get('/program-registration-mail-admin', 'App\Http\Controllers\Backend\EmailTemplateController@program_registration_mail_admin')->name('admin.email.template.program.registration.mail.admin');
+    //     Route::post('/program-registration-mail-admin', 'App\Http\Controllers\Backend\EmailTemplateController@update_program_registration_mail_admin');
 
-        /* program registration mail user */
-        Route::get('/program-registration-mail-user', 'App\Http\Controllers\Backend\EmailTemplateController@program_registration_mail_user')->name('admin.email.template.program.registration.mail.user');
-        Route::post('/program-registration-mail-user', 'App\Http\Controllers\Backend\EmailTemplateController@update_program_registration_mail_user');
+    //     /* program registration mail user */
+    //     Route::get('/program-registration-mail-user', 'App\Http\Controllers\Backend\EmailTemplateController@program_registration_mail_user')->name('admin.email.template.program.registration.mail.user');
+    //     Route::post('/program-registration-mail-user', 'App\Http\Controllers\Backend\EmailTemplateController@update_program_registration_mail_user');
 
-        /* program registration reminder mail */
-        Route::get('/program-registration-mail-reminder-mail', 'App\Http\Controllers\Backend\EmailTemplateController@program_registration_mail_reminder_mail')->name('admin.email.template.program.registration.mail.reminder.mail');
-        Route::post('/program-registration-mail-reminder-mail', 'App\Http\Controllers\Backend\EmailTemplateController@update_program_registration_mail_reminder_mail');
-    });
+    //     /* program registration reminder mail */
+    //     Route::get('/program-registration-mail-reminder-mail', 'App\Http\Controllers\Backend\EmailTemplateController@program_registration_mail_reminder_mail')->name('admin.email.template.program.registration.mail.reminder.mail');
+    //     Route::post('/program-registration-mail-reminder-mail', 'App\Http\Controllers\Backend\EmailTemplateController@update_program_registration_mail_reminder_mail');
+    // });
 
     /*==============================================
          NEWSLETTER ROUTES
@@ -260,6 +260,16 @@ Route::prefix('admin-home')->group(function () {
         Route::post('/update', 'App\Http\Controllers\Backend\PartnersController@update')->name('admin.partners.update');
         Route::post('/delete/{id}', 'App\Http\Controllers\Backend\PartnersController@delete')->name('admin.partners.delete');
         Route::post('/bulk-action', 'App\Http\Controllers\Backend\PartnersController@bulk_action')->name('admin.partners.bulk.action');
+    });
+
+    /*==============================================
+       ANNUAL REPORTS ROUTES
+    ==============================================*/
+    Route::prefix('annual-report')->middleware(['adminPermissionCheck:General Settings'])->group(function () {
+        Route::get('/', 'App\Http\Controllers\Backend\AnnualReportController@index')->name('admin.annual.report');
+        Route::post('/', 'App\Http\Controllers\Backend\AnnualReportController@store');
+        Route::post('/update', 'App\Http\Controllers\Backend\AnnualReportController@update')->name('admin.annual.report.update');
+        Route::post('/delete/{id}', 'App\Http\Controllers\Backend\AnnualReportController@delete')->name('admin.annual.report.delete');
     });
 
     /*==============================================
@@ -323,10 +333,10 @@ Route::prefix('admin-home')->group(function () {
     /*==============================================
      404 PAGE ROUTES
     ==============================================*/
-    Route::prefix('404-page-manage')->middleware(['adminPermissionCheck:404 Page Manage'])->group(function () {
-        Route::get('/', 'Error404PageManage@error_404_page_settings')->name('admin.404.page.settings');
-        Route::post('/', 'Error404PageManage@update_error_404_page_settings');
-    });
+    // Route::prefix('404-page-manage')->middleware(['adminPermissionCheck:404 Page Manage'])->group(function () {
+    //     Route::get('/', 'Error404PageManage@error_404_page_settings')->name('admin.404.page.settings');
+    //     Route::post('/', 'Error404PageManage@update_error_404_page_settings');
+    // });
 
     /*==============================================
         TESTIMONIAL ROUTES
@@ -365,7 +375,7 @@ Route::prefix('admin-home')->group(function () {
         //program Waitlist logs (formerly registration)
         Route::group(['prefix' => 'waitlist'], function () {
             Route::get('/all', 'App\Http\Controllers\Backend\ProgramsController@program_waitlist')->name('admin.program.registration.logs');
-             Route::get('/report', 'App\Http\Controllers\Backend\ProgramsController@program_waitlist_report')->name('admin.program.registration.report');
+             Route::match(['get', 'post'], '/report', 'App\Http\Controllers\Backend\ProgramsController@program_waitlist_report')->name('admin.program.registration.report');
             Route::get('/export', 'App\Http\Controllers\Backend\ProgramsController@export_waitlist')->name('admin.program.waitlist.export');
             Route::post('/all', 'App\Http\Controllers\Backend\ProgramsController@update_program_registration_logs_status');
             Route::post('/delete/{id}', 'App\Http\Controllers\Backend\ProgramsController@program_waitlist_delete')->name('admin.program.registration.logs.delete');
@@ -377,50 +387,49 @@ Route::prefix('admin-home')->group(function () {
         PROGRAMS MODULE: OTHERS ROUTES
         ----------------------------------------*/
         Route::post('/program-registration/reminder', 'App\Http\Controllers\Backend\ProgramsController@program_registration_reminder')->name('admin.program.registration.reminder');
-        Route::get('/registration/report', 'App\Http\Controllers\Backend\ProgramsController@registration_report')->name('admin.program.registration.report');
     });
 
     /*==============================================
              CASE STUDY MODULE ROUTES
     ==============================================*/
-    Route::prefix('works')->middleware(['adminPermissionCheck:Case Study'])->group(function () {
+    // Route::prefix('works')->middleware(['adminPermissionCheck:Case Study'])->group(function () {
 
-        Route::get('/', 'App\Http\Controllers\Backend\WorksController@index')->name('admin.work');
-        Route::post('/', 'App\Http\Controllers\Backend\WorksController@store');
-        Route::get('/new', 'App\Http\Controllers\Backend\WorksController@new')->name('admin.work.new');
-        Route::get('/edit/{id}', 'App\Http\Controllers\Backend\WorksController@edit')->name('admin.work.edit');
-        Route::post('/update', 'App\Http\Controllers\Backend\WorksController@update')->name('admin.work.update');
-        Route::post('/clone', 'App\Http\Controllers\Backend\WorksController@clone_new_draft')->name('admin.work.clone');
-        Route::post('/bulk-action', 'App\Http\Controllers\Backend\WorksController@bulk_action')->name('admin.work.bulk.action');
-        Route::post('/delete/{id}', 'App\Http\Controllers\Backend\WorksController@delete')->name('admin.work.delete');
-        Route::post('/cat-by-slug', 'App\Http\Controllers\Backend\WorksController@category_by_slug')->name('admin.work.category.by.slug');
-        Route::post('/slug-check', 'App\Http\Controllers\Backend\WorksController@slug_check')->name('admin.work.slug.check');
+    //     Route::get('/', 'App\Http\Controllers\Backend\WorksController@index')->name('admin.work');
+    //     Route::post('/', 'App\Http\Controllers\Backend\WorksController@store');
+    //     Route::get('/new', 'App\Http\Controllers\Backend\WorksController@new')->name('admin.work.new');
+    //     Route::get('/edit/{id}', 'App\Http\Controllers\Backend\WorksController@edit')->name('admin.work.edit');
+    //     Route::post('/update', 'App\Http\Controllers\Backend\WorksController@update')->name('admin.work.update');
+    //     Route::post('/clone', 'App\Http\Controllers\Backend\WorksController@clone_new_draft')->name('admin.work.clone');
+    //     Route::post('/bulk-action', 'App\Http\Controllers\Backend\WorksController@bulk_action')->name('admin.work.bulk.action');
+    //     Route::post('/delete/{id}', 'App\Http\Controllers\Backend\WorksController@delete')->name('admin.work.delete');
+    //     Route::post('/cat-by-slug', 'App\Http\Controllers\Backend\WorksController@category_by_slug')->name('admin.work.category.by.slug');
+    //     Route::post('/slug-check', 'App\Http\Controllers\Backend\WorksController@slug_check')->name('admin.work.slug.check');
 
-        /*----------------------------------------------------
-             CASE STUDY : CATEGORY ROUTES
-        ----------------------------------------------------*/
-        Route::group(['prefix' => 'category'], function () {
-            Route::get('/', 'App\Http\Controllers\Backend\WorksController@category_index')->name('admin.work.category');
-            Route::post('/', 'App\Http\Controllers\Backend\WorksController@category_store');
-            Route::post('/update', 'App\Http\Controllers\Backend\WorksController@category_update')->name('admin.work.category.update');
-            Route::post('/delete/{id}', 'App\Http\Controllers\Backend\WorksController@category_delete')->name('admin.work.category.delete');
-            Route::post('/bulk-action', 'App\Http\Controllers\Backend\WorksController@category_bulk_action')->name('admin.work.category.bulk.action');
-        });
-    });
+    //     /*----------------------------------------------------
+    //          CASE STUDY : CATEGORY ROUTES
+    //     ----------------------------------------------------*/
+    //     Route::group(['prefix' => 'category'], function () {
+    //         Route::get('/', 'App\Http\Controllers\Backend\WorksController@category_index')->name('admin.work.category');
+    //         Route::post('/', 'App\Http\Controllers\Backend\WorksController@category_store');
+    //         Route::post('/update', 'App\Http\Controllers\Backend\WorksController@category_update')->name('admin.work.category.update');
+    //         Route::post('/delete/{id}', 'App\Http\Controllers\Backend\WorksController@category_delete')->name('admin.work.category.delete');
+    //         Route::post('/bulk-action', 'App\Http\Controllers\Backend\WorksController@category_bulk_action')->name('admin.work.category.bulk.action');
+    //     });
+    // });
 
     /*==============================================
           FRONTEND USER MANAGE
     ==============================================*/
-    Route::prefix('frontend/user')->middleware(['adminPermissionCheck:Users Manage'])->group(function () {
-        Route::get('/new', 'App\Http\Controllers\Backend\FrontendUserManageController@new_user')->name('admin.frontend.new.user');
-        Route::post('/new', 'App\Http\Controllers\Backend\FrontendUserManageController@new_user_add');
-        Route::post('/update', 'App\Http\Controllers\Backend\FrontendUserManageController@user_update')->name('admin.frontend.user.update');
-        Route::post('/password-change', 'App\Http\Controllers\Backend\FrontendUserManageController@user_password_change')->name('admin.frontend.user.password.change');
-        Route::post('/delete/{id}', 'App\Http\Controllers\Backend\FrontendUserManageController@new_user_delete')->name('admin.frontend.delete.user');
-        Route::get('/all', 'App\Http\Controllers\Backend\FrontendUserManageController@all_user')->name('admin.all.frontend.user');
-        Route::post('/all/bulk-action', 'App\Http\Controllers\Backend\FrontendUserManageController@bulk_action')->name('admin.all.frontend.user.bulk.action');
-        Route::post('/all/email-status', 'App\Http\Controllers\Backend\FrontendUserManageController@email_status')->name('admin.all.frontend.user.email.status');
-    });
+    // Route::prefix('frontend/user')->middleware(['adminPermissionCheck:Users Manage'])->group(function () {
+    //     Route::get('/new', 'App\Http\Controllers\Backend\FrontendUserManageController@new_user')->name('admin.frontend.new.user');
+    //     Route::post('/new', 'App\Http\Controllers\Backend\FrontendUserManageController@new_user_add');
+    //     Route::post('/update', 'App\Http\Controllers\Backend\FrontendUserManageController@user_update')->name('admin.frontend.user.update');
+    //     Route::post('/password-change', 'App\Http\Controllers\Backend\FrontendUserManageController@user_password_change')->name('admin.frontend.user.password.change');
+    //     Route::post('/delete/{id}', 'App\Http\Controllers\Backend\FrontendUserManageController@new_user_delete')->name('admin.frontend.delete.user');
+    //     Route::get('/all', 'App\Http\Controllers\Backend\FrontendUserManageController@all_user')->name('admin.all.frontend.user');
+    //     Route::post('/all/bulk-action', 'App\Http\Controllers\Backend\FrontendUserManageController@bulk_action')->name('admin.all.frontend.user.bulk.action');
+    //     Route::post('/all/email-status', 'App\Http\Controllers\Backend\FrontendUserManageController@email_status')->name('admin.all.frontend.user.email.status');
+    // });
 
     /*==============================================
          ADMIN ROLE MANAGE MANAGE

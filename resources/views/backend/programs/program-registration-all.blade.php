@@ -271,7 +271,7 @@
                 $.each(allData.customfield,function (index,value) {
                     if(index == 'package'){
                         var paymentStatusClass = allData.paystatus == 'pending' ? 'alert alert-warning' : 'alert alert-success';
-                        var curSymbol = "{{site_currency_symbol()}}";
+                        var curSymbol = "$"; // Placeholder for currency symbol
                         parent.find('.order-all-custom-fields').append('<tr><td class="fname">Package ID</td> <td class="fvalue">'+value+'</td></tr>');
                         parent.find('.order-all-custom-fields').append('<tr><td class="fname">Package Name</td> <td class="fvalue">'+allData.packagename+'</td></tr>');
                         parent.find('.order-all-custom-fields').append('<tr><td class="fname">Package Price</td> <td class="fvalue">'+curSymbol+allData.packageprice+'</td></tr>');

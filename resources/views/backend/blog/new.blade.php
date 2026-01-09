@@ -74,13 +74,14 @@
                                             value="{{ old('tags') }}" data-role="tagsinput" placeholder="Comma separated tags">
                                     </div>
                                     <div class="form-group">
-                                        <label for="author_id">{{ __('Author') }}</label>
+                                        {{-- <label for="author_id">{{ __('Author') }}</label>
                                         <select name="author_id" class="form-control" id="author_id">
                                             <option value="">{{ __('Select Author') }}</option>
                                             @foreach ($all_team_members as $member)
                                                 <option value="{{ $member->id }}">{{ $member->name }}</option>
                                             @endforeach
-                                        </select>
+                                        </select> --}}
+                                        <input type="hidden" name="author_id" value="{{ Auth::guard('admin')->user()->name }}">
                                     </div>
                                    
                                     <div class="form-group">

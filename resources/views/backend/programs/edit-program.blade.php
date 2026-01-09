@@ -37,6 +37,18 @@
                                         <input type="text" class="form-control"  id="slug" name="slug" value="{{$program->slug}}" placeholder="{{__('slug')}}">
                                     </div>
                                     <div class="form-group">
+                                        <label for="application_link">{{__('Application Link')}}</label>
+                                        <input type="text" class="form-control"  id="application_link" name="application_link" value="{{$program->application_link}}" placeholder="{{__('Application Link')}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="application_start_date">{{__('Application Start Date')}}</label>
+                                        <input type="date" class="form-control"  id="application_start_date" name="application_start_date" value="{{$program->application_start_date ? $program->application_start_date->format('Y-m-d') : ''}}" placeholder="{{__('Application Start Date')}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="application_end_date">{{__('Application End Date')}}</label>
+                                        <input type="date" class="form-control"  id="application_end_date" name="application_end_date" value="{{$program->application_end_date ? $program->application_end_date->format('Y-m-d') : ''}}" placeholder="{{__('Application End Date')}}">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="status">{{__('Status')}}</label>
                                         <select name="status" id="status"  class="form-control">
                                             <option @if($program->is_active) selected @endif value="publish">{{__('Publish')}}</option>

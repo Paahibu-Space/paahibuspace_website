@@ -19,14 +19,25 @@ Route::prefix('v1')->group(function () {
     // Impact Stats
     Route::get('/impact-stats', [App\Http\Controllers\Api\V1\ImpactStatController::class, 'index']);
 
+    // Annual Reports
+    Route::get('/annual-reports', [App\Http\Controllers\Api\V1\AnnualReportController::class, 'index']);
+
+    // Programs
+    Route::get('/programs', [App\Http\Controllers\Api\V1\ProgramController::class, 'index']);
+    Route::get('/programs/{slug}', [App\Http\Controllers\Api\V1\ProgramController::class, 'show']);
+    Route::post('/programs/{slug}/waitlist', [App\Http\Controllers\Api\V1\ProgramController::class, 'joinWaitlist']);
+
     // Blog
     Route::get('/blog', [App\Http\Controllers\Api\V1\BlogController::class, 'index']);
     Route::get('/blog/{slug}', [App\Http\Controllers\Api\V1\BlogController::class, 'show']);
     Route::get('/blog/category/{category}', [App\Http\Controllers\Api\V1\BlogController::class, 'byCategory']);
     Route::get('/blog/tag/{tag}', [App\Http\Controllers\Api\V1\BlogController::class, 'byTag']);
 
-    // Public Metadata (for dynamic frontend dropdowns)
+    // Metadata (Dropdowns)
     Route::get('/meta/story-types', [App\Http\Controllers\Api\V1\MetaController::class, 'storyTypes']);
     Route::get('/meta/programs', [App\Http\Controllers\Api\V1\MetaController::class, 'programs']);
     Route::get('/meta/blog-categories', [App\Http\Controllers\Api\V1\MetaController::class, 'blogCategories']);
+
+    // Newsletter
+    Route::post('/newsletter/subscribe', [App\Http\Controllers\Api\V1\NewsletterController::class, 'subscribe']);
 });

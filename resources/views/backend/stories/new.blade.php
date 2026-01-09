@@ -89,6 +89,11 @@
                                         <input type="text" class="form-control" name="role"
                                             value="{{ old('role') }}" placeholder="e.g. Beneficiary">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="year">{{ __('Year') }}</label>
+                                        <input type="text" class="form-control" name="year"
+                                            value="{{ old('year') }}" placeholder="e.g. 2024">
+                                    </div>
 
                                     <div class="form-group">
                                         <label for="status">{{ __('Status') }}</label>

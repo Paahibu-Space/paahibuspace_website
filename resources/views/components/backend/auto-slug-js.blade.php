@@ -28,7 +28,13 @@
                     lang : $('#language').val()
                 },
                 success: function (data){
-                    $('input[name="slug"]').val(data)
+                    // Only update if server returns a valid string slug
+                    if (typeof data === 'string' && data !== '[object Object]') {
+                        $('input[name="slug"]').val(data);
+                    } else if (data && typeof data === 'object' && data.slug) {
+                        $('input[name="slug"]').val(data.slug);
+                    }
+                    // Otherwise keep the client-generated slug
                 }
             });
         });
@@ -48,7 +54,13 @@
                     lang : $('#language').val()
                 },
                 success: function (data){
-                    $('input[name="slug"]').val(data)
+                    // Only update if server returns a valid string slug
+                    if (typeof data === 'string' && data !== '[object Object]') {
+                        $('input[name="slug"]').val(data);
+                    } else if (data && typeof data === 'object' && data.slug) {
+                        $('input[name="slug"]').val(data.slug);
+                    }
+                    // Otherwise keep the client-generated slug
                 }
             });
         });
@@ -57,7 +69,7 @@
             return Text
                 .toLowerCase()
                 .replace(/ /g, '-')
-                // .replace(/[^\w-]+/g, '');
+                .replace(/[^\w-]+/g, '');
         }
 
     });

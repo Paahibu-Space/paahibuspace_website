@@ -10,11 +10,21 @@ class TeamMemberResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
+        $imagePath = $this->image;
+        if ($this->profileEntry) {
+            $imagePath = $this->profileEntry->path;
+        }
+
+        $imageUrl = null;
+        if ($imagePath) {
+            $imageUrl = asset('assets/uploads/media-uploader/' . $imagePath);
+        }
+
         return [
             'id' => $this->id,
             'name' => $this->name,
             'role' => $this->role,
-            'image_url' => Storage::url($this->image),
+            'image_url' => $imageUrl,
             'category' => $this->whenLoaded('category', function () {
                 return $this->category->name;
             }),

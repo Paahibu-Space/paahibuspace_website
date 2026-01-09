@@ -179,6 +179,11 @@
                                 <span>{{ __('Partners Manage') }}</span></a>
                         </li>
                     @endif
+                    <li class="main_dropdown {{ active_menu('admin-home/annual-report') }}">
+                        <a href="{{ route('admin.annual.report') }}" aria-expanded="true"><i
+                                class="ti-file"></i>
+                            <span>{{ __('Annual Reports') }}</span></a>
+                    </li>
                     @if (check_page_permission_by_string('Testimonial'))
                         <li class="main_dropdown {{ active_menu('admin-home/testimonial') }}">
                             <a href="{{ route('admin.testimonial') }}" aria-expanded="true"><i

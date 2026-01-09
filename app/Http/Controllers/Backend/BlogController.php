@@ -27,10 +27,10 @@ class BlogController extends Controller
 
     public function new_blog(){
         $all_category = BlogCategory::all();
-        $all_team_members = TeamMember::select('id', 'name')->get(); // For Author selection
+        // $all_team_members = TeamMember::select('id', 'name')->get(); // Author selection removed
         return view('backend.blog.new')->with([
             'all_category' => $all_category,
-            'all_team_members' => $all_team_members
+            // 'all_team_members' => $all_team_members
         ]);
     }
 
@@ -42,14 +42,19 @@ class BlogController extends Controller
            'excerpt' => 'required',
            'title' => 'required',
            'status' => 'required',
-           'author_id' => 'required', // Changed from author string to ID
+           // 'author_id' => 'required', // Removed strict req
            'slug' => 'nullable',
            'image' => 'nullable|string',
            'seo_title' => 'nullable|string',
            'seo_description' => 'nullable|string',
         ]);
 
-        $slug = !empty($request->slug) ? $request->slug : Str::slug($request->title);
+        $slug = null;
+        if (!empty($request->slug) && $request->slug !== '[object Object]') {
+             $slug = Str::slug($request->slug);
+        } else {
+             $slug = Str::slug($request->title);
+        }
 
         $blog = BlogPost::create([
             'blog_category_id' => $request->category,
@@ -58,7 +63,7 @@ class BlogController extends Controller
             'excerpt' => $request->excerpt,
             'content' => $request->blog_content,
             'featured_image' => $request->image,
-            'author_id' => $request->author_id,
+            'author' => Auth::guard('admin')->user()->name, 
             'is_published' => $request->status === 'publish',
             'published_at' => $request->status === 'publish' ? now() : null,
             'seo_title' => $request->seo_title,
@@ -263,8 +268,24 @@ class BlogController extends Controller
     // Retaining simplified slug check
     public function slug_check(Request $request){
         $slug = $request->slug;
-        // Simple check implementation instead of using the service which might depend on old models
-        $exists = BlogPost::where('slug', $slug)->exists();
-        return response()->json(['status' => $exists ? 'failed' : 'ok']);
+        $type = $request->type;
+        
+        // For new items, check if slug exists and modify if needed
+        if ($type === 'new') {
+            $exists = BlogPost::where('slug', $slug)->exists();
+            if ($exists) {
+                // Append number to make it unique
+                $counter = 1;
+                $newSlug = $slug . '-' . $counter;
+                while (BlogPost::where('slug', $newSlug)->exists()) {
+                    $counter++;
+                    $newSlug = $slug . '-' . $counter;
+                }
+                return response()->json($newSlug);
+            }
+        }
+        
+        // Return the slug as-is
+        return response()->json($slug);
     }
 }
