@@ -13,15 +13,27 @@ return new class extends Migration
     {
         Schema::table('programs', function (Blueprint $table) {
             $table->dateTime('application_start_date')->nullable();
+        });
+        Schema::table('programs', function (Blueprint $table) {
             $table->dateTime('application_end_date')->nullable();
+        });
+        Schema::table('programs', function (Blueprint $table) {
             $table->string('application_link')->nullable();
         });
 
         Schema::table('program_registration', function (Blueprint $table) {
             $table->string('name')->nullable();
+        });
+        Schema::table('program_registration', function (Blueprint $table) {
             $table->string('email')->nullable();
+        });
+        Schema::table('program_registration', function (Blueprint $table) {
             $table->string('phone')->nullable();
+        });
+        Schema::table('program_registration', function (Blueprint $table) {
             $table->string('location')->nullable();
+        });
+        Schema::table('program_registration', function (Blueprint $table) {
             $table->text('notes')->nullable();
         });
     }

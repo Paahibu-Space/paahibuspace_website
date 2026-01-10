@@ -29,7 +29,10 @@ return new class extends Migration
         }
         
         // Modify author_id to be nullable (keeping it as BIGINT UNSIGNED to match team_members.id)
-        DB::statement('ALTER TABLE blog_posts MODIFY author_id BIGINT UNSIGNED NULL');
+        // Modify author_id to be nullable
+        Schema::table('blog_posts', function (Blueprint $table) {
+            $table->unsignedBigInteger('author_id')->nullable()->change();
+        });
         
         // Try to recreate the foreign key as nullable
         try {
@@ -53,7 +56,10 @@ return new class extends Migration
         }
         
         // Revert author_id to NOT NULL
-        DB::statement('ALTER TABLE blog_posts MODIFY author_id BIGINT UNSIGNED NOT NULL');
+        // Revert author_id to NOT NULL
+        Schema::table('blog_posts', function (Blueprint $table) {
+            $table->unsignedBigInteger('author_id')->nullable(false)->change();
+        });
         
         // Try to recreate original foreign key
         try {

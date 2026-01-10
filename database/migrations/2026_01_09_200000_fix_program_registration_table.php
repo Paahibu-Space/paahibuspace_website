@@ -18,6 +18,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('program_id')->nullable();
             $table->string('program_name')->nullable();
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('location')->nullable();
+            $table->text('notes')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('status')->default('pending'); // pending, confirmed, canceled
             $table->text('custom_fields')->nullable();
