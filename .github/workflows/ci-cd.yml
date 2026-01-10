@@ -77,6 +77,9 @@ jobs:
             
             # 2. Change directory
             cd /home/sites/23a/4/4bebba9906/websiteapi
+
+            git pull origin main
+            composer install --no-dev --optimize-autoloader
             
             # 3. Use 'command -v' to find wherever php82 or php is hiding
             PHP_BIN=$(command -v php82 || command -v php)
