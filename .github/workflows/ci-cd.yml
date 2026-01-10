@@ -72,26 +72,13 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            set -e
             # 1. Force the shell to load the environment paths
             export PATH=/usr/local/bin:/usr/bin:/bin:/usr/php82/usr/bin:$PATH
             
-            # 2. Ensure directory exists and is a git repository
+            # 2. Change directory
             cd /home/sites/23a/4/4bebba9906/websiteapi
-            
-            if [ ! -d .git ]; then
-                git init
-                git remote add origin https://github.com/Paahibu-Space/paahibuspace_website.git
-            fi
 
-            # 3. Ensure .env exists (Important for fresh folders)
-            if [ ! -f .env ]; then
-                cp .env.example .env
-                echo ".env created from .env.example. PLEASE UPDATE SECRETS MANUALLY."
-            fi
-
-            git fetch origin
-            git reset --hard origin/${{ github.ref_name }}
+            git pull origin api
             composer install --no-dev --optimize-autoloader
             
             # 3. Use 'command -v' to find wherever php82 or php is hiding
@@ -104,3 +91,6 @@ jobs:
             $PHP_BIN artisan route:cache
             $PHP_BIN artisan view:cache
             $PHP_BIN artisan storage:link
+      
+      - name: Deployment Placeholder
+        run: echo "Deployment step ready. Uncomment the relevant section in .github/workflows/ci-cd.yml and configure secrets."
