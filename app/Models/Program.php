@@ -34,4 +34,16 @@ class Program extends Model
     {
         return $this->application_status === 'Open';
     }
+
+    public function fellows()
+    {
+        return $this->hasMany(WalansiProgramFellow::class)->orderBy('order');
+    }
+
+    public function partners()
+    {
+        return $this->belongsToMany(Partner::class, 'program_partner')
+            ->withPivot(['id', 'role_label', 'description', 'order'])
+            ->orderBy('program_partner.order');
+    }
 }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Partner;
 use App\Models\Program;
+use App\Models\WalansiProgramFellow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -54,7 +56,16 @@ class ProgramsController extends Controller
 
     public function edit_program($id){
         $program = Program::find($id);
-        return view('backend.programs.edit-program')->with(['program' => $program]);
+        $fellows = $program->fellows()->orderBy('order')->get();
+        $attachedPartners = $program->partners;
+        $availablePartners = Partner::where('is_active', true)->orderBy('name')->get();
+
+        return view('backend.programs.edit-program')->with([
+            'program' => $program,
+            'fellows' => $fellows,
+            'attachedPartners' => $attachedPartners,
+            'availablePartners' => $availablePartners,
+        ]);
     }
 
     public function delete_program(Request $request,$id){
@@ -117,6 +128,102 @@ class ProgramsController extends Controller
         
         // Return the slug as-is
         return response()->json($slug);
+    }
+
+    // Fellow Functions
+    public function store_fellow(Request $request){
+        $this->validate($request,[
+            'program_id' => 'required|exists:programs,id',
+            'name' => 'required|string|max:191',
+            'role' => 'nullable|string|max:191',
+            'quote' => 'nullable|string',
+            'image' => 'nullable|string|max:191',
+            'status' => 'required',
+        ]);
+
+        WalansiProgramFellow::create([
+            'program_id' => $request->program_id,
+            'name' => $request->name,
+            'role' => $request->role,
+            'quote' => $request->quote,
+            'image' => $request->image,
+            'is_active' => $request->status === 'active',
+            'order' => WalansiProgramFellow::where('program_id', $request->program_id)->count(),
+        ]);
+
+        return redirect()->back()->with(['msg' => __('Fellow Added...'), 'type' => 'success']);
+    }
+
+    public function update_fellow(Request $request){
+        $this->validate($request,[
+            'id' => 'required|exists:program_fellows,id',
+            'name' => 'required|string|max:191',
+            'role' => 'nullable|string|max:191',
+            'quote' => 'nullable|string',
+            'image' => 'nullable|string|max:191',
+            'status' => 'required',
+        ]);
+
+        WalansiProgramFellow::find($request->id)->update([
+            'name' => $request->name,
+            'role' => $request->role,
+            'quote' => $request->quote,
+            'image' => $request->image,
+            'is_active' => $request->status === 'active',
+        ]);
+
+        return redirect()->back()->with(['msg' => __('Fellow Updated...'), 'type' => 'success']);
+    }
+
+    public function delete_fellow($id){
+        WalansiProgramFellow::find($id)->delete();
+        return redirect()->back()->with(['msg' => __('Fellow Removed...'), 'type' => 'danger']);
+    }
+
+    // Partner Link Functions
+    public function attach_partner(Request $request){
+        $this->validate($request,[
+            'program_id' => 'required|exists:programs,id',
+            'partner_id' => 'required|exists:partners,id',
+            'role_label' => 'nullable|string|max:191',
+            'description' => 'nullable|string',
+            'order' => 'nullable|integer',
+        ]);
+
+        $program = Program::find($request->program_id);
+
+        $program->partners()->syncWithoutDetaching([
+            $request->partner_id => [
+                'role_label' => $request->role_label,
+                'description' => $request->description,
+                'order' => $request->order ?? 0,
+            ],
+        ]);
+
+        return redirect()->back()->with(['msg' => __('Partner Attached...'), 'type' => 'success']);
+    }
+
+    public function update_partner_link(Request $request){
+        $this->validate($request,[
+            'id' => 'required|exists:program_partner,id',
+            'role_label' => 'nullable|string|max:191',
+            'description' => 'nullable|string',
+            'order' => 'nullable|integer',
+        ]);
+
+        \Illuminate\Support\Facades\DB::table('program_partner')->where('id', $request->id)->update([
+            'role_label' => $request->role_label,
+            'description' => $request->description,
+            'order' => $request->order ?? 0,
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->back()->with(['msg' => __('Partner Link Updated...'), 'type' => 'success']);
+    }
+
+    public function detach_partner($id){
+        \Illuminate\Support\Facades\DB::table('program_partner')->where('id', $id)->delete();
+        return redirect()->back()->with(['msg' => __('Partner Detached...'), 'type' => 'danger']);
     }
 
     // Waitlist Functions

@@ -19,7 +19,14 @@ class ProgramController extends Controller
 
     public function show($slug)
     {
-        $program = Program::where('is_active', true)->where('slug', $slug)->firstOrFail();
+        $program = Program::where('is_active', true)
+            ->where('slug', $slug)
+            ->with([
+                'fellows' => fn ($q) => $q->where('is_active', true)->orderBy('order'),
+                'partners',
+            ])
+            ->firstOrFail();
+
         return new ProgramResource($program);
     }
 

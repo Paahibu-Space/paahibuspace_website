@@ -369,6 +369,20 @@ Route::prefix('admin-home')->group(function () {
         Route::post('/slug-check', 'App\Http\Controllers\Backend\ProgramsController@slug_check')->name('admin.programs.slug.check');
 
         /*----------------------------------------
+            PROGRAMS MODULE: FELLOWS
+        ----------------------------------------*/
+        Route::post('/fellows/new', 'App\Http\Controllers\Backend\ProgramsController@store_fellow')->name('admin.programs.fellows.store');
+        Route::post('/fellows/update', 'App\Http\Controllers\Backend\ProgramsController@update_fellow')->name('admin.programs.fellows.update');
+        Route::post('/fellows/delete/{id}', 'App\Http\Controllers\Backend\ProgramsController@delete_fellow')->name('admin.programs.fellows.delete');
+
+        /*----------------------------------------
+            PROGRAMS MODULE: PARTNERS
+        ----------------------------------------*/
+        Route::post('/partners/attach', 'App\Http\Controllers\Backend\ProgramsController@attach_partner')->name('admin.programs.partners.attach');
+        Route::post('/partners/update-link', 'App\Http\Controllers\Backend\ProgramsController@update_partner_link')->name('admin.programs.partners.update');
+        Route::post('/partners/detach/{id}', 'App\Http\Controllers\Backend\ProgramsController@detach_partner')->name('admin.programs.partners.detach');
+
+        /*----------------------------------------
          REGISTRATION MODULE: REGISTRATION SETTINGS
        ----------------------------------------*/
         //program registration logs
