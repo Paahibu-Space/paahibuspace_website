@@ -66,20 +66,23 @@ jobs:
         uses: actions/checkout@v4
       
       - name: 🚀 Deploy via SSH
+        env:
+          DEPLOY_BRANCH: ${{ github.ref_name }}
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: DEPLOY_BRANCH
           script: |
             set -e
             # 1. Force the shell to load the environment paths
             export PATH=/usr/local/bin:/usr/bin:/bin:/usr/php82/usr/bin:$PATH
-            
+
             # 2. Ensure directory exists and is a git repository
             mkdir -p /home/sites/23a/4/4bebba9906/websiteapi
             cd /home/sites/23a/4/4bebba9906/websiteapi
-            
+
             if [ ! -d .git ]; then
                 git init
                 git remote add origin https://github.com/Paahibu-Space/paahibuspace_website.git
@@ -91,13 +94,15 @@ jobs:
                 echo ".env created from .env.example. PLEASE UPDATE SECRETS MANUALLY."
             fi
 
-            git fetch origin api
-            git reset --hard origin/api
+            git fetch origin "$DEPLOY_BRANCH"
+            git reset --hard "origin/$DEPLOY_BRANCH"
             composer install --no-dev --optimize-autoloader
-            
+            npm ci
+            npm run build
+
             # 3. Use 'command -v' to find wherever php82 or php is hiding
             PHP_BIN=$(command -v php82 || command -v php)
-            
+
             # 4. Run the commands using that discovered binary
             $PHP_BIN artisan migrate --force
             $PHP_BIN artisan optimize:clear
