@@ -42,8 +42,8 @@ class Program extends Model
 
     public function partners()
     {
-        return $this->belongsToMany(Partner::class, 'program_partner')
+        return $this->belongsToMany(Partner::class, 'walansi_program_partner')
             ->withPivot(['id', 'role_label', 'description', 'order'])
-            ->orderBy('program_partner.order');
+            ->orderBy('walansi_program_partner.order');
     }
 }
