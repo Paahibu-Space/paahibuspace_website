@@ -2,9 +2,9 @@ name: Laravel CI/CD
 
 on:
   push:
-    branches: [ "main", "api" ]
+    branches: [ "main", "staging" ]
   pull_request:
-    branches: [ "main", "api" ]
+    branches: [ "main", "staging" ]
 
 jobs:
   laravel-tests:
@@ -57,56 +57,84 @@ jobs:
       run: php artisan test
 
   deploy:
+    name: Build & Deploy
     needs: laravel-tests
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/api'
-    
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging'
+    concurrency:
+      group: deploy-websiteapi-${{ github.ref_name }}
+      cancel-in-progress: false
+
     steps:
-      - name: Checkout
+      - name: Get latest code
         uses: actions/checkout@v4
-      
-      - name: 🚀 Deploy via SSH
-        uses: appleboy/ssh-action@master
+
+      - name: 🔍 Set Deployment Config
+        id: deploy-config
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "env_name=Production" >> "$GITHUB_OUTPUT"
+            echo "deploy_path=/home/sites/23a/4/4bebba9906/websiteapi" >> "$GITHUB_OUTPUT"
+          else
+            echo "env_name=Staging" >> "$GITHUB_OUTPUT"
+            echo "deploy_path=/home/sites/23a/4/4bebba9906/websiteapi-staging" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 🛑 Validate Deployment Path
+        run: |
+          DEPLOY_PATH="${{ steps.deploy-config.outputs.deploy_path }}"
+          if [[ -z "$DEPLOY_PATH" || "$DEPLOY_PATH" != /home/sites/* ]]; then
+            echo "Refusing to deploy: deploy_path '$DEPLOY_PATH' is empty or unexpected."
+            exit 1
+          fi
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
+          php-version: '8.2'
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
+          coverage: none
+
+      - name: 📦 Install Composer Dependencies
+        run: composer install --no-ansi --no-interaction --no-progress --no-dev --optimize-autoloader
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 🔨 Install & Build Assets
+        run: |
+          npm ci
+          npm run build
+          rm -rf node_modules
+
+      - name: 🔑 Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            set -e
-            # 1. Force the shell to load the environment paths
-            export PATH=/usr/local/bin:/usr/bin:/bin:/usr/php82/usr/bin:$PATH
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+          if_key_exists: replace
 
-            # Branch that triggered this deploy (workflow only runs for main/api, see job `if:`)
-            DEPLOY_BRANCH="${{ github.ref_name }}"
+      - name: Sync Files (Rsync)
+        run: |
+          rsync -avz --delete \
+            --exclude='.git*' \
+            --exclude='node_modules' \
+            --exclude='.env' \
+            --exclude='tests' \
+            --exclude='.github' \
+            --exclude='.editorconfig' \
+            --exclude='storage/app/' \
+            --exclude='storage/logs/' \
+            --exclude='storage/framework/cache/' \
+            --exclude='storage/framework/sessions/' \
+            --exclude='public/storage' \
+            --exclude='public/assets/uploads/media-uploader' \
+            --exclude='public/assets/uploads/annual-reports' \
+            ./ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ steps.deploy-config.outputs.deploy_path }}
 
-            # 2. Ensure directory exists and is a git repository
-            mkdir -p /home/sites/23a/4/4bebba9906/websiteapi
-            cd /home/sites/23a/4/4bebba9906/websiteapi
-
-            if [ ! -d .git ]; then
-                git init
-                git remote add origin https://github.com/Paahibu-Space/paahibuspace_website.git
-            fi
-
-            # 3. Ensure .env exists (Important for fresh folders)
-            if [ ! -f .env ]; then
-                cp .env.example .env
-                echo ".env created from .env.example. PLEASE UPDATE SECRETS MANUALLY."
-            fi
-
-            git fetch origin "$DEPLOY_BRANCH"
-            git reset --hard "origin/$DEPLOY_BRANCH"
-            composer install --no-dev --optimize-autoloader
-            npm ci
-            npm run build
-
-            # 3. Use 'command -v' to find wherever php82 or php is hiding
-            PHP_BIN=$(command -v php82 || command -v php)
-
-            # 4. Run the commands using that discovered binary
-            $PHP_BIN artisan migrate --force
-            $PHP_BIN artisan optimize:clear
-            $PHP_BIN artisan config:cache
-            $PHP_BIN artisan route:cache
-            $PHP_BIN artisan view:cache
-            $PHP_BIN artisan storage:link
+      - name: 🚀 Run Post-Deployment Commands
+        run: |
+          DEPLOY_PATH="${{ steps.deploy-config.outputs.deploy_path }}"
+          ssh -T ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "bash ${DEPLOY_PATH}/scripts/deploy.sh ${DEPLOY_PATH}"
