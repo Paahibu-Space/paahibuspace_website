@@ -205,13 +205,13 @@ class ProgramsController extends Controller
 
     public function update_partner_link(Request $request){
         $this->validate($request,[
-            'id' => 'required|exists:program_partner,id',
+            'id' => 'required|exists:walansi_program_partner,id',
             'role_label' => 'nullable|string|max:191',
             'description' => 'nullable|string',
             'order' => 'nullable|integer',
         ]);
 
-        \Illuminate\Support\Facades\DB::table('program_partner')->where('id', $request->id)->update([
+        \Illuminate\Support\Facades\DB::table('walansi_program_partner')->where('id', $request->id)->update([
             'role_label' => $request->role_label,
             'description' => $request->description,
             'order' => $request->order ?? 0,
@@ -222,7 +222,7 @@ class ProgramsController extends Controller
     }
 
     public function detach_partner($id){
-        \Illuminate\Support\Facades\DB::table('program_partner')->where('id', $id)->delete();
+        \Illuminate\Support\Facades\DB::table('walansi_program_partner')->where('id', $id)->delete();
         return redirect()->back()->with(['msg' => __('Partner Detached...'), 'type' => 'danger']);
     }
 
