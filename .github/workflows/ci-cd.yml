@@ -66,18 +66,18 @@ jobs:
         uses: actions/checkout@v4
       
       - name: 🚀 Deploy via SSH
-        env:
-          DEPLOY_BRANCH: ${{ github.ref_name }}
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          envs: DEPLOY_BRANCH
           script: |
             set -e
             # 1. Force the shell to load the environment paths
             export PATH=/usr/local/bin:/usr/bin:/bin:/usr/php82/usr/bin:$PATH
+
+            # Branch that triggered this deploy (workflow only runs for main/api, see job `if:`)
+            DEPLOY_BRANCH="${{ github.ref_name }}"
 
             # 2. Ensure directory exists and is a git repository
             mkdir -p /home/sites/23a/4/4bebba9906/websiteapi
