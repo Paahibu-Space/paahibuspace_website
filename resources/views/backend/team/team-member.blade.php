@@ -49,6 +49,14 @@
                                 </select>
                                 <button class="btn btn-primary btn-sm" id="bulk_delete_btn">{{__('Apply')}}</button>
                             </div>
+                            <div class="select-box-wrap">
+                                <select name="category_filter" id="category_filter">
+                                    <option value="">{{__('All Categories')}}</option>
+                                    @foreach ($all_category as $category)
+                                        <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                         <div class="tab-content margin-top-40" id="myTabContent">
                             <div class="table-wrap table-responsive">
@@ -63,6 +71,7 @@
                                     <th>{{__('Image')}}</th>
                                     <th>{{__('Name')}}</th>
                                     <th>{{__('Role')}}</th>
+                                    <th>{{__('Category')}}</th>
                                     <th>{{__('Status')}}</th>
                                     <th>{{__('Action')}}</th>
                                     </thead>
@@ -93,6 +102,7 @@
                                             </td>
                                             <td>{{$data->name}}</td>
                                             <td>{{$data->role}}</td>
+                                            <td>{{ $data->category->name ?? '' }}</td>
                                               <td>
                                                 @if($data->is_active)
                                                     <span class="alert alert-success">{{__('Active')}}</span>
@@ -342,13 +352,19 @@
     <script src="//cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('.table-wrap > table').DataTable( {
+            var teamMemberTable = $('.table-wrap > table').DataTable( {
                 "order": [[ 1, "desc" ]],
                 'columnDefs' : [{
                     'targets' : 'no-sort',
                     'orderable' : false
                 }]
             } );
+
+            $(document).on('change', '#category_filter', function () {
+                var value = this.value;
+                var searchTerm = value ? '^' + $.fn.dataTable.util.escapeRegex(value) + '$' : '';
+                teamMemberTable.column(5).search(searchTerm, true, false).draw();
+            });
         } );
     </script>
     <script src="{{asset('assets/backend/js/dropzone.js')}}"></script>
