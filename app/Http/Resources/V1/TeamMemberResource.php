@@ -26,7 +26,10 @@ class TeamMemberResource extends JsonResource
             'role' => $this->role,
             'image_url' => $imageUrl,
             'category' => $this->whenLoaded('category', function () {
-                return $this->category->name;
+                return [
+                    'name' => $this->category->name,
+                    'slug' => $this->category->slug,
+                ];
             }),
             'linkedin_url' => $this->linkedin_url,
             'email' => $this->email,
