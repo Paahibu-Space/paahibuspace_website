@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\TeamCategoryResource;
 use App\Http\Resources\V1\TeamMemberResource;
 use App\Models\TeamCategory;
 use App\Models\TeamMember;
@@ -18,6 +19,13 @@ class TeamController extends Controller
             ->get();
 
         return TeamMemberResource::collection($members);
+    }
+
+    public function categories()
+    {
+        $categories = TeamCategory::orderBy('order')->get();
+
+        return TeamCategoryResource::collection($categories);
     }
 
     public function byCategory($categorySlug)

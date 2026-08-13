@@ -11,6 +11,7 @@ Route::prefix('v1')->group(function () {
 
     // Team
     Route::get('/team', [App\Http\Controllers\Api\V1\TeamController::class, 'index']);
+    Route::get('/team/categories', [App\Http\Controllers\Api\V1\TeamController::class, 'categories']);
     Route::get('/team/category/{category}', [App\Http\Controllers\Api\V1\TeamController::class, 'byCategory']);
 
     // Partners

@@ -61,6 +61,7 @@
                                             </div>
                                         </th>
                                         <th>{{__('ID')}}</th>
+                                        <th>{{__('Order')}}</th>
                                         <th>{{__('Name')}}</th>
                                         <th>{{__('Action')}}</th>
                                         </thead>
@@ -73,6 +74,7 @@
                                                     </div>
                                                 </td>
                                                 <td>{{$data->id}}</td>
+                                                <td>{{$data->order}}</td>
                                                 <td>{{$data->name}}</td>
                                                 <td>
                                                     <x-delete-popover :url="route('admin.team.category.delete',$data->id)"/>
@@ -82,8 +84,7 @@
                                                        class="btn btn-xs btn-primary mb-3 mr-1 category_edit_btn"
                                                        data-id="{{$data->id}}"
                                                        data-name="{{$data->name}}"
-                                                       
-                                                       
+                                                       data-order="{{$data->order}}"
                                                     >
                                                         <i class="ti-pencil"></i>
                                                     </a>
@@ -111,6 +112,11 @@
                                 <label for="name">{{__('Name')}}</label>
                                 <input type="text" class="form-control"  id="name" name="name" placeholder="{{__('Name')}}">
                             </div>
+                            <div class="form-group">
+                                <label for="order">{{__('Order')}}</label>
+                                <input type="number" class="form-control" id="order" name="order" value="0" placeholder="{{__('Order')}}">
+                                <small>{{__('Categories are displayed on the website in ascending order (lowest first).')}}</small>
+                            </div>
                             <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">{{__('Add New')}}</button>
                         </form>
                     </div>
@@ -132,6 +138,11 @@
                         <div class="form-group">
                             <label for="edit_name">{{__('Name')}}</label>
                             <input type="text" class="form-control"  id="edit_name" name="name" placeholder="{{__('Name')}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_order">{{__('Order')}}</label>
+                            <input type="number" class="form-control" id="edit_order" name="order" placeholder="{{__('Order')}}">
+                            <small>{{__('Categories are displayed on the website in ascending order (lowest first).')}}</small>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -190,12 +201,12 @@
                 var el = $(this);
                 var id = el.data('id');
                 var name = el.data('name');
+                var order = el.data('order');
                 var modal = $('#category_edit_modal');
 
-
                 modal.find('#category_id').val(id);
-                modal.find('#edit_status option[value="'+status+'"]').attr('selected',true);
                 modal.find('#edit_name').val(name);
+                modal.find('#edit_order').val(order);
             });
         });
     </script>

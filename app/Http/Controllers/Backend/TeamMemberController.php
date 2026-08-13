@@ -90,7 +90,7 @@ class TeamMemberController extends Controller
     }
 
     public function category(){
-        $all_category = TeamCategory::all();
+        $all_category = TeamCategory::orderBy('order')->get();
         return view('backend.team.category')->with([
             'all_category' => $all_category,
         ]);
@@ -98,15 +98,16 @@ class TeamMemberController extends Controller
     public function new_category(Request $request){
         $this->validate($request,[
             'name' => 'required|string|max:191',
+            'order' => 'nullable|integer',
         ]);
-        
+
         // Slug generation
         $slug = \Illuminate\Support\Str::slug($request->name);
 
         TeamCategory::create([
             'name' => $request->name,
             'slug' => $slug,
-            'order' => 0
+            'order' => $request->order ?? 0
         ]);
 
         return redirect()->back()->with([
@@ -118,11 +119,13 @@ class TeamMemberController extends Controller
     public function update_category(Request $request){
         $this->validate($request,[
             'name' => 'required|string|max:191',
+            'order' => 'nullable|integer',
         ]);
 
         TeamCategory::find($request->id)->update([
             'name' => $request->name,
             'slug' => \Illuminate\Support\Str::slug($request->name),
+            'order' => $request->order ?? 0,
         ]);
 
         return redirect()->back()->with([
