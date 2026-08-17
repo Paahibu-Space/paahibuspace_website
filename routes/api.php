@@ -16,6 +16,7 @@ Route::prefix('v1')->group(function () {
 
     // Partners
     Route::get('/partners', [App\Http\Controllers\Api\V1\PartnerController::class, 'index']);
+    Route::get('/partners/categories', [App\Http\Controllers\Api\V1\PartnerController::class, 'categories']);
 
     // Impact Stats
     Route::get('/impact-stats', [App\Http\Controllers\Api\V1\ImpactStatController::class, 'index']);

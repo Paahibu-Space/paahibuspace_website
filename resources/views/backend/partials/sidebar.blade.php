@@ -173,10 +173,20 @@
                         </li>
                     @endif
                     @if (check_page_permission_by_string('Partners Manage'))
-                        <li class="main_dropdown {{ active_menu('admin-home/partners') }}">
-                            <a href="{{ route('admin.partners') }}" aria-expanded="true"><i
-                                    class="ti-control-forward"></i>
-                                <span>{{ __('Partners Manage') }}</span></a>
+                        <li
+                            class="main_dropdown
+                    @if (request()->is(['admin-home/partners/*', 'admin-home/partners'])) active @endif
+                    ">
+                            <a href="javascript:void(0)" aria-expanded="true">
+                                <i class="ti-control-forward"></i>
+                                <span>{{ __('Partners Manage') }}</span>
+                            </a>
+                            <ul class="collapse">
+                                <li class="{{ active_menu('admin-home/partners') }}"><a
+                                        href="{{ route('admin.partners') }}">{{ __('Partners') }}</a></li>
+                                <li class="{{ active_menu('admin-home/partners/category') }}"><a
+                                        href="{{ route('admin.partners.category') }}">{{ __('Partner Categories') }}</a></li>
+                            </ul>
                         </li>
                     @endif
                     <li class="main_dropdown {{ active_menu('admin-home/annual-report') }}">

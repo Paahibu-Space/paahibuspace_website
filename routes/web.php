@@ -260,6 +260,17 @@ Route::prefix('admin-home')->group(function () {
         Route::post('/update', 'App\Http\Controllers\Backend\PartnersController@update')->name('admin.partners.update');
         Route::post('/delete/{id}', 'App\Http\Controllers\Backend\PartnersController@delete')->name('admin.partners.delete');
         Route::post('/bulk-action', 'App\Http\Controllers\Backend\PartnersController@bulk_action')->name('admin.partners.bulk.action');
+
+        /*==============================================
+           PARTNER CATEGORIES ROUTES
+        ==============================================*/
+        Route::prefix('category')->group(function () {
+            Route::get('/', 'App\Http\Controllers\Backend\PartnersController@category')->name('admin.partners.category');
+            Route::post('/', 'App\Http\Controllers\Backend\PartnersController@new_category');
+            Route::post('/delete/{id}', 'App\Http\Controllers\Backend\PartnersController@delete_category')->name('admin.partners.category.delete');
+            Route::post('/update', 'App\Http\Controllers\Backend\PartnersController@update_category')->name('admin.partners.category.update');
+            Route::post('/bulk-action', 'App\Http\Controllers\Backend\PartnersController@category_bulk_action')->name('admin.partners.category.bulk.action');
+        });
     });
 
     /*==============================================
