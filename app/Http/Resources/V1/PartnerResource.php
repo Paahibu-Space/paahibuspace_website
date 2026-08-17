@@ -26,6 +26,12 @@ class PartnerResource extends JsonResource
             'logo_url' => $logoUrl,
             'website_url' => $this->website_url,
             'order' => $this->order,
+            'category' => $this->whenLoaded('category', fn () => $this->category ? new PartnerCategoryResource($this->category) : null),
+            'relationship' => $this->relationship,
+            'programme_initiative' => $this->programme_initiative,
+            'period' => $this->period,
+            'contribution' => $this->contribution,
+            'attribution_requirements' => $this->attribution_requirements,
         ];
     }
 }

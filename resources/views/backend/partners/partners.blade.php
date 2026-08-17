@@ -59,6 +59,7 @@
                             </th>
                             <th>{{__('ID')}}</th>
                             <th>{{__('Name')}}</th>
+                            <th>{{__('Category')}}</th>
                             <th>{{__('Url')}}</th>
                             <th>{{__('Image')}}</th>
                             <th>{{__('Status')}}</th>
@@ -74,6 +75,7 @@
                                     </td>
                                     <td>{{$data->id}}</td>
                                     <td>{{$data->name}}</td>
+                                    <td>{{ optional($data->category)->name }}</td>
                                     <td>{{$data->website_url}}</td>
                                     <td>
                                         @php
@@ -110,6 +112,12 @@
                                            data-imageid="{{$data->logo}}"
                                            data-image="{{$img_url}}"
                                            data-status="{{$data->is_active ? 'publish' : 'draft'}}"
+                                           data-category="{{$data->partner_category_id}}"
+                                           data-relationship="{{$data->relationship}}"
+                                           data-programme="{{$data->programme_initiative}}"
+                                           data-period="{{$data->period}}"
+                                           data-contribution="{{$data->contribution}}"
+                                           data-attribution="{{$data->attribution_requirements}}"
                                         >
                                             <i class="ti-pencil"></i>
                                         </a>
@@ -135,6 +143,35 @@
                             <div class="form-group">
                                 <label for="url">{{__('Website URL')}}</label>
                                 <input type="text" class="form-control"  id="url"  name="url" placeholder="{{__('Url')}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="category">{{__('Partner Category')}}</label>
+                                <select name="category" class="form-control" id="category">
+                                    <option value="">{{__('Select Category')}}</option>
+                                    @foreach($all_category as $cat)
+                                        <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="relationship">{{__('Partner Relationship')}}</label>
+                                <input type="text" class="form-control" id="relationship" name="relationship" placeholder="{{__('e.g. Strategic funding partner')}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="programme_initiative">{{__('Programme/Initiative')}}</label>
+                                <input type="text" class="form-control" id="programme_initiative" name="programme_initiative" placeholder="{{__('e.g. Digital Walansi Program')}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="period">{{__('Period')}}</label>
+                                <input type="text" class="form-control" id="period" name="period" placeholder="{{__('e.g. Jan 2024 - Present')}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="contribution">{{__('Contribution')}}</label>
+                                <textarea class="form-control" id="contribution" name="contribution" rows="3" placeholder="{{__('What the partner contributes')}}"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="attribution_requirements">{{__('Attribution Requirements')}}</label>
+                                <textarea class="form-control" id="attribution_requirements" name="attribution_requirements" rows="3" placeholder="{{__('Any crediting/logo usage requirements')}}"></textarea>
                             </div>
 
                              <div class="form-group">
@@ -182,6 +219,35 @@
                         <div class="form-group">
                             <label for="edit_url">{{__('Website URL')}}</label>
                             <input type="text" class="form-control"  id="edit_url"  name="url" placeholder="{{__('Url')}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_category">{{__('Partner Category')}}</label>
+                            <select name="category" class="form-control" id="edit_category">
+                                <option value="">{{__('Select Category')}}</option>
+                                @foreach($all_category as $cat)
+                                    <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_relationship">{{__('Partner Relationship')}}</label>
+                            <input type="text" class="form-control" id="edit_relationship" name="relationship" placeholder="{{__('e.g. Strategic funding partner')}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_programme_initiative">{{__('Programme/Initiative')}}</label>
+                            <input type="text" class="form-control" id="edit_programme_initiative" name="programme_initiative" placeholder="{{__('e.g. Digital Walansi Program')}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_period">{{__('Period')}}</label>
+                            <input type="text" class="form-control" id="edit_period" name="period" placeholder="{{__('e.g. Jan 2024 - Present')}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_contribution">{{__('Contribution')}}</label>
+                            <textarea class="form-control" id="edit_contribution" name="contribution" rows="3" placeholder="{{__('What the partner contributes')}}"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_attribution_requirements">{{__('Attribution Requirements')}}</label>
+                            <textarea class="form-control" id="edit_attribution_requirements" name="attribution_requirements" rows="3" placeholder="{{__('Any crediting/logo usage requirements')}}"></textarea>
                         </div>
 
                          <div class="form-group">
@@ -267,6 +333,12 @@
                 form.find('#edit_name').val(name);
                 form.find('#edit_url').val(el.data('url'));
                 form.find('#edit_status').val(status);
+                form.find('#edit_category').val(el.data('category'));
+                form.find('#edit_relationship').val(el.data('relationship'));
+                form.find('#edit_programme_initiative').val(el.data('programme'));
+                form.find('#edit_period').val(el.data('period'));
+                form.find('#edit_contribution').val(el.data('contribution'));
+                form.find('#edit_attribution_requirements').val(el.data('attribution'));
 
                 if(imageid != ''){
                     form.find('.media-upload-btn-wrapper .img-wrap').html('<div class="attachment-preview"><div class="thumbnail"><div class="centered"><img class="avatar user-thumb" src="'+image+'" > </div></div></div>');
